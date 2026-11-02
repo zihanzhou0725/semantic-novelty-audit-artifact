@@ -897,61 +897,24 @@ Interval retained for Markov tasks; regression scope remains unresolved \\
 \end{table}
 
 \paragraph{Validator independence dimensions.}
-We use no unqualified independence claim.  A validator can differ from a
+We use no unqualified independence claim: a validator can differ from a
 producer by implementation, code path, execution environment, operator, or
-source specification.  ``Separate-code-path recomputation'' below means a
-different analysis or checking routine consumes frozen producer artifacts.
-``Isolated reproduction'' means a fresh process and dependency environment.
-All validators remain in the same project and use the same frozen protocol;
+source specification, and ``separate-code-path recomputation'' here means a
+different analysis or checking routine consuming frozen producer artifacts,
+while ``isolated reproduction'' means a fresh process and dependency
+environment.  Every major claim is recomputed on such a separate path: the
+internal exact-alias effect from paired manifests and saved predictions; the
+Boolean exposure and effect from collision-replacement checks and
+cluster-effect recomputation; the CLUTRR V4 effect by
+\texttt{train\_integrity.py} plus assignment and metric reconstruction; the
+SLR lower bound by row-level witness checks with positive canaries and
+negative normalizer tests; the Tensor Logic and Occam outputs by a common
+schema validator with two isolated reproductions; and the certified interval
+by an assignment checker over exhaustive finite cases.  All of these remain
+in the same project and share repository, protocol, pinned sources, and
+operator, so they limit but never eliminate correlated implementation error;
 we claim neither an independent human operator nor an independently authored
 specification.
-
-\begin{table}[H]
-\caption{Producer--validator relationships for the major validated claims.
-Shared dependencies limit the assurance each check supplies.}
-\label{tab:validator-map}
-\centering
-\scriptsize
-\setlength{\tabcolsep}{2.5pt}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{L{1.05in}L{1.28in}L{1.50in}L{1.45in}L{1.38in}}
-\toprule
-Claim & Producer & Validator & Distinct dimension & Shared dependency \\
-\midrule
-Internal exact-alias effect &
-Training drivers and saved predictions &
-Effect reconstruction from paired manifests and predictions &
-Separate metric code path &
-Same repository, protocol, artifacts, and operator \\
-Boolean exposure and effect &
-Stream materialization, training, and predictions &
-Collision replacement checks and cluster-effect recomputation &
-Separate checking and analysis paths &
-Same released generators, protocol, repository, and operator \\
-CLUTRR V4 effect &
-32 training runs and prediction artifacts &
-\texttt{train\_integrity.py} plus assignment and metric reconstruction &
-Separate integrity and effect-analysis modules &
-Same tensor caches, manifests, preregistration, repository, and operator \\
-SLR 45.2\% lower bound &
-Restricted-fragment parser and canonicalizer &
-Row-level witness checks, positive canaries, and negative normalizer tests &
-Separate witness and test paths &
-Same normalization rules, source data, repository, and operator \\
-Tensor Logic and Occam outputs &
-Benchmark-specific adapters &
-Common schema validator and two isolated reproductions &
-Separate validator code; fresh process and environment &
-Same adapter specification, pinned sources, repository, and operator \\
-Certified interval &
-Bound implementation &
-Assignment checker and exhaustive finite cases &
-Separate test path &
-Same proposition, assumptions, repository, and operator \\
-\bottomrule
-\end{tabular}%
-}
-\end{table}
 
 Eleven tests cover the three required canaries, schema rejection, and both
 public adapters.  Two isolated \texttt{python3 -I} reproductions use no

@@ -19,7 +19,28 @@
 
 \input{generated/tmlr_strengthening_macros}
 
-\def\openreview{\url{https://openreview.net/forum?id=XXXX}} % TODO(camera-ready): insert the DMLR OpenReview forum link
+% The dmlr2e class hardcodes a "Reviewed on OpenReview: <link>" line in
+% \@maketitle, intended for the camera-ready version.  A submission has no
+% forum id yet, so the line is dropped here; at camera-ready, restore the
+% class definition and set \openreview to the real forum URL.
+\makeatletter
+\def\@maketitle{\vbox{\hsize\textwidth
+ \linewidth\hsize \vskip \beforetitskip
+ {\begin{center} \Large\bf \@title \par \end{center}} \vskip \aftertitskip
+ {\def\and{\unskip\enspace{\rm and}\enspace}%
+  \def\addr{\small\it}%
+  \def\email{\hfill\small\sc}%
+  \def\name{\normalsize\bf}%
+  \def\AND{\@endauthor\rm\hss \vskip \interauthorskip \@startauthor}
+  \@startauthor \@author \@endauthor}
+  \vskip \aftermaketitskip
+  \if@preprint
+  \else
+  \noindent \@starteditor \@editor \@endeditor
+  \vskip \aftermaketitskip
+  \fi
+}}
+\makeatother
 
 \setlength{\emergencystretch}{3em}
 

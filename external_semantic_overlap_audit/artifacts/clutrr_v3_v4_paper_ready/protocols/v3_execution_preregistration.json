@@ -1,0 +1,105 @@
+{
+  "schema_version": "external-behavior-v3-execution-preregistration-v1",
+  "execution_id": "external-behavior-v3-execution-v1",
+  "parent_protocol": "external-behavior-v3",
+  "freeze_date": "2026-10-12",
+  "status": "frozen_before_first_behavioral_training_step",
+  "frozen_design": {
+    "design_validation_sha256": "3e4e8dba972d02492f6591f9b9dc34ee9c5a12a6340d0110ba8d55020e440aa8",
+    "design_gate_required": "pass",
+    "run_count": 16,
+    "model_seeds": [0, 1, 2, 3, 4, 5, 6, 7],
+    "arms": ["A", "B"],
+    "train_rows_per_run": 24000,
+    "evaluation_rows_per_run": 8000,
+    "target_patterns": 40
+  },
+  "randomness": {
+    "seed_derivation": "int.from_bytes(SHA256(('external-behavior-v1:' + namespace).encode('ascii')).digest()[0:8], 'big') & ((1<<63)-1)",
+    "model_initialization_namespace": "clutrr:model:{model_seed}",
+    "epoch_order_namespace": "clutrr:epoch:{model_seed}:{epoch_1_based}",
+    "epoch_order_algorithm": "numpy.random.Generator(numpy.random.PCG64(derived_seed)).permutation(24000).astype(int32)",
+    "torch_cpu_seed": "derived model initialization seed",
+    "paired_rule": "A and B for one model seed must have identical initial parameter hash, every epoch-order hash, initial Torch RNG hash, and final Torch RNG hash.",
+    "deterministic_algorithms": true
+  },
+  "tensorization": {
+    "tokenizer": "Frozen ASCII byte tokenizer with PAD, CLS, and SEP.",
+    "fixed_padding_length": 185,
+    "truncation": false,
+    "train_batch_size": 128,
+    "evaluation_batch_size": 256,
+    "reason": "Fixed length preserves paired A/B tensor shapes and dropout RNG consumption."
+  },
+  "model": {
+    "implementation_sha256": "fd7774d8c13bf7adccf282efe5e20411b2f231d13152eccc669591d2768c7d73",
+    "architecture": "Four-layer byte Transformer, d_model 128, four heads, FFN 512, dropout 0.1, learned positions, CLS pooling, 23 classes.",
+    "device": "CPU",
+    "precision": "float32"
+  },
+  "optimization": {
+    "epochs": 30,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "betas": [0.9, 0.999],
+    "epsilon": 1e-08,
+    "weight_decay": 0.01,
+    "gradient_clip_norm": 1.0,
+    "scheduler": "none",
+    "loss": "multiclass_cross_entropy",
+    "optimizer_updates_per_epoch": 188,
+    "optimizer_updates_per_run": 5640,
+    "checkpoint_selection": "fixed final epoch 30",
+    "validation_selection": false,
+    "early_stopping": false
+  },
+  "parallel_execution": {
+    "maximum_concurrent_runs": 8,
+    "torch_intraop_threads_per_run": 2,
+    "torch_interop_threads_per_run": 1,
+    "run_isolation": "one spawned Python process per run",
+    "statistical_semantics": "Concurrency may affect wall time only; deterministic CPU algorithms and per-process RNG state are mandatory."
+  },
+  "evaluation_outputs": {
+    "order": "Exact frozen clutrr_v3_evaluation.jsonl row order.",
+    "required_predictions": 8000,
+    "metrics": [
+      "accuracy",
+      "cross_entropy",
+      "brier_score",
+      "expected_calibration_error_15_equal_width_bins"
+    ],
+    "checkpoint": "Model and AdamW state after optimizer update 5,640.",
+    "prediction_tensors": "Finite float32 logits with row IDs, semantic IDs, source-group IDs, labels, and predictions."
+  },
+  "required_run_artifacts": [
+    "config.json",
+    "history.csv",
+    "final_checkpoint.pt",
+    "eval_predictions.npz",
+    "metrics.json",
+    "progress.json",
+    "COMPLETED.json"
+  ],
+  "integrity_gate": {
+    "required": [
+      "16_of_16_runs_complete",
+      "every_run_reaches_epoch_30_and_update_5640",
+      "all_model_optimizer_history_and_prediction_tensors_are_finite",
+      "paired_initialization_hashes_match_frozen_seed_hashes",
+      "paired_epoch_order_hashes_match_the_frozen manifest",
+      "paired_initial_and_final_torch_rng_hashes_match",
+      "every_run_emits_8000_predictions_in_frozen_evaluation_order",
+      "prediction_labels_semantic_ids_and_source_groups_match_evaluation_manifest",
+      "observed_training_row_ids_match_the_frozen arm manifest",
+      "observed_target_exposure_is_exactly_complementary",
+      "all_run_artifact_hashes_validate"
+    ],
+    "failure_action": "execution_no_go_preserve_completed_runs_and_do_not_compute_primary_effect"
+  },
+  "outcome_blinding": {
+    "primary_effect_computed_in_this_stage": false,
+    "paired_arm_aggregate_computed_in_this_stage": false,
+    "future_effect_analysis_requires_separately_frozen_analysis_inputs": true
+  }
+}

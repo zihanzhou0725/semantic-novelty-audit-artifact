@@ -1,0 +1,23 @@
+{
+  "schema_version": "external-behavior-v3-execution-freeze-receipt-v1",
+  "execution_id": "external-behavior-v3-execution-v1",
+  "frozen_at_utc": "2026-10-12T12:10:00Z",
+  "state_at_freeze": {
+    "design_gate_passed": true,
+    "run_manifest_materialized": false,
+    "epoch_order_hashes_materialized": false,
+    "initialization_hashes_materialized": false,
+    "behavioral_training_started": false,
+    "run_metrics_inspected": false,
+    "paired_effect_computed": false
+  },
+  "registered_compute_canary": {
+    "data": "synthetic random bytes and random labels only",
+    "device": "CPU",
+    "precision": "float32",
+    "selected_threads_per_run": 2,
+    "selected_maximum_concurrent_runs": 8,
+    "observed_single_process_seconds_per_step_at_two_threads": 0.9333010557262847,
+    "outcome_information_used": false
+  }
+}

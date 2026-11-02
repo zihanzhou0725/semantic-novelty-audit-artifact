@@ -1,0 +1,46 @@
+{
+  "array_canaries": {
+    "base_slots": 19200,
+    "eval_rows": 10000,
+    "target_slots": 800,
+    "train_rows": 20000
+  },
+  "device": "mps",
+  "models": {
+    "symbolic_deepsets": {
+      "initial_state_sha256": "0b853ebf6d4244f4fe6e3d20194dee22280980c8552bcbeb0e7c7c97b5899888",
+      "loss": 3.0205235481262207,
+      "parameters": 75092
+    },
+    "symbolic_hopfield": {
+      "initial_state_sha256": "39e09fb0d2b325bdb712283b2906b278f4eb250e4ac44cef14100d3fd73d8841",
+      "loss": 3.210423707962036,
+      "parameters": 72340
+    },
+    "symbolic_perceiver": {
+      "initial_state_sha256": "b5defee4ffaef966cdf7255a4a39ae04964e503d3583df912501bd96a8224b51",
+      "loss": 3.166752815246582,
+      "parameters": 141780
+    },
+    "symbolic_relation_network": {
+      "initial_state_sha256": "7e3d9ba4b5ece8076bc9bace026cda13c3e9cc662d23450dfe2ad7be13af6c45",
+      "loss": 3.0095160007476807,
+      "parameters": 189972
+    },
+    "symbolic_set_transformer": {
+      "initial_state_sha256": "760b2ee20f32d138af6ddfb049bd87465275eb4e59891d342f7bab5c48593d4d",
+      "loss": 3.1284070014953613,
+      "parameters": 105940
+    },
+    "symbolic_transformer": {
+      "initial_state_sha256": "667f2d98e3dd467554b961f991779d234dfa38aaeb1fa64fa910e3f4fcc1c0b5",
+      "loss": 3.1667919158935547,
+      "parameters": 73492
+    }
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "schema_version": "quality-enhancement-p1-v1",
+  "status": "passed",
+  "torch_version": "2.12.1",
+  "training_updates_performed": 0
+}

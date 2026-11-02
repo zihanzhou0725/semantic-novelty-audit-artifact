@@ -1,0 +1,63 @@
+{
+  "analysis_gate": "pass",
+  "check_count": 10,
+  "checks": [
+    {
+      "detail": null,
+      "name": "protocol",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "inputs",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "outputs",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "decomposition",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "shapley",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "anova",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "capacity",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "projection",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "gate",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "finite",
+      "pass": true
+    }
+  ],
+  "design_id": "external-behavior-v3-variance-design-v1",
+  "failed_checks": [],
+  "failed_count": 0,
+  "schema_version": "external-behavior-v3-variance-analysis-validation-v1",
+  "status": "pass",
+  "v4_design_decision": "strict_v3_precision_replication_no_go",
+  "validated_at_utc": "2026-10-13T11:30:55.733851+00:00"
+}

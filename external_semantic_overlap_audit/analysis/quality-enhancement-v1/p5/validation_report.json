@@ -1,0 +1,67 @@
+{
+  "conditions": {
+    "complete_proof": true,
+    "explicit_assumptions": true,
+    "falsifiable_rule_bound_or_estimator": true,
+    "instantiated_benchmarks_at_least": true,
+    "must_change_empirical_design_or_interpretation": true
+  },
+  "decision": "go",
+  "design_and_interpretation_changes": [
+    "report exposure prevalence as a certified interval, not a point zero",
+    "rerun executable witnesses after graph or split mutation",
+    "persist online-generator semantic IDs and category assignments",
+    "separate protocol exposure from behavioral-effect estimands"
+  ],
+  "input_sha256": {
+    "external_semantic_overlap_audit/analysis/quality-enhancement-v1/p4/tool_contribution_status.json": "bb8aabbbb9199d25f31b76ae8818741a0f3eb205b7934d3ffe768dbf6c7d50c2",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/preregistration.json": "1ca70e1a76f41c0c906ffe420cc1c7499420056519f05759332d2e3c1697775b",
+    "external_semantic_overlap_audit/scripts/audit_occam_hierarchical_icl.py": "0331ce4bf500bf11a6d770652e24081b47bd2d81ed556e76291231dfe7cc4aad",
+    "external_semantic_overlap_audit/tests/test_p5_exposure_bounds.py": "79d62a303bdc3cdc2790ae58f53dc64c6f330dba3c97e9f5570855916f49cf30",
+    "external_semantic_overlap_audit/toolkit/semantic_audit/bounds.py": "cf57138cf91837d7d74823d21d8dbb4947383037f13eb90d2398852d9d84534e"
+  },
+  "instantiated_benchmark_count": 2,
+  "instantiations": {
+    "occam_markov": {
+      "cross_seed_transition_tensor_collisions": 0,
+      "figure_2_lower": 2,
+      "figure_2_upper": 4,
+      "figure_3_lower": 2,
+      "figure_3_upper": 4
+    },
+    "tensor_logic": {
+      "endpoint_lower": 484,
+      "endpoint_upper": 1000,
+      "schema_lower": 999,
+      "schema_upper": 1000
+    }
+  },
+  "proof": {
+    "assumption_count": 5,
+    "complete_proof": true,
+    "falsification_rule_count": 6,
+    "grouped_seed_corollary": true,
+    "proposition_id": "certified_exposure_interval_v1",
+    "sha256": "62d438ee2bdb580fc9f5bb4798bdb982ee81a0bea5b39746fc0268e9bf3a7ca1"
+  },
+  "schema_version": "quality-enhancement-p5-theory-v1",
+  "signature_census": {
+    "cross_seed_transition_tensor_collisions": 0,
+    "eval_task_signatures": 40,
+    "matched_eval_task_signatures": 8,
+    "potential_train_signatures": 75093,
+    "training_orders": [
+      1,
+      2,
+      3
+    ],
+    "training_seed_range": "0..25030"
+  },
+  "status": "complete",
+  "tests": {
+    "command": "python3 -I tests/test_p5_exposure_bounds.py",
+    "isolated_python": true,
+    "status": "passed",
+    "test_count": 7
+  }
+}

@@ -1,0 +1,326 @@
+[
+  {
+    "sha": "a25a2cb0c62ad541cd30b0672df136230d878d9c",
+    "node_id": "C_kwDOKwwhR9oAKGEyNWEyY2IwYzYyYWQ1NDFjZDMwYjA2NzJkZjEzNjIzMGQ4NzhkOWM",
+    "commit": {
+      "author": {
+        "name": "arkilpatel",
+        "email": "arkil.patel@gmail.com",
+        "date": "2024-04-02T16:08:24Z"
+      },
+      "committer": {
+        "name": "arkilpatel",
+        "email": "arkil.patel@gmail.com",
+        "date": "2024-04-02T16:08:24Z"
+      },
+      "message": "Add Readme Figure",
+      "tree": {
+        "sha": "d7d4bc7b0693ca0732afdc1db65256918ba3a6e2",
+        "url": "https://api.github.com/repos/satwik77/incontext-bool/git/trees/d7d4bc7b0693ca0732afdc1db65256918ba3a6e2"
+      },
+      "url": "https://api.github.com/repos/satwik77/incontext-bool/git/commits/a25a2cb0c62ad541cd30b0672df136230d878d9c",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/satwik77/incontext-bool/commits/a25a2cb0c62ad541cd30b0672df136230d878d9c",
+    "html_url": "https://github.com/satwik77/incontext-bool/commit/a25a2cb0c62ad541cd30b0672df136230d878d9c",
+    "comments_url": "https://api.github.com/repos/satwik77/incontext-bool/commits/a25a2cb0c62ad541cd30b0672df136230d878d9c/comments",
+    "author": {
+      "login": "arkilpatel",
+      "id": 39628727,
+      "node_id": "MDQ6VXNlcjM5NjI4NzI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39628727?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/arkilpatel",
+      "html_url": "https://github.com/arkilpatel",
+      "followers_url": "https://api.github.com/users/arkilpatel/followers",
+      "following_url": "https://api.github.com/users/arkilpatel/following{/other_user}",
+      "gists_url": "https://api.github.com/users/arkilpatel/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/arkilpatel/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/arkilpatel/subscriptions",
+      "organizations_url": "https://api.github.com/users/arkilpatel/orgs",
+      "repos_url": "https://api.github.com/users/arkilpatel/repos",
+      "events_url": "https://api.github.com/users/arkilpatel/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/arkilpatel/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "arkilpatel",
+      "id": 39628727,
+      "node_id": "MDQ6VXNlcjM5NjI4NzI3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39628727?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/arkilpatel",
+      "html_url": "https://github.com/arkilpatel",
+      "followers_url": "https://api.github.com/users/arkilpatel/followers",
+      "following_url": "https://api.github.com/users/arkilpatel/following{/other_user}",
+      "gists_url": "https://api.github.com/users/arkilpatel/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/arkilpatel/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/arkilpatel/subscriptions",
+      "organizations_url": "https://api.github.com/users/arkilpatel/orgs",
+      "repos_url": "https://api.github.com/users/arkilpatel/repos",
+      "events_url": "https://api.github.com/users/arkilpatel/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/arkilpatel/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "8726c19bf6bc813f48373a1497372a35404b42da",
+        "url": "https://api.github.com/repos/satwik77/incontext-bool/commits/8726c19bf6bc813f48373a1497372a35404b42da",
+        "html_url": "https://github.com/satwik77/incontext-bool/commit/8726c19bf6bc813f48373a1497372a35404b42da"
+      }
+    ]
+  },
+  {
+    "sha": "8726c19bf6bc813f48373a1497372a35404b42da",
+    "node_id": "C_kwDOKwwhR9oAKDg3MjZjMTliZjZiYzgxM2Y0ODM3M2ExNDk3MzcyYTM1NDA0YjQyZGE",
+    "commit": {
+      "author": {
+        "name": "Satwik Bhattamishra",
+        "email": "satwik55@gmail.com",
+        "date": "2024-04-02T15:43:27Z"
+      },
+      "committer": {
+        "name": "Satwik Bhattamishra",
+        "email": "satwik55@gmail.com",
+        "date": "2024-04-02T15:43:27Z"
+      },
+      "message": "Added code",
+      "tree": {
+        "sha": "eeaeefa5117658301fd19f4d813b63ff40ab5c46",
+        "url": "https://api.github.com/repos/satwik77/incontext-bool/git/trees/eeaeefa5117658301fd19f4d813b63ff40ab5c46"
+      },
+      "url": "https://api.github.com/repos/satwik77/incontext-bool/git/commits/8726c19bf6bc813f48373a1497372a35404b42da",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/satwik77/incontext-bool/commits/8726c19bf6bc813f48373a1497372a35404b42da",
+    "html_url": "https://github.com/satwik77/incontext-bool/commit/8726c19bf6bc813f48373a1497372a35404b42da",
+    "comments_url": "https://api.github.com/repos/satwik77/incontext-bool/commits/8726c19bf6bc813f48373a1497372a35404b42da/comments",
+    "author": {
+      "login": "satwik77",
+      "id": 11026541,
+      "node_id": "MDQ6VXNlcjExMDI2NTQx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11026541?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/satwik77",
+      "html_url": "https://github.com/satwik77",
+      "followers_url": "https://api.github.com/users/satwik77/followers",
+      "following_url": "https://api.github.com/users/satwik77/following{/other_user}",
+      "gists_url": "https://api.github.com/users/satwik77/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/satwik77/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/satwik77/subscriptions",
+      "organizations_url": "https://api.github.com/users/satwik77/orgs",
+      "repos_url": "https://api.github.com/users/satwik77/repos",
+      "events_url": "https://api.github.com/users/satwik77/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/satwik77/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "satwik77",
+      "id": 11026541,
+      "node_id": "MDQ6VXNlcjExMDI2NTQx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11026541?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/satwik77",
+      "html_url": "https://github.com/satwik77",
+      "followers_url": "https://api.github.com/users/satwik77/followers",
+      "following_url": "https://api.github.com/users/satwik77/following{/other_user}",
+      "gists_url": "https://api.github.com/users/satwik77/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/satwik77/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/satwik77/subscriptions",
+      "organizations_url": "https://api.github.com/users/satwik77/orgs",
+      "repos_url": "https://api.github.com/users/satwik77/repos",
+      "events_url": "https://api.github.com/users/satwik77/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/satwik77/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "b46027478ae66ab753411dcce8c68efa57f2edb9",
+        "url": "https://api.github.com/repos/satwik77/incontext-bool/commits/b46027478ae66ab753411dcce8c68efa57f2edb9",
+        "html_url": "https://github.com/satwik77/incontext-bool/commit/b46027478ae66ab753411dcce8c68efa57f2edb9"
+      }
+    ]
+  },
+  {
+    "sha": "b46027478ae66ab753411dcce8c68efa57f2edb9",
+    "node_id": "C_kwDOKwwhR9oAKGI0NjAyNzQ3OGFlNjZhYjc1MzQxMWRjY2U4YzY4ZWZhNTdmMmVkYjk",
+    "commit": {
+      "author": {
+        "name": "Satwik Bhattamishra",
+        "email": "satwik55@gmail.com",
+        "date": "2024-04-02T15:42:21Z"
+      },
+      "committer": {
+        "name": "Satwik Bhattamishra",
+        "email": "satwik55@gmail.com",
+        "date": "2024-04-02T15:42:21Z"
+      },
+      "message": "readme update",
+      "tree": {
+        "sha": "c1719d5aac45291b87f5db49ce60839556c8cffa",
+        "url": "https://api.github.com/repos/satwik77/incontext-bool/git/trees/c1719d5aac45291b87f5db49ce60839556c8cffa"
+      },
+      "url": "https://api.github.com/repos/satwik77/incontext-bool/git/commits/b46027478ae66ab753411dcce8c68efa57f2edb9",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null,
+        "verified_at": null
+      }
+    },
+    "url": "https://api.github.com/repos/satwik77/incontext-bool/commits/b46027478ae66ab753411dcce8c68efa57f2edb9",
+    "html_url": "https://github.com/satwik77/incontext-bool/commit/b46027478ae66ab753411dcce8c68efa57f2edb9",
+    "comments_url": "https://api.github.com/repos/satwik77/incontext-bool/commits/b46027478ae66ab753411dcce8c68efa57f2edb9/comments",
+    "author": {
+      "login": "satwik77",
+      "id": 11026541,
+      "node_id": "MDQ6VXNlcjExMDI2NTQx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11026541?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/satwik77",
+      "html_url": "https://github.com/satwik77",
+      "followers_url": "https://api.github.com/users/satwik77/followers",
+      "following_url": "https://api.github.com/users/satwik77/following{/other_user}",
+      "gists_url": "https://api.github.com/users/satwik77/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/satwik77/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/satwik77/subscriptions",
+      "organizations_url": "https://api.github.com/users/satwik77/orgs",
+      "repos_url": "https://api.github.com/users/satwik77/repos",
+      "events_url": "https://api.github.com/users/satwik77/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/satwik77/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "satwik77",
+      "id": 11026541,
+      "node_id": "MDQ6VXNlcjExMDI2NTQx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11026541?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/satwik77",
+      "html_url": "https://github.com/satwik77",
+      "followers_url": "https://api.github.com/users/satwik77/followers",
+      "following_url": "https://api.github.com/users/satwik77/following{/other_user}",
+      "gists_url": "https://api.github.com/users/satwik77/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/satwik77/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/satwik77/subscriptions",
+      "organizations_url": "https://api.github.com/users/satwik77/orgs",
+      "repos_url": "https://api.github.com/users/satwik77/repos",
+      "events_url": "https://api.github.com/users/satwik77/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/satwik77/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "03b1ed96b5413b2aab19aec0caeff059a4c2672e",
+        "url": "https://api.github.com/repos/satwik77/incontext-bool/commits/03b1ed96b5413b2aab19aec0caeff059a4c2672e",
+        "html_url": "https://github.com/satwik77/incontext-bool/commit/03b1ed96b5413b2aab19aec0caeff059a4c2672e"
+      }
+    ]
+  },
+  {
+    "sha": "03b1ed96b5413b2aab19aec0caeff059a4c2672e",
+    "node_id": "C_kwDOKwwhR9oAKDAzYjFlZDk2YjU0MTNiMmFhYjE5YWVjMGNhZWZmMDU5YTRjMjY3MmU",
+    "commit": {
+      "author": {
+        "name": "Satwik Bhattamishra",
+        "email": "satwik55@gmail.com",
+        "date": "2023-11-22T17:21:41Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2023-11-22T17:21:41Z"
+      },
+      "message": "Initial commit",
+      "tree": {
+        "sha": "ddde122f915dbafa8c8bd2cf226044f4eb69fcfd",
+        "url": "https://api.github.com/repos/satwik77/incontext-bool/git/trees/ddde122f915dbafa8c8bd2cf226044f4eb69fcfd"
+      },
+      "url": "https://api.github.com/repos/satwik77/incontext-bool/git/commits/03b1ed96b5413b2aab19aec0caeff059a4c2672e",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJlXjilCRBK7hj4Ov3rIwAAnqsIALBWBla3UB4ND3j4/7a8y2z0\nh0WXkPFFM31js8nhZcUnW4e7flrercZyzTGjxeLtFmbarqkxe/F6+O6gLUZUeD7Y\n26czBQkK5oM4J8ZTUPmpm40TjZQGDFhUf00BkQgdeS35coHSxzL1B8HZM4tG5Rxy\nwYlrl+OAP0PI2kGb9RM9WpnYbsmE7sxgwlNjBY9OBwsBBc1mrY00/UouEUgCerz9\nB5RmTY+aLqAK0rIFWTrAxKjxT6mNN1U9a5nAStGWNDEhT262R+mq4Ok61DGS4lON\nsVMJg0VF2M2tpRD1Y3km3U9YbVnbMb1ifuRTj68k9rCF6OH6gIA3oKEZmz4tBjY=\n=MTNI\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree ddde122f915dbafa8c8bd2cf226044f4eb69fcfd\nauthor Satwik Bhattamishra <satwik55@gmail.com> 1700673701 +0000\ncommitter GitHub <noreply@github.com> 1700673701 +0000\n\nInitial commit",
+        "verified_at": "2024-01-16T19:59:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/satwik77/incontext-bool/commits/03b1ed96b5413b2aab19aec0caeff059a4c2672e",
+    "html_url": "https://github.com/satwik77/incontext-bool/commit/03b1ed96b5413b2aab19aec0caeff059a4c2672e",
+    "comments_url": "https://api.github.com/repos/satwik77/incontext-bool/commits/03b1ed96b5413b2aab19aec0caeff059a4c2672e/comments",
+    "author": {
+      "login": "satwik77",
+      "id": 11026541,
+      "node_id": "MDQ6VXNlcjExMDI2NTQx",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11026541?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/satwik77",
+      "html_url": "https://github.com/satwik77",
+      "followers_url": "https://api.github.com/users/satwik77/followers",
+      "following_url": "https://api.github.com/users/satwik77/following{/other_user}",
+      "gists_url": "https://api.github.com/users/satwik77/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/satwik77/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/satwik77/subscriptions",
+      "organizations_url": "https://api.github.com/users/satwik77/orgs",
+      "repos_url": "https://api.github.com/users/satwik77/repos",
+      "events_url": "https://api.github.com/users/satwik77/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/satwik77/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+
+    ]
+  }
+]

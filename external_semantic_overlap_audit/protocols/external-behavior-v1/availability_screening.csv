@@ -1,0 +1,5 @@
+priority,candidate,public_generator_or_immutable_split,executable_semantics,research_license,behavioral_artifact_or_feasible_retraining,materially_distinct_from_selected,decision,reason
+1,CLUTRR,pass,pass,pass,pass,pass,include,"Official generator and explicit kinship rules; held-out-pattern claim; lightweight paired retraining can be frozen before execution"
+2,DeepMind Mathematics Dataset,pass,pass,pass,pass,pass,include,"Official generator and Version 1.0 splits; selected SymPy-backed modules provide a distinct mathematical semantic domain"
+3,Karel program synthesis,pass,conditional,pass,pass,pass,reserve,"Executable behavior is public, but sound equivalence beyond a finite witness set requires additional verifier design"
+4,NoRA,pass,pass,conditional,pass,fail,reserve,"Solver-backed relational semantics are promising but overlap strongly with CLUTRR's relation-rule representation for this two-candidate expansion"

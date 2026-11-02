@@ -1,0 +1,59 @@
+{
+  "analysis_gate": "pass",
+  "check_count": 9,
+  "checks": [
+    {
+      "detail": null,
+      "name": "protocol",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "inputs",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "outputs",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "draws",
+      "pass": true
+    },
+    {
+      "detail": 0.0013909957883151414,
+      "name": "power",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "block_gate",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "pair_selection",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "design_manifest",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "finite",
+      "pass": true
+    }
+  ],
+  "design_decision": "directional_v4_design_go",
+  "design_id": "external-behavior-v4-directional-design-v1",
+  "failed_checks": [],
+  "failed_count": 0,
+  "schema_version": "external-behavior-v4-directional-analysis-validation-v1",
+  "status": "pass",
+  "training_released": false,
+  "validated_at_utc": "2026-10-13T11:39:07.218089+00:00"
+}

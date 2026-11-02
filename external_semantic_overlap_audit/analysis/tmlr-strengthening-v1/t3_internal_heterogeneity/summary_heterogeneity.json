@@ -1,0 +1,40 @@
+{
+  "baseline_mean": 0.7679366666666667,
+  "displacement_status": "not run: excluded from the user-approved strengthening scope",
+  "effect_baseline_spearman": -0.7274006733383519,
+  "effect_baseline_spearman_pvalue": 1.0559833525880372e-07,
+  "effect_max_pp": 4.480000000000006,
+  "effect_mean_pp": 1.832,
+  "effect_median_pp": 1.8000000000000016,
+  "effect_min_pp": 0.13333333333332975,
+  "effect_sd_pp": 0.9701166846139608,
+  "function_count": 40,
+  "groups": {
+    "alias_signature": {
+      "affine+block+parity": {
+        "count": 2,
+        "effect_mean_pp": 1.033333333333336
+      },
+      "affine+parity": {
+        "count": 38,
+        "effect_mean_pp": 1.874035087719298
+      }
+    },
+    "multiplier": {
+      "1": {
+        "count": 20,
+        "effect_mean_pp": 1.5073333333333347
+      },
+      "11": {
+        "count": 20,
+        "effect_mean_pp": 2.1566666666666654
+      }
+    }
+  },
+  "norm_gain_max": 0.16350364963503672,
+  "norm_gain_mean": 0.07669129850687531,
+  "norm_gain_median": 0.07677341376802299,
+  "norm_gain_min": 0.006887052341597612,
+  "norm_gain_nan_count": 0,
+  "positive_effect_count": 40
+}

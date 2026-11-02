@@ -1,0 +1,13 @@
+{
+  "execution_id": "external-behavior-v4-execution-v1",
+  "frozen_at_utc": "2026-10-13T11:54:04.977446+00:00",
+  "schema_version": "external-behavior-v4-execution-freeze-receipt-v1",
+  "state_at_freeze": {
+    "execution_artifacts_absent": true,
+    "initialization_hashes_materialized": false,
+    "run_root_absent": true,
+    "tensor_cache_materialized": false,
+    "training_started": false
+  },
+  "status": "frozen_before_execution_bundle"
+}

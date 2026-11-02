@@ -1,0 +1,471 @@
+{
+  "$id": "https://semantic-novelty-audit.local/schema/audit-output-v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "adapter": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "semantic_representation": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "version": {
+          "const": "1.0.0",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "semantic_representation",
+        "version"
+      ],
+      "type": "object"
+    },
+    "behavioral_estimand_metadata_if_present": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "benchmark": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "public": {
+          "const": true,
+          "type": "boolean"
+        },
+        "scope": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "name",
+        "public",
+        "scope"
+      ],
+      "type": "object"
+    },
+    "claim_gate_and_allowed_wording": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_wording": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "decision": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "forbidden_wording": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        }
+      },
+      "required": [
+        "decision",
+        "allowed_wording",
+        "forbidden_wording"
+      ],
+      "type": "object"
+    },
+    "completeness_status": {
+      "enum": [
+        "exact",
+        "sound_lower_bound",
+        "unresolved"
+      ],
+      "type": "string"
+    },
+    "equivalence_witness_type": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "observation_contract": {
+      "additionalProperties": false,
+      "properties": {
+        "admissible_inputs_and_contexts": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "effects": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "nondeterminism": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "observable_outputs": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "resource_observations": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "semantic_unit_adequacy": {
+          "additionalProperties": false,
+          "properties": {
+            "advertised_claim": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "must_differ_rule": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "must_match_rule": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "sensitivity_policy": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "advertised_claim",
+            "must_match_rule",
+            "must_differ_rule",
+            "sensitivity_policy"
+          ],
+          "type": "object"
+        },
+        "termination_and_errors": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "admissible_inputs_and_contexts",
+        "observable_outputs",
+        "termination_and_errors",
+        "effects",
+        "nondeterminism",
+        "resource_observations",
+        "semantic_unit_adequacy"
+      ],
+      "type": "object"
+    },
+    "overlap_counts_and_denominators": {
+      "items": {
+        "$ref": "#/$defs/overlapSummary"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "semantic-audit-output-v1",
+      "type": "string"
+    },
+    "semantic_ids": {
+      "additionalProperties": false,
+      "properties": {
+        "canonicalization": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "namespaces": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "canonicalization",
+        "namespaces"
+      ],
+      "type": "object"
+    },
+    "source_revisions_and_hashes": {
+      "additionalProperties": false,
+      "properties": {
+        "code_revision": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "dataset_revision": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "files": {
+          "items": {
+            "$ref": "#/$defs/sourceFile"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "paper_revision": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "paper_revision",
+        "code_revision",
+        "dataset_revision",
+        "files"
+      ],
+      "type": "object"
+    },
+    "tool_version": {
+      "const": "1.0.0",
+      "type": "string"
+    },
+    "train_and_evaluation_identity_records": {
+      "additionalProperties": false,
+      "properties": {
+        "evaluation": {
+          "$ref": "#/$defs/identityCollection"
+        },
+        "train": {
+          "$ref": "#/$defs/identityCollection"
+        }
+      },
+      "required": [
+        "train",
+        "evaluation"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "tool_version",
+    "adapter",
+    "benchmark",
+    "source_revisions_and_hashes",
+    "train_and_evaluation_identity_records",
+    "semantic_ids",
+    "equivalence_witness_type",
+    "observation_contract",
+    "completeness_status",
+    "overlap_counts_and_denominators",
+    "behavioral_estimand_metadata_if_present",
+    "claim_gate_and_allowed_wording"
+  ],
+  "title": "Semantic Audit Output v1",
+  "type": "object",
+  "$defs": {
+    "assessment": {
+      "additionalProperties": false,
+      "properties": {
+        "claim_scope": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "completeness_status": {
+          "enum": [
+            "exact",
+            "sound_lower_bound",
+            "unresolved"
+          ],
+          "type": "string"
+        },
+        "details": {
+          "type": "object"
+        },
+        "equivalence_witness_type": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "overlap": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "witness_count": {
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "claim_scope",
+        "equivalence_witness_type",
+        "completeness_status",
+        "overlap",
+        "witness_count",
+        "details"
+      ],
+      "type": "object"
+    },
+    "identityCollection": {
+      "additionalProperties": false,
+      "properties": {
+        "completeness_status": {
+          "enum": [
+            "exact",
+            "sound_lower_bound",
+            "unresolved"
+          ],
+          "type": "string"
+        },
+        "definition": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "record_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "records_materialization": {
+          "enum": [
+            "full",
+            "summary_only"
+          ],
+          "type": "string"
+        },
+        "records": {
+          "items": {
+            "$ref": "#/$defs/identityRecord"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "definition",
+        "record_count",
+        "completeness_status",
+        "records_materialization",
+        "records"
+      ],
+      "type": "object"
+    },
+    "identityRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "assessments": {
+          "items": {
+            "$ref": "#/$defs/assessment"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "record_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "semantic_ids": {
+          "additionalProperties": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "minProperties": 1,
+          "type": "object"
+        },
+        "split": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "surface_identity": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "record_id",
+        "split",
+        "surface_identity",
+        "semantic_ids",
+        "assessments"
+      ],
+      "type": "object"
+    },
+    "overlapSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "claim_scope": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "denominator": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "overlap_lower_bound": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "overlap_upper_bound": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unit": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "unresolved_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "witnessed_overlap_count": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "claim_scope",
+        "denominator",
+        "witnessed_overlap_count",
+        "overlap_lower_bound",
+        "overlap_upper_bound",
+        "unresolved_count",
+        "unit"
+      ],
+      "type": "object"
+    },
+    "sourceFile": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "type": "object"
+    }
+  }
+}

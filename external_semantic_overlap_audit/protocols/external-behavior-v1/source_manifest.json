@@ -1,0 +1,39 @@
+{
+  "schema_version": "external-behavior-source-manifest-v1",
+  "protocol_id": "external-behavior-v1",
+  "frozen_before_data_materialization": true,
+  "sources": {
+    "clutrr": {
+      "repository": "https://github.com/facebookresearch/clutrr",
+      "revision": "d045fae289d3746503677ceed7631c999202501e",
+      "checkout_clean_at_freeze": true,
+      "files": {
+        "LICENSE": "4b531055125dcda36059651634bdb424ad2612f4759b3d2067a731d2823d1cdc",
+        "README.md": "4b737fea21d9fd5479e7fc9ca6be5069a59c1e0da59743d02eb479735ee7b671",
+        "clutrr/generator.py": "fea26e498f1f826fe4559260e3794ea55ddef0489e26e6a8dae70c885e8627c6",
+        "clutrr/relations/builder.py": "285bc24a784050384266de4452905fa332e33864f689f42a5c826c65cb1e7446",
+        "clutrr/relations/puzzle.py": "70cd587c41b61b726d00086db89e86bc755d5c779617fad56ee97bff705dc7d2",
+        "clutrr/store/question_store.yaml": "10f84ed45ca86a008772d63deea1075cb4e6ec2ed77a512e91aef584eac8dc21",
+        "clutrr/store/relations_store.yaml": "c2b9e2723aea7007abb7418e97f294fa696a75c0466d0195c21d78c96c33363d",
+        "clutrr/store/rules_store.yaml": "122b57241d1cba17e6def0c246007e3e6a9b3c8c654290fecaca3e1fde5bf14a"
+      }
+    },
+    "mathematics": {
+      "repository": "https://github.com/google-deepmind/mathematics_dataset",
+      "revision": "427f45075f84b8b9774950196ad63867ca20ffb3",
+      "checkout_clean_at_freeze": true,
+      "files": {
+        "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "README.md": "d716d71a4855d26ecdb63ee8f45f8a36c625d98b2ef8da34b256b3c8e156273b",
+        "mathematics_dataset/example.py": "e53b283739fcec8235e0440498e8574236a68d304fb924aac2c80c8802c6612d",
+        "mathematics_dataset/generate.py": "bbf6feb51a00b1f640e7ee0e651300efee8c24fe966935ef220fbcc09f9988d3",
+        "mathematics_dataset/generate_settings.py": "30c1928be1b321c74732972c5e0cc95351ab79d4331ce4d87573651afdb39170",
+        "mathematics_dataset/modules/modules.py": "8d1800183289f3e7798bd5684e0f7ef9eff2c2e6e496b372ef69c29b1e28b4a0",
+        "mathematics_dataset/modules/polynomials.py": "0b58734c10ebcb5a68ffe56544ca81f0a744292abdb8c8801bcc66a0d1d80b7e",
+        "mathematics_dataset/sample/polynomials.py": "7275484ff8d6f8d1c9c71a234158a067fa3723aecf18833d4a3d75e42005da65",
+        "mathematics_dataset/util/composition.py": "7a0e0d55f29049c85428cf3f4fe72560605c4fc82fbcb0973db070eaac876fe7",
+        "setup.py": "cb2e8a0d3284f1637adae9ab897c2fda3066af56544697d61eef9e0e3bd0e58d"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "input_sha256": {
+    "bounds.py": "d52e2395cc07291d6276acfce7d2cb90eeabaa560968c418c086c3399a66db98"
+  },
+  "packages": {
+    "matplotlib": "3.9.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "torch": "2.6.0+cu124"
+  },
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.9.19 (main, May  6 2024, 20:12:36) [MSC v.1916 64 bit (AMD64)]",
+  "script": "scripts/tmlr_strengthening/run_t9_property_summary.py",
+  "seed": 0,
+  "utc_time": "2026-11-02T12:55:46.663771+00:00"
+}

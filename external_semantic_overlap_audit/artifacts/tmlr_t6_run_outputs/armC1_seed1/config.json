@@ -1,0 +1,44 @@
+{
+  "arm": "C1",
+  "batch_size": 128,
+  "betas": [
+    0.9,
+    0.999
+  ],
+  "device": "mps",
+  "epochs": 30,
+  "epsilon": 1e-08,
+  "evaluation_batch_size": 256,
+  "fixed_length": 185,
+  "gradient_clip": 1.0,
+  "input_hashes": {
+    "evaluation.npz": "ae965c9ae22febc27096500829bf1e3574155586f8a1492ae40d022754472b50",
+    "tensor_cache.npz": "07c49d20b1141d20b1a442a53e48c3d6c8835d1acb05509d165840d2c3cc737e",
+    "train_indices.npz": "20c62026bb50c98361929b78335966fc6669d5078247f8cad5d83585750a0993"
+  },
+  "label_counts": {
+    "0": 1266,
+    "1": 1458,
+    "10": 1554,
+    "12": 1266,
+    "13": 1200,
+    "14": 1362,
+    "15": 1362,
+    "17": 1458,
+    "19": 1362,
+    "20": 1265,
+    "21": 1457,
+    "3": 1362,
+    "4": 1266,
+    "5": 1554,
+    "6": 1266,
+    "7": 1554,
+    "8": 1362,
+    "9": 1266
+  },
+  "learning_rate": 0.0003,
+  "namespace": "tmlrs:t6",
+  "seed": 1,
+  "train_indices_sha256": "aaf8c20eeb62d3bef153b945a8d466086bc0cb9f31d62232b744aa71c45921b1",
+  "weight_decay": 0.01
+}

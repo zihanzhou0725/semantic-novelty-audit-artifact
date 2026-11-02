@@ -1,0 +1,93 @@
+{
+  "analysis_id": "mathematics-collision-census-v1",
+  "check_count": 13,
+  "checks": [
+    {
+      "detail": null,
+      "name": "parent_materialization_passed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "parent_validation_hash",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "parent_aggregate_was_sealed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "module_isolation",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "denominators_are_separate",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "input_row_arithmetic",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "input:train:polynomials__expand",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "input:train:polynomials__collect",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "input:interpolate:polynomials__expand",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "input:interpolate:polynomials__collect",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "symbolic_verifier_is_required",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "claim_scope_is_bounded",
+      "pass": true
+    },
+    {
+      "detail": {
+        "analysis_exists": false,
+        "implementation_exists": false
+      },
+      "name": "no_analysis_or_implementation_outputs",
+      "pass": true
+    }
+  ],
+  "document_sha256": {
+    "README.md": "055ee948ed601ebca311d98bc9d9e0c064395015a0952ada0f0636a86e1499a9",
+    "checklist.md": "302d94de93dee0df9aa367aa3e9158e0937c540db3f2280fed97ede50c3e961e",
+    "freeze_receipt.json": "b879c9d8233cd8f7a340ed34a630f99e54f405bbc30be1d7cbd1d036ed5f2715",
+    "input_manifest.json": "a65f5d9a34f17bf851111cc3352170dec40c5c677a43364dc8f1fd1c1290eba2",
+    "preregistration.json": "3eb2b815456e4f732f5b2144f0270b052ba8d0f831e61b2a153aa7b48c3d2bd6",
+    "validate.py": "e6770603ea0c446e2b13b979991605fd52cce3cf91aea8ea7b8541007765b957"
+  },
+  "failed_count": 0,
+  "input_line_counts": {
+    "manifests/external-behavior-v2/data/mathematics_interpolate_polynomials__collect.jsonl": 10000,
+    "manifests/external-behavior-v2/data/mathematics_interpolate_polynomials__expand.jsonl": 10000,
+    "manifests/external-behavior-v2/data/mathematics_train_polynomials__collect.jsonl": 100000,
+    "manifests/external-behavior-v2/data/mathematics_train_polynomials__expand.jsonl": 100000
+  },
+  "schema_version": "mathematics-collision-census-protocol-validation-v1",
+  "stage": "freeze",
+  "status": "pass",
+  "validated_at_utc": "2026-10-12T11:32:50.750042+00:00"
+}

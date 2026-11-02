@@ -1,0 +1,15 @@
+{
+  "accuracy": 0.609875,
+  "arm": "C2",
+  "cross_entropy": 1.6863126754760742,
+  "device": "mps",
+  "epochs": 30,
+  "evaluation_rows": 8000,
+  "final_model_sha256": "a5b1fadc26d3868494755533d983723982e12a44a0c9ffab21988952707e4e92",
+  "initial_model_sha256": "21745a7aa4878dee340a4e5e846079e1ed43a4239e6e9e2cb31ddbfeb7209639",
+  "n_train": 24640,
+  "namespace": "tmlrs:t6",
+  "seconds": 2665.445370416157,
+  "seed": 0,
+  "updates": 5790
+}

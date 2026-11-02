@@ -1,0 +1,12 @@
+{
+  "frozen_at_utc": "2026-10-13T11:45:51.793060+00:00",
+  "materialization_id": "external-behavior-v4-materialization-v1",
+  "schema_version": "external-behavior-v4-materialization-freeze-receipt-v1",
+  "state_at_freeze": {
+    "materialization_outputs_absent": true,
+    "run_root_absent": true,
+    "training_started": false,
+    "v4_design_gate_passed": true
+  },
+  "status": "frozen_before_materialization"
+}

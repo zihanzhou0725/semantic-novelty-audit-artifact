@@ -1,0 +1,26 @@
+{
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 0,
+  "input_sha256": {
+    "decoy_allocation.csv": "1bd2b3388375bfb671f7426b58a4491e86cd77fb5941abb04f532a3d8f984ccc",
+    "eval_predictions.npz": "2582046bd26b9361f729a4a577fba2c48d4c212f1e772a35bfa6c7fe275859ee",
+    "metrics.json": "f7beeaf2d98c9bee001de9ecfc155b1739b2f7ab78720ff3a2233daaf8d55515",
+    "protocol.json": "0fb766ba884fa82057b02613d8438f64f575f4ff5698765ceb250483585b6209"
+  },
+  "packages": {
+    "matplotlib": "3.9.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "torch": "2.6.0+cu124"
+  },
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.9.19 (main, May  6 2024, 20:12:36) [MSC v.1916 64 bit (AMD64)]",
+  "script": "scripts/tmlr_strengthening/analyze_t6_semantic_surface.py",
+  "seed": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "utc_time": "2026-11-02T12:55:44.486326+00:00"
+}

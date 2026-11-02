@@ -1,0 +1,30 @@
+{
+  "analysis_preregistration_sha256": "3eb2b815456e4f732f5b2144f0270b052ba8d0f831e61b2a153aa7b48c3d2bd6",
+  "input_manifest_sha256": "a65f5d9a34f17bf851111cc3352170dec40c5c677a43364dc8f1fd1c1290eba2",
+  "inputs": [
+    {
+      "module": "polynomials__expand",
+      "observed_sha256": "c19ae5c74115352457618147121a756c843ff1218fe88d478e9848c524b9dd7d",
+      "pass": true,
+      "regime": "train"
+    },
+    {
+      "module": "polynomials__collect",
+      "observed_sha256": "9607ee4372974c6141da16f4548345eb67f783cb29d5b561e752038510bc556e",
+      "pass": true,
+      "regime": "train"
+    },
+    {
+      "module": "polynomials__expand",
+      "observed_sha256": "3d86b69cefd2f1ea37e67463f9dd166c216cc7b76a3284e5d8b6dc99a1745a9c",
+      "pass": true,
+      "regime": "interpolate"
+    },
+    {
+      "module": "polynomials__collect",
+      "observed_sha256": "55c8c06aa61cdfaa13c22a463fa818c74a44573090456ae3b82db9f70bedab05",
+      "pass": true,
+      "regime": "interpolate"
+    }
+  ]
+}

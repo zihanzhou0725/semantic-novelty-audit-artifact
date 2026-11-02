@@ -1,0 +1,30 @@
+{
+  "schema_version": "external-behavior-v3-input-manifest-v1",
+  "protocol_id": "external-behavior-v3",
+  "frozen_before_sentence_permutation_expansion": true,
+  "source_rows": {
+    "path": "manifests/external-behavior-v1/.data.build/clutrr_candidates_deduplicated.jsonl",
+    "rows": 34145,
+    "sha256": "fb12f23c6ee60ee11416a290628208812749dcb23efd63bb0051934cf06a0e5b"
+  },
+  "parent_artifacts": {
+    "external_behavior_v1_preregistration_sha256": "3ff8bbde576f4176d9b2c98969925ae09f3f038f315711b4c71a1c17bf3dcf11",
+    "external_behavior_v1_failure_report_sha256": "e73b77aeef0f45cab81315f5fed971af69589c43767ebc403db9a1f284d0b957",
+    "external_behavior_v1_implementation_manifest_sha256": "c181358ffb2d263f420f7adc36c1b6ed912a8f3fa1183cad8dfd0c2a84c97b1a",
+    "external_behavior_v1_source_manifest_sha256": "fcb1d1700d80467735cbeaab7229e6f2a26f5473574ac241931642e2ab343612"
+  },
+  "frozen_implementation_dependencies": {
+    "byte_transformer_model_path": "toolkit/external_behavior/model.py",
+    "byte_transformer_model_sha256": "fd7774d8c13bf7adccf282efe5e20411b2f231d13152eccc669591d2768c7d73",
+    "v1_common_path": "toolkit/external_behavior/common.py",
+    "v1_common_sha256": "eb725d4dec66c3c247f21303265da740e4213af54c93abb764acd18b444bae71"
+  },
+  "template_sources": {
+    "relations_store_path": "upstream/external_behavior_v1_clutrr/clutrr/store/relations_store.yaml",
+    "relations_store_sha256": "c2b9e2723aea7007abb7418e97f294fa696a75c0466d0195c21d78c96c33363d",
+    "question_store_path": "upstream/external_behavior_v1_clutrr/clutrr/store/question_store.yaml",
+    "question_store_sha256": "10f84ed45ca86a008772d63deea1075cb4e6ec2ed77a512e91aef584eac8dc21",
+    "relation_template_count": 56,
+    "relation_templates_with_internal_period": 0
+  }
+}

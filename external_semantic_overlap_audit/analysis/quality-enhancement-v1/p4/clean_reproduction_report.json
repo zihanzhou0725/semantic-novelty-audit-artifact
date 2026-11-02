@@ -1,0 +1,48 @@
+{
+  "adapter_output_count": 2,
+  "clean_environment": {
+    "isolated_python_flag": "-I",
+    "pythonpath_removed": true,
+    "third_party_runtime_dependencies": []
+  },
+  "deterministic_file_sha256": {
+    "SHA256SUMS": "91827eea36b6b122d34b3155b22b1585432e59a38af79d98faf35e12b3c32bc9",
+    "manifest.json": "c4346f18b463f0633801d6baae6b851cb9b67bc95e7fb5bdc31239e102d27947",
+    "occam_markov.audit.json": "88a2126daddd7c613d08498f77288dc83109a720465e0e148c0171741428a9fd",
+    "tensor_logic.audit.json": "ff104621f8e6b389a85a5a4a870289788458fc0551ff3db578b307981c3bdc35"
+  },
+  "frozen_summary_counts": {
+    "occam_markov": [
+      [
+        2,
+        4,
+        20
+      ],
+      [
+        2,
+        4,
+        20
+      ]
+    ],
+    "tensor_logic": {
+      "direct_triple_identity": [
+        0,
+        0,
+        1000
+      ],
+      "endpoint_conditioned_two_hop_semantics": [
+        484,
+        1000,
+        1000
+      ],
+      "ordered_relation_composition_schema": [
+        999,
+        1000,
+        1000
+      ]
+    }
+  },
+  "independent_reproduction_runs": 2,
+  "schema_validated_outputs": 2,
+  "status": "passed"
+}

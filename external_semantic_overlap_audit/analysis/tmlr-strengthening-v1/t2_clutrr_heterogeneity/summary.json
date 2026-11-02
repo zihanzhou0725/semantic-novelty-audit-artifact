@@ -1,0 +1,86 @@
+{
+  "baseline_mean_pp": 61.2296875,
+  "baseline_ols_r_squared": 0.5964431619469954,
+  "baseline_relation_ols_r_squared": 0.690612469766779,
+  "block_effect_mean_pp": {
+    "0": 25.0109375,
+    "1": 21.6671875
+  },
+  "common_relation_count": {
+    "pvalue": 0.023608354616467406,
+    "spearman": 0.2529118761230994,
+    "status": "computed"
+  },
+  "covariates": {
+    "distinct": {
+      "groups": [
+        {
+          "count": 1,
+          "covariate": "distinct",
+          "effect_mean_pp": 13.3125,
+          "pvalue": 0.9306291397404749,
+          "spearman": 0.009888246354182104,
+          "value": 1
+        },
+        {
+          "count": 22,
+          "covariate": "distinct",
+          "effect_mean_pp": 22.897727272727273,
+          "pvalue": 0.9306291397404749,
+          "spearman": 0.009888246354182104,
+          "value": 2
+        },
+        {
+          "count": 57,
+          "covariate": "distinct",
+          "effect_mean_pp": 23.68530701754386,
+          "pvalue": 0.9306291397404749,
+          "spearman": 0.009888246354182104,
+          "value": 3
+        }
+      ],
+      "pvalue": 0.9306291397404749,
+      "spearman": 0.009888246354182104
+    },
+    "in_edges": {
+      "groups": [
+        {
+          "count": 50,
+          "covariate": "in_edges",
+          "effect_mean_pp": 25.75,
+          "pvalue": 0.18799721469217112,
+          "spearman": -0.1487127534600713,
+          "value": 0
+        },
+        {
+          "count": 30,
+          "covariate": "in_edges",
+          "effect_mean_pp": 19.320833333333333,
+          "pvalue": 0.18799721469217112,
+          "spearman": -0.1487127534600713,
+          "value": 1
+        }
+      ],
+      "pvalue": 0.18799721469217112,
+      "spearman": -0.1487127534600713
+    }
+  },
+  "decoded_count": 80,
+  "effect_baseline_spearman": -0.8474796786230291,
+  "effect_baseline_spearman_pvalue": 3.7209547494481676e-23,
+  "effect_max_pp": 75.6875,
+  "effect_mean_pp": 23.3390625,
+  "effect_median_pp": 19.40625,
+  "effect_min_pp": -3.875,
+  "effect_sd_pp": 19.77031075631103,
+  "leave_one_relation_mean_max_pp": 24.644425675675677,
+  "leave_one_relation_mean_min_pp": 20.9140625,
+  "norm_gain_max": 1.0,
+  "norm_gain_mean": 0.6363903492541458,
+  "norm_gain_median": 0.7135619182278778,
+  "norm_gain_min": -0.7222222222222276,
+  "norm_gain_nan_count": 0,
+  "pattern_count": 80,
+  "positive_effect_count": 76,
+  "relation_eta_squared": 0.49389251907940246
+}

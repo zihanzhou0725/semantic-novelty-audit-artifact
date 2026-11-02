@@ -1,0 +1,42 @@
+{
+  "audit_date": "2026-10-09",
+  "candidate_count": 2,
+  "candidates": [
+    {
+      "candidate_id": "7b1fa5fbdb1da4ee",
+      "complete_public_semantic_audit": true,
+      "credible_behavioral_evidence": false,
+      "decision": "protocol_defect_detected_behavioral_no_go",
+      "reported_without_result_dependent_exclusion": true
+    },
+    {
+      "candidate_id": "7b9ebd45a3528701",
+      "complete_public_semantic_audit": false,
+      "credible_behavioral_evidence": false,
+      "decision": "protocol_defect_detected_candidate_ineligible_for_p3_breadth",
+      "reported_without_result_dependent_exclusion": true
+    }
+  ],
+  "decision": "no_go",
+  "gate": "p3_breadth_go",
+  "input_sha256": {
+    "external_semantic_overlap_audit/analysis/quality-enhancement-v1/p3/occam_hierarchical_icl/audit_report.json": "6f661191aab75463e9a4b600f946516bfb2c852ca413a28ea6a20feb95cd3b58",
+    "external_semantic_overlap_audit/analysis/quality-enhancement-v1/p3/tensor_logic_fb15k237/audit_report.json": "dfa493c85b81ffd82f9143de5cfe619e502be1627e0fe1d08b1ef3b481981b50",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/p3/candidate_manifest.json": "68608a23800c0a36575948df9ab568e2951e38c5169a4cd0a67dff40e2eae422"
+  },
+  "observed": {
+    "complete_public_semantic_audits": 1,
+    "credible_behavioral_evidence_benchmarks": 0,
+    "result_dependent_candidate_exclusions": 0
+  },
+  "reason": "complete audit count is 1<2 and credible behavioral benchmark count is 0<1",
+  "requirements": {
+    "complete_public_semantic_audits_at_least": 2,
+    "credible_behavioral_evidence_benchmarks_at_least": 1,
+    "explicit_unresolved_denominator_required": true,
+    "result_dependent_candidate_exclusion_allowed": false,
+    "sound_numerator_required": true
+  },
+  "schema_version": "quality-enhancement-p3-breadth-status-v1",
+  "status": "complete"
+}

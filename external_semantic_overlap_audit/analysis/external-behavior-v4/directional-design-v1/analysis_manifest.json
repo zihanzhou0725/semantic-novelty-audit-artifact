@@ -1,0 +1,16 @@
+{
+  "completed_at_utc": "2026-10-13T11:38:57.210733+00:00",
+  "design_id": "external-behavior-v4-directional-design-v1",
+  "output_sha256": {
+    "analysis/external-behavior-v4/directional-design-v1/block_gate_report.json": "0962a5b3ed196594686140c736b7a99ad3b2eeac829a0cbd8bcbc5cb94dfbdda",
+    "analysis/external-behavior-v4/directional-design-v1/power_results.json": "0e8c916b6868218e987341cd45d0b60deafdf781de7b5719d184e475c495d8e4",
+    "analysis/external-behavior-v4/directional-design-v1/power_simulation.csv": "8526dbcd26dc4ec5ccb330725c948bac54dd297ab4ab8643d732f7b0d9abaa42",
+    "analysis/external-behavior-v4/directional-design-v1/report_cn.md": "47b79f44c06cf363baa3e25fed683a7bf5ee3e43efbd8864474b039a1972548a",
+    "analysis/external-behavior-v4/directional-design-v1/simulation_draws.npz": "c126fc302f8515e11d5cf2620d23e4e9cda5021a1b57f91b6b9f10740afb6f18",
+    "manifests/external-behavior-v4/directional-design-v1/design_manifest.json": "beb691d09546bbd85299be064bde563aa6d33cd5f98ca18c3678f197a643733a",
+    "manifests/external-behavior-v4/directional-design-v1/selected_pairs.csv": "77ba7d96692e85ef6f73d8588b0e1a86fbc5d56f94c74d7067b48f685931b62a"
+  },
+  "protocol_input_manifest_sha256": "118a4ee13d719124cb358c46b490c3c345ce85a36a5001da1736cad45e7dadaa",
+  "schema_version": "external-behavior-v4-directional-analysis-manifest-v1",
+  "status": "complete_pending_independent_validation"
+}

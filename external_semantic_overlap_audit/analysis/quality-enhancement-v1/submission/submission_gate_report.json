@@ -1,0 +1,83 @@
+{
+  "component_decisions": {
+    "p0": "passed",
+    "p1": "positive_behavioral_go",
+    "p2": "identification_no_go_before_outcome_fit",
+    "p3": "no_go",
+    "p4": "go",
+    "p5": "go"
+  },
+  "input_sha256": {
+    "external_semantic_overlap_audit/analysis/quality-enhancement-v1/p1/results.json": "9e8a2258974d2b99d44b9a9d9b0dc120e9fafb2062c5edbb01c9420dd50e942a",
+    "external_semantic_overlap_audit/analysis/quality-enhancement-v1/p2/identification_report.json": "db5ca8ca9f9b485d44803e6583940e05c38fe2f541383be686cea79caac23424",
+    "external_semantic_overlap_audit/analysis/quality-enhancement-v1/p3/p3_breadth_status.json": "e5339b837c5b42e9faaadd5b1e309deac166adb239de77c9b2d6f8df36dd8174",
+    "external_semantic_overlap_audit/analysis/quality-enhancement-v1/p4/tool_contribution_status.json": "bb8aabbbb9199d25f31b76ae8818741a0f3eb205b7934d3ffe768dbf6c7d50c2",
+    "external_semantic_overlap_audit/analysis/quality-enhancement-v1/p5/validation_report.json": "048dd8a98348924b2c72372ce9e4714778eb758559fc47ab62bc923b514aa903",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/preregistration.json": "1ca70e1a76f41c0c906ffe420cc1c7499420056519f05759332d2e3c1697775b",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/validation_report.json": "fd81686431b5d85d171b863a189f45cead1832d3205d1b20ae7ebdb896f40e91",
+    "external_semantic_overlap_audit/scripts/evaluate_submission_gates.py": "99a1bb817c100be7a2ddf315f826fc6d061efe1c9b07ff37ff631492048031c1",
+    "semantic_novelty_audit_paper/README.md": "bc25a878e2eb401daee787d2d75dbfb91777a42077eff439804b06e4de403256",
+    "semantic_novelty_audit_paper/claim_evidence_matrix.md": "5be61d60a30b5acc6e2db25bff738ec35bbd7e20dbebc8e9b9b48b3b4cd48f07",
+    "semantic_novelty_audit_paper/main.pdf": "9de213e19b03cfda4f19741f7dd3d9d6b6996e3513759017dd270d8d26bce368",
+    "semantic_novelty_audit_paper/main.tex": "00f67dec0ad95208fd88e32b69282c28925294892f7b2d68f29ce2b394a596de",
+    "semantic_novelty_audit_paper/references.bib": "7c4f257c7ee0ba508fee7c083a0df3a7c2455a4a0385d75f5381053eaa9bc4e0",
+    "semantic_novelty_audit_paper/supplementary.pdf": "2870cb2559da2840121bcd2e619825432c5cb20359050898a69cfaae01d4d60d",
+    "semantic_novelty_audit_paper/supplementary.tex": "56c34155b82607b416c12c7d28273fea01aae9c0ef508a7315ab5b1365241bbe",
+    "semantic_novelty_audit_paper/technical_review.md": "6f6f31e25ab945e45d94f080b297b17d8ed47cd8ae4701b5a3fec9f54d81c817"
+  },
+  "main_track": {
+    "blockers": [
+      "p3_breadth_go_required"
+    ],
+    "conditions": {
+      "credible_behavioral_result_required": true,
+      "p3_breadth_go_required": false,
+      "p4_tool_contribution_go_required": true,
+      "public_benchmarks_at_least_2": true,
+      "requires_workshop_ready_go": true,
+      "theory_claim_requires_p5_go": true
+    },
+    "decision": "no_go"
+  },
+  "manuscript_integrity": {
+    "bibliography_key_count": 34,
+    "cited_key_count": 18,
+    "forbidden_claim_hits": {
+      "memorization_mechanism_claim": false,
+      "occam_regression_audited": false,
+      "overlap_implies_accuracy": false,
+      "p3_false_go": false,
+      "slr_exact_45_2": false,
+      "universal_prevalence": false
+    },
+    "main_pdf_pages": 6,
+    "main_total_page_limit_passed": true,
+    "missing_citations": [],
+    "no_overfull_boxes": true,
+    "no_undefined_citations_or_references": true,
+    "required_claims": {
+      "behavioral_boundary": true,
+      "occam_interval": true,
+      "p1_positive_effect": true,
+      "p2_identification_no_go": true,
+      "p3_breadth_no_go": true,
+      "p4_tool_contribution_go": true,
+      "p5_theory_contribution_go": true,
+      "tensor_interval": true
+    },
+    "supplement_pdf_pages": 8
+  },
+  "recommendation": "workshop_ready_bounded_claims_main_track_blocked_by_p3",
+  "schema_version": "quality-enhancement-submission-gates-v1",
+  "status": "complete",
+  "workshop_ready": {
+    "conditions": {
+      "all_attempted_results_reported": true,
+      "claim_vocabulary_compliance": true,
+      "evidence_condition": true,
+      "p0_validation_required": true,
+      "p4_current_claim_reproduction_required": true
+    },
+    "decision": "go"
+  }
+}

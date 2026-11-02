@@ -1,0 +1,19 @@
+{
+  "aggregate_released_at_utc": "2026-10-12T11:39:01.052681+00:00",
+  "analysis_id": "mathematics-collision-census-v1",
+  "implementation_manifest_sha256": "b2405bd72c4c29ecaafc918734bf80875918fc621dda7912f970aac1f3ae679e",
+  "input_manifest_sha256": "a65f5d9a34f17bf851111cc3352170dec40c5c677a43364dc8f1fd1c1290eba2",
+  "output_sha256": {
+    "analysis_inputs.json": "f4b65d2aca2dbe97f020e69fe48e27e3e8a0ca734e14deea031badae7b156eef",
+    "evaluation_overlap_rows.jsonl": "ec30be23bad432c0ba0a3539ed692d28e8cf6cd1d7e625b45f7c91f90d8f75f0",
+    "report_cn.md": "af7b2d6d1a0364e199d06d9fa531552d320b44928110f07a68517b0539d41dc2",
+    "results.json": "0e6f6960ba123c79b9568740dc9f2ea96cbb54aaaf7e86da1e9661094dda4437",
+    "semantic_collision_witnesses.jsonl": "c9b6368147a8a31e8045371ebbe639665ed87943bd13a706367f34098ba3d69d",
+    "semantic_multiplicity.csv": "09591fc4fb06bf42e1d0587814d438d5fbc8fb0ffb3c280342cdab80a1fef3fb",
+    "summary_by_module.csv": "4089bd90700f456374246a0dca51757f94ea986d8ead0a14c6d8b43ffde15767",
+    "validation_report.json": "58100ede82608d11b8433e9a2e00c6530035061b23ec8e192aac89013c67540a"
+  },
+  "preregistration_sha256": "3eb2b815456e4f732f5b2144f0270b052ba8d0f831e61b2a153aa7b48c3d2bd6",
+  "schema_version": "mathematics-collision-census-release-v1",
+  "status": "released_after_independent_validation"
+}

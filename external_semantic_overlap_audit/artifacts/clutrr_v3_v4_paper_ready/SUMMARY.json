@@ -1,0 +1,231 @@
+{
+  "benchmark": {
+    "name": "CLUTRR",
+    "scope": "Task 1, relation length 3, clean three-sentence stories, 23 relation classes",
+    "semantic_identity": "ordered target relation and three-edge relation composition",
+    "surface_intervention": "sentence-order permutations with evaluation/exposure source-group separation"
+  },
+  "claim_boundary": {
+    "allowed": [
+      "For the frozen CLUTRR scope, semantic-pattern exposure causally increased accuracy on source-group-disjoint surface realizations for the registered byte Transformer and training budget.",
+      "The prospective, target-disjoint V4 study passed its registered directional Positive Gate."
+    ],
+    "forbidden": [
+      "The intervention identifies an internal memorization mechanism.",
+      "The effect generalizes to all CLUTRR tasks or architectures.",
+      "Semantic overlap necessarily improves accuracy.",
+      "V3 and V4 are one pooled confirmatory estimate."
+    ]
+  },
+  "schema_version": "clutrr-v3-v4-paper-evidence-v1",
+  "v3_pilot": {
+    "decision": {
+      "classification": "imprecise_no_go",
+      "interval_width_pp": 11.49238474828096,
+      "precision_gate_pass": false
+    },
+    "integrity": {
+      "evaluation_rows_per_run": 8000,
+      "model_seeds": 8,
+      "pattern_pairs": 20,
+      "patterns": 40,
+      "prediction_files": 16,
+      "source_groups_per_pattern": 34
+    },
+    "pair_signs": {
+      "count": 20,
+      "maximum_pp": 44.0,
+      "minimum_pp": 0.75,
+      "negative": 0,
+      "positive": 20,
+      "zero": 0
+    },
+    "pattern_signs": {
+      "count": 40,
+      "maximum_pp": 62.1875,
+      "minimum_pp": -0.1875,
+      "negative": 1,
+      "positive": 39,
+      "zero": 0
+    },
+    "primary": {
+      "bootstrap": {
+        "draw_sha256": {
+          "group_draws_sha256": "0cfd6a9d69cafcbb2ce2a6283d65673bab0d74db8f2c98527627018d4d3a5f62",
+          "pair_draws_sha256": "57601a6fd135574e9b2cbfc688b791e8d222c267ebeb761509f6076b2d27d9bb",
+          "seed_draws_sha256": "5f0018012484475ead471b577a3baa6eceade761c0427898a4d873df9e99d4c8"
+        },
+        "effects_sha256": "7e4edfdb29bef48e2f56bf651433e870112a81c47c482e6eebf1be7406a39f57",
+        "replicates": 20000,
+        "seed": 20261012
+      },
+      "confidence_interval_95": {
+        "lower_pp": 9.876873975196792,
+        "upper_pp": 21.369258723477753,
+        "width_pp": 11.49238474828096
+      },
+      "effect_pp": 15.3375,
+      "estimand": "equal-seed equal-pattern row-weighted exposed-minus-unexposed accuracy"
+    },
+    "seed_signs": {
+      "count": 8,
+      "maximum_pp": 17.3875,
+      "minimum_pp": 12.4125,
+      "negative": 0,
+      "positive": 8,
+      "zero": 0
+    },
+    "status": "registered No-Go because the 95% interval width exceeded the frozen 2 pp precision requirement"
+  },
+  "v3_variance_diagnosis": {
+    "bootstrap_shapley": [
+      {
+        "factor": "model_seed",
+        "shapley_share": 0.048976396095518716,
+        "shapley_variance_pp2": 0.42076097233607584
+      },
+      {
+        "factor": "pattern_pair",
+        "shapley_share": 0.9439928475675272,
+        "shapley_variance_pp2": 8.109934174130805
+      },
+      {
+        "factor": "source_group",
+        "shapley_share": 0.007030756336954079,
+        "shapley_variance_pp2": 0.06040191007164578
+      }
+    ],
+    "strict_replication_gate": {
+      "capacity_gate_pass": false,
+      "decision": "strict_v3_precision_replication_no_go",
+      "projected_max_capacity_width_gate_pass": false,
+      "recommendation": "do_not_release_same_gate_v4_training",
+      "v3_decision_remains": "imprecise_no_go",
+      "v4_training_released": false
+    },
+    "strict_replication_projection": {
+      "anova_to_registered_width_calibration_factor": 1.006787987432002,
+      "base_anova_width_pp": 11.414900546831515,
+      "base_projected_mean_variance_pp2": 8.479848449248122,
+      "maximum_remaining_pair_capacity": 139,
+      "minimum_pairs_at_infinite_seeds": 634,
+      "projected_width_at_infinite_seeds_and_max_pairs_pp": 4.268965149278231,
+      "required_pairs_by_seed_count": [
+        {
+          "required_pair_count": 792,
+          "seed_count": 8
+        },
+        {
+          "required_pair_count": 706,
+          "seed_count": 16
+        },
+        {
+          "required_pair_count": 668,
+          "seed_count": 32
+        },
+        {
+          "required_pair_count": 651,
+          "seed_count": 64
+        },
+        {
+          "required_pair_count": 634,
+          "seed_count": "infinite"
+        }
+      ],
+      "target_interval_width_pp": 2.0
+    }
+  },
+  "v4_confirmatory": {
+    "block_signs": {
+      "count": 2,
+      "maximum_pp": 25.0109375,
+      "minimum_pp": 21.6671875,
+      "negative": 0,
+      "positive": 2,
+      "zero": 0
+    },
+    "decision": {
+      "classification": "directional_positive_go",
+      "interval_width_pp": 11.475920216795394,
+      "positive_gate_pass": true
+    },
+    "design_power_gate": {
+      "candidate_block_counts": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "capacity_gate_pass": true,
+      "decision": "directional_v4_design_go",
+      "design_effect_pp": 7.66875,
+      "minimum_power": 0.9,
+      "minimum_wilson_lower": 0.9,
+      "selected_block_count": 2,
+      "selected_pair_count": 40,
+      "selected_run_count": 32,
+      "training_released": false
+    },
+    "integrity": {
+      "blocks": 2,
+      "evaluation_rows_per_run": 8000,
+      "model_seeds": 8,
+      "pattern_pairs": 40,
+      "patterns": 80,
+      "prediction_files": 32,
+      "source_groups_per_pattern": 34
+    },
+    "pair_signs": {
+      "count": 40,
+      "maximum_pp": 62.65625,
+      "minimum_pp": 0.53125,
+      "negative": 0,
+      "positive": 40,
+      "zero": 0
+    },
+    "pattern_signs": {
+      "count": 80,
+      "maximum_pp": 75.6875,
+      "minimum_pp": -3.875,
+      "negative": 4,
+      "positive": 76,
+      "zero": 0
+    },
+    "primary": {
+      "bootstrap": {
+        "draw_sha256": {
+          "group_draws_sha256": "5a45affddfac373d363c23f90ea2af7b27303c63cc7eb660a685dc14c4d7645a",
+          "pair_draws_sha256": "47afcc85a34de73e8ecc93943d21540465aa32d1d7296024a97aef8d65ff45b8",
+          "seed_draws_sha256": "b24b73a535b0000333747b2191bececcf92995a5e1220cb5936366812412157e"
+        },
+        "effects_sha256": "c4f390cba2701520cc961ae2ceebee7e7de66eb1330213f2b688aa30ace25a59",
+        "replicates": 20000,
+        "seed": 202610132
+      },
+      "confidence_interval_95": {
+        "lower_pp": 17.749768816685584,
+        "upper_pp": 29.22568903348098,
+        "width_pp": 11.475920216795394
+      },
+      "effect_pp": 23.3390625,
+      "estimand": "equal-seed equal-pattern row-weighted exposed-minus-unexposed accuracy"
+    },
+    "secondary": {
+      "mean_exposed_minus_unexposed_accuracy": 0.23339062500000002,
+      "mean_exposed_minus_unexposed_brier_score": -0.42239769318667214,
+      "mean_exposed_minus_unexposed_cross_entropy": -1.4937752142021818,
+      "mean_exposed_minus_unexposed_ece_15": -0.201770467889266,
+      "mean_exposed_minus_unexposed_mean_confidence": 0.031436406795968694,
+      "mean_exposed_minus_unexposed_signed_calibration_gap": -0.2019542182040313
+    },
+    "seed_signs": {
+      "count": 8,
+      "maximum_pp": 26.5125,
+      "minimum_pp": 20.25,
+      "negative": 0,
+      "positive": 8,
+      "zero": 0
+    },
+    "status": "prospective target-disjoint directional confirmation"
+  }
+}

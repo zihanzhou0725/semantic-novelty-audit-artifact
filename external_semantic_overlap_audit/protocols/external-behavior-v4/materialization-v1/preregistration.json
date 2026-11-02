@@ -1,0 +1,75 @@
+{
+  "allocation": {
+    "common_base": "Round-robin over target relation and semantic ID after sorting rows by relation, semantic ID, source_group_id, and permutation_index.",
+    "common_base_exclusions": "All 40 V3 target semantic IDs and all 80 selected V4 target semantic IDs.",
+    "common_base_rows": 22720,
+    "evaluation_rows_per_block": 8000,
+    "evaluation_rows_per_target": 200,
+    "evaluation_source_groups": 34,
+    "exposure_rows_per_block": 2560,
+    "exposure_rows_per_target": 64,
+    "exposure_source_groups": 11,
+    "fixed_padding_length": 185,
+    "training_rows_per_run": 24000
+  },
+  "arm_assignment": {
+    "algorithm": "derive_seed('clutrr:v4:arm:{block_index}:{model_seed}:{block_pair_index}') & 1",
+    "derive_seed": "int.from_bytes(SHA256(('external-behavior-v1:' + namespace).encode('ascii')).digest()[0:8], 'big') & ((1<<63)-1)",
+    "mapping": "Bit 0 exposes member 0 in A and member 1 in B; bit 1 reverses the mapping.",
+    "requirements": [
+      "exactly one member per pair exposed in each arm",
+      "A and B exposure is complementary",
+      "A and B label counts are identical",
+      "common-base prefix is byte-identical in every run"
+    ]
+  },
+  "frozen_design": {
+    "arms": [
+      "A",
+      "B"
+    ],
+    "block_count": 2,
+    "model_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "pairs_per_block": 20,
+    "run_count": 32,
+    "selected_pair_count": 40,
+    "selected_target_count": 80
+  },
+  "gate": {
+    "failure_action": "materialization_no_go_preserve_artifacts_do_not_freeze_execution",
+    "required": [
+      "directional design integrity passes",
+      "all 80 selected targets have at least 45 complete source groups",
+      "V3 and V4 target semantic IDs are disjoint",
+      "each block has exactly 8000 evaluation and 2560 exposure rows",
+      "evaluation and exposure source groups are disjoint within target",
+      "common base has exactly 22720 rows and excludes every V3/V4 target",
+      "all 32 training manifests have exactly 24000 rows",
+      "all A/B exposures are complementary with identical labels",
+      "all allocated rows fit the fixed length 185",
+      "all artifact hashes validate",
+      "no V4 training directory exists"
+    ],
+    "success_action": "eligible_for_execution_protocol_freeze_not_training",
+    "training_started_before_materialization": false
+  },
+  "materialization_id": "external-behavior-v4-materialization-v1",
+  "parent_design": "external-behavior-v4-directional-design-v1",
+  "schema_version": "external-behavior-v4-materialization-preregistration-v1",
+  "source_group_selection": {
+    "evaluation": "Sort complete groups by source_group_id; use all six permutations from groups 0 through 32 and the first two permutations from group 33.",
+    "exposure": "Use all six permutations from complete groups 34 through 43 and the first four permutations from group 44.",
+    "minimum_complete_groups": 45,
+    "overlap_allowed": false
+  },
+  "status": "specified_before_materialization"
+}

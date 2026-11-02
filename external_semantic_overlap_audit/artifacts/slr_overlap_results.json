@@ -1,0 +1,153 @@
+{
+  "raw_identity": {
+    "test_rows_found_verbatim_in_train": 0,
+    "test_rows_with_identical_prolog_tokens_in_train": 70,
+    "test_unique_rule_strings": 666,
+    "token_overlap_by_level": {
+      "6": 12,
+      "7": 7,
+      "8": 2,
+      "9": 10,
+      "10": 1,
+      "11": 3,
+      "12": 14,
+      "13": 6,
+      "14": 11,
+      "16": 1,
+      "17": 1,
+      "19": 1,
+      "20": 1
+    },
+    "token_overlap_by_sampling": {
+      "llm guided": 70
+    },
+    "train_unique_rule_strings": 11354
+  },
+  "rows": {
+    "test": 1000,
+    "train": 18053
+  },
+  "scope": "Token identity ignores only whitespace. The structural proof covers flat positive rules and is sound under ordinary Prolog semantics. Aggregate, negation, arithmetic, and non-token-identical disjunctive LLM-guided rules are not classified; therefore the union remains a lower bound.",
+  "sound_flat_rule_equivalence_lower_bound": {
+    "alpha_and_atom_order": {
+      "overlap_by_level": {
+        "2": 11,
+        "3": 4,
+        "4": 5,
+        "5": 12,
+        "6": 2,
+        "7": 6,
+        "9": 13,
+        "10": 14,
+        "11": 11,
+        "12": 1,
+        "13": 2
+      },
+      "overlap_by_sampling": {
+        "random": 81
+      },
+      "test_overlap_rate_all": 0.081,
+      "test_overlap_rate_parseable": 0.11538461538461539,
+      "test_overlap_rows": 81,
+      "test_parseable_rows": 702,
+      "train_parseable_rows": 13568
+    },
+    "plus_existential_idempotence": {
+      "overlap_by_level": {
+        "1": 50,
+        "2": 45,
+        "3": 48,
+        "4": 48,
+        "5": 45,
+        "6": 29,
+        "7": 28,
+        "8": 30,
+        "9": 13,
+        "10": 17,
+        "11": 12,
+        "12": 1,
+        "13": 3
+      },
+      "overlap_by_sampling": {
+        "random": 369
+      },
+      "test_overlap_rate_all": 0.369,
+      "test_overlap_rate_parseable": 0.5256410256410257,
+      "test_overlap_rows": 369,
+      "test_parseable_rows": 702,
+      "train_parseable_rows": 13568
+    },
+    "plus_existential_subsumption": {
+      "overlap_by_level": {
+        "1": 50,
+        "2": 46,
+        "3": 50,
+        "4": 48,
+        "5": 45,
+        "6": 29,
+        "7": 29,
+        "8": 30,
+        "9": 14,
+        "10": 18,
+        "11": 15,
+        "12": 2,
+        "13": 4,
+        "14": 1,
+        "18": 1
+      },
+      "overlap_by_sampling": {
+        "random": 382
+      },
+      "test_overlap_rate_all": 0.382,
+      "test_overlap_rate_parseable": 0.5441595441595442,
+      "test_overlap_rows": 382,
+      "test_parseable_rows": 702,
+      "train_parseable_rows": 13568
+    }
+  },
+  "sound_semantic_overlap_union": {
+    "flat_rule_equivalence_rows": 382,
+    "intersection_rows": 0,
+    "overlap_by_level": {
+      "1": 50,
+      "2": 46,
+      "3": 50,
+      "4": 48,
+      "5": 45,
+      "6": 41,
+      "7": 36,
+      "8": 32,
+      "9": 24,
+      "10": 19,
+      "11": 18,
+      "12": 16,
+      "13": 10,
+      "14": 12,
+      "16": 1,
+      "17": 1,
+      "18": 1,
+      "19": 1,
+      "20": 1
+    },
+    "overlap_by_sampling": {
+      "llm guided": 70,
+      "random": 382
+    },
+    "test_overlap_rate": 0.452,
+    "test_overlap_rows": 452,
+    "token_identity_rows": 70
+  },
+  "source": {
+    "configuration": "v1-All",
+    "dataset": "AIML-TUDA/SLR-Bench",
+    "dataset_revision": "cecc0aa2602943ead28a4ea74c7a8f3c91264cbf",
+    "files": {
+      "test-00000-of-00001.parquet": "8f19a68e9d84edb9ca3015804e342aa4a0f43c85d13f9b88694adbe2d79f9548",
+      "train-00000-of-00003.parquet": "b27b594ad2fbb251c8bd491cb3805ba4ef4ebe570eb03e7337b4911ea771b093",
+      "train-00001-of-00003.parquet": "b905e239e054adb65df2178d93537186a0440870451673ceb6ae26170f199149",
+      "train-00002-of-00003.parquet": "446cbcd7aae0e844fd1b9f238a7b8cff89379fd396e9ff9f4f89a8ced4bf1449"
+    },
+    "source_repository": "ml-research/ScalableLogicalReasoning",
+    "source_revision": "3b46979ccdf9bb1c624809cfc140fe7c5af0f778"
+  }
+}

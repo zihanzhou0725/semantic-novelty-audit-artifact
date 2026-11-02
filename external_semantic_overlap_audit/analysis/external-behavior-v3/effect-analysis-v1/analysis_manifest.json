@@ -1,0 +1,19 @@
+{
+  "analysis_id": "external-behavior-v3-effect-analysis-v1",
+  "analysis_implementation_sha256": "f96be6ccc5b21a54b041cdc6915034e186cdbf168d6abd71a4435afc5cf5f31f",
+  "completed_at_utc": "2026-10-13T09:45:55.190085+00:00",
+  "output_sha256": {
+    "bootstrap.npz": "70eafc05e0102c97e2ac54821eb6c8a6c75ff801a908efb88f787ef57dbb4a14",
+    "pair_effects.csv": "1789d211ff1a1780f2ad3a0ac031617fc33d86910f90954c391904cf6fde09ed",
+    "pattern_effects.csv": "3ee182ca98c9bf655f1ba50a37692ce29d5d7766f99f07b6bfea480180a4a402",
+    "relation_effects.csv": "c94a2bb00b14d9ef557fc3b8cfd295ed548c4e07cc96517a012da304cf8c6f6b",
+    "report_cn.md": "87c25b14dd7d7048ee372a052117875cc9c757e8293e9f2a01ccfbe79face857",
+    "results.json": "5f5914dea2dcd95f3c0f44fddf995c5a43f2225c91e5874e8a2d26c898032dad",
+    "seed_aligned_metrics.csv": "8a3d16c4a1eb0ba62b7ff7a6ab5556fb8b7ae4f5cd8d8db0ed1f4e1b7b06a55a",
+    "seed_effects.csv": "b103894acd300fd5735d6e14d09b76f4b22828fce1f28721b695fa829d6de21b",
+    "seed_pattern_effects.csv": "14b814a1b4ffb190054d8baa2e0098f5fa8444efdd46609b206cdea48ea911b1"
+  },
+  "protocol_input_manifest_sha256": "46783933d6f436979db2e166be5c9209b2053dd463a71266b1b83add6a339284",
+  "schema_version": "external-behavior-v3-effect-analysis-manifest-v1",
+  "status": "analysis_complete_pending_independent_validation"
+}

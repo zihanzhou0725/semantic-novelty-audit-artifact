@@ -1,0 +1,82 @@
+[
+  {
+    "name": ".gitignore",
+    "path": ".gitignore",
+    "sha": "ba0430d26c996e7f078385407f959c96c271087c",
+    "size": 12,
+    "url": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/contents/.gitignore?ref=master",
+    "html_url": "https://github.com/ml-research/ScalableLogicalReasoning/blob/master/.gitignore",
+    "git_url": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/git/blobs/ba0430d26c996e7f078385407f959c96c271087c",
+    "download_url": "https://raw.githubusercontent.com/ml-research/ScalableLogicalReasoning/master/.gitignore",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/contents/.gitignore?ref=master",
+      "git": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/git/blobs/ba0430d26c996e7f078385407f959c96c271087c",
+      "html": "https://github.com/ml-research/ScalableLogicalReasoning/blob/master/.gitignore"
+    }
+  },
+  {
+    "name": "LICENSE",
+    "path": "LICENSE",
+    "sha": "300a297ff1d22affc746fe5b07f4048f8a776a48",
+    "size": 1068,
+    "url": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/contents/LICENSE?ref=master",
+    "html_url": "https://github.com/ml-research/ScalableLogicalReasoning/blob/master/LICENSE",
+    "git_url": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/git/blobs/300a297ff1d22affc746fe5b07f4048f8a776a48",
+    "download_url": "https://raw.githubusercontent.com/ml-research/ScalableLogicalReasoning/master/LICENSE",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/contents/LICENSE?ref=master",
+      "git": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/git/blobs/300a297ff1d22affc746fe5b07f4048f8a776a48",
+      "html": "https://github.com/ml-research/ScalableLogicalReasoning/blob/master/LICENSE"
+    }
+  },
+  {
+    "name": "README.md",
+    "path": "README.md",
+    "sha": "55fb8450469a9dabb0df2cef74d9c256b7d7fa2a",
+    "size": 18234,
+    "url": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/contents/README.md?ref=master",
+    "html_url": "https://github.com/ml-research/ScalableLogicalReasoning/blob/master/README.md",
+    "git_url": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/git/blobs/55fb8450469a9dabb0df2cef74d9c256b7d7fa2a",
+    "download_url": "https://raw.githubusercontent.com/ml-research/ScalableLogicalReasoning/master/README.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/contents/README.md?ref=master",
+      "git": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/git/blobs/55fb8450469a9dabb0df2cef74d9c256b7d7fa2a",
+      "html": "https://github.com/ml-research/ScalableLogicalReasoning/blob/master/README.md"
+    }
+  },
+  {
+    "name": "images",
+    "path": "images",
+    "sha": "2597d4e76bebb5b69b550d5f0a62d93b0f12c5c0",
+    "size": 0,
+    "url": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/contents/images?ref=master",
+    "html_url": "https://github.com/ml-research/ScalableLogicalReasoning/tree/master/images",
+    "git_url": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/git/trees/2597d4e76bebb5b69b550d5f0a62d93b0f12c5c0",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/contents/images?ref=master",
+      "git": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/git/trees/2597d4e76bebb5b69b550d5f0a62d93b0f12c5c0",
+      "html": "https://github.com/ml-research/ScalableLogicalReasoning/tree/master/images"
+    }
+  },
+  {
+    "name": "src",
+    "path": "src",
+    "sha": "55b038d2d4f93d8911196d9643b62ae221c565ce",
+    "size": 0,
+    "url": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/contents/src?ref=master",
+    "html_url": "https://github.com/ml-research/ScalableLogicalReasoning/tree/master/src",
+    "git_url": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/git/trees/55b038d2d4f93d8911196d9643b62ae221c565ce",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/contents/src?ref=master",
+      "git": "https://api.github.com/repos/ml-research/ScalableLogicalReasoning/git/trees/55b038d2d4f93d8911196d9643b62ae221c565ce",
+      "html": "https://github.com/ml-research/ScalableLogicalReasoning/tree/master/src"
+    }
+  }
+]

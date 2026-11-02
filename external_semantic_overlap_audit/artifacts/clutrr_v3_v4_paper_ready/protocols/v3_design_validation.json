@@ -1,0 +1,113 @@
+{
+  "check_count": 15,
+  "checks": [
+    {
+      "detail": null,
+      "name": "frozen_inputs",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "environment_lock",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "data_hashes",
+      "pass": true
+    },
+    {
+      "detail": {
+        "failures": 0,
+        "rows": 204870
+      },
+      "name": "raw_expansion",
+      "pass": true
+    },
+    {
+      "detail": 204870,
+      "name": "deduplication",
+      "pass": true
+    },
+    {
+      "detail": {
+        "eligible_patterns": 320,
+        "pairs": 20
+      },
+      "name": "pair_capacity",
+      "pass": true
+    },
+    {
+      "detail": {
+        "pairs": 20,
+        "targets": 40
+      },
+      "name": "targets",
+      "pass": true
+    },
+    {
+      "detail": 8000,
+      "name": "evaluation",
+      "pass": true
+    },
+    {
+      "detail": 2560,
+      "name": "exposure",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "group_disjointness",
+      "pass": true
+    },
+    {
+      "detail": 22720,
+      "name": "common_base",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "arms",
+      "pass": true
+    },
+    {
+      "detail": 185,
+      "name": "sequence_lengths",
+      "pass": true
+    },
+    {
+      "detail": {
+        "checks": {
+          "attention_heads": true,
+          "classifier_output_classes": true,
+          "dropout": true,
+          "feed_forward_dimension": true,
+          "layers": true,
+          "maximum_sequence_length": true,
+          "model_dimension": true,
+          "pooling": "CLS",
+          "position_embedding": "learned_absolute",
+          "precision": true,
+          "vocabulary_size": true
+        },
+        "num_classes": 23,
+        "parameter_count": 894743
+      },
+      "name": "model_architecture",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "training_not_started",
+      "pass": true
+    }
+  ],
+  "design_gate": "pass",
+  "failed_checks": [],
+  "failed_count": 0,
+  "model_training_started": false,
+  "protocol_id": "external-behavior-v3",
+  "schema_version": "external-behavior-v3-design-validation-v1",
+  "status": "pass",
+  "validated_at_utc": "2026-10-12T12:01:21.597582+00:00"
+}

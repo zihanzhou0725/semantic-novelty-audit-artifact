@@ -1,0 +1,14 @@
+{
+  "design_id": "external-behavior-v4-directional-design-v1",
+  "frozen_at_utc": "2026-10-13T11:38:27.863184+00:00",
+  "schema_version": "external-behavior-v4-directional-freeze-receipt-v1",
+  "state_at_freeze": {
+    "block_count_selected": false,
+    "pair_manifest_materialized": false,
+    "power_simulation_executed": false,
+    "simulation_outputs_absent": true,
+    "training_started": false,
+    "v3_pilot_results_known": true
+  },
+  "status": "frozen_before_power_simulation"
+}

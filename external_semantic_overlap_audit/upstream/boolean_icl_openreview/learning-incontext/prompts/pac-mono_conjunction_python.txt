@@ -1,0 +1,26 @@
+You are given the following python program to learn a monotone-conjunction function from the examples provided and obtain the label for the final input.
+
+def conjunction_finder(xs, ys):
+	# Step 2: Initialize the hypothesis h
+	n = len(xs[0].split()) # Number of dimensions
+	h = [True] * n  # True indicates the presence of the literal in the conjunction
+
+	# Step 3: Iterate over the examples
+	for i in range(len(ys)):
+		x = [int(bit) for bit in xs[i].split()]  # Convert the string to a list of integers (0 or 1)
+		y = int(ys[i])
+		if y == 1 and not all(x[j] == 1 for j in range(n) if h[j]):  # Misclassified positive example
+			for j in range(n):
+				if h[j] and x[j] == 0:  # Literal doesn't satisfy the example
+					h[j] = False  # Remove the literal from the hypothesis
+
+	# Predict the label for the final input
+	x_final = [int(bit) for bit in xs[-1].split()]  # Convert the string to a list of integers (0 or 1)
+	if all(x_final[j] == 1 for j in range(n) if h[j]):
+		return 1
+	else:
+		return 0
+
+xs = ["1 1 0", "1 0 1", "0 1 1", "1 0 0"]
+ys = ["1", "1", "0"]
+print(conjunction_finder(xs, ys))  # Outputs 1

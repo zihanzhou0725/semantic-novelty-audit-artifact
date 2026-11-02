@@ -1,0 +1,19 @@
+{
+  "input_sha256": {
+    "classes.json": "293605723bc89e99ef6e0ddda07febfc61f61b53c67257062f51ca3edab69bf7",
+    "pattern_effects.csv": "fb4fff2f24e21b3c7a71e27cdc960221d8e541f256eb80b360b249d7ed1bf9f3",
+    "seed_pattern_effects.csv": "9ffe58d420b05e58f527739cbc3a980614d76d081f1087511dc4a00a7327d2f3",
+    "tmlr_clutrr_common_relation_counts.json": "7b48d6c098b50773896d7f50c2e991b321e605404cd0b4c1cb84ec3d9f29473f"
+  },
+  "packages": {
+    "matplotlib": "3.9.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "torch": "2.6.0+cu124"
+  },
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.9.19 (main, May  6 2024, 20:12:36) [MSC v.1916 64 bit (AMD64)]",
+  "script": "scripts/tmlr_strengthening/run_t2_clutrr_heterogeneity.py",
+  "seed": null,
+  "utc_time": "2026-11-02T12:55:32.253193+00:00"
+}

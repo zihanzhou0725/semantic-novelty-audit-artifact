@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "empirical_exposure_ordering": "passed",
+    "eval_stream_reconstruction": "passed",
+    "frozen_file_checksums": "passed",
+    "paired_noncollision_identity": "passed",
+    "run_stream_reconstruction": "passed",
+    "semantic_id_roundtrip": "passed",
+    "strict_eval_disjointness": "passed",
+    "upstream_source_checksums": "passed"
+  },
+  "eval_rows": 3840,
+  "mean_original_eval_exposure_rate": {
+    "conjunction_d28": 0.008072916666666667,
+    "majority_d28": 0.08880208333333332,
+    "sparse_disjunction_d50_k4_positive": 0.9343749999999998
+  },
+  "protocol_counts": {
+    "original": 9,
+    "strict_function_disjoint": 9
+  },
+  "run_rows": 18,
+  "schema_version": "boolean-behavioral-v1",
+  "status": "passed"
+}

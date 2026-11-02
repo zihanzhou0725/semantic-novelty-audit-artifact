@@ -1,0 +1,16 @@
+{
+  "schema_version": "external-behavior-candidate-freeze-receipt-v1",
+  "protocol_id": "external-behavior-v1",
+  "frozen_at_utc": "2026-10-12T09:22:35Z",
+  "candidate_manifest_sha256": "fbe497b86c084102e9d439f7f84562592dc30572ad7d37a84f29cd7fa99aa847",
+  "availability_screening_sha256": "170ef9691adcf697b9fe121ba9c82aa5a038cf5b5a24850e2325983c618d4170",
+  "state_at_freeze": {
+    "repository_clone_started": false,
+    "dataset_download_started": false,
+    "semantic_extraction_started": false,
+    "overlap_census_started": false,
+    "behavioral_training_started": false,
+    "outcome_inspection_started": false
+  },
+  "amendment_rule": "Changing candidate identity, order, source revision, inclusion criteria, or behavioral role requires a new protocol version and cannot alter this receipt."
+}

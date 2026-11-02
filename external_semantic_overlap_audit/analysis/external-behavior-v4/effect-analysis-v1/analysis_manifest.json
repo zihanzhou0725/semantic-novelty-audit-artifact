@@ -1,0 +1,19 @@
+{
+  "analysis_id": "external-behavior-v4-effect-analysis-v1",
+  "completed_at_utc": "2026-10-15T07:03:38.454851+00:00",
+  "output_sha256": {
+    "block_effects.csv": "b388983deb9f8dcb48dff69ca94168b7bf4448a20ea9f5a8038118731fda2f5e",
+    "bootstrap.npz": "71c464ebb99feb8abfac82c9551f46a8cafbecdfd7ae775a36028dbcb54d8f6f",
+    "pair_effects.csv": "8f1b143c707ea8bfe5a2203f180a2f65c7a1e103b4cfe3e0b979979062e53a4c",
+    "pattern_effects.csv": "fb4fff2f24e21b3c7a71e27cdc960221d8e541f256eb80b360b249d7ed1bf9f3",
+    "relation_effects.csv": "69756e7690578272fd7ce40c157b9b00241a6cb5b256356472bf55e380d19d2c",
+    "report_cn.md": "1f9c5ffeecabf8bcb53c60782063bcdb7592ba51702f8a4b33f38181a3c2a676",
+    "results.json": "db273a66e12cd060414571d06c11d81290ad0c7e9ee89b21fddc2d5bf6392033",
+    "seed_aligned_metrics.csv": "09649d366e30066194c8ee092554e4a7e55054e9c33516097d66e5adc8d82de7",
+    "seed_effects.csv": "f2db185ba61676861f6d1f27434d3466397aea1a71a1c2851246dbe84be0c4bf",
+    "seed_pattern_effects.csv": "9ffe58d420b05e58f527739cbc3a980614d76d081f1087511dc4a00a7327d2f3"
+  },
+  "protocol_input_manifest_sha256": "d7c487f75c7d3e737df5a6704e45f0860a423fc5bde6ae8a402153f994592d97",
+  "schema_version": "external-behavior-v4-effect-analysis-manifest-v1",
+  "status": "analysis_complete_pending_validation"
+}

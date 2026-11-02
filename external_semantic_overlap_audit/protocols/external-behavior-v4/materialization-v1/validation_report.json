@@ -1,0 +1,67 @@
+{
+  "check_count": 9,
+  "checks": [
+    {
+      "detail": null,
+      "name": "directional_design_gate",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "block_arithmetic",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "row_arithmetic",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_group_policy",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "training_closed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "freeze_artifacts",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "input_hashes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "implementation_hashes",
+      "pass": true
+    },
+    {
+      "detail": {
+        "manifest_artifacts": [],
+        "run_root_exists": false
+      },
+      "name": "outputs_absent",
+      "pass": true
+    }
+  ],
+  "document_sha256": {
+    "README.md": "7b90dc8a95a16c45c6748a91147c2b91f4036cd1c5ca6ae4bff0702c6c05125e",
+    "checklist.md": "be3a3bfc28473ca7f116d04fc9313fae2034ff49698e9f12332ca9d48ff241ca",
+    "freeze_receipt.json": "565513a99d33ad71dd98f8c5bfc806f750739f397a456a6f0f6fa935d6b39086",
+    "input_manifest.json": "faf2216ab59240c749a37ffcd5bd5b25840be157fe8b2816974434fb6cf334d8",
+    "preregistration.json": "02af7a2baffd97ba9de4c19155d3988caa94d9222d9beca677e2e16af915e637",
+    "validate.py": "6b2693f406c303254b8153855bde1190e7fdc6a2fd07569c34c75bde9e7e8e78"
+  },
+  "failed_count": 0,
+  "materialization_id": "external-behavior-v4-materialization-v1",
+  "schema_version": "external-behavior-v4-materialization-protocol-validation-v1",
+  "stage": "pre_materialization",
+  "status": "pass",
+  "validated_at_utc": "2026-10-13T11:45:51.881713+00:00"
+}

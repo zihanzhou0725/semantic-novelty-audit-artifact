@@ -1,0 +1,43 @@
+{
+  "environment_sha256": "bf41ef4333bba3cf6235bac40b59c27e50aa40ddb5654ee25f9942b8043d5ca3",
+  "frozen_at_utc": "2026-10-12T12:00:12.508018+00:00",
+  "frozen_before_design_materialization": true,
+  "implementation_sha256": {
+    "scripts/freeze_external_behavior_v3.py": "fe70bc010041c84cf5173b0df4a22aa42969567ac6fff73f20f4218c84530e0c",
+    "scripts/materialize_external_behavior_v3.py": "3adce982f973ec1682cd5c8072c2918760c573dd8047b6b2f2f9f8e99865375a",
+    "scripts/validate_external_behavior_v3.py": "36596ad77573b5751bca45d29a0842eab5fc17b8b9ef7f5c5f684877246beb80",
+    "tests/test_external_behavior_v3.py": "a4df703913e82ebb50fc9cf93840879a2ead6e2c93933fbb74d94425e66fa0a4",
+    "toolkit/external_behavior/clutrr.py": "6df146620d9c885b58ce9c90afd51c5402f8fd0eeac8962962b03828c850fc44",
+    "toolkit/external_behavior/common.py": "eb725d4dec66c3c247f21303265da740e4213af54c93abb764acd18b444bae71",
+    "toolkit/external_behavior/model.py": "fd7774d8c13bf7adccf282efe5e20411b2f231d13152eccc669591d2768c7d73",
+    "toolkit/external_behavior_v3/__init__.py": "6bc377482b5cbe5cd0850228c37208d60b204afdd689839bf23a4e314e433a03",
+    "toolkit/external_behavior_v3/common.py": "b5203d7c6c8feae5e51fff861998a10e9246da172ceba4f2c993d795f5dd0dda",
+    "toolkit/external_behavior_v3/design.py": "0804c65cf62daa9e2e44e091a1a6d1a4fac624c4ad88ea15901375502a79a77d",
+    "toolkit/external_behavior_v3/freeze.py": "8a6a15b7f6c9a6a31da2a9ca3adad1e7fd2430257c74d411d973ef7f2481d1b5",
+    "toolkit/external_behavior_v3/materialize.py": "a81f5810db0b94a95547194cc4a8107098078510db84603bbb376ea59e9a1cc6",
+    "toolkit/external_behavior_v3/validate.py": "131b0fc99076321f75784ea727e9e5f33e148bd5d5f6b7102bc2a6c81cefc852"
+  },
+  "input_manifest_sha256": "8a6fa7a876ed9e6fbfb98b45a3269e24c304d2205ab3810eb8bbceee879b7026",
+  "model_architecture": {
+    "checks": {
+      "attention_heads": true,
+      "classifier_output_classes": true,
+      "dropout": true,
+      "feed_forward_dimension": true,
+      "layers": true,
+      "maximum_sequence_length": true,
+      "model_dimension": true,
+      "pooling": "CLS",
+      "position_embedding": "learned_absolute",
+      "precision": true,
+      "vocabulary_size": true
+    },
+    "num_classes": 23,
+    "parameter_count": 894743
+  },
+  "preregistration_sha256": "404233e6870cf3c87cf2e60ecd502906dbe464ea20cdd7d25e5dd0507a5d98f0",
+  "protocol_id": "external-behavior-v3",
+  "requirements_lock_sha256": "64627f5045ae4383740a4ddaedfbf24cf1df121e2bde235f75fa0246e68b15fd",
+  "schema_version": "external-behavior-v3-implementation-freeze-v1",
+  "status": "frozen"
+}

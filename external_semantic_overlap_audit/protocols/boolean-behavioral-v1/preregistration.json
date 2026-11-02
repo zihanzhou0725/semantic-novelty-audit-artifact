@@ -1,0 +1,151 @@
+{
+  "claim_boundary": {
+    "allowed_if_core_go": [
+      "The tested Transformer benefits from prior exposure to evaluation semantics.",
+      "For a passing task, the original protocol exceeds the strict protocol by the reported paired delta."
+    ],
+    "forbidden_without_additional_evidence": [
+      "The original paper model memorizes evaluation functions.",
+      "All model families rely on memorization.",
+      "Model rankings change.",
+      "Every benchmark with semantic overlap has inflated accuracy."
+    ]
+  },
+  "conditional_expansion": {
+    "ranking_test": "Run the released LSTM on Sparse Disjunction only if the Transformer Sparse Disjunction result passes core_go. A ranking-change claim requires the model ordering to reverse between protocols; otherwise the claim is forbidden.",
+    "transformer_seeds_3_and_4": "Run only for tasks passing core_go after the frozen three-seed analysis."
+  },
+  "evaluation": {
+    "n_points": 40,
+    "primary_positions_zero_indexed": [
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+    ],
+    "same_manifest_for_every_run": true,
+    "same_prompts_for_paired_protocols": true,
+    "unit_of_analysis": "evaluation episode, clustered by semantic ID"
+  },
+  "freeze_date": "2026-10-07",
+  "gate": {
+    "core_go": "At least one preregistered task has mean original-minus-strict tail-accuracy >= 2.0 pp and all three seed deltas are positive.",
+    "no_go": "No task passes core_go. Report the null/negative result and do not claim observed neural reliance on semantic exposure.",
+    "reporting_rule": "Report all tasks and seeds regardless of gate outcome.",
+    "strong_pattern": "Sparse Disjunction is >= 5.0 pp, Conjunction absolute delta is <= 2.0 pp, and task effects increase from low to high expected exposure."
+  },
+  "metrics": {
+    "primary": {
+      "definition": "mean sign accuracy over zero-indexed positions 20 through 39",
+      "effect": "100 * (original - strict_function_disjoint)",
+      "name": "tail_accuracy",
+      "unit": "percentage points"
+    },
+    "secondary": [
+      "final_position_accuracy",
+      "all_positions_1_through_39_accuracy",
+      "tail_binary_cross_entropy",
+      "original_accuracy_stratified_by_actual_training_exposure"
+    ],
+    "uncertainty": "Report each model-seed paired delta and a paired cluster bootstrap over semantic IDs within each seed. Do not treat positions as independent observations."
+  },
+  "model": {
+    "dropout": 0.0,
+    "family": "san",
+    "implementation": "src.models.TransformerModel using GPT2Config",
+    "n_embd": 256,
+    "n_head": 8,
+    "n_layer": 6,
+    "n_positions": 150,
+    "precision": "float32"
+  },
+  "schema_version": "boolean-behavioral-v1",
+  "scope": "Controlled behavioral test of semantic exposure under the released Boolean ICL generators; not a reproduction of unreleased paper checkpoints.",
+  "semantic_identity": {
+    "conjunction_d28": {
+      "distribution": "independent digits with probabilities [0.70, 0.15, 0.15]",
+      "n_dims": 28,
+      "proof_status": "injective for the released task family; conjunction and majority validated by exhaustive truth tables at d=6",
+      "public_task_name": "conjunction",
+      "semantic_id": "base3 literal vector: 0=absent, 1=positive, 2=negative"
+    },
+    "majority_d28": {
+      "distribution": "independent active bits with probability 0.30",
+      "n_dims": 28,
+      "proof_status": "injective for the released task family; conjunction and majority validated by exhaustive truth tables at d=6",
+      "public_task_name": "majority",
+      "semantic_id": "bit mask of the active-variable subset"
+    },
+    "sparse_disjunction_d50_k4_positive": {
+      "distribution": "uniform four-element subset of 50 variables",
+      "k": 4,
+      "n_dims": 50,
+      "proof_status": "injective for the released task family; conjunction and majority validated by exhaustive truth tables at d=6",
+      "public_task_name": "sparse_disjunction",
+      "semantic_id": "bit mask of the four active positive literals"
+    }
+  },
+  "source": {
+    "repository": "https://github.com/satwik77/incontext-bool",
+    "revision": "a25a2cb0c62ad541cd30b0672df136230d878d9c",
+    "source_sha256": {
+      "args.py": "64759e100b1b07e55e333028d17297a73716ff3684be8753a619620474fec1be",
+      "bool_tasks.py": "5bda5cdb00bce9ad7710faa643d822c99eb09ba20a5de1a26d9da3788269ca60",
+      "eval.py": "fbd87507b71f3f191678e4d36221bb967daee0d015a749d77762b5274f1698cd",
+      "models.py": "397e25e2b35a737900195037b7aecd4b183b41313856e969bdf7f99f600a05bc",
+      "train.py": "7b36b99ec1fe91a0de8b18cbf4e1a841be1bd52662592a4d11ee27a31c7ff86c"
+    }
+  },
+  "split": {
+    "bit_generator": "numpy.random.PCG64 raw uint64 stream",
+    "evaluation_function_draws": 1280,
+    "evaluation_sampling": "i.i.d. with replacement from the released distribution",
+    "master_seed": 20261007,
+    "paired_slot_rule": "Original and strict use the same primary function at every training slot. Strict replaces only slots whose primary semantic ID is excluded, using a separately seeded conditional stream.",
+    "strict_exclusion": "Every unique evaluation semantic ID is excluded from every strict training-function draw."
+  },
+  "status": "frozen_before_training",
+  "training": {
+    "batch_size": 32,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "checkpoint_selection": "fixed final checkpoint; no validation selection",
+    "core_run_count": 18,
+    "epsilon": 1e-08,
+    "function_draws_per_run": 640000,
+    "learning_rate": 0.0001,
+    "loss": "released sigmoid plus binary cross entropy",
+    "model_seeds": [
+      0,
+      1,
+      2
+    ],
+    "n_points": 40,
+    "optimizer": "Adam",
+    "protocols": [
+      "original",
+      "strict_function_disjoint"
+    ],
+    "steps": 20000,
+    "weight_decay": 0.0
+  },
+  "training_started": false
+}

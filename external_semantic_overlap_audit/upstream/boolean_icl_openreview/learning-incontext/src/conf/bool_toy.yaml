@@ -1,0 +1,39 @@
+inherit: 
+    - models/small.yaml
+    - wandb.yaml
+
+model:
+    n_dims: 14
+    n_positions: 100
+    
+
+training:
+    task: conjunction
+    data: boolean
+    task_kwargs: {}
+    batch_size: 32
+    learning_rate: 0.000025
+    save_every_steps: 1000
+    keep_every_steps: 100000
+    train_steps: 25000
+    curriculum:
+        dims:
+            start: 14
+            end: 14
+            inc: 1
+            interval: 2000
+        points:
+            start: 30
+            end: 30
+            inc: 2
+            interval: 2000
+
+out_dir: ../models/conjunction_lstm
+
+wandb:
+    name: "conj_lstm_toy"
+
+
+misc:
+    gpu: 1
+    wandb: True

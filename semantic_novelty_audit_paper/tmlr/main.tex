@@ -1,0 +1,952 @@
+\documentclass[twoside,11pt]{article}
+\usepackage[preprint]{dmlr2e}
+
+% Allow long URLs (e.g. the artifact link) to break across lines.  Loading
+% url after hyperref disables hyperlinked URLs but restores breakable ones.
+\usepackage{url}
+\makeatletter
+\g@addto@macro\UrlBreaks{\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z\do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9}
+\makeatother
+
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{} % optional polish; skip if not installed
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\input{generated/tmlr_strengthening_macros}
+
+\def\openreview{\url{https://openreview.net/forum?id=XXXX}} % TODO(camera-ready): insert the DMLR OpenReview forum link
+
+\setlength{\emergencystretch}{3em}
+
+\ShortHeadings{Unseen Strings, Familiar Tasks}{Zhou} % TODO(authors): short author list
+\firstpageno{1}
+
+\begin{document}
+
+\title{Unseen Strings, Familiar Tasks: Certified Semantic Exposure in
+Procedural Reasoning Benchmarks}
+
+% TODO(authors): complete the author block before submission.  DMLR is
+% single-blind: names and affiliations are visible to reviewers.
+\author{\name Zihan Zhou \email TODO@TODO \\ % TODO(authors): real email
+       \addr TODO \\ % TODO(authors): affiliation lines
+       TODO}
+
+\maketitle
+
+\begin{abstract}
+Many reasoning benchmarks use a program to generate their tasks, and they
+build the test set by holding out a representation: a parameter setting, a
+rule string, or a program that never appeared in training.  We show that
+such splits can fail silently, because different representations can
+produce the same observable behavior.  Using tools that produce a proof for
+every match, we audit three public protocols and find three distinct
+failures.  In SLR-Bench, none of the 1,000 test rules repeats a training
+string, yet we certify that at least 45.2\% are logically equivalent to a
+training rule, with a checkable proof for every pair; the true overlap may
+be higher.  In Tensor Logic, the split removes test edges from training but
+breaks many of the paths that were meant to justify the test queries,
+leaving between 484 and 1,000 of the 1,000 test queries with a matching
+path still present in training.  In the Occam in-context-learning
+benchmark, the generator keeps sampling from a small hidden pool of tasks:
+at least two of the twenty evaluation tasks reappear in training, and the
+true number may be as high as four.  We then asked whether seeing a task in
+training actually changes what a model scores.  The answer depends on the
+setting.  Across three Boolean in-context-learning tasks, removing exact
+exposure changes mean accuracy by at most 0.09 points, even where exposure
+reaches 93.44\%; a controlled six-architecture study finds a small gain
+($+1.8$ points); and a preregistered experiment on the public CLUTRR
+kinship benchmark, confirmed on fresh targets, finds a gain of $23.3$
+points (95\% CI $[17.7, 29.2]$).  Our tools are simple in spirit: say what
+``the same task'' means before measuring, grade how strong each piece of
+evidence is, and report an interval instead of treating missing evidence as
+no overlap.  Syntactic novelty is not semantic novelty, and exposure is not
+exploitation; benchmark protocols should measure both.
+\end{abstract}
+
+\begin{keywords}
+benchmark auditing, semantic novelty, data contamination, evaluation
+methodology, preregistration
+\end{keywords}
+
+\section{Introduction}
+\label{sec:introduction}
+
+SLR-Bench is a published logical-reasoning benchmark whose test split is
+built to be new: none of its 1,000 test rules repeats any of the 18,053
+training rule strings \citep{helff2026slr}.  Under the benchmark's own
+protocol, every test rule counts as an unseen task.  We show that this
+guarantee does not hold.  Using a tool that rewrites rules into a standard
+form and proves every match, we certify that at least 452 of the 1,000 test
+rules---45.2\%---are logically equivalent to a training rule, and the true
+overlap may be higher (Section~\ref{sec:public-audits},
+Figure~\ref{fig:slr}).  The overlap is invisible to the split's own
+criterion because the equivalent rules differ as strings: variables are
+renamed, conditions reordered, redundant requirements dropped.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.94\textwidth]{figures/fig_slr_semantic_overlap.pdf}
+\caption{SLR-Bench \texttt{v1-All}.  The split holds out rule strings, and
+string matching finds zero overlap (left bar).  Token-level and
+proof-producing semantic comparisons tell a different story, certifying a
+45.2\% lower bound on train--test overlap.  Aggregate, negated, arithmetic,
+and unresolved disjunctive rules are not counted, so the final bar is a
+floor, not an estimate of total overlap.}
+\label{fig:slr}
+\end{figure}
+
+Generated benchmarks are popular testbeds---for in-context function
+learning \citep{garg2022what,akyurek2023what,bhattamishra2024understanding},
+program induction \citep{reed2016neural,zaremba2014learning}, and
+systematic generalization \citep{lake2018generalization}---because the
+rules behind the data are known and new data can be sampled without manual
+annotation.  But most of their splits hold out a \emph{representation}: a
+parameter setting, a rule string, a program.  The evaluation claim,
+meanwhile, is about a \emph{task}: the observable behavior that the
+representation implements.  Because different representations can implement
+the same behavior, a representation-level split cannot by itself certify a
+task-level novelty claim.  We find that this gap opens in three distinct
+ways across three public protocols: \emph{semantic aliases}, where
+different rules induce the same logic (SLR-Bench); \emph{witness breakage},
+where the mutation that hides test edges also deletes edges used by the
+split's own witnesses (Tensor Logic: 379 of 1,000 designated test paths
+survive, and between 484 and 1,000 of the 1,000 test queries still have a
+matching path in training \citep{shah2026tensorlogic}); and
+\emph{finite-space resampling}, where an online generator keeps drawing
+from a small hidden task pool (in the Occam benchmark, at least two of
+twenty evaluated tasks reappear in training, the true number may be four,
+and at least 93.7\% of the 800,000 training episodes reuse an earlier
+hidden task \citep{deora2025occam}).
+
+Does such exposure actually change what models score?  The tempting answer
+is yes, but it must be measured, and it is not uniform.  We ran three
+controlled studies in which paired training runs differ only in whether the
+target tasks are already seen during training.  Across three Boolean
+in-context-learning tasks, removing exact exposure changes mean accuracy by
+at most 0.09 percentage points, even where 93.44\% of the evaluation
+functions appear in training.  A controlled six-architecture study finds a
+small gain ($+1.8$ points).  A preregistered experiment on the public
+CLUTRR kinship benchmark, confirmed on fresh targets, finds a gain of
+$23.3$ points (95\% CI $[17.7, 29.2]$) \citep{sinha2019clutrr}.  Exposure
+and exploitation are different things, and a credible benchmark audit must
+report them separately.
+
+Making such audits possible takes three simple tools.  An
+\emph{observation contract} says, before any measurement, what ``the same
+task'' means for a given claim.  An \emph{evidence grade} marks every
+overlap finding as exact, a sound lower bound, estimated, or
+unresolved---and unresolved items are never counted as novel.  A
+\emph{certified exposure interval} turns an incomplete search for
+equivalent items into explicit bounds $[L, U]$ instead of silently counting
+them as zero.  An open toolkit checks every reported claim against its
+declared unit, evidence grade, and source, and rebuilds the analyses in
+this paper from saved result files.
+
+\paragraph{Contributions.}
+\begin{itemize}
+\item \textbf{Findings.}  Certified audits of three public protocols: a
+sound 45.2\% lower bound on semantic overlap for SLR-Bench despite zero
+string-level overlap; witness breakage and endpoint exposure in $[484,
+1000]/1000$ for Tensor Logic; and certified exposure of $[2, 4]/20$ tasks
+under finite-space resampling in the Occam benchmark.
+\item \textbf{Behavioral evidence.}  Three controlled studies that separate
+exposure from exploitation, spanning a near-zero result (Boolean), a small
+gain (six architectures), and a large gain (CLUTRR, preregistered,
+confirmed on fresh targets).
+\item \textbf{Instruments.}  Observation contracts, evidence grades, and
+certified exposure intervals (Propositions 1 and 2), with an open,
+schema-checked toolkit.
+\item \textbf{Guidance.}  A short reporting standard for benchmark authors:
+name the held-out object, grade the evidence, report the interval, and
+measure behavior separately (Section~\ref{sec:recommendations}).
+\end{itemize}
+
+This is an evaluation-methodology study, not a new model or a general
+procedure for program equivalence.  Its strongest conclusion is deliberately
+bounded: training curricula that differ only in semantic exposure can
+produce large differences in final accuracy, but exposure alone does not
+reveal how a model obtained its prediction.
+
+\section{What Counts as a New Task?}
+\label{sec:measurement}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig_semantic_identity_framework.pdf}
+\caption{Three levels of novelty a split can claim.  A representation has a
+registered family and, under an observation contract, induces a task---an
+observable behavior.  Several representations, including ones from different
+families, can induce the same task.  Holding out parameters, holding out
+behaviors, and holding out families are therefore different promises.}
+\label{fig:identity}
+\end{figure}
+
+\subsection{Representation, Task, and Family}
+
+A generator parameter setting, a rule string, or a program is a
+\emph{representation} $r$, drawn from a space $\mathcal R$.  An evaluation
+claim, however, is rarely about the representation itself; it is about the
+behavior the representation implements.  To make ``behavior'' precise, we
+fix an \emph{observation contract} $\mathcal O$ before any measurement: a
+written agreement on which inputs are allowed, which outputs are observed,
+how termination, errors, and nondeterminism are treated, and nothing else.
+Under a contract, each representation induces a semantic object through
+\begin{equation}
+q_{\mathcal O}:\mathcal R\rightarrow\mathcal F_{\mathcal O}.
+\end{equation}
+For the finite, deterministic, effect-free tasks studied here,
+$\mathcal F_{\mathcal O}$ is simply the space of complete input--output
+functions, and two representations are the \emph{same task} iff
+$q_{\mathcal O}(r)=q_{\mathcal O}(r')$.  We do not assume that general
+program equivalence is decidable; the contract only has to support the claim
+at hand.
+
+A representation also carries a family label $a(r)\in\mathcal G$, such as
+``affine rule'' or ``parity rule.''  Families classify representations, not
+tasks: one task can be implemented by representations from several families.
+We write
+\begin{equation}
+\Gamma(f)=\{a(r):q_{\mathcal O}(r)=f\}.
+\label{eq:family-relation}
+\end{equation}
+for the set of families that realize task $f$; the case $|\Gamma(f)|>1$ is
+exactly the cross-family aliasing that our first behavioral study exploits
+(Section~\ref{sec:internal-intervention}).
+
+Figure~\ref{fig:identity} shows three things a split can hold out, and they
+are not interchangeable.  \textbf{Parameter-disjoint} evaluation holds out
+$r$ itself but may keep an alias $r'$ with
+$q_{\mathcal O}(r')=q_{\mathcal O}(r)$.  \textbf{Function-disjoint}
+evaluation holds out the behavior:
+\begin{equation}
+q_{\mathcal O}(\mathcal R_{\mathrm{train}})
+\cap
+q_{\mathcal O}(\mathcal R_{\mathrm{test}})
+=\varnothing.
+\label{eq:function-disjoint}
+\end{equation}
+\textbf{Family-disjoint} evaluation holds out the family label:
+\begin{equation}
+a(\mathcal R_{\mathrm{train}})
+\cap
+a(\mathcal R_{\mathrm{test}})
+=\varnothing.
+\label{eq:family-disjoint}
+\end{equation}
+Neither of the last two implies the other: two different tasks can share a
+family, and two different families can implement the same task.
+
+The \emph{semantic unit}---what counts as one task---must fit the claim, and
+it must be chosen before overlap is measured.  We ask for a simple
+prospective test.  The claim states what should stay fixed and what should
+vary, then supplies \emph{must-match} pairs (items that should count as the
+same task) and \emph{must-differ} pairs (items that should not).  A
+candidate unit fails if it splits a must-match pair (too fine) or merges a
+must-differ pair (too coarse).  If several defensible units pass and lead to
+different exposure conclusions, we report all of them as a sensitivity
+analysis; the claim may not be stated as if the unit choice did not matter.
+
+Concrete units differ by benchmark.  A finite rule can be identified by its
+complete output vector.  A logic program can be identified by the relation
+it defines over all structures the contract admits.  For CLUTRR, our unit is
+the ordered relation composition plus the target relation, not the story
+string.  For graph reasoning, endpoint-conditioned paths and relation
+schemas answer different questions.  Table~\ref{tab:summary} shows why the
+choice matters: Tensor Logic has endpoint exposure $[484,1000]/1000$ but
+schema exposure $[999,1000]/1000$, while SLR string identity gives zero
+overlap and the registered semantic unit gives a 45.2\% sound lower bound.
+A single pooled ``contamination rate'' would erase these distinctions.
+
+\subsection{Evidence Grades}
+
+Not every overlap finding is equally strong, and we keep the strength
+attached to the finding.  A complete truth table, or a provably injective
+identifier, gives an \emph{exact} identity test.  A normalization procedure
+that emits a proof for every match gives a \emph{sound lower bound}: every
+collision it reports is real, but items it cannot resolve may hide more.
+Approximate execution signatures give an \emph{estimate} and need an error
+analysis.  And an unresolved item is not evidence of novelty.  These grades
+flow through our schema, tables, and claim policy unchanged.
+
+The grades describe what the evidence machinery can identify; they say
+nothing about bugs in the machinery itself---parsers, canonicalizers,
+semantic-ID implementations, validators.  We therefore record assurance
+separately for each audit: the observation contract, source revisions and
+hashes, the semantic-ID implementation, the soundness argument, validation
+coverage, known failure modes, and a qualitative residual-risk note when no
+defensible error rate exists (Appendix~\ref{app:assurance}).
+
+\subsection{Training-Budget Exposure}
+
+Splits are not the only place novelty leaks: an online generator that draws
+fresh episodes can still reuse tasks from a finite pool.  For a discrete
+function distribution $p(f)$ and $N$ independent training draws, the
+probability that an independent test function was seen during training is
+\begin{equation}
+P_{\mathrm{seen}}(N)
+=
+\sum_f p(f)\left[1-(1-p(f))^N\right].
+\label{eq:coverage}
+\end{equation}
+The common shortcut $N/|\mathcal F|$ is valid only when sampling is uniform
+and coverage is low.  A nonuniform sampler running a long stream makes
+common functions almost certain to repeat while rare ones stay novel; the
+Occam audit in Section~\ref{sec:public-audits} is exactly this failure.
+
+\section{Auditing With Incomplete Evidence}
+\label{sec:certification}
+
+\subsection{The Audit Workflow}
+
+Our audits follow four steps.  \textbf{First, declare the held-out object}:
+text, parameters, complete functions, or families.  \textbf{Second, build
+and grade a semantic signature}: exact maps when the space is finite,
+proof-producing normalization when possible, explicitly estimated
+signatures otherwise.  \textbf{Third, measure overlap under the actual
+sampling budget}, including online training streams, not only the nominal
+split.  \textbf{Fourth, separate validity from impact}: check whether the
+protocol supports its novelty claim before asking whether the exposure
+changed model behavior.
+
+\subsection{When the Witness Search Is Incomplete, Report an Interval}
+
+Equivalence search is often incomplete: some items carry a certificate,
+others do not.  The temptation is to count the uncertified ones as novel.
+That is wrong, and the fix is to report exactly what the certificates
+imply.  Let $z_i$ indicate whether evaluation task $i$ occurred in
+training.  A verified certificate on a group $G_j$ supplies
+$\ell_j\leq\sum_{i\in G_j}z_i\leq u_j$.  For pairwise-disjoint certificate
+groups and uncovered set $R$, Proposition~\ref{prop:certified} gives
+\begin{equation}
+\boxed{
+\sum_j\ell_j
+\leq C(E)
+\leq |R|+\sum_j u_j
+}.
+\label{eq:certified-interval}
+\end{equation}
+
+\begin{proposition}[Certified exposure interval]
+\label{prop:certified}
+Under a frozen finite denominator, deterministic semantic identities, sound
+group certificates, pairwise-disjoint groups, and no constraints on uncovered
+items beyond binary membership, Equation~\ref{eq:certified-interval} contains
+every exposure count consistent with the certificates, and both endpoints are
+attained.
+\end{proposition}
+
+The proof is elementary, and we mean that as a feature: the result is an
+accounting device, not new mathematics.  The lower endpoint puts exactly
+$\ell_j$ exposed items in each group and none in $R$; the upper endpoint
+puts $u_j$ in each group and all of $R$.  No tighter interval follows from
+those certificates alone.  The full proof, a grouped-seed corollary, and
+falsification tests are in Appendix~\ref{app:certified}.  The point is
+operational: an audit must report $[L,U]$, and rows without witnesses stay
+out of the ``novel'' column.
+
+When certificate groups overlap, the closed form no longer applies.  The
+toolkit then either solves the resulting binary program exactly by
+mixed-integer linear programming or returns a linear-programming outer
+interval with independently checkable dual certificates
+(Appendix~\ref{tmlrs:app:overlap}).
+
+Sometimes the follow-up question is downstream: among unresolved items with
+observed scores, how well could the truly novel subset be doing?
+Proposition~\ref{tmlrs:prop:novelty} gives the sharp answer.
+
+\begin{proposition}[Novelty-conditioned score interval]
+\label{tmlrs:prop:novelty}
+Let $\mathcal{R}$ be $M$ unresolved items with observed scores
+$y_i\in[0,1]$, sorted as
+$y_{(1)}\leq\cdots\leq y_{(M)}$, and suppose at most $U<M$ of them are
+exposed.  Then the mean score on the truly novel items lies in
+\[
+\left[
+\frac{1}{M-U}\sum_{k=1}^{M-U}y_{(k)},\
+\frac{1}{M-U}\sum_{k=U+1}^{M}y_{(k)}
+\right],
+\]
+both endpoints are attained by some admissible novel set, and the interval
+widens monotonically in $U$.
+\end{proposition}
+
+This is a trimming bound in the sense of \citet{lee2009training} and
+\citet{horowitz1995identification}: without a nontrivial upper bound on
+exposure, any nonempty subset could be the novel one, and the interval is
+$[\min_i y_i,\max_i y_i]$.  We report sensitivity to $U$ (proof in
+Appendix~\ref{tmlrs:app:novelty-proof}).
+
+One caution: the interval isolates witness incompleteness only.  It assumes
+correct sources, semantic IDs, and certificate implementations, and it does
+not absorb machinery failures into $[L,U]$.  Read it together with the
+benchmark-level assurance record, not instead of it.
+
+For compactness, the summary table abbreviates confidence interval (CI) and
+in-context learning (ICL).
+
+\begin{table}[t]
+\caption{Cross-benchmark evidence summary.  Semantic units differ by row and
+must not be pooled into a prevalence estimate.}
+\label{tab:summary}
+\centering
+\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{L{0.85in}L{1.02in}L{1.70in}L{1.95in}}
+\toprule
+Case & Nominal holdout & Measured semantic exposure &
+Behavioral evidence \\
+\midrule
+Exact-alias intervention &
+Cross-family representation &
+Complementary exposure of 40 exact functions &
+$+1.832$ pp macro, 95\% CI $[1.470,2.189]$ \\
+Boolean ICL &
+Fresh function draw &
+0.81--93.44\% exact exposure &
+$-0.06$ to $+0.09$ pp; below preregistered threshold \\
+CLUTRR &
+Disjoint source stories and permutations &
+Randomized exposure of relation-composition patterns &
+V4: $+23.339$ pp, 95\% CI $[17.750,29.226]$ \\
+SLR-Bench &
+Raw rule string &
+$\geq45.2\%$ sound logical overlap &
+Identification stopped before outcome fitting \\
+Tensor Logic &
+Direct-edge removal &
+$[484,1000]/1000$ endpoint; $[999,1000]/1000$ schema &
+No reproducible checkpoint or per-item outputs \\
+Occam Markov &
+Unseen transition task &
+$[2,4]/20$ exact tasks per main experiment &
+Aggregate plots only; regression scope unavailable \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Does Exposure Change Behavior?  Two Controlled Studies}
+\label{sec:behavior}
+
+Knowing that a test task was exposed does not say whether the exposure
+helped.  We therefore ran controlled studies with frozen endpoints and
+paired training runs that differ only in which target tasks are exposed.
+This section reports two of them, with opposite outcomes: a small positive
+gain in a controlled six-architecture study, and a near-zero result in a
+Boolean in-context-learning task despite almost complete exposure.
+Section~\ref{sec:clutrr-external-validation} reports the third, a large
+gain on the public CLUTRR benchmark.  The studies share a design idea but
+deliberately no pooled effect estimate.
+
+\subsection{Study 1: Exact Aliases in a Controlled Generator}
+\label{sec:internal-intervention}
+
+Our finite rule generator has 560 parameter identities but only 518
+complete functions: exactly 40 functions are implemented twice, once by an
+affine rule and once by a parity rule.  This is the cleanest possible
+testbed for aliasing.  We pair the two identities of each aliased function
+($f_{1,b}$ with $f_{11,b}$ for each intercept $b\in\{0,\ldots,19\}$).  For
+each model seed, a frozen SHA-256 bit assigns one member of every pair to
+Arm~A and the other to Arm~B, so every target is exposed in exactly one arm
+and unexposed in the other.  Both arms share 478 common base functions,
+equal family counts, and 20,000 paired episodes; initialization, episode
+order, and optimizer schedule are identical.
+
+We train six architectures---Deep Sets \citep{zaheer2017deep}, Relation
+Network \citep{sung2018relation}, Set Transformer \citep{lee2019set},
+modern Hopfield retrieval \citep{ramsauer2021hopfield}, Perceiver
+\citep{jaegle2021perceiver}, and Transformer
+\citep{vaswani2017attention}---with five seeds and two arms, giving 60 fixed
+epoch-60 runs, all evaluated on the same 10,000 episodes.  Let $\mathbf
+Z_s^A\in\{0,1\}^{40}$ record the target-exposure assignments in Arm~A and
+$\mathbf Z_s^B=\mathbf 1-\mathbf Z_s^A$; for target $f$, $\mathbf
+Z_{s,f}^{(1)}$ is whichever complete arm vector exposes $f$.  Writing
+$A(m,s,f;\mathbf z)$ for accuracy under a complete assignment, the primary
+estimand is the average exposed-minus-unexposed difference
+\begin{equation}
+\tau_{\mathrm{macro}}
+=
+\frac{1}{6}\sum_m
+\frac{100}{5\cdot40}\sum_{s,f}
+\left[
+A(m,s,f;\mathbf Z_{s,f}^{(1)})
+-A(m,s,f;\mathbf Z_{s,f}^{(0)})
+\right].
+\end{equation}
+Because randomization flips complete curricula rather than one target at a
+time, cross-target transfer or interference is part of the identified
+contrast, not a separate quantity.
+
+\begin{table}[t]
+\caption{Preregistered exact-exposure intervention.  Accuracy is percent.
+Architecture intervals use Bonferroni simultaneous 99.1667\% confidence; the
+equal-architecture macro uses the registered hierarchical 95\% bootstrap.}
+\label{tab:internal-models}
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lrrrl}
+\toprule
+Architecture & Exposed & Unexposed & Effect (pp) &
+Simultaneous CI \\
+\midrule
+Deep Sets & 59.60 & 53.49 & +6.110 & $[4.349,7.849]$ \\
+Relation Network & 88.34 & 87.34 & +0.996 & $[0.229,1.749]$ \\
+Set Transformer & 77.80 & 76.76 & +1.042 & $[-0.105,2.247]$ \\
+Modern Hopfield & 88.66 & 88.00 & +0.658 & $[-0.192,1.447]$ \\
+Perceiver & 74.41 & 73.12 & +1.284 & $[-0.042,2.525]$ \\
+Transformer & 82.94 & 82.04 & +0.902 & $[-0.137,1.870]$ \\
+\midrule
+Architecture macro & 78.63 & 76.79 & +1.832 &
+$[1.470,2.189]$ (95\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The preregistered macro criterion passes: the effect is $+1.832$ points,
+its 95\% lower confidence endpoint is positive, and all six architecture
+estimates are positive.  Only Deep Sets meets the stricter per-architecture
+rule (at least one point with its simultaneous interval excluding zero).
+Cross entropy and Brier score improve by $0.0786$ and $0.0267$.  So exact
+cross-family aliases do produce a measurable endpoint effect here---small,
+but reliable.  The design identifies a curriculum-level effect for these
+architectures and this budget; it says nothing about any internal
+memorization mechanism.
+
+\subsection{Study 2: A Near-Zero Contrast at High Exposure}
+\label{sec:boolean}
+
+The released Boolean in-context-learning generators
+\citep{bhattamishra2024understanding} give the opposite outcome, and a
+useful counterexample to the shortcut ``overlap implies a performance
+gain.''  Here the semantic IDs are exact: signed-literal vectors for
+Conjunction-28, active-variable masks for Majority-28, and four-element
+literal subsets for Sparse Disjunction-50.  At the frozen 640,000-episode
+training budget, 0.81\%, 8.88\%, and 93.44\% of the evaluation functions
+already occur in the original training streams.
+
+Before any training, we froze 1,280 evaluation functions per task, three
+original streams, and paired \emph{strict} streams that replace only the
+training slots colliding with an evaluation semantic ID.  The released
+six-layer Transformer is trained for 20,000 fixed steps with three seeds
+under both streams.  The endpoint is mean sign accuracy at prompt positions
+20--39, with \(\Delta_{\rm pp}=100(A_{\rm Original}-A_{\rm Strict})\).
+
+\begin{table}[t]
+\caption{Boolean exposure and registered behavioral effects.  Hierarchical
+intervals resample model seeds and semantic-ID clusters.}
+\label{tab:boolean-main}
+\centering
+\small
+\begin{tabular}{lrrl}
+\toprule
+Task & Exposure (\%) & Mean effect (pp) & 95\% CI \\
+\midrule
+Conjunction & 0.81 & $-0.013$ & $[-0.092,0.044]$ \\
+Majority & 8.88 & $-0.064$ & $[-0.199,0.078]$ \\
+Sparse Disjunction & 93.44 & $+0.092$ & $[-0.060,0.282]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+No task reaches the frozen two-point threshold, and no task has three
+positive seed deltas, so neither preregistered success criterion is met and
+the planned seed and model expansion was not run.  Even at 93.44\% exact
+exposure, the effect stays within a tenth of a point.  The result is bounded
+to this model, budget, and released task definitions; it does not show that
+exposure can never matter.  Together with the small positive result above,
+it shows why exposure prevalence and behavioral effect are separate
+measurements.
+
+\input{sections/clutrr_external_validation}
+
+\section{Auditing Three Public Protocols}
+\label{sec:public-audits}
+
+The controlled studies estimate behavior when retraining is feasible.  The
+structural audits here answer the prior question: does a released protocol
+support the semantic novelty it claims?  Each case keeps its own semantic
+namespace, witness completeness, and claim boundary; we do not pool them
+into a prevalence estimate.
+
+\subsection{SLR-Bench: String Novelty Masks Logical Overlap}
+\label{sec:slr}
+
+SLR-Bench contains 20 curriculum levels generated by an automated
+logical-reasoning framework \citep{helff2026slr}; its released
+\texttt{v1-All} split has 18,053 training rows and 1,000 test rows, and no
+test rule string appears verbatim in training.  String exclusion, however,
+is not logical novelty.  Tokenizing Prolog while ignoring whitespace
+already finds 70 test rules identical to a training rule.  For flat
+positive rules, we additionally canonicalize variable names and condition
+order, drop duplicate existential profiles, and drop existential conditions
+that a stronger profile already entails.  This proves 382 further
+train--test equivalences.  The two sets are disjoint, so
+\begin{equation}
+\frac{70+382}{1000}=45.2\%
+\end{equation}
+is a sound lower bound (Figure~\ref{fig:slr}).
+
+The mechanism is ordinary logic, not fuzzy similarity.  Without variable
+inequality,
+\begin{equation}
+\exists x\,P(x)\land\exists y\,P(y)
+\equiv
+\exists x\,P(x),
+\end{equation}
+because both variables may bind to the same object.  Likewise, a weaker
+existential condition is redundant when a stronger profile entails it.
+Every reported pair comes with a train rule, a test rule, and the canonical
+witness, so the 45.2\% figure can be checked pair by pair rather than
+believed.
+
+We do not infer model impact from the released per-item prediction
+artifact: although it aligns with all 1,000 test IDs and reference rules,
+its Basic-tier accuracy does not reproduce the paper's reported aggregate.
+A preregistered adjusted overlap--correctness analysis also stopped before
+fitting, because the output is not tied to a reproducible checkpoint and
+exact curriculum-level common support retains only 352/452 witnessed rows
+(77.88\%), below the frozen 80\% threshold.  SLR therefore supports the
+structural lower bound, not a performance-inflation estimate.
+
+For the \TTenM{} unresolved SLR-Bench items, an exploratory
+(not preregistered) sensitivity analysis leaves the correct fraction $p$
+unspecified: Proposition~\ref{tmlrs:prop:novelty} gives
+$[\max(0,pM-U),\min(pM,M-U)]/(M-U)$ for an assumed exposure upper bound
+$U<M$.  Appendix~\ref{tmlrs:app:novelty-proof} shows how wide the interval
+can get, without using the released prediction artifact or estimating model
+performance.
+
+\subsection{Two More Failure Modes: Broken Witnesses and Resampled Pools}
+\label{sec:tl-occam}
+
+\textbf{Witness breakage (Tensor Logic).}  The compositional split of
+\citet{shah2026tensorlogic} selects two-hop test paths and then removes the
+1,000 direct test edges from training.  Edge removal works; path removal
+does not.  Because the removal is global, it can delete an edge that another
+selected path relies on, and only 379 of the 1,000 designated test paths
+survive.  Allowing alternative intermediate entities, 484 of 1,000 queries
+retain an endpoint-level witness in training, while the ordered
+relation-composition schema appears in scrubbed training for 999 of 1,000.
+Equation~\ref{eq:certified-interval} therefore gives endpoint exposure
+$[484,1000]/1000$ and schema exposure $[999,1000]/1000$.  The repository
+publishes no checkpoint, per-query predictions, or training logs, so no
+behavioral effect is identified.
+
+\textbf{Finite-space resampling (Occam).}  The released Markov evaluator of
+\citet{deora2025occam} fixes ten task seeds per order, while training
+assigns seed \texttt{step+i}.  Under the paper's 800,000-sequence budget,
+evaluation seeds 5 and 12,579 occur in training six and 32 times,
+respectively.  The assignment of orders uses unseeded NumPy state and was
+not persisted, so we cannot tell which order each occurrence used; grouping
+the two evaluated orders per seed gives a certified interval of $[2,4]/20$
+exact transition-task exposures in each main experiment, or 10--20\%.  An
+exhaustive census of 75,093 potential training transition signatures finds
+no cross-seed collision, and at least 93.7425\% of training episodes reuse a
+prior \texttt{(order, transition tensor)} because adjacent batches reuse
+seeds.  The pinned repository contains no linear-regression implementation,
+although regression was part of the frozen audit scope; that scope remains
+unresolved rather than replaced by the available Markov subset.
+
+\subsection{Reporting Order and the Failed Breadth Criterion}
+
+Tensor Logic and Occam were selected and frozen before we looked at any
+semantics, and both are reported.  Our original breadth criterion---two
+complete public audits and one credible behavioral source---was not met, and
+we keep that outcome instead of redefining the criterion: the separately
+preregistered CLUTRR study supplies behavioral evidence without changing
+the historical decision.  Appendix~\ref{app:registration-timeline} gives
+the full registration timeline.  These cases are protocol audits, not
+prevalence estimates.
+
+\section{From Audits to a Reporting Standard}
+\label{sec:recommendations}
+
+The three failure modes are cheap to prevent once they are named.  We
+distill the audits into a short reporting standard for any benchmark that
+claims novelty, and into a toolkit that checks the standard mechanically.
+
+\paragraph{Name the held-out object.}  Every novelty claim should state
+whether it concerns records, parameters, programs, complete functions,
+relation compositions, or rule families, together with the observation
+contract, and it should pass the must-match/must-differ adequacy test
+before overlap is measured.  ``Unseen'' without a named object and its
+observable equivalence is not an evaluation specification.
+
+\paragraph{Report sensitivity to the unit.}  When more than one semantic
+unit passes the adequacy test, run the audit under each and report whether
+the conclusion changes.  Endpoint paths and relation schemas are both valid
+units for Tensor Logic---with very different answers---and neither should
+silently stand in for the other.
+
+\paragraph{Split after semantic grouping.}  When exact semantics are
+finite, canonicalize or hash complete mappings before splitting.  For
+executable programs, use proof-producing normalization under the declared
+contract where possible, and label incomplete detection with
+Equation~\ref{eq:certified-interval}, not as zero overlap.
+
+\paragraph{Record feasibility before splitting.}  Benchmark designers
+should specify the semantic domain, the basis for deciding equivalence,
+normalization and witness-search costs, and a stopping rule fixed
+independently of observed overlap;
+Appendix~\ref{app:normalization-feasibility} lists the seven fields.
+Exhaustive, injective procedures support exact grouping; sound but
+incomplete procedures support a lower bound; approximate procedures need an
+error model; and a procedure without a sound relation to the contract
+cannot support a semantic-novelty claim.
+
+\paragraph{Count the training budget.}  For discrete generators, report
+weighted coverage using Equation~\ref{eq:coverage}, not only the nominal
+hypothesis-space size.  Online generation does not guarantee semantic
+novelty.
+
+\paragraph{Re-check witnesses after mutation.}  Removing one edge, rule, or
+source object can invalidate another selected witness---the Tensor Logic
+failure mode.  A split-construction pipeline should rerun its semantic
+validity checks on the final materialized data.
+
+\paragraph{Measure behavior separately.}  Overlap prevalence and model
+impact are different quantities.  Per-item predictions permit descriptive
+stratification; stronger claims require a matched intervention or an
+adequately supported identification design.
+
+\paragraph{Keep provenance.}  Manifests should record observation
+contracts, semantic IDs, source versions and hashes, random seeds, category
+assignments, stream hashes, witness grades, validator coverage, known
+failure modes, and residual assurance risk.  Tables should be generated
+from structured results, and preregistered negative outcomes should not be
+rewritten after a later study succeeds.
+
+\paragraph{The toolkit.}  The versioned \texttt{semantic-audit-v1} command
+maps a benchmark into a claim-specific schema recording the fields above:
+observation contract, semantic units, source hashes, witnesses,
+completeness, bounds, and permitted claims.  Validation rejects unsupported
+overlap decisions and missing contracts; canaries, negative tests, and two
+isolated reproductions pass with byte-identical manifests
+(Appendix~\ref{app:assurance}).  The supplement retains frozen manifests,
+paired-run checks, predictions, bootstrap draws, and separate-code-path
+metric recomputation, and \texttt{make reproduce-paper} regenerates the
+analyses, macros, and figures from compact results without retraining;
+Appendix~\ref{app:repro} maps claims to artifacts.  The artifact is
+available at
+\par\noindent
+\href{https://github.com/zihanzhou0725/semantic-novelty-audit-artifact}%
+{\nolinkurl{https://github.com/zihanzhou0725/semantic-novelty-audit-artifact}}.
+The shared schema preserves distinct semantic units rather than imposing a
+pooled metric.
+
+\section{Related Work}
+\label{sec:related}
+
+Table~\ref{tab:prior} positions this paper against the nearest lines of
+work; the text below expands on each.
+
+\begin{table}[t]
+\caption{Positioning against the nearest contamination and audit work.
+\emph{Object}: what counts as a duplicate.  \emph{Evidence}: the strongest
+guarantee attached to a finding.  \emph{Behavioral}: whether a behavioral
+effect of exposure is measured.}
+\label{tab:prior}
+\centering
+\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{L{1.45in}L{1.35in}L{1.45in}L{0.95in}}
+\toprule
+Work & Object & Evidence & Behavioral \\
+\midrule
+Surface detectors \citep{sainz2023nlp,xu2024contamination,golchin2024time,oren2024proving} &
+surface text of fixed test sets & detector estimate & none \\
+Deduplication studies \citep{lee2022dedup,allamanis2019duplication} &
+near-duplicate documents & statistical estimate & indirect \\
+\citet{magar2022data} &
+downstream examples in pretraining & exact (surface) & controlled \\
+\citet{spiesberger2026soft} &
+semantic duplicates & similarity estimate & controlled \\
+\midrule
+This paper &
+generator semantics under a contract &
+certified: exact, sound lower bound, or interval &
+preregistered, paired curricula \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{In-context learning and procedural generalization.}
+Studies of in-context function learning
+\citep{garg2022what,akyurek2023what,bhattamishra2024understanding},
+meta-learning \citep{finn2017maml,vinyals2016matching}, and systematic
+generalization \citep{lake2018generalization,chollet2019measure} ask what
+algorithms or abstractions models acquire.  We ask a prior question:
+whether the evaluation protocol has isolated the semantic object that such
+a claim depends on.
+
+\paragraph{Contamination and semantic identity.}
+Leakage can invalidate conclusions even when performance is measured
+correctly \citep{kapoor2023leakage}.  Most contamination work operates on
+the surface text of fixed test sets
+\citep{sainz2023nlp,xu2024contamination,golchin2024time,oren2024proving},
+and deduplication studies show that near-duplicates inflate measured
+generalization \citep{lee2022dedup,allamanis2019duplication}.  Our objects
+are different: generator semantics that can recur under arbitrarily
+different surface forms.  The nearest comparator is
+\citet{spiesberger2026soft}, who detect semantic duplicates in opaque
+corpora and test models trained on synthetic semantic variants.  Our
+increment is narrower and executable: a contract defines equality, exact or
+proof-producing signatures replace similarity where available, and
+unresolved identities stay explicit instead of being forced into a detector
+decision.
+
+\paragraph{Behavioral interventions.}
+\citet{magar2022data} separate memorization from exploitation by
+manipulating whether downstream examples appear in pretraining, and
+\citet{spiesberger2026soft} fine-tune on semantic duplicates.  Our design
+randomizes exact semantic-pattern assignments in paired complementary
+curricula, keeps target-level prediction manifests, and treats structural
+exposure, the curriculum-level contrast, and internal mechanisms as three
+separate quantities.
+
+\paragraph{Generated reasoning benchmarks.}
+CLUTRR \citep{sinha2019clutrr}, SLR \citep{helff2026slr}, Tensor Logic
+\citep{shah2026tensorlogic}, and the Occam experiments
+\citep{deora2025occam} supply the protocols we audit; we do not compare
+model rankings across them.  Dynamic benchmarks such as DyVal
+\citep{zhu2024dyval} and Reasoning Gym \citep{stojanovski2025reasoninggym}
+regenerate instances to resist contamination; our Occam audit shows that
+regeneration alone does not guarantee semantic novelty when the hidden task
+space is finite.
+
+\paragraph{Compositional-generalization splits.}
+SCAN \citep{lake2018generalization}, COGS \citep{kim2020cogs}, and the
+maximum-compound-divergence splits of CFQ \citep{keysers2020cfq} build
+held-out sets from a known grammar so that test items require unseen
+combinations of seen primitives; \citet{hupkes2020compositionality}
+decompose the corresponding notions of compositionality.  These works
+design new splits with semantic control built in; we go the other way and
+audit existing protocols whose splits are defined on representations.  The
+two views are complementary: compound divergence could itself serve as a
+semantic unit inside an observation contract.
+
+\paragraph{Partial identification.}
+The certified interval follows the partial-identification principle that
+assumptions and verified constraints determine a set of compatible values,
+not necessarily a point \citep{tamer2010partial}.  The nearest analogue is
+\citet{balke1997bounds}, whose linear program bounds treatment effects
+under imperfect compliance; we claim no new partial-identification theory.
+Our specialization uses disjoint certificate groups to get a closed-form
+finite identified set, ties every constraint to row-level provenance,
+reports machinery assurance separately, and keeps behavioral effects as
+separate estimands.
+
+\paragraph{Evidence schemas.}
+Datasheets \citep{gebru2021datasheets} and Croissant
+\citep{akhtar2024croissant} document dataset provenance and structure.  Our schema is complementary and adds the fields specific to
+semantic-novelty evidence: the contract and unit, witness grade and
+completeness, certificate constraints and bounds, behavioral-estimand
+metadata, residual risk, and the allowed claim wording.
+
+\section{Limitations}
+\label{sec:limitations}
+
+Our settings are synthetic, and deliberately so: they are the cases where
+semantic identity can be checked exactly or with proofs.  Whether natural
+language benchmarks have similar overlap rates is a different question,
+which our audits do not answer.  Within our settings, several boundaries
+deserve emphasis.
+
+The SLR result is a sound lower bound: complex aggregates, negation,
+arithmetic, and unresolved disjunction are not fully normalized, so the
+true overlap is at least 45.2\% and plausibly higher.  The released SLR
+model output does not reproduce the reported aggregate, so we make no
+behavioral claim for SLR.  Tensor Logic and Occam lack the artifacts needed
+for a behavioral estimate, and one frozen Occam scope (linear regression)
+is unimplemented in the pinned repository.
+
+Our contracts cover finite, deterministic, effect-free tasks.  We have not
+built equivalence procedures for partial, stateful, nondeterministic,
+interactive, exception-raising, or resource-sensitive programs.  The
+certified intervals are conditional on the audited sources and the
+semantic-signature machinery; the qualitative assurance risks in
+Appendix~\ref{app:assurance} are not converted into a numerical error rate.
+
+Each intervention covers a bounded population.  The internal study covers
+six architectures, 40 cross-family targets, and one budget, and only Deep
+Sets passes the per-architecture simultaneous criterion.  The Boolean null
+covers one released Transformer configuration and three task definitions.
+CLUTRR V4 covers Task~1, relation length three, one byte Transformer, one
+exposure dose, and one budget; its large effect does not automatically
+extend to other relation lengths, architectures, or natural text.  Both
+positive studies randomize complete complementary curricula, so the
+contrast includes cross-target transfer and does not isolate the direct
+effect of toggling a single target.
+
+The CLUTRR V3 pilot did not meet its preregistered precision criterion
+despite its positive interval, and V4 is not pooled with it.  The certified
+interval is tight only relative to the supplied certificate system; more
+sound constraints can narrow it.  Finally, none of the studies identifies a
+literal lookup table or any other internal memorization mechanism.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Syntactic novelty is not semantic novelty.  Across six generated reasoning
+settings, representation-level holdouts admitted exact aliases, provable
+logical equivalences, broken executable witnesses, or repeated hidden
+tasks.  Certified intervals keep incomplete witness search honest instead
+of turning missing evidence into novelty.  And the behavioral question has
+no default answer: paired curricula with exact semantic exposure produced a
+$+1.832$-point macro gain across six architectures and a $+23.339$-point
+gain on a public benchmark, while a Boolean task moved by less than a tenth
+of a point at 93.44\% exposure.  Benchmarks should name the object their
+split holds out, grade their evidence, and report the interval; and anyone
+who wants to know whether exposure matters should measure it.
+
+\impact{% TODO(submission): the author-notification sentence below is true
+% only once the disclosure emails to the SLR-Bench, Tensor Logic, and Occam
+% authors have been sent.  Send them before submitting; see playbook section 5.
+Our work audits public benchmarks and gives benchmark authors a reporting
+standard and a checking toolkit.  The intended impact is a more trustworthy
+evaluation ecosystem: novelty claims become checkable, and our per-item
+witnesses let anyone verify the audits instead of trusting them.  We see
+two risks.  First, a result like our 45.2\% lower bound for SLR-Bench could
+be misread as ``the benchmark is useless.''  We do not claim that: overlap
+prevalence is not a performance-inflation estimate, and our own behavioral
+studies show that exposure can have a near-zero effect.  We ask readers to
+report our bounds together with their evidence grades.  Second, auditing
+named protocols can read as blame.  We treat the audited systems as
+evidence of a general measurement gap, not as faults of their authors,
+whose publicly released tooling made our analysis possible, and we notified
+the authors of the audited benchmarks before submission.  All data we use
+are synthetic or public, and we see no privacy or security concerns.}
+
+\section*{Data and Code Availability}
+
+All audited artifacts are public and were pinned by revision and SHA-256
+hash: SLR-Bench \texttt{v1-All} and its model outputs
+\citep{helff2026slr}, the Boolean in-context-learning generators
+\citep{bhattamishra2024understanding}, CLUTRR \citep{sinha2019clutrr},
+Tensor Logic \citep{shah2026tensorlogic}, and the Occam repository
+\citep{deora2025occam}.  Our code, frozen protocols, manifests, per-item
+predictions, and analysis results are available at
+\par\noindent
+\href{https://github.com/zihanzhou0725/semantic-novelty-audit-artifact}%
+{\nolinkurl{https://github.com/zihanzhou0725/semantic-novelty-audit-artifact}},
+and \texttt{make reproduce-paper} rebuilds every table, macro, and figure
+in this paper from the retained results without retraining.  Training
+checkpoints (1.9\,GB) are excluded and are not needed to reproduce any
+reported statistic.
+
+\acks{TODO(authors): funding sources and competing-interests declaration.
+DMLR requires both; this is placeholder text, not a confirmed statement.}
+
+\bibliography{references}
+
+\clearpage
+\appendix
+\input{appendix}
+
+\end{document}

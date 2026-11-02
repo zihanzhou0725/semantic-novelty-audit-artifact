@@ -1,0 +1,118 @@
+{
+  "adjusted_association": {
+    "bootstrap_attempts": 0,
+    "bootstrap_successful_replicates": 0,
+    "confidence_interval_pp": null,
+    "estimate_pp": null,
+    "outcome_model_fit_run": false,
+    "propensity_model_fit_run": false,
+    "status": "not_estimated_due_identification_no_go"
+  },
+  "behavioral_outcomes_loaded": false,
+  "claim_boundary": {
+    "allowed": [
+      "The witnessed semantic-overlap lower bound is 452/1000 (45.2%).",
+      "P2 v1 is Identification No-Go before outcome fit."
+    ],
+    "forbidden": [
+      "An adjusted overlap-correctness association under P2 v1.",
+      "No registered witness means semantic novelty.",
+      "A causal, inflation, or memorization claim from P2."
+    ]
+  },
+  "common_support": {
+    "exact_curriculum_precheck": {
+      "fraction_gate_passed": false,
+      "minimum_group_rows": 100,
+      "minimum_retained_fraction": 0.8,
+      "no_witness_retained": 498,
+      "no_witness_retained_fraction": 0.9087591240875912,
+      "no_witness_total": 548,
+      "row_count_gate_passed": true,
+      "supported_levels": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "unsupported_levels": {
+        "1": "witness_only",
+        "15": "no_witness_only",
+        "3": "witness_only"
+      },
+      "witnessed_retained": 352,
+      "witnessed_retained_fraction": 0.7787610619469026,
+      "witnessed_total": 452
+    },
+    "propensity_trim": {
+      "bounds": [
+        0.05,
+        0.95
+      ],
+      "status": "not_run_due_exact_level_precheck_failure"
+    }
+  },
+  "covariates": {
+    "atom_count_range": [
+      2,
+      18
+    ],
+    "logical_structure_counts": {
+      "aggregate_or_quantified": 152,
+      "arithmetic_or_comparison": 10,
+      "disjunctive": 77,
+      "flat_positive": 702,
+      "negated": 19,
+      "other_complex": 40
+    },
+    "missing_covariate_rows": 0,
+    "rows": 1000,
+    "token_length_range": [
+      20,
+      146
+    ]
+  },
+  "decision": "identification_no_go_before_outcome_fit",
+  "failure_reasons": [
+    "no_reproducible_confirmatory_prediction_source",
+    "witnessed_exact_curriculum_retention_below_80_percent"
+  ],
+  "input_sha256": {
+    "external_semantic_overlap_audit/artifacts/slr_semantic_overlap_witnesses.csv": "1beea083e16ab8c95c89c07bf6129ed176c7bb20a2cf69648f2d3fcdffd77023",
+    "external_semantic_overlap_audit/artifacts/slr_token_overlap_witnesses.csv": "3788be44cc656d871d2641f59b119ea2acb2ac466d4c386923990273f0f31ff7",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/p2/source_manifest.json": "d0a029a1e46cb3919b759463a93a66806922b4e17bef38a37989b03aa79a136b",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/preregistration.json": "1ca70e1a76f41c0c906ffe420cc1c7499420056519f05759332d2e3c1697775b",
+    "external_semantic_overlap_audit/scripts/audit_slr.py": "76996ba37ab6804cf70a52028d4a9477ce03155aa64a2e6e94bf9e24e421e678",
+    "external_semantic_overlap_audit/upstream/slr_dataset/v1-All/test-00000-of-00001.parquet": "8f19a68e9d84edb9ca3015804e342aa4a0f43c85d13f9b88694adbe2d79f9548"
+  },
+  "model_predictions_loaded": false,
+  "reproducibility_precondition": {
+    "eligible_confirmatory_source_count": 0,
+    "repository_output_test_alignment": "100_percent",
+    "source_manifest_sha256": "d0a029a1e46cb3919b759463a93a66806922b4e17bef38a37989b03aa79a136b",
+    "status": "failed"
+  },
+  "schema_version": "quality-enhancement-p2-identification-v1",
+  "status": "complete",
+  "witness_census": {
+    "flat_semantic_alias_rows": 382,
+    "no_registered_witness_rows": 548,
+    "test_rows": 1000,
+    "token_identity_rows": 70,
+    "witness_intersection_rows": 0,
+    "witnessed_overlap_rows": 452
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "architecture_macro_ci": [
+    0.008410205171727775,
+    0.03787350880481438
+  ],
+  "architecture_macro_difference": 0.02314185698827108,
+  "cross_architecture_inflation_supported": true,
+  "legacy_leakage_by_seed": {
+    "0": {
+      "leaked_unseen_identities": 13,
+      "leaked_unseen_identity_fraction": 0.09285714285714286
+    },
+    "1": {
+      "leaked_unseen_identities": 13,
+      "leaked_unseen_identity_fraction": 0.09285714285714286
+    },
+    "2": {
+      "leaked_unseen_identities": 19,
+      "leaked_unseen_identity_fraction": 0.1357142857142857
+    },
+    "3": {
+      "leaked_unseen_identities": 15,
+      "leaked_unseen_identity_fraction": 0.10714285714285714
+    },
+    "4": {
+      "leaked_unseen_identities": 18,
+      "leaked_unseen_identity_fraction": 0.12857142857142856
+    }
+  },
+  "legacy_leaked_unseen_identities_mean": 15.6,
+  "legacy_leaked_unseen_identity_fraction_mean": 0.11142857142857142,
+  "maximum_absolute_rank_change": 0,
+  "positive_architectures": 5,
+  "rank_spearman": 1.0,
+  "ranking_instability_supported": false
+}

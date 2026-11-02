@@ -1,0 +1,35 @@
+inherit: 
+    - lstm_base.yaml
+    
+model:
+    family: lstm
+    n_dims: 28
+    n_positions: 100
+
+training:
+    task: conjunction
+    data: boolean
+    batch_size: 32
+    train_steps: 50001
+    learning_rate: 0.000025
+    curriculum:
+        dims:
+            start: 28
+            end: 28
+            inc: 1
+            interval: 2000
+        points:
+            start: 70
+            end: 70
+            inc: 5
+            interval: 2000
+
+out_dir: ../models/conjunction
+
+wandb:
+    name: "conj"
+
+
+misc:
+    gpu: 3
+    wandb: True

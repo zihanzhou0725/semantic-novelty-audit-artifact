@@ -1,0 +1,49 @@
+{
+  "schema_version": "mathematics-collision-census-input-manifest-v1",
+  "analysis_id": "mathematics-collision-census-v1",
+  "frozen_before_join": true,
+  "parent_protocol_sha256": "f79fa0f5927769f090faeaee9941a1ff1bbd28a958158c470f7014250c34ddcc",
+  "materialization_validation_report_sha256": "0e44e2ea828c8bc14793d07415ec1dc77dbc6d12c31656991258d84358d2ecfd",
+  "materialization_checksum_manifest_sha256": "1242c6f5179fbdb24895987c4836d27ed2b41fb10f1dd69c765a90a5091f8f64",
+  "data_checksum_manifest_sha256": "607b7f1ed861de3001c8595b1cfee7080da617e20ebf424c905f78974284aeda",
+  "streams": [
+    {
+      "module": "polynomials__expand",
+      "regime": "train",
+      "rows": 100000,
+      "path": "manifests/external-behavior-v2/data/mathematics_train_polynomials__expand.jsonl",
+      "sha256": "c19ae5c74115352457618147121a756c843ff1218fe88d478e9848c524b9dd7d"
+    },
+    {
+      "module": "polynomials__collect",
+      "regime": "train",
+      "rows": 100000,
+      "path": "manifests/external-behavior-v2/data/mathematics_train_polynomials__collect.jsonl",
+      "sha256": "9607ee4372974c6141da16f4548345eb67f783cb29d5b561e752038510bc556e"
+    },
+    {
+      "module": "polynomials__expand",
+      "regime": "interpolate",
+      "rows": 10000,
+      "path": "manifests/external-behavior-v2/data/mathematics_interpolate_polynomials__expand.jsonl",
+      "sha256": "3d86b69cefd2f1ea37e67463f9dd166c216cc7b76a3284e5d8b6dc99a1745a9c"
+    },
+    {
+      "module": "polynomials__collect",
+      "regime": "interpolate",
+      "rows": 10000,
+      "path": "manifests/external-behavior-v2/data/mathematics_interpolate_polynomials__collect.jsonl",
+      "sha256": "55c8c06aa61cdfaa13c22a463fa818c74a44573090456ae3b82db9f70bedab05"
+    }
+  ],
+  "row_schema_required_fields": [
+    "answer",
+    "canonical_srepr",
+    "module",
+    "question",
+    "regime",
+    "row_id",
+    "row_index",
+    "semantic_id"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "block_design": {
+    "arms": [
+      "A",
+      "B"
+    ],
+    "candidate_block_counts": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "common_base_rows_per_run": 22720,
+    "evaluation_rows_per_block_run": 8000,
+    "exposure_rows_per_arm": 1280,
+    "model_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "pairs_per_block": 20,
+    "runs_per_block": 16,
+    "target_patterns_per_block": 40,
+    "training_rows_per_run": 24000
+  },
+  "block_selection_gate": {
+    "capacity_required": "selected pair count must not exceed the 139 V3-disjoint pairs",
+    "failure_action": "directional_v4_design_no_go_do_not_materialize_training",
+    "rule": "Select the smallest candidate block count whose design-scenario Monte Carlo power and 95% Wilson lower endpoint are both at least 0.90.",
+    "training_release": false
+  },
+  "design_id": "external-behavior-v4-directional-design-v1",
+  "epistemic_status": "prospective_confirmation_using_v3_as_declared_pilot",
+  "freeze_date": "2026-10-13",
+  "independence": {
+    "fresh_model_training_required": true,
+    "v3_is_pilot_only": true,
+    "v3_target_semantic_ids_forbidden_as_v4_targets": true,
+    "v4_outcomes_available_at_freeze": false
+  },
+  "primary_gate": {
+    "confidence_interval": "two-sided hierarchical percentile 95% interval",
+    "negative_or_null_claim_registered": false,
+    "positive_rule": "point_estimate_pp >= 1.0 and two_sided_95_percent_ci_lower_pp > 0",
+    "sesoi_pp": 1.0
+  },
+  "primary_estimand": {
+    "effect_unit": "model seed by target semantic pattern",
+    "formula": "100/(8*selected_target_count) times the sum over seeds and selected targets of row-weighted exposed-arm accuracy minus unexposed-arm accuracy",
+    "orientation": "exposed_minus_unexposed",
+    "pair_weighting": "equal over every selected pair and its two members",
+    "seed_weighting": "equal over model seeds 0 through 7",
+    "unit": "percentage_points"
+  },
+  "power_simulation": {
+    "candidate_pair_counts": [
+      20,
+      40,
+      60,
+      80
+    ],
+    "design_effect_derivation": "min(0.5 * V3 point estimate, V3 registered 95% lower endpoint)",
+    "design_effect_pp": 7.66875,
+    "interval_half_width": "1.959963984540054 * calibrated_standard_error",
+    "minimum_power": 0.9,
+    "minimum_wilson_lower": 0.9,
+    "model": "study_estimate = effect_assumption + calibrated_standard_error * standard_normal_draw",
+    "replicates": 100000,
+    "seed": 202610131,
+    "sensitivity_effects_pp": [
+      0.0,
+      1.0,
+      5.0,
+      7.66875,
+      9.876873975196792,
+      15.3375
+    ],
+    "standard_error": "V3 seed-pair random-effects variance at S=8 and candidate Q, multiplied by the frozen V3 percentile-width calibration factor",
+    "success": "simulated point estimate >= 1.0 pp and simulated two-sided 95% lower endpoint > 0"
+  },
+  "randomness": {
+    "arm_assignment_namespace": "clutrr:v4:arm:{block_index}:{model_seed}:{block_pair_index}",
+    "epoch_order_namespace": "clutrr:epoch:{model_seed}:{epoch_1_based}",
+    "model_initialization_namespace": "clutrr:model:{model_seed}",
+    "paired_initialization_epoch_order_and_dropout_rng": true,
+    "same_model_seed_randomness_shared_across_blocks": true
+  },
+  "schema_version": "external-behavior-v4-directional-preregistration-v1",
+  "target_selection": {
+    "candidate_order": "Reconstruct all V3-eligible same-label adjacent pairs, sort globally by pair SHA-256, remove the exact 20 V3 pair hashes, then take the prefix required by the frozen block gate.",
+    "pair_members_preserved": true,
+    "selection_uses_v3_outcomes": false,
+    "v3_target_semantic_ids_excluded": true
+  },
+  "training_and_evaluation": {
+    "common_base": "One deterministic 22,720-row base shared across every block and arm; exclude every V3 target and every selected V4 target semantic ID.",
+    "evaluation_allocation": "For each selected target use the first 34 complete source groups: all rows from groups 0 through 32 and two rows from group 33.",
+    "exposure_allocation": "Use the next 11 complete source groups: all rows from groups 34 through 43 and four rows from group 44.",
+    "model_optimizer_checkpoint": "identical to frozen V3 execution-v1",
+    "per_block_semantics": "Each block is a complete V3-sized 20-pair experiment; blocks are combined only in the frozen primary estimand."
+  }
+}

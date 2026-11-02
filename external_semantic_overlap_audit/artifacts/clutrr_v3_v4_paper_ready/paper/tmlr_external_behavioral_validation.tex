@@ -1,0 +1,155 @@
+\section{External Behavioral Validation on CLUTRR}
+\label{sec:clutrr-external-validation}
+
+The preceding audits establish that representation-level holdouts can fail to
+exclude familiar semantics, but protocol exposure alone does not show that a
+learner uses that exposure.  We therefore ran a controlled intervention on
+CLUTRR \cite{sinha2019clutrr}, a public benchmark of kinship reasoning from
+generated text.  The intervention asks a narrow behavioral question:
+\emph{does training on one set of surface realizations of a relation pattern
+improve accuracy on source-group-disjoint realizations of the same semantic
+pattern?}  We report a preregistered pilot (V3) and a subsequent,
+target-disjoint directional confirmation (V4).  The studies are not pooled.
+
+\subsection{Task, Semantic Unit, and Intervention}
+
+We freeze CLUTRR Task~1 at relation length three, without distractor facts.
+Each example contains a three-edge kinship chain and a query relation drawn
+from 23 classes.  Entity names are canonicalized by order of appearance.  The
+semantic identity is the ordered tuple consisting of the target relation and
+the three edge relations; sentence order is therefore a surface property, not
+part of the registered semantic identity.
+
+For every three-sentence source story, we enumerate all six sentence
+permutations.  The six permutations share a source-group identifier.  A target
+pattern is eligible only when it has at least 45 complete source groups.  Its
+evaluation set contains 200 rows from the first 34 sorted groups: all six
+permutations from groups 0--32 and two permutations from group~33.  Its
+training exposure contains 64 rows from the next 11 groups: all six
+permutations from groups 34--43 and four from group~44.  Evaluation and
+exposure source groups are consequently disjoint.
+
+Targets are paired only within the same output relation.  For each model
+seed, a frozen SHA-256 bit exposes one pair member in Arm~A and the other in
+Arm~B; the assignment is reversed for the complementary member.  Both arms
+share a 22,720-row base containing no target semantics and append 1,280
+target-exposure rows, giving 24,000 training rows per run with identical
+label counts.  Initialization, all 30 epoch permutations, tensor shapes, and
+dropout RNG trajectories are paired across complementary runs.
+
+We train a fixed four-layer byte Transformer with model dimension 128, four
+attention heads, feed-forward dimension 512, and 0.1 dropout.  All runs use
+AdamW, batch size 128, learning rate $3\times10^{-4}$, deterministic
+float32 CPU execution, and the fixed epoch-30 checkpoint after 5,640 updates.
+No validation selection or early stopping is used.  The evaluation manifest
+is identical across arms within a block.
+
+\subsection{Estimand and Registered Inference}
+
+Let $A_{s,f}(e)$ be row-weighted accuracy for model seed $s$, target semantic
+pattern $f$, and exposure status $e\in\{0,1\}$.  For $S$ frozen seeds and
+$F$ frozen targets, the sole primary estimand is
+\begin{equation}
+\tau
+=
+\frac{100}{SF}
+\sum_{s=1}^{S}\sum_{f=1}^{F}
+\left[A_{s,f}(1)-A_{s,f}(0)\right]
+\quad\text{percentage points}.
+\label{eq:clutrr-exposure-estimand}
+\end{equation}
+The 95\% interval uses 20,000 hierarchical percentile-bootstrap replicates.
+Each replicate resamples model seeds, complete same-label target pairs, and
+source groups within each selected pair member.  Source-group draws are shared
+between exposed and unexposed predictions and across selected seed
+occurrences; all rows in a sampled group occurrence are retained.
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrl}
+\toprule
+Study & Pairs & Targets & Runs & Effect (pp) & 95\% CI / Gate \\
+\midrule
+V3 pilot & 20 & 40 & 16 & $+15.338$ &
+$[9.877,21.369]$; precision No-Go \\
+V4 confirm. & 40 & 80 & 32 & $+23.339$ &
+$[17.750,29.226]$; directional Go \\
+\bottomrule
+\end{tabular}
+\caption{CLUTRR exposure interventions.  V3 and V4 use disjoint target
+semantic patterns and are not pooled.}
+\label{tab:clutrr-external-validation}
+\end{table}
+
+\subsection{V3: Positive Direction, Registered Precision No-Go}
+
+V3 froze 20 same-label pairs, 40 targets, eight model seeds, and two arms,
+for 16 runs.  Its preregistration admitted positive, negative, and
+equivalence conclusions only after a precision requirement: the 95\%
+interval width had to be at most two points.  The observed effect was
+$+15.3375$ points with 95\% CI $[9.8769,21.3693]$.  Although the entire
+interval was positive, its width was 11.4924 points, so the registered
+classification was \texttt{imprecise\_no\_go}.  We preserve that decision
+rather than relabeling the pilot after seeing a large estimate.
+
+After V3 was closed, an explicitly exploratory variance diagnosis attributed
+94.40\% of bootstrap variance to target-pair resampling, 4.90\% to model-seed
+resampling, and 0.70\% to source-group resampling.  A calibrated prospective
+projection showed that reproducing the original two-point precision
+requirement would need at least 634 independent pairs even with infinitely
+many seeds, while only 139 V3-disjoint eligible pairs remained.  Using all
+remaining pairs would still project to a 4.269-point interval width.  This
+analysis closed the strict-precision replication route; it did not change the
+V3 result.
+
+\subsection{V4: Prospective Target-Disjoint Confirmation}
+
+We used V3 only as a declared pilot to freeze a new directional design before
+any V4 training outcome existed.  The design effect was the smaller of half
+the V3 point estimate and the V3 lower interval endpoint, or 7.66875 points.
+A 100,000-draw Monte Carlo Gate compared one to four V3-sized blocks.  One
+block (20 pairs) had estimated power 0.7440 and failed.  Two blocks (40 pairs)
+had power 0.9583 with 95\% Wilson lower bound 0.9570 and were selected by the
+registered minimum-passing-block rule.  All 80 V4 target patterns were
+semantically disjoint from V3 targets.  The V4 primary Gate required
+$\tau\geq1$ point and a two-sided 95\% interval lower endpoint above zero.
+
+All 32 V4 runs reached the fixed checkpoint and passed post-training
+integrity checks for model and optimizer finiteness, frozen epoch orders,
+four-way paired RNG trajectories, prediction ordering, independent metric
+recomputation, and artifact hashes.  The confirmatory effect was
+$+23.3391$ points with 95\% CI $[17.7498,29.2257]$, satisfying the registered
+\texttt{directional\_positive\_go} rule.  Descriptively, both block estimates
+were positive ($+25.0109$ and $+21.6672$ points), as were all eight seed
+estimates and all 40 pair estimates; 76 of 80 individual target-pattern
+estimates were positive.  These sign counts were not additional
+multiplicity-free tests and did not enter the Gate.
+
+The secondary proper losses move in the same favorable direction:
+exposed-minus-unexposed cross entropy is $-1.4938$ and multiclass Brier score
+is $-0.4224$.  ECE-15 changes by $-0.2018$.  These metrics were registered as
+descriptive and cannot alter the accuracy-based primary conclusion.
+
+\subsection{Interpretation and Scope}
+
+The intervention identifies an endpoint effect of semantic exposure in the
+frozen CLUTRR setting.  A model trained on one collection of stories
+instantiating a relation composition performs better on different source
+groups and sentence permutations instantiating that same composition.  The
+result therefore demonstrates behavioral use of semantic familiarity beyond
+exact-string reuse.  It also supplies the external public-benchmark behavior
+that the earlier structural audits lacked.
+
+The claim remains deliberately bounded.  The experiment covers one CLUTRR
+task, relation length, model architecture, exposure dose, and optimization
+budget.  It does not show that every form of semantic overlap improves
+accuracy, that the model stores a literal lookup table, or that the same
+effect holds for unseen relation lengths, family-disjoint reasoning, other
+architectures, or natural text.  In particular, the near-zero registered
+Boolean intervention remains a counterexample to the universal shortcut
+``overlap implies memorization.''  The combined evidence supports the weaker
+and more useful conclusion: semantic exposure can have a large causal
+behavioral effect, so benchmark novelty and behavioral exploitation must be
+measured separately.

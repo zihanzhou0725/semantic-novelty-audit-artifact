@@ -1,0 +1,53 @@
+{
+  "records": [
+    {
+      "initial_model_sha256": "b7e207f256598db4ad9206c4bc62d4dd4057b6ebe0803e93b8954993ceb14ee4",
+      "model_seed": 0,
+      "seed_value": 2719298332211413007,
+      "training_start_torch_rng_sha256": "6fc7033fdf101afff564919abe35bbd8d997d74b84cf543d0f30daa8f1e6981a"
+    },
+    {
+      "initial_model_sha256": "facf927fb51c820030aedef4de543293247de11520cc10c1b0fd945bc78a4c42",
+      "model_seed": 1,
+      "seed_value": 3923578815808598327,
+      "training_start_torch_rng_sha256": "f2152128c41cdcb682f6b0c7d997f3418dc8fc044b6f3639c1a50e367bc866eb"
+    },
+    {
+      "initial_model_sha256": "4d392205a6102945cd6d65a7881f97ec2011b71cbe606d7cdb8c6ddd19b2904e",
+      "model_seed": 2,
+      "seed_value": 9101078239875668886,
+      "training_start_torch_rng_sha256": "acf4c4b88cbb30a3dd625bf7dffeb53e86d2065a7149660085eb63290eb8e360"
+    },
+    {
+      "initial_model_sha256": "39167b4b16e5d2be36c4aebca2670a14158b66ea339dc5436b1c40463094eb23",
+      "model_seed": 3,
+      "seed_value": 5172411048010054342,
+      "training_start_torch_rng_sha256": "f9e70caeb504e443d9ae980bdaa0c0f805a73375bd8fbfd041e83655cc2073f1"
+    },
+    {
+      "initial_model_sha256": "105b3102aadada08587e9199eaaec37f8a8bd53400cf0012dcd734164c2c8abd",
+      "model_seed": 4,
+      "seed_value": 3448352885181795527,
+      "training_start_torch_rng_sha256": "3f5f475316c0eaf6cc0f39f5e7fd1bb3bd67f7e9f446f4b47d53cdb90af02d8d"
+    },
+    {
+      "initial_model_sha256": "cfc4eaf100affa3571e01603c02a683b66437403f599d3ff8ec1ae1cdf8e4391",
+      "model_seed": 5,
+      "seed_value": 4407648757049190149,
+      "training_start_torch_rng_sha256": "c8d6bab405724c61855e892e9338bda04b6aca10710930d52489fd01d77bf7b1"
+    },
+    {
+      "initial_model_sha256": "8760aa57c689bd787798ead5fb3496e20872c26ffb2502c3df373c6e27ffdf11",
+      "model_seed": 6,
+      "seed_value": 646851723733624702,
+      "training_start_torch_rng_sha256": "e3129180ab063850b44be0c3119b736073124c4ffcb1a4c2d284fe86e000ddc1"
+    },
+    {
+      "initial_model_sha256": "13c34068ab2f51e263453d046aaa570b4ff7d304d1e9ee872706615134d57bad",
+      "model_seed": 7,
+      "seed_value": 7844011590196286856,
+      "training_start_torch_rng_sha256": "aebc9871eb4dde3bb1fbfd79c38cdfb3ef372871e2fbaea046c5369f8ad998ab"
+    }
+  ],
+  "schema_version": "external-behavior-v3-initialization-v1"
+}

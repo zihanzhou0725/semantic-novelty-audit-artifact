@@ -1,0 +1,115 @@
+{
+  "check_count": 19,
+  "checks": [
+    {
+      "detail": null,
+      "name": "v1_decisions_preserved",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_behavioral_outcome_before_freeze",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_rows_hash_and_count",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "parent_hashes",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "model_hash",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "expansion_arithmetic",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "allocation_arithmetic",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "arm_arithmetic",
+      "pass": true
+    },
+    {
+      "detail": 56,
+      "name": "templates_have_no_internal_period",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "upstream_revision_and_clean",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:LICENSE",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:README.md",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:clutrr/generator.py",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:clutrr/relations/builder.py",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:clutrr/relations/puzzle.py",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:clutrr/store/question_store.yaml",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:clutrr/store/relations_store.yaml",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:clutrr/store/rules_store.yaml",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no_v3_result_directories",
+      "pass": true
+    }
+  ],
+  "document_sha256": {
+    "README.md": "c26183cd39a4aed996eb2aeb7b0bfd34d3000b4ceab3e23a9078c94db5f2908b",
+    "checklist.md": "eb022be718a296a58a7ff29b893e941f3fa86f817e417c4269a066d072d1edc5",
+    "freeze_receipt.json": "305366fe9708fec4da609a2156bc7ef36172af72ce72427245c54d0059f2ac91",
+    "input_manifest.json": "8a6fa7a876ed9e6fbfb98b45a3269e24c304d2205ab3810eb8bbceee879b7026",
+    "preregistration.json": "404233e6870cf3c87cf2e60ecd502906dbe464ea20cdd7d25e5dd0507a5d98f0",
+    "source_manifest.json": "24a735439e94f715affe6cbd8a0a4caeb71cda36931c1a2c73447ac4efd65884",
+    "validate.py": "1db4613465518f924df3514caa962a151e75f3c37d31903947ae9101cc8baf0a"
+  },
+  "failed_count": 0,
+  "protocol_id": "external-behavior-v3",
+  "schema_version": "external-behavior-v3-protocol-validation-v1",
+  "stage": "freeze",
+  "status": "pass",
+  "validated_at_utc": "2026-10-12T11:54:59.289990+00:00"
+}

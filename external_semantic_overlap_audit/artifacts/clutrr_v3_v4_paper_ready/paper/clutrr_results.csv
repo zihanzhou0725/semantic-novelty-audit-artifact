@@ -1,0 +1,3 @@
+decision,effect_pp,interval_lower_pp,interval_upper_pp,pairs,patterns,role,runs,seeds
+Registered precision No-Go,15.3375,9.876873975196792,21.369258723477753,20,40,V3 preregistered pilot,16,8
+Directional Positive Go,23.3390625,17.749768816685584,29.22568903348098,40,80,V4 target-disjoint confirmation,32,8

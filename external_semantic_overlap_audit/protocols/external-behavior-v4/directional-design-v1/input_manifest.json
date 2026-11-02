@@ -1,0 +1,28 @@
+{
+  "design_id": "external-behavior-v4-directional-design-v1",
+  "frozen_at_utc": "2026-10-13T11:38:27.854514+00:00",
+  "implementation_sha256": {
+    "protocols/external-behavior-v4/directional-design-v1/validate.py": "cedc0b2b49b9674b637ea96b2b617aa1ae3d2cea29afd06d343e95f8b01fa9ab",
+    "scripts/analyze_external_behavior_v4_directional_design.py": "11a8f6d4726c1e9193649eacf6c112b9c05e4a7e1ac2f7ecf8fef7a4388f674d",
+    "scripts/freeze_external_behavior_v4_directional_design.py": "f550896bd95ad8f9c3c5472538619df437330ce38e6bc17b7da5daa252c7eeb9",
+    "scripts/validate_external_behavior_v4_directional_design.py": "e60a809ef6c2b9b9eb4681de8e7f02366462f8376e97e2d98c00b87acbcb13f7",
+    "tests/test_external_behavior_v4_directional_design.py": "ed25c1eb1996494f62ed2932f7bb008cc126b3613991b604e3e0cba6e3516add",
+    "toolkit/external_behavior_v4/__init__.py": "514ddcef49f7514b5fe47c41cd1e330b01f2035577576c8b5fecbeb6352be9fe",
+    "toolkit/external_behavior_v4/directional_design.py": "121998bd54acda9a0b61ef1254f0435fe9def22107d47dfd5cad1a8d939c9638"
+  },
+  "input_sha256": {
+    "analysis/external-behavior-v3/variance-design-v1/ANALYSIS_SHA256SUMS": "ae9134a13876ffe8bcd37e14862197b8ae3561a5929a758b1c0a656e83065159",
+    "analysis/external-behavior-v3/variance-design-v1/analysis_validation_report.json": "5c5f4d4962328e5dd4698531bac1a756c638687c63bae14ff8f03640ef42f4a6",
+    "analysis/external-behavior-v3/variance-design-v1/remaining_pair_capacity.csv": "c958eade066a05b5e68183051b66411300815eaa59a89aadc3a2ccaa2523bec4",
+    "analysis/external-behavior-v3/variance-design-v1/v4_design_gate_report.json": "cae5df0ce21f8afa82c03d3dd87ec20ef9a324f1befd92eccf0bda210002af2f",
+    "analysis/external-behavior-v3/variance-design-v1/variance_results.json": "82fc3d0e8bc89faa036aa8d8585ec3f0205fa038b81a5ef1fe4695f2d6572664",
+    "manifests/external-behavior-v3/data/clutrr_v3_eligible_patterns.jsonl": "a519e1c370abc649be1908bc75185e8aa5b8636f57572f8203e3becb61663ced",
+    "manifests/external-behavior-v3/data/clutrr_v3_pairs.jsonl": "a1f2d8404008e0dc0deb98b7ab97442ddb60e235f7fd676e291a73b5c6aaf8b7",
+    "protocols/external-behavior-v3/variance-design-v1/SHA256SUMS": "c821be06c06cd61dedaf38cf1e5bed65909490521cba6e80edd45e34f92a5139",
+    "protocols/external-behavior-v3/variance-design-v1/input_manifest.json": "c1e170b127169ac275ead72b868eaddd5041ed89df390247bbf74ff0b4f32511",
+    "protocols/external-behavior-v3/variance-design-v1/preregistration.json": "cf36337a23644aed76f2a0c5266e4d98bc166cc8613e0820b2e1dce3c6d9b2a7",
+    "protocols/external-behavior-v3/variance-design-v1/validation_report.json": "e4bab73ddae516b6f92cd987709ccce87ec0557ebefc905dd20a830223291cc2"
+  },
+  "schema_version": "external-behavior-v4-directional-input-manifest-v1",
+  "status": "frozen_before_power_simulation"
+}

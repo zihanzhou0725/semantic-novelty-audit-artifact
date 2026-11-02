@@ -1,0 +1,67 @@
+{
+  "check_count": 11,
+  "checks": [
+    {
+      "detail": 32,
+      "name": "run_count",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "progress",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "artifact_hashes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "checkpoint_finite",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "epoch_orders",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "initialization",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "paired_rng",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "predictions",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "metrics",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "training_rows",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "aggregate_blindness",
+      "pass": true
+    }
+  ],
+  "execution_gate": "pass",
+  "failed_checks": [],
+  "failed_count": 0,
+  "primary_effect_computed": false,
+  "schema_version": "external-behavior-v4-execution-validation-v1",
+  "status": "pass",
+  "validated_at_utc": "2026-10-15T06:42:29.643429+00:00"
+}

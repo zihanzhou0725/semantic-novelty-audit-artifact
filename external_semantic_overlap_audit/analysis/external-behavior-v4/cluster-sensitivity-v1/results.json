@@ -1,0 +1,59 @@
+{
+  "analysis_id": "external-behavior-v4-cluster-sensitivity-v1",
+  "confidence_interval_95": {
+    "critical_value": 2.3646242515927844,
+    "degrees_of_freedom": 7,
+    "lower_pp": 17.146859289040293,
+    "upper_pp": 29.53126571095971
+  },
+  "effect_pp": 23.3390625,
+  "epistemic_status": "post_hoc_reviewer_requested_sensitivity",
+  "grid_validation": {
+    "model_seed_count": 8,
+    "observation_count": 640,
+    "pair_count": 40,
+    "pair_member_count": 2,
+    "semantic_id_count": 80,
+    "status": "pass"
+  },
+  "implementation_sha256": {
+    "scripts/analyze_external_behavior_v4_cluster_sensitivity.py": "7563045558a9655087d2b655e95599fddfdfd30a51c5e3976e318359ea9b0043"
+  },
+  "input_sha256": {
+    "analysis/external-behavior-v4/effect-analysis-v1/results.json": "db273a66e12cd060414571d06c11d81290ad0c7e9ee89b21fddc2d5bf6392033",
+    "analysis/external-behavior-v4/effect-analysis-v1/seed_pattern_effects.csv": "9ffe58d420b05e58f527739cbc3a980614d76d081f1087511dc4a00a7327d2f3"
+  },
+  "method": {
+    "description": "Intercept-only Cameron-Gelbach-Miller two-way cluster sandwich over seed-pattern effects.",
+    "intersection_clusters": "model_seed x complete pattern_pair",
+    "pair_clusters": "complete same-label pattern pairs",
+    "seed_clusters": "model training seeds",
+    "small_sample_correction": "CR1 G/(G-1) applied separately to seed, pair, and seed-by-pair components",
+    "two_way_formula": "V_seed + V_pair - V_seed_by_pair"
+  },
+  "primary_gate_impact": "none",
+  "schema_version": "external-behavior-v4-cluster-sensitivity-results-v1",
+  "standard_error_pp": 2.6186837958668105,
+  "status": "complete",
+  "variance_components": {
+    "model_seed": {
+      "cluster_count": 8,
+      "cr1_correction": 1.1428571428571428,
+      "score_sum_squares": 139034.3749999999,
+      "variance_pp2": 0.387930733816964
+    },
+    "pattern_pair": {
+      "cluster_count": 40,
+      "cr1_correction": 1.0256410256410255,
+      "score_sum_squares": 3128070.275,
+      "variance_pp2": 7.8327080203325306
+    },
+    "seed_by_pair_intersection": {
+      "cluster_count": 320,
+      "cr1_correction": 1.0031347962382444,
+      "score_sum_squares": 556594.8468749996,
+      "variance_pp2": 1.363133931414086
+    },
+    "two_way_variance_pp2": 6.857504822735408
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "analysis_gate": "pass",
+  "analysis_id": "external-behavior-v3-effect-analysis-v1",
+  "check_count": 9,
+  "checks": [
+    {
+      "detail": null,
+      "name": "protocol_bundle",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "input_hashes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "output_hashes",
+      "pass": true
+    },
+    {
+      "detail": {
+        "direct": 15.3375,
+        "reported": 15.3375
+      },
+      "name": "primary_recompute",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "interval",
+      "pass": true
+    },
+    {
+      "detail": {
+        "reported": {
+          "classification": "imprecise_no_go",
+          "interval_width_pp": 11.49238474828096,
+          "precision_gate_pass": false
+        },
+        "reproduced": {
+          "classification": "imprecise_no_go",
+          "interval_width_pp": 11.49238474828096,
+          "precision_gate_pass": false
+        }
+      },
+      "name": "decision",
+      "pass": true
+    },
+    {
+      "detail": {
+        "expected": {
+          "pair_effects.csv": 20,
+          "pattern_effects.csv": 40,
+          "relation_effects.csv": 11,
+          "seed_aligned_metrics.csv": 8,
+          "seed_effects.csv": 8,
+          "seed_pattern_effects.csv": 320
+        },
+        "observed": {
+          "pair_effects.csv": 20,
+          "pattern_effects.csv": 40,
+          "relation_effects.csv": 11,
+          "seed_aligned_metrics.csv": 8,
+          "seed_effects.csv": 8,
+          "seed_pattern_effects.csv": 320
+        }
+      },
+      "name": "tables",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "finite",
+      "pass": true
+    }
+  ],
+  "failed_checks": [],
+  "failed_count": 0,
+  "primary_decision": "imprecise_no_go",
+  "schema_version": "external-behavior-v3-effect-analysis-validation-v1",
+  "status": "pass",
+  "validated_at_utc": "2026-10-13T09:46:09.798445+00:00"
+}

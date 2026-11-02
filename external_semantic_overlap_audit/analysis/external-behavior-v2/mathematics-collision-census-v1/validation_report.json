@@ -1,0 +1,86 @@
+{
+  "aggregate_release_authorized": true,
+  "analysis_id": "mathematics-collision-census-v1",
+  "check_count": 12,
+  "checks": [
+    {
+      "detail": null,
+      "name": "input_hashes",
+      "pass": true
+    },
+    {
+      "detail": 10638,
+      "name": "witness_keys_unique",
+      "pass": true
+    },
+    {
+      "detail": 20000,
+      "name": "evaluation_rows",
+      "pass": true
+    },
+    {
+      "detail": {
+        "expected": 10638,
+        "observed": 10638
+      },
+      "name": "witness_count",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "symbolic_verification",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "witness_selection",
+      "pass": true
+    },
+    {
+      "detail": 14613,
+      "name": "semantic_multiplicity_table",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "summary_csv",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "module_summaries",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "multiplicity_distributions",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "overall_aggregate",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "conservation",
+      "pass": true
+    }
+  ],
+  "failed_checks": [],
+  "failed_count": 0,
+  "independently_recomputed_overall": {
+    "canonical_semantic_overlap_row_count": 10638,
+    "canonical_semantic_overlap_row_prevalence": 0.5319,
+    "interpolate_row_denominator": 20000,
+    "interpolate_unique_semantic_id_denominator": 14613,
+    "overlapping_unique_semantic_id_count": 5355,
+    "overlapping_unique_semantic_id_prevalence": 0.3664545267912133,
+    "unresolved_row_count": 0,
+    "verbatim_question_overlap_row_count": 0,
+    "verbatim_question_overlap_row_prevalence": 0.0
+  },
+  "schema_version": "mathematics-collision-census-validation-v1",
+  "status": "pass",
+  "validated_at_utc": "2026-10-12T11:39:01.019520+00:00"
+}

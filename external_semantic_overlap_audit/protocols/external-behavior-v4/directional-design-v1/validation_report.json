@@ -1,0 +1,69 @@
+{
+  "check_count": 10,
+  "checks": [
+    {
+      "detail": null,
+      "name": "upstream_integrity",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "strict_gate_closed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "directional_estimand",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "power_rule",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "block_rule",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "independence",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "freeze_artifacts",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "input_hashes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "implementation_hashes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "outputs_absent",
+      "pass": true
+    }
+  ],
+  "design_id": "external-behavior-v4-directional-design-v1",
+  "document_sha256": {
+    "README.md": "8e3410369a8299ce1c3dfe08a89bacb517df9c94b188ac6c7f423b444f935614",
+    "checklist.md": "92dbaa399d30911ce04699a35e7377aa6942dc64ec8e9ae59489c2e118826896",
+    "freeze_receipt.json": "f75e2a35ee1b26d354011d5d7144cbaae3fc3d89cd1f790395d76d77f2791eaa",
+    "input_manifest.json": "118a4ee13d719124cb358c46b490c3c345ce85a36a5001da1736cad45e7dadaa",
+    "preregistration.json": "d5fafceba09b2e03be9fd2f22658ae99cfa0108fb2438c1e8576ae41ebd8b1b6",
+    "validate.py": "cedc0b2b49b9674b637ea96b2b617aa1ae3d2cea29afd06d343e95f8b01fa9ab"
+  },
+  "failed_count": 0,
+  "schema_version": "external-behavior-v4-directional-protocol-validation-v1",
+  "stage": "pre_simulation",
+  "status": "pass",
+  "validated_at_utc": "2026-10-13T11:38:27.866160+00:00"
+}

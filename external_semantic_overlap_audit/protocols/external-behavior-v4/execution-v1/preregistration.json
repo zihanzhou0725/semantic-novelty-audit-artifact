@@ -1,0 +1,111 @@
+{
+  "execution_id": "external-behavior-v4-execution-v1",
+  "freeze_date": "2026-10-13",
+  "frozen_design": {
+    "arm_count": 2,
+    "arms": [
+      "A",
+      "B"
+    ],
+    "block_count": 2,
+    "evaluation_rows_per_run": 8000,
+    "model_seed_count": 8,
+    "model_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "run_count": 32,
+    "training_rows_per_run": 24000
+  },
+  "integrity_gate": {
+    "failure_action": "execution_no_go_preserve_completed_runs_do_not_compute_directional_effect",
+    "required": [
+      "32 of 32 runs complete",
+      "every run reaches epoch 30 and optimizer update 5640",
+      "all model optimizer history and prediction tensors are finite",
+      "all frozen train and evaluation manifests match",
+      "all eight initializations match frozen hashes",
+      "all 240 epoch orders match frozen hashes",
+      "all four runs within each seed share initial and final Torch RNG hashes",
+      "every run emits 8000 ordered predictions",
+      "all run artifact hashes validate",
+      "no directional effect aggregate exists"
+    ]
+  },
+  "model": {
+    "architecture": "Frozen four-layer byte Transformer: d_model 128, four heads, FFN 512, dropout 0.1, learned positions, CLS pooling, 23 classes.",
+    "device": "CPU",
+    "precision": "float32"
+  },
+  "optimization": {
+    "batch_size": 128,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "checkpoint_selection": "fixed final epoch 30",
+    "early_stopping": false,
+    "epochs": 30,
+    "epsilon": 1e-08,
+    "gradient_clip_norm": 1.0,
+    "learning_rate": 0.0003,
+    "loss": "multiclass_cross_entropy",
+    "optimizer": "AdamW",
+    "scheduler": "none",
+    "updates_per_epoch": 188,
+    "updates_per_run": 5640,
+    "validation_selection": false,
+    "weight_decay": 0.01
+  },
+  "outcome_blinding": {
+    "directional_effect_computed_in_this_stage": false,
+    "future_effect_analysis_requires_separately_frozen_inputs": true,
+    "paired_block_aggregate_computed_in_this_stage": false
+  },
+  "parallel_execution": {
+    "maximum_concurrent_runs": 8,
+    "run_isolation": "one spawned Python process per run",
+    "torch_interop_threads_per_run": 1,
+    "torch_intraop_threads_per_run": 2
+  },
+  "parent_materialization": "external-behavior-v4-materialization-v1",
+  "randomness": {
+    "deterministic_algorithms": true,
+    "epoch_order_algorithm": "numpy.random.Generator(numpy.random.PCG64(derived_seed)).permutation(24000).astype(int32)",
+    "epoch_order_namespace": "clutrr:epoch:{model_seed}:{epoch_1_based}",
+    "model_initialization_namespace": "clutrr:model:{model_seed}",
+    "paired_rule": "For each model seed, block0/armA, block0/armB, block1/armA, and block1/armB share initial parameter hash, all epoch-order hashes, initial Torch RNG hash, and final Torch RNG hash.",
+    "seed_derivation": "int.from_bytes(SHA256(('external-behavior-v1:' + namespace).encode('ascii')).digest()[0:8], 'big') & ((1<<63)-1)",
+    "shared_over": [
+      "block_0_arm_A",
+      "block_0_arm_B",
+      "block_1_arm_A",
+      "block_1_arm_B"
+    ],
+    "torch_cpu_seed": "derived model initialization seed"
+  },
+  "required_run_artifacts": [
+    "config.json",
+    "history.csv",
+    "final_checkpoint.pt",
+    "eval_predictions.npz",
+    "metrics.json",
+    "progress.json",
+    "COMPLETED.json"
+  ],
+  "schema_version": "external-behavior-v4-execution-preregistration-v1",
+  "status": "specified_before_tensor_cache_initialization_hashes_or_training",
+  "tensorization": {
+    "evaluation_batch_size": 256,
+    "fixed_padding_length": 185,
+    "tokenizer": "Frozen ASCII byte tokenizer with PAD, CLS, and SEP.",
+    "train_batch_size": 128,
+    "truncation": false
+  }
+}

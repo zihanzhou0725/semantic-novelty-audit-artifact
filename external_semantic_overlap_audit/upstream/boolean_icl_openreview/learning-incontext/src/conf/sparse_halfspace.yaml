@@ -1,0 +1,33 @@
+inherit: 
+    - base.yaml
+
+model:
+    n_dims: 14
+    n_positions: 100
+
+training:
+    task: sparse_halfspace
+    data: boolean
+    batch_size: 64
+    train_steps: 50001
+    curriculum:
+        dims:
+            start: 14
+            end: 14
+            inc: 1
+            interval: 2000
+        points:
+            start: 60
+            end: 60
+            inc: 5
+            interval: 2000
+
+out_dir: ../models/sparse_halfspace
+
+wandb:
+    name: "sp_halfspace_normal"
+
+
+misc:
+    gpu: 4
+    wandb: True

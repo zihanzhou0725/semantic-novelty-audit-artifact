@@ -1,0 +1,58 @@
+{
+  "aggregate_mathematics_overlap_released": false,
+  "behavioral_training_started": false,
+  "clutrr": {
+    "arm_manifest_count": 0,
+    "common_base_rows": 22720,
+    "deduplicated_rows": 34145,
+    "design_gate": "no_go",
+    "eligible_pattern_count": 0,
+    "evaluation_rows": 0,
+    "exposure_rows": 0,
+    "failure_conditions": [
+      "at_least_20_same_label_pattern_pairs_are_eligible",
+      "exactly_40_target_patterns_selected_without_reuse",
+      "every_target_pattern_has_200_evaluation_and_64_disjoint_exposure_rows",
+      "arms_have_24000_rows_and_identical_label_counts",
+      "every_target_is_exposed_in_exactly_one_arm_per_seed"
+    ],
+    "generated_rows": 120000,
+    "independent_reconstruction_failures": 0,
+    "maximum_allocated_sequence_length": 185,
+    "pair_count": 0,
+    "raw_manifest_sha256": "3e55e90470e011ed856058015a53ab0559e472c2802b9181fa270ca1d6b1fa58"
+  },
+  "completed_at_utc": "2026-10-12T10:09:01Z",
+  "environment_sha256": "6fa7ff52a4669f8dca6920ab10296703fddce20804e8d4aca0a2ca1ba2418ee2",
+  "failure_phase": "mathematics_train_polynomials_expand_generation",
+  "implementation_manifest_sha256": "c181358ffb2d263f420f7adc36c1b6ed912a8f3fa1183cad8dfd0c2a84c97b1a",
+  "mathematics": {
+    "complete_materialization_gate": "no_go",
+    "failure": {
+      "exception": "AssertionError",
+      "failed_retained_row_index": 67937,
+      "message": "Pinned upstream mathematics_dataset/sample/polynomials.py:107 asserted entropy == 0 while generating the next train/polynomials__expand sample.",
+      "policy": "The frozen v1 adapter does not reinterpret this upstream assertion as an official length-drop and was not modified after materialization began."
+    },
+    "independent_signature_failures": 0,
+    "join_or_collision_census_executed": false,
+    "required_rows": 220000,
+    "retained_rows": {
+      "interpolate:polynomials__collect": 10000,
+      "interpolate:polynomials__expand": 10000,
+      "train:polynomials__collect": 100000,
+      "train:polynomials__expand_partial": 67937
+    },
+    "total_materialized_rows": 187937,
+    "unmaterialized_rows": 32063
+  },
+  "original_quality_enhancement_v1_p3_decision": "no_go_unchanged",
+  "parent_preregistration_sha256": "3ff8bbde576f4176d9b2c98969925ae09f3f038f315711b4c71a1c17bf3dcf11",
+  "partial_data_checksum_manifest_sha256": "818d0dc124684e653c0282fb3c77b24e0e8dea2166f9e4677a0d9f72cd87533a",
+  "partial_data_directory": "manifests/external-behavior-v1/.data.build",
+  "protocol_id": "external-behavior-v1",
+  "requirements_lock_sha256": "64627f5045ae4383740a4ddaedfbf24cf1df121e2bde235f75fa0246e68b15fd",
+  "schema_version": "external-behavior-materialization-failure-v1",
+  "source_manifest_sha256": "fcb1d1700d80467735cbeaab7229e6f2a26f5473574ac241931642e2ab343612",
+  "status": "no_go"
+}

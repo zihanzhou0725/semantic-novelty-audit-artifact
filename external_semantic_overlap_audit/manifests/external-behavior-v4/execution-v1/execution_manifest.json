@@ -1,0 +1,43 @@
+{
+  "cache": {
+    "cached_rows": 43840,
+    "evaluation_manifest_sha256": {
+      "0": "844f9f7fd5d418c7013c73c190990335ec74f415b6865d3586c272a3c783e53e",
+      "1": "bfc24924b1cd753c6cb839bfe30e676330c6a15657996263bf501024dfaa7b27"
+    },
+    "evaluation_rows_per_block": 8000,
+    "needed_rows": 43840,
+    "tensor_cache_sha256": "eed13cf29bfc94f4f23bd046c1bc2d8952f4ebdc061a5a732ede7ea76d081d71",
+    "train_cache_indices_sha256": "504dac0a9c68ea217a2e0c035fb7ff8acfa01cd88584f7aad82b0202e6d86d66"
+  },
+  "classes_sha256": "293605723bc89e99ef6e0ddda07febfc61f61b53c67257062f51ca3edab69bf7",
+  "environment_sha256": "aeb6d3bb494f522182b841a9d97d39bc5e44df33ac726aa671e7ce249dc9364d",
+  "epoch_order_manifest_sha256": "7c4d76b9721a6e2346e6a22cdf431c088046d72eff6cde23a1c6de28426a08c5",
+  "execution_id": "external-behavior-v4-execution-v1",
+  "frozen_at_utc": "2026-10-13T11:54:08.786142+00:00",
+  "frozen_before_training": true,
+  "implementation_sha256": {
+    "protocols/external-behavior-v4/execution-v1/validate.py": "336f650a9a2f76e512e91fcfc9af6a15f6a689bda24f80dcec8f675c173e9eb6",
+    "scripts/freeze_external_behavior_v4_execution.py": "2175443d5ddc77772eea78ae115f309d5f7bdd2319d6544d177ed96da082143b",
+    "scripts/run_external_behavior_v4.py": "c0d1da1898da987d589ecd18ef1ac93f10461781c2165257af88b3a496ec8253",
+    "scripts/run_external_behavior_v4_matrix.py": "9e5f2c23d51c32416e63d46de2a8a603e4fc0fbe2273bee967a1d67b5a4cf940",
+    "scripts/validate_external_behavior_v4_execution.py": "ff60b7bfb7967354c8b1fb2fa27fc4ec93ce8be3cb42f20149ea7dd063cebaaf",
+    "tests/test_external_behavior_v4_training.py": "f05d2d81a9fe43e8be34f395ae6534096732f8bfd7554465b6d9d9f51394d3b2",
+    "toolkit/external_behavior/common.py": "eb725d4dec66c3c247f21303265da740e4213af54c93abb764acd18b444bae71",
+    "toolkit/external_behavior/model.py": "fd7774d8c13bf7adccf282efe5e20411b2f231d13152eccc669591d2768c7d73",
+    "toolkit/external_behavior_v3/training_common.py": "e623a8389e6769663fe6f10424a71d9f457fecc5bc77c865df6c43827c49650e",
+    "toolkit/external_behavior_v4/train_driver.py": "9cf86cf3bf576c449172cfa86c08a4604c4f9a21432315d419be5139df2f6f66",
+    "toolkit/external_behavior_v4/train_integrity.py": "884fb07543d64a353cd16e7eb7886c6434d975d49ebf24be178962f0a8c11af9",
+    "toolkit/external_behavior_v4/train_run.py": "46c5ececb7c9c5dee722932aa62647e6429aab690dc91fcb4cabdf2b5f3a476a",
+    "toolkit/external_behavior_v4/training_common.py": "a958d5824d71b6ba6b29707983848e74c9a4c1e736ac499c48dbde93cfceaacc",
+    "toolkit/external_behavior_v4/training_freeze.py": "3ab3be3d6f1914ea88585b1933c24514cf5dbbd538915ec8297fdcee7836aefb"
+  },
+  "initialization_manifest_sha256": "c93ea7a99db6e0156de7c907946aaa5a1d9bf101e65a60497e95a5f4b66cea3d",
+  "materialization_validation_sha256": "1336fd98eda4b0d464313fe8c05dcf859ea6df2a1831d6dee70b817954401f08",
+  "protocol_preregistration_sha256": "14774cb49ec65b67bcc7a5e2eb077dd2ee3983f937169e0a746ffcf9cb4af96a",
+  "requirements_lock_sha256": "64627f5045ae4383740a4ddaedfbf24cf1df121e2bde235f75fa0246e68b15fd",
+  "run_count": 32,
+  "run_manifest_sha256": "2969b8e41dd2ffb63cb8176e589454085090f7d425aaeb7a664e36b64bddbcc7",
+  "schema_version": "external-behavior-v4-execution-manifest-v1",
+  "status": "frozen_before_training"
+}

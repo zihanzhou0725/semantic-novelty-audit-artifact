@@ -1,0 +1,14 @@
+{
+  "design_id": "external-behavior-v3-variance-design-v1",
+  "frozen_at_utc": "2026-10-13T11:30:04.341018+00:00",
+  "schema_version": "external-behavior-v3-variance-freeze-receipt-v1",
+  "state_at_freeze": {
+    "effect_analysis_already_unblinded": true,
+    "exploratory_status_declared": true,
+    "v3_decision_changed": false,
+    "v4_training_released": false,
+    "variance_decomposition_computed": false,
+    "variance_output_directory_absent": true
+  },
+  "status": "frozen_before_exploratory_decomposition"
+}

@@ -1,0 +1,22 @@
+{
+  "design_id": "external-behavior-v4-directional-design-v1",
+  "gate": {
+    "candidate_block_counts": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "capacity_gate_pass": true,
+    "decision": "directional_v4_design_go",
+    "design_effect_pp": 7.66875,
+    "minimum_power": 0.9,
+    "minimum_wilson_lower": 0.9,
+    "selected_block_count": 2,
+    "selected_pair_count": 40,
+    "selected_run_count": 32,
+    "training_released": false
+  },
+  "schema_version": "external-behavior-v4-block-gate-report-v1",
+  "status": "directional_v4_design_go"
+}

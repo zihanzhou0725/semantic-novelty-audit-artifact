@@ -1,0 +1,15 @@
+{
+  "architecture": "arm64",
+  "dependencies": {
+    "PyYAML": "6.0.3",
+    "numpy": "1.26.4",
+    "torch": "2.12.1"
+  },
+  "executable": "<SOURCE_WORKSPACE>/external_semantic_overlap_audit/.venv-external-behavior-v1/bin/python",
+  "macos_version": "26.6.2",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "protocol_id": "external-behavior-v3",
+  "python_implementation": "CPython",
+  "python_version": "3.11.1",
+  "pythonhashseed": "0"
+}

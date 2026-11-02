@@ -1,0 +1,94 @@
+{
+  "check_count": 16,
+  "checks": [
+    {
+      "detail": null,
+      "name": "protocol",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "inputs",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "pair_manifest",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "target_allocations",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "evaluation",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "exposure",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_group_separation",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "common_base",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "run_count",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "training_rows",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "complementary_exposure",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "label_balance",
+      "pass": true
+    },
+    {
+      "detail": 185,
+      "name": "fixed_length",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "target_independence",
+      "pass": true
+    },
+    {
+      "detail": "<SOURCE_WORKSPACE>/external_semantic_overlap_audit/runs/external-behavior-v4/directional-v1",
+      "name": "training_absent",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "artifact_hashes",
+      "pass": true
+    }
+  ],
+  "failed_checks": [],
+  "failed_count": 0,
+  "materialization_gate": "go",
+  "materialization_id": "external-behavior-v4-materialization-v1",
+  "maximum_allocated_sequence_length": 185,
+  "schema_version": "external-behavior-v4-materialization-validation-v1",
+  "status": "pass",
+  "training_started": false,
+  "validated_at_utc": "2026-10-13T11:47:02.626432+00:00"
+}

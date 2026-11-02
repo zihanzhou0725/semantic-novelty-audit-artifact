@@ -1,0 +1,64 @@
+{
+  "analysis_id": "external-behavior-v3-effect-analysis-v1",
+  "check_count": 9,
+  "checks": [
+    {
+      "detail": null,
+      "name": "execution_gate",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "execution_blinded",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "frozen_parent_estimand",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "gate",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "input_manifest_exists",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "input_hashes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "implementation_hashes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "outcomes_absent",
+      "pass": true
+    }
+  ],
+  "document_sha256": {
+    "README.md": "cb79d487538d3907babada9bd14f3b377c0a89c9dd9314331cb27ff8baa7906a",
+    "checklist.md": "d557f6048a9cd83ae0b23a1f6f90868c5be706179b5a86f01b67a5522da41565",
+    "freeze_receipt.json": "10992bbe40ed64805ee10b48cd4bc408adaa8b6788ddd92cca671ac7d4f1621b",
+    "input_manifest.json": "46783933d6f436979db2e166be5c9209b2053dd463a71266b1b83add6a339284",
+    "preregistration.json": "2097a5015315ce70d213978033a7b939cd18b1fcce8b383687a1b70b178a08d5",
+    "validate.py": "b291b1b41131cebf796f34e150e5d9e96be60592c080bd71b93be72b2207cf22"
+  },
+  "failed_count": 0,
+  "schema_version": "external-behavior-v3-effect-protocol-validation-v1",
+  "stage": "pre_unblinding",
+  "status": "pass",
+  "validated_at_utc": "2026-10-13T09:45:22.096673+00:00"
+}

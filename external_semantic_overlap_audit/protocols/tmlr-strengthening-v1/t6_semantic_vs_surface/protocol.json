@@ -1,0 +1,95 @@
+{
+  "analysis": {
+    "bootstrap": {
+      "cluster": "pattern",
+      "replicates": 2000,
+      "seed": 0
+    },
+    "contrasts": [
+      "C1-C0",
+      "C2-C0",
+      "C1-C2"
+    ],
+    "decision_rules": [
+      {
+        "condition": "C1-C0 cluster CI is above zero and either C2-C0 contains zero or C1-C2 is above zero",
+        "interpretation": "semantic identity, not surface similarity, drives the gain"
+      },
+      {
+        "condition": "C2-C0 cluster CI is above zero",
+        "interpretation": "surface-similar decoys also help; the gain is partly lexical/compositional"
+      },
+      {
+        "condition": "otherwise",
+        "interpretation": "describe the contrasts without a directional claim"
+      }
+    ],
+    "seed_interval": "paired seed-level t interval",
+    "stratification": "decoy edge-overlap tier"
+  },
+  "arms": {
+    "C0": "No target-pattern exposure: 48 relation-matched filler rows per pattern.",
+    "C1": "Semantic exposure: eight complete source groups (48 rows) per target pattern.",
+    "C2": "Surface-similar decoys: relation matched, semantically different, and sharing at least two edge types when available; deterministic one-edge fallback and filler rules are retained."
+  },
+  "created_at_utc": "2026-10-21T11:05:50.497545+00:00",
+  "design": {
+    "evaluation": "V4 block 0, 40 patterns, 8,000 rows",
+    "main_analysis_minimum_decoys": 24,
+    "slots_per_pattern": 48,
+    "train_rows": 24640
+  },
+  "exploratory_status": "exploratory (not preregistered)",
+  "implementation": {
+    "toolkit/tmlr_strengthening/clutrr_tmlr_data.py": "08744ad41ddea8116803851729a1324ecee6ba06001ffa8534c70c80fd12aa71",
+    "toolkit/tmlr_strengthening/clutrr_tmlr_train.py": "307114f263296d872a103e88f6415e113cff8ca3a3ed3a68b0aa664c1e0726fc"
+  },
+  "input_artifacts": {
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/SHA256SUMS": "931dd91034356ed41cf98781f5b98e28a4c8c50ce5386a2ab57735317ca79a54",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/arm_C0_surface_ids.txt": "e98fd1bc04db0b2b34b1d880e3595314ff1da56220d80d367d36a26dd85ba5a2",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/arm_C1_surface_ids.txt": "99f0f9dc12f388c8ec7adeb000682a733c691efee15ad6c1f6da0a3a9effed0e",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/arm_C2_surface_ids.txt": "7e5cf97ebb8834470aa9acf0faaebf72d62d1d75c81e7246dfd60fde8fb8d6f9",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/decoy_allocation.csv": "1bd2b3388375bfb671f7426b58a4491e86cd77fb5941abb04f532a3d8f984ccc",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/decoy_rows.jsonl": "06da44ef4be3ba76076163f8edd62a9101a498f95fd08efe2b93c8704882350b",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/evaluation.npz": "ae965c9ae22febc27096500829bf1e3574155586f8a1492ae40d022754472b50",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/evaluation_surface_ids.txt": "5313d1d5fc5e94f504b4d069725526ef279a9aa315cd9bf0fe6e40132a77662c",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/execution_inputs_manifest.json": "c26818fe2381c08cc81cf3837cf0cd48f96c8e1d8c51975dc29938f463ff6d3b",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/tensor_cache.npz": "07c49d20b1141d20b1a442a53e48c3d6c8835d1acb05509d165840d2c3cc737e",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/train_indices.npz": "20c62026bb50c98361929b78335966fc6669d5078247f8cad5d83585750a0993"
+  },
+  "input_sources": {
+    "manifests/external-behavior-v3/data/clutrr_v3_candidates.jsonl": "5fd2dac8361f1e752d4487dde8f64fe805d44c4644d58d2edd463ca941304fb5",
+    "manifests/external-behavior-v3/data/clutrr_v3_targets.jsonl": "18632063153561496a00546c546cef877e510108911dc77c82e53dcf4deeec8c",
+    "manifests/external-behavior-v4/directional-design-v1/selected_pairs.csv": "77ba7d96692e85ef6f73d8588b0e1a86fbc5d56f94c74d7067b48f685931b62a",
+    "manifests/external-behavior-v4/materialization-v1/data/common_base.jsonl": "0be0cb0ed594292027ba5bb818fd8b824b239da35bd0a6fbbe6c6af81008d8a7",
+    "manifests/external-behavior-v4/materialization-v1/data/evaluation_block0.jsonl": "d2651b212d4bddabdf64599d09adf7c440d9db52e49809aeee0b7e5cbc3a04e6",
+    "manifests/external-behavior-v4/materialization-v1/data/targets.jsonl": "6831a79ca1ed9dbd6bbaafda6969ae11b0faceecfaa1e1ba79e9421d4bd56da4"
+  },
+  "namespace": "tmlrs:t6",
+  "primary_metric": "exact-match accuracy",
+  "purpose": "Distinguish exposure to the same semantic pattern from surface-similar exposure with a different semantic identity.",
+  "schema_version": "tmlr-strengthening-t6-protocol-v1",
+  "seeds": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "training": {
+    "batch_size": 128,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epochs": 30,
+    "epsilon": 1e-08,
+    "evaluation_batch_size": 256,
+    "fixed_length": 185,
+    "gradient_clip": 1.0,
+    "learning_rate": 0.0003,
+    "model": "ByteTransformerClassifier(23)",
+    "optimizer": "AdamW",
+    "precision": "float32",
+    "weight_decay": 0.01
+  }
+}

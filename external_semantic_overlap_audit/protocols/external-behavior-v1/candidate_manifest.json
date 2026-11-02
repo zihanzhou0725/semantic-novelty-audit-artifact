@@ -1,0 +1,78 @@
+{
+  "schema_version": "external-behavior-candidates-v1",
+  "protocol_id": "external-behavior-v1",
+  "frozen_at_utc": "2026-10-12T09:22:35Z",
+  "status": "frozen_before_repository_clone_dataset_download_semantic_extraction_or_overlap_census",
+  "selection_origin": "Top two result-independent candidates in semantic_novelty_audit_paper/TMLR_UPGRADE_PLAN.md that pass availability screening and provide materially different semantic representations.",
+  "selection_rule": "In the prespecified priority order CLUTRR, DeepMind Mathematics, Karel, NoRA, include the first two candidates that have a public generator or immutable data split, an executable semantic representation, a redistributable research license, and either feasible retraining or per-item behavioral artifacts.",
+  "result_dependent_selection_used": false,
+  "candidate_count": 2,
+  "candidate_repository_clone_started": false,
+  "candidate_dataset_download_started": false,
+  "candidate_semantic_extraction_started": false,
+  "candidate_overlap_census_started": false,
+  "historical_cases_excluded": [
+    "internal_N20_affine_block_parity_generator",
+    "AIML-TUDA/SLR-Bench",
+    "satwik77/incontext-bool",
+    "Tensor Logic FB15k-237 compositional split",
+    "In-Context Occam's Razor Markov and regression testbeds"
+  ],
+  "candidates": [
+    {
+      "audit_order": 1,
+      "candidate_id": "468fd27f8a031213",
+      "title": "CLUTRR: A Diagnostic Benchmark for Inductive Reasoning from Text",
+      "paper_revision": "arXiv:1908.06177v2; EMNLP 2019",
+      "code_revision": {
+        "repository": "https://github.com/facebookresearch/clutrr",
+        "revision": "d045fae289d3746503677ceed7631c999202501e"
+      },
+      "reference_behavior_repositories": [
+        {
+          "repository": "https://github.com/koustuvsinha/clutrr-baselines",
+          "revision": "303ed9a48f82a59b4eb34ac5bd5866f0d82c5552"
+        },
+        {
+          "repository": "https://github.com/NicolasAG/SGinPG",
+          "revision": "115adf7f991731161afac95db0533392f542b67a"
+        }
+      ],
+      "license": "CC-BY-NC-4.0",
+      "audited_claim": "The inductive CLUTRR setting evaluates systematic generalization to held-out combinations of logical kinship rules rather than reuse of training relation patterns.",
+      "availability_evidence": [
+        "Public deterministic dataset generator with train/test task and holdout controls.",
+        "Rules and relations are stored explicitly.",
+        "The public format can retain complete puzzles and proof information.",
+        "Two public baseline repositories expose training and per-item generation/evaluation paths."
+      ],
+      "behavioral_plan_role": "primary_confirmatory_external_intervention",
+      "behavioral_feasibility": "Use a frozen lightweight reference Transformer trained on paired Original and Strict streams generated from the same official source revision. The local implementation and all manifests must be hashed before any training.",
+      "planned_semantic_scope": "Canonical kinship-rule composition after entity alpha-renaming and proof-order normalization; the exact signature and verifier are frozen in the full preregistration before any census.",
+      "result_independent_inclusion_reason": "First candidate in the prespecified order; public generator, exact rule metadata, held-out-pattern claim, and feasible paired retraining all pass availability screening."
+    },
+    {
+      "audit_order": 2,
+      "candidate_id": "e9cf5d3411b6915d",
+      "title": "Analysing Mathematical Reasoning Abilities of Neural Models",
+      "paper_revision": "arXiv:1904.01557v1; ICLR 2019 OpenReview H1gR5iR5FX",
+      "code_revision": {
+        "repository": "https://github.com/google-deepmind/mathematics_dataset",
+        "revision": "427f45075f84b8b9774950196ad63867ca20ffb3"
+      },
+      "dataset_revision": "Version 1.0 pre-generated train-easy/train-medium/train-hard and interpolate/extrapolate files, or deterministic regeneration from the pinned code revision; exact source choice must be frozen before extraction.",
+      "license": "Apache-2.0",
+      "audited_claim": "The generated interpolation and extrapolation splits measure mathematical generalization beyond surface question identity and curriculum difficulty.",
+      "availability_evidence": [
+        "Public generator with module-level filters and declared dependencies.",
+        "Version 1.0 provides two million question-answer pairs per module.",
+        "Separate curriculum training and interpolate/extrapolate test splits are public.",
+        "SymPy-backed generators provide executable mathematical objects for selected modules."
+      ],
+      "behavioral_plan_role": "independent_secondary_semantic_audit",
+      "behavioral_feasibility": "No public checkpoint is required for the registered suite gate; a behavioral experiment is forbidden from replacing the CLUTRR primary endpoint unless a new protocol version is frozen before inspecting Mathematics overlap.",
+      "planned_semantic_scope": "A result-independent subset of modules with deterministic parser-backed canonical mathematical objects; module list and verifier must be frozen in the full preregistration before any census.",
+      "result_independent_inclusion_reason": "Second candidate in the prespecified order; it passes availability screening and supplies a semantic domain materially different from kinship-rule composition."
+    }
+  ]
+}

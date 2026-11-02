@@ -1,0 +1,103 @@
+{
+  "generator_sha256": "e126af0319d3cf4873c608bb5361e3e22ee36475d27a371225917e3bd03d8b8f",
+  "slr_figure": {
+    "flat_rule_equivalence_rows": 382,
+    "semantic_union_rows": 452,
+    "test_rows": 1000,
+    "token_identity_rows": 70,
+    "verbatim_rows": 0
+  },
+  "source_sha256": {
+    "boolean_behavioral_results": "27af9105224371a3c51bb4755b453d8f153092cdb5ff72d49024406ae0b6b802",
+    "boolean_split_manifest": "14fa7c4c05b8db8d9599399c7908ab60811d870fce55c2cc3643710ee2e864c5",
+    "internal_claim_gates": "9a9f81cd0c80b5376ee070588b0fafc168c5a0d2dd14f562ef65b02d3dcae98b",
+    "slr_overlap": "aed8a990a91682042ff961f3854877e9880004fe7c2b43323f63e676ab86c0ee"
+  },
+  "summary_rows": [
+    {
+      "behavior_ci_high_pp": 3.787350880481438,
+      "behavior_ci_low_pp": 0.8410205171727775,
+      "behavior_effect_pp": 2.314185698827108,
+      "behavior_gate": "go",
+      "behavior_model": "six-public-architecture macro",
+      "benchmark": "Internal symbolic benchmark",
+      "case_id": "legacy_identity_public_audit",
+      "case_label": "Internal identity split",
+      "contamination_measure": "held-out identities duplicating a train function",
+      "overlap_or_exposure_rate": 0.11142857142857142,
+      "protocol": "parameter-identity split",
+      "rate_status": "exact_matched_five_seed_audit",
+      "semantic_object": "complete input-output function",
+      "source_behavior": "semantic_novelty_audit_supplement/results/public_baseline_audit/analysis/claim_gates.json",
+      "source_overlap": "semantic_novelty_audit_supplement/results/public_baseline_audit/analysis/claim_gates.json"
+    },
+    {
+      "behavior_ci_high_pp": null,
+      "behavior_ci_low_pp": null,
+      "behavior_effect_pp": null,
+      "behavior_gate": "not_evaluable_from_reported_outputs",
+      "behavior_model": "",
+      "benchmark": "SLR-Bench v1-All",
+      "case_id": "slr_sound_semantic_union",
+      "case_label": "SLR-Bench",
+      "contamination_measure": "sound train-test semantic-overlap lower bound",
+      "overlap_or_exposure_rate": 0.452,
+      "protocol": "raw rule-string exclusion",
+      "rate_status": "sound_lower_bound",
+      "semantic_object": "Prolog rule semantics",
+      "source_behavior": "",
+      "source_overlap": "external_semantic_overlap_audit/artifacts/slr_overlap_results.json"
+    },
+    {
+      "behavior_ci_high_pp": 0.04427081753965467,
+      "behavior_ci_low_pp": -0.09244790925489119,
+      "behavior_effect_pp": -0.01302082867672046,
+      "behavior_gate": "no_go",
+      "behavior_model": "6-layer Transformer",
+      "benchmark": "Boolean ICL released generator",
+      "case_id": "conjunction_d28",
+      "case_label": "Conjunction",
+      "contamination_measure": "evaluation functions sampled during training",
+      "overlap_or_exposure_rate": 0.008072916666666667,
+      "protocol": "same-distribution resampling",
+      "rate_status": "exact_empirical_frozen_stream",
+      "semantic_object": "Boolean truth table",
+      "source_behavior": "external_semantic_overlap_audit/analysis/boolean-behavioral-v1/results.json",
+      "source_overlap": "external_semantic_overlap_audit/protocols/boolean-behavioral-v1/split_manifest.json"
+    },
+    {
+      "behavior_ci_high_pp": 0.07812946576111601,
+      "behavior_ci_low_pp": -0.19929642134254683,
+      "behavior_effect_pp": -0.0638020255913337,
+      "behavior_gate": "no_go",
+      "behavior_model": "6-layer Transformer",
+      "benchmark": "Boolean ICL released generator",
+      "case_id": "majority_d28",
+      "case_label": "Majority",
+      "contamination_measure": "evaluation functions sampled during training",
+      "overlap_or_exposure_rate": 0.08880208333333332,
+      "protocol": "same-distribution resampling",
+      "rate_status": "exact_empirical_frozen_stream",
+      "semantic_object": "Boolean truth table",
+      "source_behavior": "external_semantic_overlap_audit/analysis/boolean-behavioral-v1/results.json",
+      "source_overlap": "external_semantic_overlap_audit/protocols/boolean-behavioral-v1/split_manifest.json"
+    },
+    {
+      "behavior_ci_high_pp": 0.2819812038121667,
+      "behavior_ci_low_pp": -0.05999581851142194,
+      "behavior_effect_pp": 0.09244794491678476,
+      "behavior_gate": "no_go",
+      "behavior_model": "6-layer Transformer",
+      "benchmark": "Boolean ICL released generator",
+      "case_id": "sparse_disjunction_d50_k4_positive",
+      "case_label": "Sparse disjunction",
+      "contamination_measure": "evaluation functions sampled during training",
+      "overlap_or_exposure_rate": 0.9343749999999998,
+      "protocol": "same-distribution resampling",
+      "rate_status": "exact_empirical_frozen_stream",
+      "semantic_object": "Boolean truth table",
+      "source_behavior": "external_semantic_overlap_audit/analysis/boolean-behavioral-v1/results.json",
+      "source_overlap": "external_semantic_overlap_audit/protocols/boolean-behavioral-v1/split_manifest.json"
+    }
+  ]
+}

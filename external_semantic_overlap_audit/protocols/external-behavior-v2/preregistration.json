@@ -1,0 +1,122 @@
+{
+  "schema_version": "external-behavior-preregistration-v2",
+  "protocol_id": "external-behavior-v2",
+  "freeze_date": "2026-10-12",
+  "status": "frozen_before_v2_mathematics_regeneration_or_overlap_census",
+  "scope": "Mathematics-only recovery amendment",
+  "relationship_to_v1": {
+    "parent_protocol": "external-behavior-v1",
+    "parent_preregistration_sha256": "3ff8bbde576f4176d9b2c98969925ae09f3f038f315711b4c71a1c17bf3dcf11",
+    "parent_failure_report_sha256": "e73b77aeef0f45cab81315f5fed971af69589c43767ebc403db9a1f284d0b957",
+    "clutrr_design_gate_remains": "no_go",
+    "external_behavior_v1_suite_decision_remains": "no_go",
+    "quality_enhancement_v1_p3_decision_remains": "no_go",
+    "retroactive_reclassification_allowed": false,
+    "candidate_replacement_allowed": false,
+    "changed_component": "Mathematics generator AssertionError handling only"
+  },
+  "state_observed_before_v2_freeze": {
+    "v1_clutrr_raw_rows": 120000,
+    "v1_clutrr_eligible_patterns": 0,
+    "v1_mathematics_validated_rows": 187937,
+    "v1_train_expand_validated_prefix_rows": 67937,
+    "v1_failure_exception": "AssertionError",
+    "v1_failure_terminal_source": "mathematics_dataset/sample/polynomials.py:107",
+    "mathematics_overlap_join_run": false,
+    "mathematics_overlap_aggregate_inspected": false,
+    "v2_rows_generated": false,
+    "v2_post_failure_rows_inspected": false
+  },
+  "amendment_rationale": "The pinned upstream generator deterministically asserts while constructing the next train/polynomials__expand sample. V1 correctly stopped because its adapter did not classify upstream assertions as drops. V2 prospectively defines one narrow, logged recovery rule and reruns all four streams from row zero.",
+  "immutable_from_v1": {
+    "candidate_id": "e9cf5d3411b6915d",
+    "source_revision": "427f45075f84b8b9774950196ad63867ca20ffb3",
+    "modules": [
+      "polynomials__expand",
+      "polynomials__collect"
+    ],
+    "regimes": {
+      "train_examples_per_module": 100000,
+      "interpolate_examples_per_module": 10000
+    },
+    "seed_namespace": "mathematics:{regime}:{module}",
+    "seed_derivation": "int.from_bytes(SHA256(('external-behavior-v1:' + namespace).encode('ascii')).digest()[0:8], 'big') & ((1<<63)-1)",
+    "question_length_filter": 160,
+    "answer_length_filter": 30,
+    "row_order": "retained generation order",
+    "semantic_identity": "module_name + ASCII unit separator + sympy.srepr(ordered exact-rational Poly terms after sorted-symbol alpha normalization)",
+    "semantic_id": "sha256(canonical_serialization)",
+    "behavioral_claim_allowed": false
+  },
+  "generation_recovery_rule": {
+    "applies_only_during": "the upstream module() call before question or answer length filtering",
+    "recoverable_exception_class": "AssertionError",
+    "required_terminal_frame_relative_path": "mathematics_dataset/sample/polynomials.py",
+    "required_terminal_frame_line": 107,
+    "required_exception_message": "",
+    "action": "Record one generator_assertion_drop and continue from the already-advanced Python and NumPy PRNG states without reseeding.",
+    "maximum_generator_assertion_drops_per_stream": 1000,
+    "all_other_exceptions": "fail_immediately",
+    "length_drops": "unchanged from v1: questions longer than 160 or answers longer than 30 are counted separately and skipped",
+    "anomaly_log_fields": [
+      "regime",
+      "module",
+      "next_retained_row_index",
+      "anomaly_index",
+      "exception_class",
+      "exception_message",
+      "terminal_frame_relative_path",
+      "terminal_frame_line",
+      "terminal_frame_function",
+      "traceback_sha256"
+    ]
+  },
+  "rerun_and_compatibility": {
+    "all_four_streams_restart_from_row_zero": true,
+    "v1_complete_streams_required_byte_identical": [
+      "train/polynomials__collect",
+      "interpolate/polynomials__expand",
+      "interpolate/polynomials__collect"
+    ],
+    "v1_train_expand_prefix_rows": 67937,
+    "v1_train_expand_prefix_sha256": "9a492db08770a7f2266cc54a3b29ae7a088a531045d7e5b127b0c41db08abc6b",
+    "v2_train_expand_prefix_must_be_byte_identical": true,
+    "post_failure_rows_are_prospective": true
+  },
+  "materialization_gate": {
+    "required": [
+      "source_revision_and_required_file_hashes_match",
+      "implementation_and_environment_were_frozen_before_v2_generation",
+      "all_220000_retained_examples_generated",
+      "all_recoverable_assertions_match_the_exact_registered_terminal_frame",
+      "generator_assertion_drop_count_is_at_most_1000_per_stream",
+      "v1_complete_streams_are_byte_identical",
+      "v1_train_expand_67937_row_prefix_is_byte_identical",
+      "parser_coverage_is_100_percent",
+      "every_semantic_id_is_independently_regenerated",
+      "row_indices_are_contiguous_within_each_stream",
+      "aggregate_overlap_join_has_not_run",
+      "all_artifact_hashes_validate"
+    ],
+    "failure_action": "mathematics_v2_no_go_preserve_partial_results_no_scope_substitution"
+  },
+  "aggregate_release_policy": {
+    "release_in_this_stage": false,
+    "analysis_input_hashes_must_be_frozen_first": true,
+    "future_collision_census_requires_a_separate_command_and report": true
+  },
+  "amendment_policy": {
+    "no_in_place_changes_after_freeze": true,
+    "new_protocol_version_required_for": [
+      "recoverable exception class or source location",
+      "exception-drop cap",
+      "source revision",
+      "module or regime",
+      "sample budget",
+      "seed",
+      "parser",
+      "canonicalization",
+      "materialization gate"
+    ]
+  }
+}

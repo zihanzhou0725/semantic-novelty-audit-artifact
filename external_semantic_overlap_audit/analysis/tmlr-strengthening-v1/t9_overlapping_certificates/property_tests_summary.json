@@ -1,0 +1,12 @@
+{
+  "dual_cases": 100,
+  "dual_passed": 100,
+  "milp_cases": 100,
+  "milp_passed": 100,
+  "odd_cycle_integer_feasible": false,
+  "odd_cycle_lp_interval": [
+    1.5,
+    1.5
+  ],
+  "seed": 0
+}

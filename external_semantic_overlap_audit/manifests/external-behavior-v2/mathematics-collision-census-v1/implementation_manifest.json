@@ -1,0 +1,23 @@
+{
+  "analysis_id": "mathematics-collision-census-v1",
+  "environment_sha256": "ca062ece4864434afec6404149624dc8c2d505f5774e890a42a7d831ceadb0c1",
+  "frozen_at_utc": "2026-10-12T11:37:59.867449+00:00",
+  "frozen_before_join": true,
+  "implementation_sha256": {
+    "scripts/freeze_math_collision_census_v1.py": "2244973d01c1370240491c6ae1d5e92e0b8d0a22bfb8e11a3d22b93a87af16d6",
+    "scripts/run_math_collision_census_v1.py": "524ee265cdcaa41acfa9fe2ecb7939bd168c03999b29351414dc9782dcfab9ed",
+    "scripts/validate_math_collision_census_v1.py": "255d472bf1a392fea02d641038249978573924fe440d14921b8e1b7d18e21ff9",
+    "tests/test_math_collision_census_v1.py": "bc4211754432b286ddfa7556e8abbb94cb4b441e8191b63ec1c4c980e016cb92",
+    "toolkit/external_behavior/common.py": "eb725d4dec66c3c247f21303265da740e4213af54c93abb764acd18b444bae71",
+    "toolkit/external_behavior_v2/collision_census.py": "80f819bdab70939bf3839b08fbf398269d47d997b88de6e3f28c1f8ec77bd2f2",
+    "toolkit/external_behavior_v2/collision_common.py": "d821e2a7d845daf31081fa0e9eedcc91ee765f6844a4a6bdeb8166a30862d252",
+    "toolkit/external_behavior_v2/collision_freeze.py": "0e4e038e98b3f752628eabdad25613e84eada2abcec96b38ccfbb1958d0a1512",
+    "toolkit/external_behavior_v2/collision_run.py": "b55c834fd426b9ed133cdbb29d87a50839078c404f015a49a4501ef2966dc305",
+    "toolkit/external_behavior_v2/collision_validate.py": "40e43ca4286df1de03967355b38f8491859db3fa2e24a1b1d76392c46dbaa2cb"
+  },
+  "input_manifest_sha256": "a65f5d9a34f17bf851111cc3352170dec40c5c677a43364dc8f1fd1c1290eba2",
+  "preregistration_sha256": "3eb2b815456e4f732f5b2144f0270b052ba8d0f831e61b2a153aa7b48c3d2bd6",
+  "requirements_lock_sha256": "64627f5045ae4383740a4ddaedfbf24cf1df121e2bde235f75fa0246e68b15fd",
+  "schema_version": "mathematics-collision-census-implementation-v1",
+  "status": "frozen"
+}

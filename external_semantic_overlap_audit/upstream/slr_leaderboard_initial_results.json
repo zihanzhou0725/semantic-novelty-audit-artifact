@@ -1,0 +1,1423 @@
+[
+  {
+    "model_name": "GPT-5 (chat)",
+    "model_id": "openai/gpt-5-chat-latest",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 100,
+      "easy": 91,
+      "medium": 34,
+      "hard": 14
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 2700000,
+      "usd": 36.04
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-5"
+  },
+  {
+    "model_name": "GPT-4.5 Preview",
+    "model_id": "openai/gpt-4.5",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 96,
+      "easy": 61,
+      "medium": 6,
+      "hard": 2
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 400000,
+      "usd": 576.4
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-4-5"
+  },
+  {
+    "model_name": "GPT-4o",
+    "model_id": "openai/gpt-4o",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 95,
+      "easy": 31,
+      "medium": 2,
+      "hard": 1
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 300000,
+      "usd": 20.03
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-4o"
+  },
+  {
+    "model_name": "GPT-4 Turbo",
+    "model_id": "openai/gpt-4-turbo",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 93,
+      "easy": 20,
+      "medium": 2,
+      "hard": 0
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 400000,
+      "usd": 81.3
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-4-turbo"
+  },
+  {
+    "model_name": "GPT-4o Mini",
+    "model_id": "openai/gpt-4o-mini",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 92,
+      "easy": 18,
+      "medium": 0,
+      "hard": 0
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 400000,
+      "usd": 1.26
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-4o-mini"
+  },
+  {
+    "model_name": "GPT-5.4 Mini",
+    "model_id": "openai/gpt-5.4-mini",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 99,
+      "easy": 85,
+      "medium": 52,
+      "hard": 28
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 16700000,
+      "usd": 80.79
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-5",
+    "reasoning_effort": "medium"
+  },
+  {
+    "model_name": "GPT-5",
+    "model_id": "openai/gpt-5",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 100,
+      "easy": 100,
+      "medium": 77,
+      "hard": 50
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 3,
+      "hard": 1
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 9400000,
+      "usd": 103.13
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-5",
+    "reasoning_effort": "medium"
+  },
+  {
+    "model_name": "GPT-5 Mini (high)",
+    "model_id": "openai/gpt-5-mini",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 100,
+      "easy": 100,
+      "medium": 74,
+      "hard": 44
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 1,
+      "medium": 23,
+      "hard": 59
+    },
+    "efficiency": {
+      "syntax": 93,
+      "tokens": 13100000,
+      "usd": 27.98
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-5",
+    "reasoning_effort": "high"
+  },
+  {
+    "model_name": "GPT-5 Mini (medium)",
+    "model_id": "openai/gpt-5-mini",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 100,
+      "easy": 98,
+      "medium": 50,
+      "hard": 23
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 14,
+      "hard": 18
+    },
+    "efficiency": {
+      "syntax": 98,
+      "tokens": 4900000,
+      "usd": 11.54
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-5",
+    "reasoning_effort": "medium"
+  },
+  {
+    "model_name": "GPT-5 Mini (low)",
+    "model_id": "openai/gpt-5-mini",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 100,
+      "easy": 85,
+      "medium": 26,
+      "hard": 8
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 98,
+      "tokens": 1200000,
+      "usd": 4.07
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-5",
+    "reasoning_effort": "low"
+  },
+  {
+    "model_name": "GPT-5 Nano (high)",
+    "model_id": "openai/gpt-5-nano",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 100,
+      "easy": 79,
+      "medium": 21,
+      "hard": 4
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 30,
+      "medium": 122,
+      "hard": 173
+    },
+    "efficiency": {
+      "syntax": 85,
+      "tokens": 15700000,
+      "usd": 6.62
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-5",
+    "reasoning_effort": "high"
+  },
+  {
+    "model_name": "GPT-5 Nano (medium)",
+    "model_id": "openai/gpt-5-nano",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 99,
+      "easy": 74,
+      "medium": 12,
+      "hard": 3
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 37,
+      "medium": 147,
+      "hard": 184
+    },
+    "efficiency": {
+      "syntax": 99,
+      "tokens": 6200000,
+      "usd": 2.81
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-5",
+    "reasoning_effort": "medium"
+  },
+  {
+    "model_name": "GPT-5 Nano (low)",
+    "model_id": "openai/gpt-5-nano",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 100,
+      "easy": 48,
+      "medium": 2,
+      "hard": 1
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 6,
+      "medium": 28,
+      "hard": 36
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 1100000,
+      "usd": 0.8
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/gpt-5",
+    "reasoning_effort": "low"
+  },
+  {
+    "model_name": "o4 Mini",
+    "model_id": "openai/o4-mini",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 99,
+      "easy": 93,
+      "medium": 40,
+      "hard": 14
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 2,
+      "hard": 4
+    },
+    "efficiency": {
+      "syntax": 97,
+      "tokens": 7800000,
+      "usd": 41.83
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/o4-mini",
+    "reasoning_effort": "medium"
+  },
+  {
+    "model_name": "o3 Mini",
+    "model_id": "openai/o3-mini",
+    "model_family": "OpenAI",
+    "accuracy": {
+      "basic": 100,
+      "easy": 96,
+      "medium": 43,
+      "hard": 10
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 38,
+      "hard": 102
+    },
+    "efficiency": {
+      "syntax": 98,
+      "tokens": 15300000,
+      "usd": 75.08
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://openai.com/o3-mini",
+    "reasoning_effort": "medium"
+  },
+  {
+    "model_name": "GPT-OSS 120B (high)",
+    "model_id": "openai/gpt-oss-120b",
+    "model_family": "GPT-OSS",
+    "accuracy": {
+      "basic": 100,
+      "easy": 97,
+      "medium": 58,
+      "hard": 15
+    },
+    "shortcuts": {
+      "basic": 1,
+      "easy": 0,
+      "medium": 5,
+      "hard": 5
+    },
+    "efficiency": {
+      "syntax": 98,
+      "tokens": 18700000,
+      "usd": 3.83
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/openai/gpt-oss-120b",
+    "reasoning_effort": "high"
+  },
+  {
+    "model_name": "GPT-OSS 120B (medium)",
+    "model_id": "openai/gpt-oss-120b",
+    "model_family": "GPT-OSS",
+    "accuracy": {
+      "basic": 100,
+      "easy": 89,
+      "medium": 26,
+      "hard": 5
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 21,
+      "hard": 36
+    },
+    "efficiency": {
+      "syntax": 99,
+      "tokens": 4700000,
+      "usd": 1.18
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/openai/gpt-oss-120b",
+    "reasoning_effort": "medium"
+  },
+  {
+    "model_name": "GPT-OSS 120B (low)",
+    "model_id": "openai/gpt-oss-120b",
+    "model_family": "GPT-OSS",
+    "accuracy": {
+      "basic": 97,
+      "easy": 68,
+      "medium": 9,
+      "hard": 3
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 2,
+      "hard": 2
+    },
+    "efficiency": {
+      "syntax": 98,
+      "tokens": 900000,
+      "usd": 0.44
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/openai/gpt-oss-120b",
+    "reasoning_effort": "low"
+  },
+  {
+    "model_name": "GPT-OSS 20B (high)",
+    "model_id": "openai/gpt-oss-20b",
+    "model_family": "GPT-OSS",
+    "accuracy": {
+      "basic": 96,
+      "easy": 81,
+      "medium": 26,
+      "hard": 2
+    },
+    "shortcuts": {
+      "basic": 1,
+      "easy": 0,
+      "medium": 2,
+      "hard": 1
+    },
+    "efficiency": {
+      "syntax": 92,
+      "tokens": 36000000,
+      "usd": 4.17
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/openai/gpt-oss-120b",
+    "reasoning_effort": "high"
+  },
+  {
+    "model_name": "GPT-OSS 20B (medium)",
+    "model_id": "openai/gpt-oss-20b",
+    "model_family": "GPT-OSS",
+    "accuracy": {
+      "basic": 97,
+      "easy": 81,
+      "medium": 18,
+      "hard": 4
+    },
+    "shortcuts": {
+      "basic": 1,
+      "easy": 1,
+      "medium": 2,
+      "hard": 1
+    },
+    "efficiency": {
+      "syntax": 94,
+      "tokens": 33600000,
+      "usd": 3.9
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/openai/gpt-oss-120b",
+    "reasoning_effort": "medium"
+  },
+  {
+    "model_name": "GPT-OSS 20B (low)",
+    "model_id": "openai/gpt-oss-20b",
+    "model_family": "GPT-OSS",
+    "accuracy": {
+      "basic": 92,
+      "easy": 49,
+      "medium": 5,
+      "hard": 2
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 1,
+      "medium": 1,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 98,
+      "tokens": 1400000,
+      "usd": 0.37
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/openai/gpt-oss-120b",
+    "reasoning_effort": "low"
+  },
+  {
+    "model_name": "Gemini-3.1-flash-lite (high)",
+    "model_id": "google/gemini-3.1-flash-lite",
+    "model_family": "Gemini",
+    "accuracy": {
+      "basic": 99,
+      "easy": 96,
+      "medium": 48,
+      "hard": 18
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 14300000,
+      "usd": 23.69
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://deepmind.google/technologies/gemini",
+    "reasoning_effort": "high"
+  },
+  {
+    "model_name": "Gemini-3.1-flash-lite (medium)",
+    "model_id": "google/gemini-3.1-flash-lite",
+    "model_family": "Gemini",
+    "accuracy": {
+      "basic": 100,
+      "easy": 72,
+      "medium": 11,
+      "hard": 6
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 1,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 1500000,
+      "usd": 4.57
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://deepmind.google/technologies/gemini",
+    "reasoning_effort": "medium"
+  },
+  {
+    "model_name": "Gemini-3.1-flash-lite (low)",
+    "model_id": "google/gemini-3.1-flash-lite",
+    "model_family": "Gemini",
+    "accuracy": {
+      "basic": 98,
+      "easy": 76,
+      "medium": 13,
+      "hard": 3
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 1100000,
+      "usd": 3.98
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://deepmind.google/technologies/gemini",
+    "reasoning_effort": "low"
+  },
+  {
+    "model_name": "Gemini-3-flash-preview",
+    "model_id": "google/gemini-3-flash-preview",
+    "model_family": "Gemini",
+    "accuracy": {
+      "basic": 100,
+      "easy": 98,
+      "medium": 71,
+      "hard": 54
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 25500000,
+      "usd": 81.14
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://deepmind.google/technologies/gemini",
+    "reasoning_effort": "high"
+  },
+  {
+    "model_name": "Gemini-2.5-pro",
+    "model_id": "google/gemini-2.5-pro",
+    "model_family": "Gemini",
+    "accuracy": {
+      "basic": 100,
+      "easy": 85,
+      "medium": 31,
+      "hard": 16
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 99,
+      "tokens": 16399999,
+      "usd": 174.97
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://deepmind.google/technologies/gemini"
+  },
+  {
+    "model_name": "Gemini-2.5-flash",
+    "model_id": "google/gemini-2.5-flash",
+    "model_family": "Gemini",
+    "accuracy": {
+      "basic": 100,
+      "easy": 96,
+      "medium": 46,
+      "hard": 18
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 98,
+      "tokens": 21900000,
+      "usd": 57.51
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://deepmind.google/technologies/gemini"
+  },
+  {
+    "model_name": "Gemini-2.5-flash-lite (high)",
+    "model_id": "google/gemini-2.5-flash-lite",
+    "model_family": "Gemini",
+    "accuracy": {
+      "basic": 99,
+      "easy": 75,
+      "medium": 15,
+      "hard": 2
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 18400000,
+      "usd": 8.26
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://deepmind.google/technologies/gemini",
+    "reasoning_effort": "high"
+  },
+  {
+    "model_name": "Gemini-2.5-flash-lite",
+    "model_id": "google/gemini-2.5-flash-lite",
+    "model_family": "Gemini",
+    "accuracy": {
+      "basic": 66,
+      "easy": 3,
+      "medium": 1,
+      "hard": 0
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 600000,
+      "usd": 1.16
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://deepmind.google/technologies/gemini"
+  },
+  {
+    "model_name": "Gemma-4 31B",
+    "model_id": "google/gemma-4-31b",
+    "model_family": "Gemma",
+    "accuracy": {
+      "basic": 89,
+      "easy": 74,
+      "medium": 44,
+      "hard": 12
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 1
+    },
+    "efficiency": {
+      "syntax": 89,
+      "tokens": 6500000,
+      "usd": 3.87
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/google"
+  },
+  {
+    "model_name": "Gemma-4 26B",
+    "model_id": "google/gemma-4-26b",
+    "model_family": "Gemma",
+    "accuracy": {
+      "basic": 86,
+      "easy": 62,
+      "medium": 23,
+      "hard": 4
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 78,
+      "tokens": 10200000,
+      "usd": 5.29
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/google"
+  },
+  {
+    "model_name": "Gemma-4 E4B",
+    "model_id": "google/gemma-4-e4b",
+    "model_family": "Gemma",
+    "accuracy": {
+      "basic": 97,
+      "easy": 58,
+      "medium": 6,
+      "hard": 2
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 2,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 92,
+      "tokens": 5000000,
+      "usd": null
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/google"
+  },
+  {
+    "model_name": "Gemma-4 E2B",
+    "model_id": "google/gemma-4-e2b",
+    "model_family": "Gemma",
+    "accuracy": {
+      "basic": 95,
+      "easy": 34,
+      "medium": 3,
+      "hard": 0
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 1,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 99,
+      "tokens": 3000000,
+      "usd": null
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/google"
+  },
+  {
+    "model_name": "DeepSeek-R1-Distill Llama 70B",
+    "model_id": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+    "model_family": "DeepSeek",
+    "accuracy": {
+      "basic": 98,
+      "easy": 67,
+      "medium": 6,
+      "hard": 4
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 2,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 5900000,
+      "usd": 9.55
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/deepseek-ai"
+  },
+  {
+    "model_name": "DeepSeek-R1-Distill Qwen 32B",
+    "model_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+    "model_family": "DeepSeek",
+    "accuracy": {
+      "basic": 99,
+      "easy": 64,
+      "medium": 10,
+      "hard": 2
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 96,
+      "tokens": 7600000,
+      "usd": 4.32
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/deepseek-ai"
+  },
+  {
+    "model_name": "DeepSeek-R1-Distill Qwen 8B",
+    "model_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-8B",
+    "model_family": "DeepSeek",
+    "accuracy": {
+      "basic": 89,
+      "easy": 56,
+      "medium": 6,
+      "hard": 2
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 99,
+      "tokens": 1500000,
+      "usd": 6.57
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/deepseek-ai"
+  },
+  {
+    "model_name": "Kimi-K2.5",
+    "model_id": "moonshotai/Kimi-K2.5",
+    "model_family": "Kimi",
+    "accuracy": {
+      "basic": 99,
+      "easy": 82,
+      "medium": 25,
+      "hard": 8
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 94,
+      "tokens": 7600000,
+      "usd": 15.74
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/moonshotai"
+  },
+  {
+    "model_name": "Kimi-K2",
+    "model_id": "moonshotai/Kimi-K2",
+    "model_family": "Kimi",
+    "accuracy": {
+      "basic": 92,
+      "easy": 88,
+      "medium": 26,
+      "hard": 5
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 1
+    },
+    "efficiency": {
+      "syntax": 95,
+      "tokens": 6900000,
+      "usd": 19.71
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/moonshotai"
+  },
+  {
+    "model_name": "Kimi-VL A3B",
+    "model_id": "moonshotai/Kimi-VL-A3B",
+    "model_family": "Kimi",
+    "accuracy": {
+      "basic": 26,
+      "easy": 7,
+      "medium": 0,
+      "hard": 0
+    },
+    "shortcuts": {
+      "basic": 2,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 95,
+      "tokens": 12200000,
+      "usd": null
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/moonshotai"
+  },
+  {
+    "model_name": "GLM-4.7 FP8",
+    "model_id": "zai-org/GLM-4.7-FP8",
+    "model_family": "GLM",
+    "accuracy": {
+      "basic": 82,
+      "easy": 97,
+      "medium": 60,
+      "hard": 23
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 80,
+      "tokens": 11100000,
+      "usd": 22.1
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/zai-org"
+  },
+  {
+    "model_name": "GLM-4.5 Air",
+    "model_id": "zai-org/GLM-4.5-Air",
+    "model_family": "GLM",
+    "accuracy": {
+      "basic": 99,
+      "easy": 88,
+      "medium": 26,
+      "hard": 7
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 99,
+      "tokens": 8400000,
+      "usd": 8.01
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/zai-org"
+  },
+  {
+    "model_name": "Llama-3.1-Nemotron 253B",
+    "model_id": "nvidia/Llama-3.1-Nemotron-Ultra-253B",
+    "model_family": "Nemotron",
+    "accuracy": {
+      "basic": 86,
+      "easy": 90,
+      "medium": 23,
+      "hard": 5
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 100,
+      "tokens": 500000,
+      "usd": 4.98
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/nvidia"
+  },
+  {
+    "model_name": "Nemotron-3 120B",
+    "model_id": "nvidia/Nemotron-3-120B",
+    "model_family": "Nemotron",
+    "accuracy": {
+      "basic": 97,
+      "easy": 86,
+      "medium": 25,
+      "hard": 4
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 89,
+      "tokens": 9500000,
+      "usd": 5.59
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/nvidia"
+  },
+  {
+    "model_name": "Llama-3.3-Nemotron 49B",
+    "model_id": "nvidia/Llama-3.3-Nemotron-49B",
+    "model_family": "Nemotron",
+    "accuracy": {
+      "basic": 78,
+      "easy": 21,
+      "medium": 1,
+      "hard": 0
+    },
+    "shortcuts": {
+      "basic": 1,
+      "easy": 1,
+      "medium": 1,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 95,
+      "tokens": 1100000,
+      "usd": null
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/nvidia"
+  },
+  {
+    "model_name": "Cascade-2 30B",
+    "model_id": "nvidia/Cascade-2-30B",
+    "model_family": "Nemotron",
+    "accuracy": {
+      "basic": 98,
+      "easy": 80,
+      "medium": 17,
+      "hard": 2
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 1,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 87,
+      "tokens": 9400000,
+      "usd": null
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/nvidia"
+  },
+  {
+    "model_name": "Nemotron-3 30B",
+    "model_id": "nvidia/Nemotron-3-30B",
+    "model_family": "Nemotron",
+    "accuracy": {
+      "basic": 3,
+      "easy": 7,
+      "medium": 2,
+      "hard": 0
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 52,
+      "tokens": 12700000,
+      "usd": 2.96
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/nvidia"
+  },
+  {
+    "model_name": "Ministral-3 14B",
+    "model_id": "mistralai/Ministral-3-14B",
+    "model_family": "Ministral",
+    "accuracy": {
+      "basic": 90,
+      "easy": 74,
+      "medium": 17,
+      "hard": 7
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 50,
+      "tokens": 2700000,
+      "usd": 0.82
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/mistralai"
+  },
+  {
+    "model_name": "Ministral-3 8B",
+    "model_id": "mistralai/Ministral-3-8B",
+    "model_family": "Ministral",
+    "accuracy": {
+      "basic": 90,
+      "easy": 63,
+      "medium": 10,
+      "hard": 2
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 47,
+      "tokens": 1500000,
+      "usd": 0.43
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/mistralai"
+  },
+  {
+    "model_name": "Ministral-3 3B",
+    "model_id": "mistralai/Ministral-3-3B",
+    "model_family": "Ministral",
+    "accuracy": {
+      "basic": 79,
+      "easy": 47,
+      "medium": 7,
+      "hard": 2
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 61,
+      "tokens": 3500000,
+      "usd": 0.77
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/mistralai"
+  },
+  {
+    "model_name": "OLMo-3.1 32B Think",
+    "model_id": "allenai/Olmo-3.1-32B-Think",
+    "model_family": "OLMo",
+    "accuracy": {
+      "basic": 81,
+      "easy": 60,
+      "medium": 11,
+      "hard": 2
+    },
+    "shortcuts": {
+      "basic": 2,
+      "easy": 1,
+      "medium": 3,
+      "hard": 7
+    },
+    "efficiency": {
+      "syntax": 98,
+      "tokens": 14600000,
+      "usd": null
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/allenai"
+  },
+  {
+    "model_name": "OLMo-3 32B Think",
+    "model_id": "allenai/Olmo-3-32B-Think",
+    "model_family": "OLMo",
+    "accuracy": {
+      "basic": 99,
+      "easy": 68,
+      "medium": 11,
+      "hard": 2
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 98,
+      "tokens": 16000000,
+      "usd": 9.04
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/allenai"
+  },
+  {
+    "model_name": "OLMo-3 7B Think",
+    "model_id": "allenai/Olmo-3-7B-Think",
+    "model_family": "OLMo",
+    "accuracy": {
+      "basic": 30,
+      "easy": 15,
+      "medium": 1,
+      "hard": 0
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 95,
+      "tokens": 17800000,
+      "usd": null
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/allenai"
+  },
+  {
+    "model_name": "Qwen-3.5 35B",
+    "model_id": "Qwen/Qwen3.5-35B",
+    "model_family": "Qwen",
+    "accuracy": {
+      "basic": 99,
+      "easy": 92,
+      "medium": 30,
+      "hard": 10
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 73,
+      "tokens": 10300000,
+      "usd": 14.69
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/Qwen"
+  },
+  {
+    "model_name": "Qwen-3.5 27B",
+    "model_id": "Qwen/Qwen3.5-27B",
+    "model_family": "Qwen",
+    "accuracy": {
+      "basic": 100,
+      "easy": 94,
+      "medium": 37,
+      "hard": 9
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 0,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 76,
+      "tokens": 10200000,
+      "usd": 17.49
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/Qwen"
+  },
+  {
+    "model_name": "Qwen-3.5 9B",
+    "model_id": "Qwen/Qwen3.5-9B",
+    "model_family": "Qwen",
+    "accuracy": {
+      "basic": 100,
+      "easy": 76,
+      "medium": 16,
+      "hard": 4
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 0,
+      "medium": 1,
+      "hard": 2
+    },
+    "efficiency": {
+      "syntax": 75,
+      "tokens": 11200000,
+      "usd": 2.07
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/Qwen"
+  },
+  {
+    "model_name": "Qwen-3.5 4B",
+    "model_id": "Qwen/Qwen3.5-4B",
+    "model_family": "Qwen",
+    "accuracy": {
+      "basic": 98,
+      "easy": 68,
+      "medium": 9,
+      "hard": 3
+    },
+    "shortcuts": {
+      "basic": 0,
+      "easy": 1,
+      "medium": 1,
+      "hard": 0
+    },
+    "efficiency": {
+      "syntax": 73,
+      "tokens": 11400000,
+      "usd": null
+    },
+    "eval_date": "2026-04-01",
+    "paper_result": true,
+    "link": "https://huggingface.co/Qwen"
+  }
+]

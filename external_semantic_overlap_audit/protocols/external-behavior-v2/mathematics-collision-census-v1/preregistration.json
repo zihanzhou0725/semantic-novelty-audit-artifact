@@ -1,0 +1,149 @@
+{
+  "schema_version": "mathematics-collision-census-preregistration-v1",
+  "analysis_id": "mathematics-collision-census-v1",
+  "parent_protocol": "external-behavior-v2",
+  "freeze_date": "2026-10-12",
+  "status": "frozen_before_train_interpolate_join_or_overlap_aggregate_release",
+  "scope": {
+    "candidate_id": "e9cf5d3411b6915d",
+    "modules": [
+      "polynomials__expand",
+      "polynomials__collect"
+    ],
+    "train_rows_per_module": 100000,
+    "interpolate_rows_per_module": 10000,
+    "cross_module_matching_forbidden": true,
+    "behavioral_claim_allowed": false
+  },
+  "pre_analysis_state": {
+    "materialization_gate": "pass",
+    "materialization_validation_sha256": "0e44e2ea828c8bc14793d07415ec1dc77dbc6d12c31656991258d84358d2ecfd",
+    "aggregate_overlap_released": false,
+    "train_interpolate_join_run": false,
+    "collision_count_inspected": false,
+    "candidate_or_scope_replacement_allowed": false
+  },
+  "identity_definitions": {
+    "verbatim_question_identity": "Exact UTF-8 question string equality within the same module. Answer text is not part of this key.",
+    "semantic_identity": "Exact equality of the frozen semantic_id within the same module. The semantic_id is SHA-256 of module name, ASCII unit separator, and the exact-rational alpha-normalized polynomial canonical serialization.",
+    "evaluation_unit": "One retained interpolate row.",
+    "unique_semantic_unit": "One distinct interpolate semantic_id within a module.",
+    "train_match": "At least one retained train row in the same module has the registered identity.",
+    "no_match": "No retained train row in the same module has the registered identity after the complete train census.",
+    "unresolved": "Parser, signature, symbolic verifier, row-integrity, or artifact-hash failure. No-match may not be used for an unresolved row."
+  },
+  "primary_outputs": {
+    "by_module": [
+      "interpolate_row_denominator",
+      "verbatim_question_overlap_row_count",
+      "verbatim_question_overlap_row_prevalence",
+      "canonical_semantic_overlap_row_count",
+      "canonical_semantic_overlap_row_prevalence",
+      "interpolate_unique_semantic_id_denominator",
+      "overlapping_unique_semantic_id_count",
+      "overlapping_unique_semantic_id_prevalence",
+      "unresolved_row_count"
+    ],
+    "overall": "Sum numerators and denominators across modules only after reporting both modules separately.",
+    "prevalence_formula": "numerator / denominator with exact integer numerator and denominator retained in output",
+    "rounding": "Display decimals are secondary; canonical JSON stores integer counts and IEEE-754 division results."
+  },
+  "multiplicity_outputs": {
+    "semantic_id_table_unit": "One distinct interpolate semantic_id within one module.",
+    "fields": [
+      "module",
+      "semantic_id",
+      "train_multiplicity",
+      "interpolate_multiplicity",
+      "overlap"
+    ],
+    "distribution": "For each module, count unique interpolate semantic IDs by the ordered pair (train_multiplicity, interpolate_multiplicity).",
+    "row_weighted_distribution": "For each module, count interpolate rows by train_multiplicity."
+  },
+  "witness_outputs": {
+    "evaluation_audit_rows": "Exactly 20,000 rows in module then row_index order, including both overlap and no-match decisions.",
+    "semantic_collision_witnesses": "One row per semantically overlapping interpolate row.",
+    "semantic_train_witness_selection": "Smallest train row_index in the same module with the same semantic_id.",
+    "verbatim_train_witness_selection": "Smallest train row_index in the same module with the exact same question, or null.",
+    "required_witness_fields": [
+      "module",
+      "interpolate_row_index",
+      "interpolate_row_id",
+      "interpolate_question",
+      "interpolate_answer",
+      "semantic_id",
+      "semantic_overlap",
+      "verbatim_overlap",
+      "train_semantic_match_count",
+      "train_verbatim_match_count",
+      "interpolate_semantic_multiplicity",
+      "semantic_train_witness_row_index",
+      "semantic_train_witness_row_id",
+      "semantic_train_witness_question",
+      "semantic_train_witness_answer",
+      "verbatim_train_witness_row_index",
+      "verifier_exact_zero"
+    ]
+  },
+  "independent_symbolic_verifier": {
+    "applies_to": "Every semantically overlapping interpolate row and its selected train witness.",
+    "parser": "Independently parse the registered module prefix and final period using sympy.sympify(..., evaluate=False).",
+    "alpha_normalization": "Independently map each expression's sorted free symbols to x0, x1, ... .",
+    "test": "The symbol arities must match and sympy.simplify(sympy.expand(train_normalized - interpolate_normalized)) must equal exact integer zero.",
+    "additional_checks": [
+      "Independently regenerated canonical srepr equals the stored value for both rows.",
+      "Independently regenerated semantic_id equals the stored value for both rows.",
+      "Selected train witness is the minimum matching train row_index."
+    ],
+    "failure": "Mark the row unresolved and fail the complete census gate."
+  },
+  "deterministic_ordering": {
+    "evaluation_audit_rows": "module order polynomials__expand then polynomials__collect, then ascending interpolate row_index",
+    "semantic_id_table": "module order, then ascending semantic_id",
+    "collision_witnesses": "module order, then ascending interpolate row_index",
+    "json": "sort_keys=True, ensure_ascii=True",
+    "jsonl": "compact separators with one LF-terminated object per row"
+  },
+  "complete_census_gate": {
+    "required": [
+      "all frozen input hashes match",
+      "both train streams have exactly 100000 contiguous rows",
+      "both interpolate streams have exactly 10000 contiguous rows",
+      "all 20000 evaluation decisions are emitted",
+      "all semantic collision witnesses pass exact symbolic verification",
+      "all representative witnesses obey minimum-row-index selection",
+      "unresolved_row_count_is_zero",
+      "module-level counts sum exactly to overall counts",
+      "multiplicity distributions conserve their denominators",
+      "independent aggregate recomputation matches released results",
+      "all output hashes validate"
+    ],
+    "failure_action": "census_no_go_preserve_partial_outputs_and_report_no_aggregate_claim"
+  },
+  "claim_gate": {
+    "allowed_if_pass": [
+      "Exact train/interpolate verbatim and canonical semantic overlap prevalence for the two regenerated polynomial modules under the pinned seeds.",
+      "Every reported semantic collision has an independently verified symbolic-equivalence witness."
+    ],
+    "forbidden": [
+      "The released pre-generated Mathematics Dataset files have the same overlap prevalence.",
+      "Other Mathematics modules have the same overlap prevalence.",
+      "Semantic overlap causes a behavioral performance change.",
+      "The result reclassifies external-behavior-v1, CLUTRR, or quality-enhancement-v1 P3."
+    ]
+  },
+  "release_policy": {
+    "implementation_and_environment_hashes_frozen_before_join": true,
+    "release_only_after_independent_validation": true,
+    "release_artifacts": [
+      "results.json",
+      "summary_by_module.csv",
+      "semantic_multiplicity.csv",
+      "evaluation_overlap_rows.jsonl",
+      "semantic_collision_witnesses.jsonl",
+      "validation_report.json",
+      "report_cn.md",
+      "SHA256SUMS"
+    ]
+  }
+}

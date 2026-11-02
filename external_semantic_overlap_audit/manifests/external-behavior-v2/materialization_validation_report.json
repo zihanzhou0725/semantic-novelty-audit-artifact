@@ -1,0 +1,111 @@
+{
+  "aggregate_overlap_released": false,
+  "anomaly_counts": {
+    "interpolate:polynomials__collect": 0,
+    "interpolate:polynomials__expand": 0,
+    "train:polynomials__collect": 0,
+    "train:polynomials__expand": 1
+  },
+  "check_count": 13,
+  "checks": [
+    {
+      "detail": null,
+      "name": "implementation_freeze",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "environment_lock",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_validation",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "data_hashes",
+      "pass": true
+    },
+    {
+      "detail": {
+        "interpolate:polynomials__collect": 10000,
+        "interpolate:polynomials__expand": 10000,
+        "train:polynomials__collect": 100000,
+        "train:polynomials__expand": 100000
+      },
+      "name": "row_counts",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "signatures",
+      "pass": true
+    },
+    {
+      "detail": 0,
+      "name": "row_integrity",
+      "pass": true
+    },
+    {
+      "detail": {
+        "counts": {
+          "interpolate:polynomials__collect": 0,
+          "interpolate:polynomials__expand": 0,
+          "train:polynomials__collect": 0,
+          "train:polynomials__expand": 1
+        },
+        "failures": []
+      },
+      "name": "anomalies",
+      "pass": true
+    },
+    {
+      "detail": {
+        "interpolate:polynomials__collect": 0,
+        "interpolate:polynomials__expand": 0,
+        "train:polynomials__collect": 0,
+        "train:polynomials__expand": 1
+      },
+      "name": "anomaly_cap",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "complete_compatibility",
+      "pass": true
+    },
+    {
+      "detail": {
+        "rows": 67937,
+        "sha256": "9a492db08770a7f2266cc54a3b29ae7a088a531045d7e5b127b0c41db08abc6b"
+      },
+      "name": "prefix_compatibility",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "aggregate_blindness",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_behavioral_training",
+      "pass": true
+    }
+  ],
+  "failed_checks": [],
+  "failed_count": 0,
+  "materialization_gate": "pass",
+  "protocol_id": "external-behavior-v2",
+  "row_counts": {
+    "interpolate:polynomials__collect": 10000,
+    "interpolate:polynomials__expand": 10000,
+    "train:polynomials__collect": 100000,
+    "train:polynomials__expand": 100000
+  },
+  "schema_version": "external-behavior-v2-validation-v1",
+  "status": "pass",
+  "validated_at_utc": "2026-10-12T10:41:20.151220+00:00"
+}

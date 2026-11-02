@@ -1,0 +1,17 @@
+{
+  "completed_at_utc": "2026-10-13T11:30:36.883536+00:00",
+  "design_id": "external-behavior-v3-variance-design-v1",
+  "output_sha256": {
+    "anova_components.csv": "cb1bc64e3e6f3be23ad5d69e2e493ac49411aa921388cae6ec7f83bf09798143",
+    "bootstrap_component_summary.csv": "f175a10266c897e01f933923b93451783456d09c24c6c71093bf744aa4ff57bf",
+    "decomposition_distributions.npz": "ad5582fdd7705ce04196216591744d8f00df9773423418c2f39ef265967b8a6c",
+    "precision_projection.csv": "61326107baef607c54407ff3f7c4352632e6bd85968e10e6bcd99ffef0951a5c",
+    "remaining_pair_capacity.csv": "c958eade066a05b5e68183051b66411300815eaa59a89aadc3a2ccaa2523bec4",
+    "report_cn.md": "06429ef83fdac5c1f354574cfc981a3145b9e42c796da3ff0a60606d224c891d",
+    "v4_design_gate_report.json": "cae5df0ce21f8afa82c03d3dd87ec20ef9a324f1befd92eccf0bda210002af2f",
+    "variance_results.json": "82fc3d0e8bc89faa036aa8d8585ec3f0205fa038b81a5ef1fe4695f2d6572664"
+  },
+  "protocol_input_manifest_sha256": "c1e170b127169ac275ead72b868eaddd5041ed89df390247bbf74ff0b4f32511",
+  "schema_version": "external-behavior-v3-variance-analysis-manifest-v1",
+  "status": "complete_pending_independent_validation"
+}

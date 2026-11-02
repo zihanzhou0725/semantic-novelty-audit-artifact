@@ -1,0 +1,29 @@
+{
+  "adapter_count": 2,
+  "adapters": [
+    "occam_markov_transition_v1",
+    "tensor_logic_fb15k237_v1"
+  ],
+  "artifact_sha256": {
+    "manifest.json": "c4346f18b463f0633801d6baae6b851cb9b67bc95e7fb5bdc31239e102d27947",
+    "occam_markov.audit.json": "88a2126daddd7c613d08498f77288dc83109a720465e0e148c0171741428a9fd",
+    "tensor_logic.audit.json": "ff104621f8e6b389a85a5a4a870289788458fc0551ff3db578b307981c3bdc35"
+  },
+  "audit_output_schema_sha256": "7af8539bac8a94a49f53a5c259c22b0e9794f1b313892cb723cdf7e162b517d5",
+  "conditions": {
+    "clean_environment_reproduction": true,
+    "deterministic_manifest_hashes": true,
+    "distinct_public_benchmark_adapters_at_least_2": true,
+    "schema_validation": true,
+    "unit_canaries_exact_function_sound_alias_unresolved": true
+  },
+  "decision": "go",
+  "input_sha256": {
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/preregistration.json": "1ca70e1a76f41c0c906ffe420cc1c7499420056519f05759332d2e3c1697775b",
+    "external_semantic_overlap_audit/scripts/semantic_audit_v1.py": "a7e500b51785e75db472f044cbaa3af9b693fe2b9d3d9afa5584cb437620374c",
+    "external_semantic_overlap_audit/scripts/validate_quality_p4_toolkit.py": "2344f31c88f13dfc0eea56e93e62d56939c13c5143b2cb706b03945eeb41b0d3",
+    "external_semantic_overlap_audit/tests/test_p4_toolkit.py": "28c2b20294d662c9893dc0fe70754893d5f1dde213ccca73af673e9b4a43edc4"
+  },
+  "schema_version": "quality-enhancement-p4-validation-v1",
+  "status": "complete"
+}

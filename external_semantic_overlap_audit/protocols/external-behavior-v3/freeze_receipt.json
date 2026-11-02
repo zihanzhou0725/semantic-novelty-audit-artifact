@@ -1,0 +1,25 @@
+{
+  "schema_version": "external-behavior-v3-freeze-receipt-v1",
+  "protocol_id": "external-behavior-v3",
+  "frozen_at_utc": "2026-10-12T11:45:00Z",
+  "trigger": "V1 clean-story ordering capped per-pattern surface support below the registered 200 evaluation plus 64 exposure requirement.",
+  "state_at_freeze": {
+    "v1_design_no_go_observed": true,
+    "v1_behavioral_training_started": false,
+    "v1_behavioral_outcome_inspected": false,
+    "v3_expanded_candidate_rows_generated": false,
+    "v3_capacity_census_run": false,
+    "v3_target_ids_selected": false,
+    "v3_arm_manifests_materialized": false,
+    "v3_training_started": false
+  },
+  "scope_controls": {
+    "candidate_changed": false,
+    "source_revision_changed": false,
+    "semantic_identity_changed": false,
+    "model_changed": false,
+    "sample_budgets_changed": false,
+    "sentence_order_surface_support_added": true,
+    "source_group_disjointness_added": true
+  }
+}

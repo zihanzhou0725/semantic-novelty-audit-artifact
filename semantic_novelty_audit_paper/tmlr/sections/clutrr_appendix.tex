@@ -1,0 +1,313 @@
+\section{CLUTRR External Behavioral Validation}
+\label{app:clutrr}
+
+\subsection{Frozen Scope and Semantic Identity}
+
+Both studies use CLUTRR Task~1 at relation length three, without distractor
+facts.  A row contains three kinship-relation sentences and one queried
+relation from 23 output classes.  Entity names are canonicalized by order of
+appearance.  The semantic ID is
+\[
+(\text{target relation},
+ \text{edge relation}_1,
+ \text{edge relation}_2,
+ \text{edge relation}_3),
+\]
+where the edges follow the ordered proof chain.  Sentence order and entity
+surface names are excluded from this ID.
+
+For each source story, all six sentence permutations receive one shared
+\texttt{source\_group\_id}.  Eligible targets have at least 45 complete
+groups.  The evaluation rows use the first 34 groups after deterministic
+sorting: six permutations from groups 0--32 and two from group~33, for 200
+rows per target.  Exposure uses the next 11 groups: six permutations from
+groups 34--43 and four from group~44, for 64 rows per target.  Thus no source
+group contributes to both exposure and evaluation.
+
+Targets are paired only when they have the same output label.  For each seed,
+a frozen SHA-256 bit assigns one member of every pair to each arm.  The two
+arms share 22,720 common-base rows with no target semantic ID and append
+1,280 exposure rows, giving 24,000 rows per run.  Label histograms, total
+budget, tensor shape, initialization, epoch orders, and evaluation rows are
+paired.
+
+\subsection{Model, Training, and Primary Analysis}
+
+The model is a byte-level Transformer with four layers, model dimension 128,
+four attention heads, feed-forward dimension 512, dropout 0.1, pooling over a
+classification token, and 23 output classes.  Training uses deterministic CPU
+float32 execution, AdamW, batch size 128, learning rate
+$3\times10^{-4}$, and 30 fixed epochs.  Each epoch contains 188 updates, so
+the final checkpoint follows 5,640 updates.  There is no validation selection
+or early stopping.
+
+For seed $s$, let $\mathbf Z_s^A$ be the complete target-exposure assignment
+in Arm~A and let $\mathbf Z_s^B=\mathbf 1-\mathbf Z_s^A$.  For target $f$,
+$\mathbf Z_{s,f}^{(1)}$ is whichever arm assignment exposes $f$, and
+$\mathbf Z_{s,f}^{(0)}$ is the complementary assignment.  Let
+$A_{s,f}(\mathbf z)$ be row-weighted accuracy under complete curriculum
+assignment $\mathbf z$.  The primary estimand is
+\begin{equation}
+\tau_{\rm pp}
+=
+\frac{100}{SF}
+\sum_{s=1}^{S}\sum_{f=1}^{F}
+\left[
+A_{s,f}(\mathbf Z_{s,f}^{(1)})
+-A_{s,f}(\mathbf Z_{s,f}^{(0)})
+\right].
+\end{equation}
+Targets and seeds have equal weight; each target's 200 evaluation rows have
+equal weight.  This target-indexed estimand compares two complete,
+complementary curricula; it does not identify a one-target direct effect while
+holding the other target assignments fixed.
+
+The 20,000-replicate percentile bootstrap resamples model seeds, complete
+same-label semantic-pattern pairs, and source groups within each selected
+pair member.  Exposed and unexposed predictions use the same group draws, and
+all rows from a sampled group occurrence remain together.  Percentiles use
+NumPy's linear quantile method.  A separate analysis code path reconstructs
+arm alignment from materialized assignments rather than trusting stored arm
+labels.
+
+The estimand itself is finite-population: it averages the eight frozen seeds
+and 80 frozen targets.  For interval construction, the bootstrap treats the
+observed seed labels, 40 complete pair labels, and source-group labels within
+each target as exchangeable under their empirical distributions.  The
+justification is procedural symmetry after freezing: each seed uses the same
+architecture and training protocol, each selected pair receives the same
+complementary intervention, and source-group IDs only identify permutations
+of one source story.  Seed and pair resampling preserve their complete
+clusters; group draws and duplicate seed occurrences are shared across arms.
+The deterministic target-prefix and source-group allocation prevent a
+design-based interpretation for all eligible CLUTRR patterns or stories.
+
+The post-hoc sensitivity analysis uses the 640 seed-pattern effects
+\(d_i\).  With residual
+\(u_i=d_i-\bar d\), each cluster dimension \(c\) has CR1 variance
+\[
+\widehat V_c=
+\frac{G_c}{G_c-1}\frac{1}{N^2}
+\sum_{g=1}^{G_c}\left(\sum_{i\in g}u_i\right)^2.
+\]
+Clustering by model seed and complete pattern pair gives
+\(\widehat V_{\rm two-way}
+=\widehat V_{\rm seed}+\widehat V_{\rm pair}
+-\widehat V_{\rm seed\times pair}\).
+The resulting standard error is 2.6187 points.  A conservative two-sided
+\(t_7\) interval is \([17.1469,29.5313]\) points, still above zero.  This
+post-hoc sensitivity is not a new decision rule or a replacement for the registered
+hierarchical bootstrap.
+
+\subsection{V3 Pilot and Frozen Precision Decision}
+
+V3 contains 20 pattern pairs, 40 targets, eight seeds, and two arms, for 16
+runs and 128,000 saved evaluation predictions.  Before outcomes, the protocol
+required any positive, negative, or equivalence conclusion to have a 95\%
+interval no wider than two percentage points.
+
+\begin{table}[H]
+\caption{V3 primary result and registered decision.}
+\label{tab:app-clutrr-v3}
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+Quantity & Value \\
+\midrule
+Point estimate & $+15.3375$ pp \\
+95\% percentile interval & $[+9.8769,+21.3693]$ pp \\
+Interval width & $11.4924$ pp \\
+Frozen maximum width & $2.0000$ pp \\
+Registered outcome & positive but imprecise (precision criterion not met) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The V3 estimand averages eight frozen seeds and 40 frozen targets.  Conditional
+on that setting, its bootstrap treats those seeds, 20 complete pairs, and
+within-target source groups as exchangeable empirical draws while preserving
+clusters and paired arms.  Deterministic selection precludes design-based
+generalization to all eligible CLUTRR patterns or stories.
+
+The interval is directionally positive but fails the registered precision
+criterion.  That decision is retained without reinterpretation.
+
+After V3 was closed, a labeled exploratory analysis used bootstrap-Shapley
+variance attribution and a seed-by-pair random-effects decomposition.
+Pattern-pair resampling accounts for 94.40\% of bootstrap variance, compared
+with 4.90\% for model seeds and 0.70\% for source groups.  The random-effects
+estimates are $162.6402$ pp$^2$ for pair heterogeneity, $0.3490$ pp$^2$ for
+seeds, and $48.6744$ pp$^2$ for the seed-by-pair interaction.
+
+\subsection{Exploratory Effect Heterogeneity}
+\label{tmlrs:app:clutrr-heterogeneity}
+
+This exploratory (not preregistered) analysis resolves the V4 contrast into
+its \TTwoPatterns{} semantic patterns.  The pattern effects have mean
+\TTwoMean{} pp,
+median \TTwoMedian{} pp, sample standard deviation \TTwoSD{} pp, and range
+\TTwoMin{}--\TTwoMax{} pp; \TTwoPositive{}/\TTwoPatterns{} are positive.
+Effect size is
+strongly associated with unexposed accuracy
+(Spearman $\rho=\TTwoSpearman{}$).  A linear regression on that baseline
+alone has $R^2=\TTwoBaseRSquared{}$; adding target-relation indicators raises
+it to $R^2=\TTwoRelationRSquared{}$.  The median normalized gain is
+\TTwoNGMedian{}, so the raw spread is not only a scale artifact, although
+available headroom explains much of it.
+
+\begin{table}[H]
+\caption{Exploratory structural covariates for CLUTRR pattern effects.}
+\label{tmlrs:tab:clutrr-cov}
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Covariate group & Patterns & Mean effect (pp) & Spearman $\rho$ \\
+\midrule
+Target absent from edges & \TTwoInAbsentN{} & \TTwoInAbsentMean{} &
+\multirow{2}{*}{$\TTwoInSpearman{}$} \\
+Target present in edges & \TTwoInPresentN{} & \TTwoInPresentMean{} & \\
+One distinct edge type & \TTwoDistinctOneN{} & \TTwoDistinctOneMean{} &
+\multirow{3}{*}{$\TTwoDistinctSpearman{}$} \\
+Two distinct edge types & \TTwoDistinctTwoN{} & \TTwoDistinctTwoMean{} & \\
+Three distinct edge types & \TTwoDistinctThreeN{} &
+\TTwoDistinctThreeMean{} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Neither whether the target relation appears among the three edges nor the
+number of distinct edge types predicts the effect at conventional levels
+(two-sided Spearman $p=\TTwoInP{}$ and $p=\TTwoDistinctP{}$, respectively).
+Target relation as a categorical grouping explains \TTwoEta{} of the effect
+variance, but
+leave-one-relation mean effects remain within
+\TTwoLeaveMin{}--\TTwoLeaveMax{} pp.  Figure
+\ref{tmlrs:fig:clutrr-heterogeneity} shows the full distribution.  Exposure
+gains are largest where the unexposed model is far from ceiling, and
+normalized gain is high for most patterns; the heterogeneity is thus mostly
+a headroom effect rather than evidence for a particular compositional
+mechanism.
+
+A calibrated prospective projection finds that the original two-point width
+would require about 634 independent pairs even with infinitely many seeds.
+Only 139 eligible V3-disjoint pairs remain, and using all of them with
+infinitely many seeds projects to a 4.2690-point width.  The strict-precision
+replication route was therefore closed rather than consuming more seeds under
+an infeasible criterion.
+
+\subsection{Prospective V4 Design}
+
+V4 treats V3 as a declared pilot and changes the scientific question from a
+two-point precision target to directional confirmation.  The prospective
+design effect is
+\[
+\min(0.5\times15.3375,\;9.8769)=7.66875\ \text{pp}.
+\]
+A 100,000-draw 64-bit permuted congruential generator (PCG64) Monte Carlo
+simulation evaluates one to four 20-pair blocks.  The frozen selection rule
+chooses the smallest block count for which estimated power and the 95\% Wilson
+lower confidence bound are both at least 0.90.
+
+For candidate pair count \(Q\in\{20,40,60,80\}\), set the frozen design
+effect to \(\delta=7.66875\) points and draw
+\[
+\begin{aligned}
+\widehat\tau_Q&=\delta+\mathrm{SE}_Q Z,\qquad Z\sim N(0,1),\\
+\mathrm{SE}_Q
+&=c\sqrt{
+\frac{\sigma_s^2}{8}
++\frac{\sigma_p^2}{Q}
++\frac{\sigma_{sp}^2}{8Q}
+}.
+\end{aligned}
+\]
+The V3 random-effects inputs are
+\(\sigma_s^2=0.3490014\),
+\(\sigma_p^2=162.6401609\), and
+\(\sigma_{sp}^2=48.6744361\) pp\(^2\), with frozen calibration
+\(c=1.0067880\).  The seed effect is shared across pairs, the pair effect
+across seeds, and the interaction is seed-by-pair.  Source groups are nested
+within targets and shared across arms; their contribution is not a fourth
+explicit random effect, but enters \(c\) through calibration to the full V3
+hierarchical percentile width, which resampled source groups.  A simulated
+experiment succeeds exactly when
+\(\widehat\tau_Q\geq1\) and
+\(\widehat\tau_Q-1.959964\,\mathrm{SE}_Q>0\).
+Power is the fraction of 100,000 successful draws; the block-size rule additionally
+requires its binomial 95\% Wilson lower endpoint to be at least 0.90.
+
+\begin{table}[H]
+\caption{V4 power analysis for the first two candidate sizes.}
+\label{tab:app-clutrr-power}
+\centering
+\small
+\begin{tabular}{rrrrr}
+\toprule
+Blocks & Pairs & Runs & Power & Wilson lower \\
+\midrule
+1 & 20 & 16 & 0.74397 & 0.74126 \\
+2 & 40 & 32 & 0.95828 & 0.95702 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The minimum-passing design therefore has two blocks, 40 pairs, 80 patterns,
+and 32 runs.  All target semantic IDs are disjoint from V3.  The primary success criterion,
+frozen before materialization and training, requires
+\(\tau_{\rm pp}\geq1\) and a two-sided 95\% interval lower endpoint above
+zero.
+
+\subsection{V4 Execution Integrity and Result}
+
+Materialization validates 80 targets, 16,000 evaluation rows across two
+blocks, 5,120 exposure rows, the shared 22,720-row common base, and all 32
+training manifests.  The frozen execution assets include a
+$43{,}840\times185$ tensor cache, 32 arrays of 24,000 training indices,
+two 8,000-row evaluation caches, eight initialization records, and 240
+epoch-order records.
+
+All 32 runs reach epoch 30.  The post-execution validator checks finite model
+and optimizer state, 960 run-by-epoch order records, 256,000 predictions,
+four-way RNG pairing across both blocks and arms within each seed, prediction
+ordering, separate-code-path metric reconstruction, and artifact hashes.
+
+\begin{table}[H]
+\caption{V4 primary and descriptive results.  Sign counts do not define
+additional hypothesis tests.}
+\label{tab:app-clutrr-v4}
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+Quantity & Value \\
+\midrule
+Point estimate & $+23.3391$ pp \\
+95\% percentile interval & $[+17.7498,+29.2257]$ pp \\
+Registered outcome & directional criterion met \\
+Block effects & $+25.0109,\ +21.6672$ pp \\
+Positive seeds & 8/8 \\
+Positive pairs & 40/40 \\
+Positive target patterns & 76/80 \\
+Cross entropy, exposed minus unexposed & $-1.4938$ \\
+Brier score, exposed minus unexposed & $-0.4224$ \\
+ECE-15, exposed minus unexposed & $-0.2018$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The V4 point estimate exceeds one point and its interval lies above zero, so
+the registered directional positive rule passes.  V3 and V4 are not pooled:
+they use disjoint targets, answer different registered decision questions,
+and retain separate bootstrap draws and classifications.
+
+\subsection{Paper Artifact}
+
+The compact CLUTRR bundle contains 51 checksum-managed files:
+design and effect preregistrations, freeze validations, execution-integrity
+reports, run-artifact hashes, exact bootstrap draws, pair/pattern/seed tables,
+code snapshots, claim boundaries, source-file provenance, and a standalone
+verifier.  It excludes local paths and large checkpoints.  Its
+\texttt{SHA256SUMS} file has SHA-256
+\texttt{210dddc02840a7bab7fe1215378d36ac\allowbreak86cc574a06aeca238482eab86ba3ef36}.

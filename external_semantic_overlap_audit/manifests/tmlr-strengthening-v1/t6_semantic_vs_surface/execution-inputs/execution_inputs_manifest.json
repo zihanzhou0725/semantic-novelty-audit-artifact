@@ -1,0 +1,94 @@
+{
+  "arm_surface_id_sha256": {
+    "C0": "e98fd1bc04db0b2b34b1d880e3595314ff1da56220d80d367d36a26dd85ba5a2",
+    "C1": "99f0f9dc12f388c8ec7adeb000682a733c691efee15ad6c1f6da0a3a9effed0e",
+    "C2": "7e5cf97ebb8834470aa9acf0faaebf72d62d1d75c81e7246dfd60fde8fb8d6f9"
+  },
+  "artifacts": {
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/arm_C0_surface_ids.txt": "e98fd1bc04db0b2b34b1d880e3595314ff1da56220d80d367d36a26dd85ba5a2",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/arm_C1_surface_ids.txt": "99f0f9dc12f388c8ec7adeb000682a733c691efee15ad6c1f6da0a3a9effed0e",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/arm_C2_surface_ids.txt": "7e5cf97ebb8834470aa9acf0faaebf72d62d1d75c81e7246dfd60fde8fb8d6f9",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/decoy_allocation.csv": "1bd2b3388375bfb671f7426b58a4491e86cd77fb5941abb04f532a3d8f984ccc",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/decoy_rows.jsonl": "06da44ef4be3ba76076163f8edd62a9101a498f95fd08efe2b93c8704882350b",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/evaluation.npz": "ae965c9ae22febc27096500829bf1e3574155586f8a1492ae40d022754472b50",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/evaluation_surface_ids.txt": "5313d1d5fc5e94f504b4d069725526ef279a9aa315cd9bf0fe6e40132a77662c",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/tensor_cache.npz": "07c49d20b1141d20b1a442a53e48c3d6c8835d1acb05509d165840d2c3cc737e",
+    "manifests/tmlr-strengthening-v1/t6_semantic_vs_surface/execution-inputs/train_indices.npz": "20c62026bb50c98361929b78335966fc6669d5078247f8cad5d83585750a0993"
+  },
+  "cache_rows": 36413,
+  "evaluation_rows": 8000,
+  "evaluation_surface_id_sha256": "5313d1d5fc5e94f504b4d069725526ef279a9aa315cd9bf0fe6e40132a77662c",
+  "files": {
+    "evaluation.npz": "ae965c9ae22febc27096500829bf1e3574155586f8a1492ae40d022754472b50",
+    "tensor_cache.npz": "07c49d20b1141d20b1a442a53e48c3d6c8835d1acb05509d165840d2c3cc737e",
+    "train_indices.npz": "20c62026bb50c98361929b78335966fc6669d5078247f8cad5d83585750a0993"
+  },
+  "label_counts": {
+    "C0": {
+      "aunt": 1266,
+      "brother": 1458,
+      "daughter": 1362,
+      "daughter-in-law": 1266,
+      "father": 1554,
+      "father-in-law": 1266,
+      "granddaughter": 1554,
+      "grandfather": 1362,
+      "grandmother": 1266,
+      "grandson": 1554,
+      "mother": 1266,
+      "mother-in-law": 1200,
+      "neice": 1362,
+      "nephew": 1362,
+      "sister": 1458,
+      "son": 1362,
+      "son-in-law": 1265,
+      "uncle": 1457
+    },
+    "C1": {
+      "aunt": 1266,
+      "brother": 1458,
+      "daughter": 1362,
+      "daughter-in-law": 1266,
+      "father": 1554,
+      "father-in-law": 1266,
+      "granddaughter": 1554,
+      "grandfather": 1362,
+      "grandmother": 1266,
+      "grandson": 1554,
+      "mother": 1266,
+      "mother-in-law": 1200,
+      "neice": 1362,
+      "nephew": 1362,
+      "sister": 1458,
+      "son": 1362,
+      "son-in-law": 1265,
+      "uncle": 1457
+    },
+    "C2": {
+      "aunt": 1266,
+      "brother": 1458,
+      "daughter": 1362,
+      "daughter-in-law": 1266,
+      "father": 1554,
+      "father-in-law": 1266,
+      "granddaughter": 1554,
+      "grandfather": 1362,
+      "grandmother": 1266,
+      "grandson": 1554,
+      "mother": 1266,
+      "mother-in-law": 1200,
+      "neice": 1362,
+      "nephew": 1362,
+      "sister": 1458,
+      "son": 1362,
+      "son-in-law": 1265,
+      "uncle": 1457
+    }
+  },
+  "smoke_initial_model_sha256": "21745a7aa4878dee340a4e5e846079e1ed43a4239e6e9e2cb31ddbfeb7209639",
+  "train_rows": {
+    "C0": 24640,
+    "C1": 24640,
+    "C2": 24640
+  }
+}

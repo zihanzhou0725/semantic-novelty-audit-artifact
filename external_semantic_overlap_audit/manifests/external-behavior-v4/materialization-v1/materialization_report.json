@@ -1,0 +1,21 @@
+{
+  "block_count": 2,
+  "common_base_rows": 22720,
+  "evaluation_rows_by_block": {
+    "0": 8000,
+    "1": 8000
+  },
+  "exposure_rows_by_block": {
+    "0": 2560,
+    "1": 2560
+  },
+  "materialization_id": "external-behavior-v4-materialization-v1",
+  "maximum_allocated_sequence_length": 185,
+  "run_manifest_count": 32,
+  "schema_version": "external-behavior-v4-materialization-report-v1",
+  "selected_pair_count": 40,
+  "selected_target_count": 80,
+  "status": "materialized_pending_independent_validation",
+  "training_started": false,
+  "v3_target_overlap_count": 0
+}

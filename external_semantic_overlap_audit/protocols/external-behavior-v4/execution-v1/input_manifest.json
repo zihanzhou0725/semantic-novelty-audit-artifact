@@ -1,0 +1,31 @@
+{
+  "execution_id": "external-behavior-v4-execution-v1",
+  "frozen_at_utc": "2026-10-13T11:54:04.943585+00:00",
+  "implementation_sha256": {
+    "protocols/external-behavior-v4/execution-v1/validate.py": "336f650a9a2f76e512e91fcfc9af6a15f6a689bda24f80dcec8f675c173e9eb6",
+    "scripts/freeze_external_behavior_v4_execution.py": "2175443d5ddc77772eea78ae115f309d5f7bdd2319d6544d177ed96da082143b",
+    "scripts/run_external_behavior_v4.py": "c0d1da1898da987d589ecd18ef1ac93f10461781c2165257af88b3a496ec8253",
+    "scripts/run_external_behavior_v4_matrix.py": "9e5f2c23d51c32416e63d46de2a8a603e4fc0fbe2273bee967a1d67b5a4cf940",
+    "scripts/validate_external_behavior_v4_execution.py": "ff60b7bfb7967354c8b1fb2fa27fc4ec93ce8be3cb42f20149ea7dd063cebaaf",
+    "tests/test_external_behavior_v4_training.py": "f05d2d81a9fe43e8be34f395ae6534096732f8bfd7554465b6d9d9f51394d3b2",
+    "toolkit/external_behavior/common.py": "eb725d4dec66c3c247f21303265da740e4213af54c93abb764acd18b444bae71",
+    "toolkit/external_behavior/model.py": "fd7774d8c13bf7adccf282efe5e20411b2f231d13152eccc669591d2768c7d73",
+    "toolkit/external_behavior_v3/training_common.py": "e623a8389e6769663fe6f10424a71d9f457fecc5bc77c865df6c43827c49650e",
+    "toolkit/external_behavior_v4/train_driver.py": "9cf86cf3bf576c449172cfa86c08a4604c4f9a21432315d419be5139df2f6f66",
+    "toolkit/external_behavior_v4/train_integrity.py": "884fb07543d64a353cd16e7eb7886c6434d975d49ebf24be178962f0a8c11af9",
+    "toolkit/external_behavior_v4/train_run.py": "46c5ececb7c9c5dee722932aa62647e6429aab690dc91fcb4cabdf2b5f3a476a",
+    "toolkit/external_behavior_v4/training_common.py": "a958d5824d71b6ba6b29707983848e74c9a4c1e736ac499c48dbde93cfceaacc",
+    "toolkit/external_behavior_v4/training_freeze.py": "3ab3be3d6f1914ea88585b1933c24514cf5dbbd538915ec8297fdcee7836aefb"
+  },
+  "input_sha256": {
+    "manifests/external-behavior-v4/directional-design-v1/DESIGN_SHA256SUMS": "6e55669a76e036f22da4d832baad77361ae44fc5351baf6d8f028a7c7964cf7d",
+    "manifests/external-behavior-v4/directional-design-v1/design_manifest.json": "beb691d09546bbd85299be064bde563aa6d33cd5f98ca18c3678f197a643733a",
+    "manifests/external-behavior-v4/materialization-v1/MATERIALIZATION_SHA256SUMS": "7565791209615f6a890acd2eef1a0c7ee2238120b5b66c21475fe9737bb4a375",
+    "manifests/external-behavior-v4/materialization-v1/data/SHA256SUMS": "833f01bb44c67644ac750c67191e092298d1aa83e5cc9db35cf5b5468906892d",
+    "manifests/external-behavior-v4/materialization-v1/materialization_validation_report.json": "1336fd98eda4b0d464313fe8c05dcf859ea6df2a1831d6dee70b817954401f08",
+    "manifests/external-behavior-v4/materialization-v1/run_manifest.csv": "48b31d36b8e7c7c4939da5d36d1b8b3e422646e618612aa8491b17ce3f5dee54",
+    "protocols/external-behavior-v4/materialization-v1/SHA256SUMS": "6e0124fd81e1cc390385ed5f6e6646c0c27e37743c37c4a29cf316a759710287"
+  },
+  "schema_version": "external-behavior-v4-execution-input-manifest-v1",
+  "status": "frozen_before_execution_bundle"
+}

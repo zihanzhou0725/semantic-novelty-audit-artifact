@@ -1,0 +1,137 @@
+{
+  "analysis_implementation_sha256": "5731cd575f1af88388c5661c012dacc3b845170fb231a09ddb47ddb32d52d780",
+  "bootstrap": {
+    "architecture_resampling": false,
+    "dependency_sharing": {
+      "episode_indices_shared_across": [
+        "architectures",
+        "selected_model_seeds",
+        "exposed_and_unexposed_predictions"
+      ],
+      "function_pair_indices_shared_across": [
+        "architectures",
+        "selected_model_seeds"
+      ],
+      "model_seed_indices_shared_across": [
+        "architectures"
+      ]
+    },
+    "draw_order": [
+      "draw_all_replicate_by_5_model_seed_indices",
+      "draw_all_replicate_by_20_function_pair_indices",
+      "draw_episode_indices_in_contiguous_replicate_batches"
+    ],
+    "episode_draws_per_selected_function": 250,
+    "function_pair_draws_per_replicate": 20,
+    "implementation_batch_size": 32,
+    "model_seed_draws_per_replicate": 5,
+    "percentile_interpolation": "linear",
+    "replicates": 20000,
+    "rng": "numpy.random.Generator(numpy.random.PCG64(seed))",
+    "seed": 20261009,
+    "type": "hierarchical_percentile"
+  },
+  "estimand": {
+    "architecture_macro_weighting": "equal_fixed_weights",
+    "architecture_specific_formula": "tau_m_pp = 100 * mean_seed(mean_function(mean_episode(correct_exposed - correct_unexposed)))",
+    "exposure_alignment": "For each model_seed and target_function, select the arm whose frozen exposure flag is true as exposed and the complementary arm as unexposed.",
+    "function_weighting": "equal_over_all_40_fixed_targets",
+    "macro_formula": "tau_macro_pp = mean_over_6_fixed_architectures(tau_m_pp)",
+    "name": "architecture_macro_exact_exposure_effect",
+    "orientation": "exposed_minus_unexposed",
+    "unit": "percentage_points"
+  },
+  "freeze_implementation_sha256": "d58331b0a8739ddf6e882bd0ab6bc30c84ea5334e2744a3d710ded5c4c9bb42d",
+  "frozen_at_utc": "2026-10-09T08:19:09.703639+00:00",
+  "function_order": {
+    "pair_order": "pairs.jsonl ascending pair_index 0..19",
+    "within_pair_order": [
+      "function_multiplier_1",
+      "function_multiplier_11"
+    ]
+  },
+  "gate": {
+    "equivalence_margin_pp": [
+      -0.5,
+      0.5
+    ],
+    "evaluation_order": [
+      "positive_behavioral_go",
+      "negative_behavioral_go",
+      "null_equivalence_go",
+      "inconclusive_no_go"
+    ],
+    "minimum_architectures_same_direction": 4,
+    "model_specific_absolute_effect_pp": 1.0,
+    "model_specific_claim_rule": "absolute point estimate >= 1.0 pp and the 99.1667% simultaneous interval excludes zero in the point-estimate direction",
+    "negative_rule": "tau_macro <= -1.0 pp, macro 95% upper bound < 0, and at least 4 of 6 architecture point estimates < 0",
+    "null_rule": "macro 95% interval contained in [-0.5,+0.5] pp, every architecture absolute point estimate < 1.0 pp, and no simultaneous architecture interval excludes zero",
+    "positive_rule": "tau_macro >= +1.0 pp, macro 95% lower bound > 0, and at least 4 of 6 architecture point estimates > 0",
+    "sesoi_pp": 1.0
+  },
+  "input_sha256": {
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/p1/SHA256SUMS": "a9379941b424365c8009461cb0c17cad474495e63e20ea3095f3addd4987312d",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/p1/design_manifest.json": "1d896c71d4ece852e791a289469cb6c2911f5eaf0952591d28fa52227e938426",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/p1/eval.npz": "9d450f26a44769b9d9f364181699f47ee60f1bd8f93f63cd253cce37445ca5ef",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/p1/pairs.jsonl": "de90d9ce1eb977527db11e7ec10f47421677553138168ad82bafca42c65be376",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/p1/run_manifest.csv": "cd57703cc8832706ed3380c71e136823e4bba420a7b19d9c12a84be62b06eb6a",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/p1/targets.jsonl": "6992829920781e1e80872f62ede7ae7174a2ba34c3b1909f33e5da960a4a5616",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/p1/validation_report.json": "9040db44677535fe7a5657a428a08d8ac3ee01748553cbf3df01d9cce2f0b90d",
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/preregistration.json": "1ca70e1a76f41c0c906ffe420cc1c7499420056519f05759332d2e3c1697775b",
+    "external_semantic_overlap_audit/runs/quality-enhancement-v1/p1/execution_state.json": "f814de5f6ba328dfe41b364de8bdff14a3738885b44c343e7cba0c05d9951a73",
+    "external_semantic_overlap_audit/runs/quality-enhancement-v1/p1/full_validation.json": "642509262366f23256f21ba8ebca030e2d55e4a8ba48c2e15c68a18b19e64cd5",
+    "external_semantic_overlap_audit/runs/quality-enhancement-v1/p1/matrix_status.json": "95b6c66c52dca5961084589d351cecddadcd03b5c32fa596c06fc4256f9535ec",
+    "external_semantic_overlap_audit/scripts/analyze_quality_p1.py": "5731cd575f1af88388c5661c012dacc3b845170fb231a09ddb47ddb32d52d780",
+    "external_semantic_overlap_audit/scripts/freeze_quality_p1_analysis.py": "d58331b0a8739ddf6e882bd0ab6bc30c84ea5334e2744a3d710ded5c4c9bb42d",
+    "external_semantic_overlap_audit/scripts/validate_quality_p1_full_matrix.py": "5e962b30470e326ed2aa297bb50230fe658bc576c359577eacd9c8dd8fe7a7e1"
+  },
+  "intervals": {
+    "model_confidence": 0.9916666666666667,
+    "model_method": "percentile Bonferroni-simultaneous across six architectures",
+    "primary_confidence": 0.95,
+    "primary_method": "percentile"
+  },
+  "model_order": [
+    "symbolic_deepsets",
+    "symbolic_relation_network",
+    "symbolic_set_transformer",
+    "symbolic_hopfield",
+    "symbolic_perceiver",
+    "symbolic_transformer"
+  ],
+  "model_seed_order": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "protocol": "quality-enhancement-p1-v1",
+  "schema_version": "quality-enhancement-p1-analysis-v1",
+  "secondary": {
+    "cross_entropy_and_brier": {
+      "orientation": "exposed_minus_unexposed",
+      "reporting": "point estimates only; equal function, model-seed, and architecture weights; descriptive and not Gate-eligible"
+    },
+    "effect_by_frozen_alias_signature": "Within each signature, equally average its fixed target functions, then model seeds and architectures.",
+    "evaluation_calibration": {
+      "aggregation": "Compute each summary separately for each architecture and model seed after exposure alignment, then take an equal architecture-seed mean.",
+      "bin_edges": "15 equal-width bins on [0,1], last bin includes 1",
+      "bins": 15,
+      "confidence": "maximum predicted class probability",
+      "metrics": [
+        "accuracy",
+        "mean_confidence",
+        "signed_gap_confidence_minus_accuracy",
+        "expected_calibration_error"
+      ]
+    },
+    "per_function_effect": "For each fixed function, average paired episode correctness differences equally over the five seeds and six architectures.",
+    "training_calibration": {
+      "reason": "The frozen training adapter persisted final-epoch loss and accuracy but not training-set probabilities.",
+      "rule": "Report not_estimable_from_frozen_artifacts; do not substitute loss or accuracy for calibration. Final-epoch loss and accuracy may be listed as descriptive execution summaries.",
+      "status": "registered_but_unavailable"
+    }
+  },
+  "status": "frozen_before_outcome_contrast_computation"
+}

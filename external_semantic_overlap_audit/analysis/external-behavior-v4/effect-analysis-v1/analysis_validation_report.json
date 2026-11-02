@@ -1,0 +1,91 @@
+{
+  "analysis_gate": "pass",
+  "analysis_id": "external-behavior-v4-effect-analysis-v1",
+  "check_count": 9,
+  "checks": [
+    {
+      "detail": null,
+      "name": "protocol",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "inputs",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "outputs",
+      "pass": true
+    },
+    {
+      "detail": {
+        "direct": 23.3390625,
+        "reported": 23.3390625
+      },
+      "name": "primary",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "interval",
+      "pass": true
+    },
+    {
+      "detail": {
+        "reported": {
+          "classification": "directional_positive_go",
+          "interval_width_pp": 11.475920216795394,
+          "positive_gate_pass": true
+        },
+        "reproduced": {
+          "classification": "directional_positive_go",
+          "interval_width_pp": 11.475920216795394,
+          "positive_gate_pass": true
+        }
+      },
+      "name": "decision",
+      "pass": true
+    },
+    {
+      "detail": {
+        "expected": {
+          "block_effects.csv": 2,
+          "pair_effects.csv": 40,
+          "pattern_effects.csv": 80,
+          "relation_effects.csv": 15,
+          "seed_aligned_metrics.csv": 8,
+          "seed_effects.csv": 8,
+          "seed_pattern_effects.csv": 640
+        },
+        "observed": {
+          "block_effects.csv": 2,
+          "pair_effects.csv": 40,
+          "pattern_effects.csv": 80,
+          "relation_effects.csv": 15,
+          "seed_aligned_metrics.csv": 8,
+          "seed_effects.csv": 8,
+          "seed_pattern_effects.csv": 640
+        }
+      },
+      "name": "tables",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "finite",
+      "pass": true
+    }
+  ],
+  "failed_checks": [],
+  "failed_count": 0,
+  "primary_decision": "directional_positive_go",
+  "schema_version": "external-behavior-v4-effect-analysis-validation-v1",
+  "status": "pass",
+  "validated_at_utc": "2026-10-15T07:04:18.708500+00:00"
+}

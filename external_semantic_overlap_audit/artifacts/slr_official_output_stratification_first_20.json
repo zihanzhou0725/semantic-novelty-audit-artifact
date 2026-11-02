@@ -1,0 +1,55 @@
+{
+  "by_level": {
+    "1": {
+      "accuracy": 0.35,
+      "completion_tokens_mean": 38.45,
+      "n": 20,
+      "partial_score": 0.575,
+      "runtime_error_count": 4,
+      "syntax_extracted": 1.0
+    }
+  },
+  "by_overlap_class": {
+    "flat_semantic_duplicate": {
+      "accuracy": 0.35,
+      "completion_tokens_mean": 38.45,
+      "n": 20,
+      "partial_score": 0.575,
+      "runtime_error_count": 4,
+      "syntax_extracted": 1.0
+    }
+  },
+  "by_tier": {
+    "basic": {
+      "accuracy": 0.35,
+      "completion_tokens_mean": 38.45,
+      "n": 20,
+      "partial_score": 0.575,
+      "runtime_error_count": 4,
+      "syntax_extracted": 1.0
+    }
+  },
+  "error_types": {
+    "error(existence_error(procedure,car_color/3),car_color/3).": 1,
+    "error(existence_error(procedure,has_car/3),has_car/3).": 1,
+    "error(existence_error(procedure,has_wall/3),has_wall/3).": 1,
+    "error(instantiation_error,callable).": 1
+  },
+  "overall": {
+    "accuracy": 0.35,
+    "completion_tokens_mean": 38.45,
+    "n": 20,
+    "partial_score": 0.575,
+    "runtime_error_count": 4,
+    "syntax_extracted": 1.0
+  },
+  "source": {
+    "judge_basis": "The extensional check program and rule extraction mirror the official AIML-TUDA VerifiableRewardsForScalableLogicalReasoning metric; execution uses Trealla rather than SWI-Prolog.",
+    "model_outputs_sha256": "ecd979d5c1f5ed54e11197830b2afb8e4924075a97babf80b188bea630b5a15b",
+    "model_repository": "AIML-TUDA/Llama-3.1-8B-SLR",
+    "output_rows": 20,
+    "prolog_runtime": "Trealla Prolog WASI v3.12.6",
+    "prolog_runtime_sha256": "f1e4f72d5794d6330611d3d369e46e1a328485acd66ac680e0481d0c714b7710",
+    "test_alignment": "problem_id and ground-truth rule match 100%"
+  }
+}

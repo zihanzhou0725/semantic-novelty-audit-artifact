@@ -1,0 +1,31 @@
+{
+  "frozen_at_utc": "2026-10-13T11:45:51.670111+00:00",
+  "implementation_sha256": {
+    "protocols/external-behavior-v4/materialization-v1/validate.py": "6b2693f406c303254b8153855bde1190e7fdc6a2fd07569c34c75bde9e7e8e78",
+    "scripts/freeze_external_behavior_v4_materialization.py": "e34e754b064a3da0cac2e265f04d342087ee0c0f57e01b436a31d889742cfe9d",
+    "scripts/materialize_external_behavior_v4.py": "53a02c82f558a8d4513cd822e84c83e6b2e3f5e50870dab57eaadf132c99470c",
+    "scripts/validate_external_behavior_v4_materialization.py": "718888de8a8512c60d2082cb150807b4ec594a23a00393910767f79383973bce",
+    "tests/test_external_behavior_v4_materialization.py": "dbc4c8251f85b9f12e58f62167c3252c7e62f37e3337a0a71bda892e425e68c2",
+    "toolkit/external_behavior/common.py": "eb725d4dec66c3c247f21303265da740e4213af54c93abb764acd18b444bae71",
+    "toolkit/external_behavior_v3/design.py": "0804c65cf62daa9e2e44e091a1a6d1a4fac624c4ad88ea15901375502a79a77d",
+    "toolkit/external_behavior_v4/materialize.py": "4597ad5fcc12d7f2e38a8fd92af37f019d6063ccad2814b1e65fa379220e0faa"
+  },
+  "input_sha256": {
+    "analysis/external-behavior-v4/directional-design-v1/ANALYSIS_SHA256SUMS": "fe76140dde9d0002be861379214971054a7a6aea4e68e9a9d50e038bf3092957",
+    "analysis/external-behavior-v4/directional-design-v1/analysis_validation_report.json": "a6b0666213136d0766a31a6d0e10b92c7c0c1f44e9d04431b59085f6855fe3ca",
+    "analysis/external-behavior-v4/directional-design-v1/block_gate_report.json": "0962a5b3ed196594686140c736b7a99ad3b2eeac829a0cbd8bcbc5cb94dfbdda",
+    "manifests/external-behavior-v3/data/SHA256SUMS": "df5113fbec90d5e7e0e693e717f073b09aa39647893c69f80de2d3b6009cf24a",
+    "manifests/external-behavior-v3/data/clutrr_v3_candidates.jsonl": "5fd2dac8361f1e752d4487dde8f64fe805d44c4644d58d2edd463ca941304fb5",
+    "manifests/external-behavior-v3/data/clutrr_v3_eligible_patterns.jsonl": "a519e1c370abc649be1908bc75185e8aa5b8636f57572f8203e3becb61663ced",
+    "manifests/external-behavior-v3/data/clutrr_v3_pairs.jsonl": "a1f2d8404008e0dc0deb98b7ab97442ddb60e235f7fd676e291a73b5c6aaf8b7",
+    "manifests/external-behavior-v4/directional-design-v1/DESIGN_SHA256SUMS": "6e55669a76e036f22da4d832baad77361ae44fc5351baf6d8f028a7c7964cf7d",
+    "manifests/external-behavior-v4/directional-design-v1/design_manifest.json": "beb691d09546bbd85299be064bde563aa6d33cd5f98ca18c3678f197a643733a",
+    "manifests/external-behavior-v4/directional-design-v1/selected_pairs.csv": "77ba7d96692e85ef6f73d8588b0e1a86fbc5d56f94c74d7067b48f685931b62a",
+    "protocols/external-behavior-v4/directional-design-v1/SHA256SUMS": "b76e40feabff12e956cff33b3832e81c1b478a3ab4f8e47e748ca7c4b58b2dd2",
+    "protocols/external-behavior-v4/directional-design-v1/input_manifest.json": "118a4ee13d719124cb358c46b490c3c345ce85a36a5001da1736cad45e7dadaa",
+    "protocols/external-behavior-v4/directional-design-v1/preregistration.json": "d5fafceba09b2e03be9fd2f22658ae99cfa0108fb2438c1e8576ae41ebd8b1b6"
+  },
+  "materialization_id": "external-behavior-v4-materialization-v1",
+  "schema_version": "external-behavior-v4-materialization-input-manifest-v1",
+  "status": "frozen_before_materialization"
+}

@@ -1,0 +1,84 @@
+{
+  "canary_status": "passed",
+  "evaluation": {
+    "common_across_all_runs": true,
+    "episodes_per_function": 250,
+    "manifest_sha256": "9d450f26a44769b9d9f364181699f47ee60f1bd8f93f63cd253cce37445ca5ef",
+    "rows": 10000,
+    "target_functions": 40
+  },
+  "function_census": {
+    "alias_signature_counts": {
+      "affine+block+parity": 2,
+      "affine+parity": 38
+    },
+    "base_count": 478,
+    "base_semantic_set_sha256": "e869ff2ff8d757dc6d37176231e733e05533e45c8078b7728eee702e46c4f598",
+    "function_count": 518,
+    "identity_count": 560,
+    "pair_count": 20,
+    "target_count": 40,
+    "target_semantic_set_sha256": "8dd593759746e2b08f1dcb032a60431dc78f23dd2ee53d7f09effa0371a68b11"
+  },
+  "master_seed": 20261009,
+  "parent_preregistration_sha256": "1ca70e1a76f41c0c906ffe420cc1c7499420056519f05759332d2e3c1697775b",
+  "parent_schema_version": "quality-enhancement-v1",
+  "schema_version": "quality-enhancement-p1-v1",
+  "source_sha256": {
+    "semantic_novelty_audit_supplement/src/kfwa_experiments/kfwa/datasets.py": "284f35e9d536525b791ca429590974b90dfdb1833e1ef586649dc7bceafcfc77",
+    "semantic_novelty_audit_supplement/src/kfwa_experiments/kfwa/metrics.py": "6806b0837b8576010820642fb5732a463b014155ff4e30d1a6299577ed3df034",
+    "semantic_novelty_audit_supplement/src/kfwa_experiments/kfwa/models.py": "12875a60568c9301076862828300db0cdc75df3dc1f4fef17a3461e60504175e",
+    "semantic_novelty_audit_supplement/src/kfwa_experiments/kfwa/symbolic.py": "516fcdd22b37ca2b7f156c84a619bddc3489e05d3b8290a32782b15d2c57f725",
+    "semantic_novelty_audit_supplement/src/kfwa_experiments/kfwa/training.py": "76d2cfaf7e3cf575ec78c3b5ced08ac4dcc330cf4028f6e283b6da2e1019911e",
+    "semantic_novelty_audit_supplement/src/kfwa_experiments/kfwa/utils.py": "93fdee7f2cb54c82cf4ebd8c96626b243a59c6ad3152387bf72a5684606bab83",
+    "external_semantic_overlap_audit/scripts/freeze_quality_p1_protocol.py": "3fc6edf674f7206279d65ba6e6b8782afd122e3afd0209fed5e31a54d01ac059",
+    "external_semantic_overlap_audit/scripts/quality_p1_common.py": "1b0e5e757d29ab584544eb133792eeebc0a7f6d3075a5a1bea3f7e16432183ce",
+    "external_semantic_overlap_audit/scripts/run_quality_p1.py": "2bb0e20a4d1ecc1d79284bf7c434f29ef3944d696ee5d98a2c5a24c844e0967f",
+    "external_semantic_overlap_audit/scripts/run_quality_p1_matrix.py": "eccda781bee99130e2d4951697c569ead3b55038cea07b811b9afa37886db7c5",
+    "external_semantic_overlap_audit/scripts/validate_quality_p1_canary.py": "76fbff980ec3548220d14f8e9156c2da73e08a665553a609436580433d43502d",
+    "external_semantic_overlap_audit/scripts/validate_quality_p1_protocol.py": "84840bc27bb91fe7e1ed896d88954be04ca6d4c7a06fb892ed70ff50e4be5fa6"
+  },
+  "status": "frozen_before_p1_training",
+  "training": {
+    "arms": [
+      "A",
+      "B"
+    ],
+    "batch_size": 256,
+    "checkpoint_selection": "fixed_final_epoch_60",
+    "episodes_per_arm": 20000,
+    "epoch_manifest_sha256": {
+      "0": "c103c8ca1dcf7f8cd4cf1bb72d6fd400eadac69d4dc9f112d109600eac90dc20",
+      "1": "800117bb79ec46cf8b7ca1ef797cc9bbf9aee39c4158d04fa79f6e9a6757addd",
+      "2": "ffcdad35af6a2d7aac08aefd70034832f160d863774fe6042d3a3cc616534e29",
+      "3": "64994363fe9480040d8e1f937bd6d56f6bd5eb9d60e49b38d0b909dcb3391bf4",
+      "4": "da0d23ab3567ba22e075662f044fcb8ab846ed7f1e85c5de99fc2998d3a27295"
+    },
+    "epochs": 60,
+    "model_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "models": [
+      "symbolic_deepsets",
+      "symbolic_relation_network",
+      "symbolic_set_transformer",
+      "symbolic_hopfield",
+      "symbolic_perceiver",
+      "symbolic_transformer"
+    ],
+    "optimizer_updates": 4740,
+    "run_count": 60,
+    "train_manifest_sha256": {
+      "0": "d0740a2ffb96825357d2d3e64d4169a414ade95a8949b1db4b8f41c74e4f7112",
+      "1": "6ff1edc5ceed6f0a52072a33b6289d0d830745af1442a7bd31f59dfd7ed821a5",
+      "2": "f629b9e5675811a408871521d152c912a3d02f55c694dc85d22494747a12476a",
+      "3": "f3bd9b5ecbd6b047a1bb571a40182a2a0d067ccf145fc5553e2d750cca666015",
+      "4": "9fca364d823b94743954e5cecc9280eea0a41f9862596e6419855c1c82703eb1"
+    }
+  },
+  "training_started": false
+}

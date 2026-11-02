@@ -1,0 +1,128 @@
+{
+  "analysis_id": "external-behavior-v3-effect-analysis-v1",
+  "bootstrap": {
+    "dependency_sharing": {
+      "exposed_and_unexposed_predictions": "same source-group draw",
+      "pair_members": "selected together by pair draw; source-group draws are independent between members",
+      "selected_model_seeds": "source-group draws are shared across all selected seed occurrences"
+    },
+    "draw_order": [
+      "draw the full replicate-by-8 model-seed index array",
+      "draw the full replicate-by-20 pattern-pair index array",
+      "draw the full replicate-by-20-by-2-by-34 source-group index array"
+    ],
+    "implementation_batch_size": 128,
+    "model_seed_draws_per_replicate": 8,
+    "pattern_pair_draws_per_replicate": 20,
+    "percentile_interpolation": "linear",
+    "preserve_all_rows_within_selected_source_group": true,
+    "replicates": 20000,
+    "rng": "numpy.random.Generator(numpy.random.PCG64(seed))",
+    "seed": 20261012,
+    "source_group_draws_per_pattern": 34,
+    "type": "hierarchical_percentile"
+  },
+  "decision_gate": {
+    "equivalence_margin_pp": [
+      -0.5,
+      0.5
+    ],
+    "evaluation_precedence": [
+      "imprecise_no_go",
+      "positive_behavioral_go",
+      "negative_behavioral_go",
+      "null_equivalence_go",
+      "inconclusive_no_go"
+    ],
+    "imprecise_rule": "95% interval width > 2.0 pp",
+    "inconclusive_rule": "precision gate passes and no directional or equivalence rule passes",
+    "maximum_interval_width_pp": 2.0,
+    "negative_rule": "point estimate <= -1.0 pp and 95% upper endpoint < 0",
+    "null_rule": "complete 95% interval is contained in [-0.5,+0.5] pp",
+    "positive_rule": "point estimate >= +1.0 pp and 95% lower endpoint > 0",
+    "sesoi_pp": 1.0
+  },
+  "estimand": {
+    "effect_unit": "one model seed by one target semantic pattern",
+    "formula": "tau_pp = 100/(8*40) * sum_seed sum_pattern [accuracy(exposed arm, frozen 200 rows) - accuracy(unexposed arm, same frozen 200 rows)]",
+    "model_seed_count": 8,
+    "name": "paired_sentence_permutation_exposure_effect",
+    "orientation": "exposed_minus_unexposed",
+    "pattern_count": 40,
+    "pattern_weighting": "equal across all 40 frozen targets",
+    "row_weighting": "equal across the 200 frozen evaluation rows within each target pattern",
+    "seed_count": 8,
+    "seed_weighting": "equal across model seeds 0 through 7",
+    "unit": "percentage_points"
+  },
+  "exposure_alignment": {
+    "algorithm": "For each model seed and target semantic ID, identify the arm containing exactly 64 frozen exposure rows as exposed and the complementary zero-row arm as unexposed.",
+    "failure_action": "analysis_no_go",
+    "required_counts": [
+      0,
+      64
+    ]
+  },
+  "freeze_date": "2026-10-13",
+  "input_policy": {
+    "exclusions_after_unblinding": "none",
+    "nonfinite_or_malformed_action": "analysis_no_go_preserve_artifacts",
+    "prediction_files": 16,
+    "required_execution_gate": "pass",
+    "required_rows_per_prediction_file": 8000,
+    "required_run_count": 16,
+    "use_checkpoint": "fixed epoch 30 checkpoint predictions only"
+  },
+  "intervals": {
+    "confidence": 0.95,
+    "endpoints": [
+      "numpy.quantile(bootstrap_effects_pp, 0.025, method='linear')",
+      "numpy.quantile(bootstrap_effects_pp, 0.975, method='linear')"
+    ],
+    "method": "hierarchical percentile"
+  },
+  "outcome_policy": {
+    "effect_metrics_inspected_before_freeze": false,
+    "primary_effect_computed_before_freeze": false,
+    "unblinding_allowed_only_after_protocol_validation": true
+  },
+  "parent_execution": "external-behavior-v3-execution-v1",
+  "parent_protocol": "external-behavior-v3",
+  "schema_version": "external-behavior-v3-effect-preregistration-v1",
+  "secondary_analyses": {
+    "calibration": {
+      "aggregation": "Compute exposed-aligned and unexposed-aligned metrics separately within each model seed over all 8000 rows, subtract, then average the eight seed differences.",
+      "binning": "15 equal-width confidence bins on [0,1], with 1 included in the final bin",
+      "metrics": [
+        "mean_confidence",
+        "signed_calibration_gap",
+        "expected_calibration_error_15"
+      ],
+      "status": "descriptive_not_gate_eligible"
+    },
+    "proper_losses": {
+      "metrics": [
+        "multiclass_cross_entropy",
+        "multiclass_brier_score"
+      ],
+      "orientation": "exposed_minus_unexposed; negative values indicate improvement",
+      "status": "descriptive_not_gate_eligible"
+    },
+    "subgroups": {
+      "outputs": [
+        "model_seed",
+        "target_pattern",
+        "pattern_pair",
+        "target_relation"
+      ],
+      "status": "point_estimates_only_no_inferential_claims"
+    }
+  },
+  "source_group_bootstrap": {
+    "group_order": "ascending source_group_id within each target pattern",
+    "resampled_groups_per_selected_pattern": 34,
+    "row_aggregation": "sum paired correctness differences over every row in every sampled group occurrence, divided by the corresponding sum of sampled group sizes",
+    "short_group_handling": "the registered two-row group is sampled as one cluster and retains two rows; each registered six-row group retains six rows"
+  },
+  "status": "specified_before_outcome_contrast_computation"
+}

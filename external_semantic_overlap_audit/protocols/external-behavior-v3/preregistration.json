@@ -1,0 +1,199 @@
+{
+  "schema_version": "external-behavior-preregistration-v3",
+  "protocol_id": "external-behavior-v3",
+  "freeze_date": "2026-10-12",
+  "status": "frozen_before_sentence_permutation_expansion_capacity_census_target_selection_or_training",
+  "scope": "CLUTRR sentence-permutation behavioral recovery design",
+  "relationship_to_prior_versions": {
+    "external_behavior_v1_clutrr_design_gate_remains": "no_go",
+    "external_behavior_v1_suite_decision_remains": "no_go",
+    "quality_enhancement_v1_p3_decision_remains": "no_go",
+    "external_behavior_v2_mathematics_results_unchanged": true,
+    "retroactive_reclassification_allowed": false,
+    "candidate_replacement_allowed": false,
+    "candidate_id": "468fd27f8a031213",
+    "changed_component": "CLUTRR surface construction and source-group-aware allocation only"
+  },
+  "observed_before_v3_freeze": {
+    "v1_source_rows": 34145,
+    "v1_source_rows_sha256": "fb12f23c6ee60ee11416a290628208812749dcb23efd63bb0051934cf06a0e5b",
+    "v1_eligible_patterns_under_ordered_clean_story": 0,
+    "v1_clutrr_model_training_started": false,
+    "clutrr_behavioral_outcome_available": false,
+    "v3_expanded_rows_generated": false,
+    "v3_capacity_count_inspected": false,
+    "v3_target_patterns_selected": false
+  },
+  "immutable_candidate_scope": {
+    "benchmark": "CLUTRR",
+    "source_revision": "d045fae289d3746503677ceed7631c999202501e",
+    "task": 1,
+    "relation_length": 3,
+    "question_type": "relational",
+    "noise_facts": "none",
+    "combination_length": 1,
+    "semantic_identity": "Ordered JSON array [target_relation, relation_1, relation_2, relation_3], SHA-256 hashed.",
+    "target_relation_classes": 23,
+    "entity_normalization": "entity_0, entity_1, ... by first appearance in the stored clean graph",
+    "case": "lower",
+    "unicode": "NFKC",
+    "whitespace": "collapse_to_single_ascii_space"
+  },
+  "frozen_source_input": {
+    "path": "manifests/external-behavior-v1/.data.build/clutrr_candidates_deduplicated.jsonl",
+    "rows": 34145,
+    "sha256": "fb12f23c6ee60ee11416a290628208812749dcb23efd63bb0051934cf06a0e5b",
+    "source_group_id": "The frozen source row's surface_id.",
+    "required_source_fields": [
+      "normalized_story",
+      "normalized_query",
+      "target_relation",
+      "semantic_id",
+      "semantic_serialization",
+      "surface_id",
+      "story_edges",
+      "edge_types",
+      "query_edge"
+    ]
+  },
+  "sentence_parser": {
+    "precondition": "Every normalized_story contains exactly three nonempty sentences, ends in a period, and each source relation template contains no internal period.",
+    "algorithm": "Remove the final period, split on the literal delimiter '. ', and append one period to each of the three resulting strings.",
+    "failure_action": "design_no_go_do_not_select_targets_or_train"
+  },
+  "sentence_permutation_expansion": {
+    "permutations": [
+      [0, 1, 2],
+      [0, 2, 1],
+      [1, 0, 2],
+      [1, 2, 0],
+      [2, 0, 1],
+      [2, 1, 0]
+    ],
+    "permuted_story": "Join the three indexed normalized sentences with one ASCII space.",
+    "normalized_input": "permuted_story + ' <sep> ' + normalized_query",
+    "semantic_id_unchanged": true,
+    "expanded_row_cap_before_deduplication": 204870,
+    "duplicate_rule": "Deduplicate identical (normalized_input, target_relation); conflicting semantic IDs are fatal.",
+    "row_order": "Ascending SHA-256(normalized_input + semantic_serialization + target_relation), then source_group_id, then permutation index.",
+    "source_group_invariance": "All six permutations derived from one V1 source surface share one source_group_id."
+  },
+  "target_selection": {
+    "required_target_patterns": 40,
+    "required_pattern_pairs": 20,
+    "eligibility": {
+      "distinct_complete_source_groups_at_least": 45,
+      "unique_permutations_per_complete_source_group": 6,
+      "single_deterministic_target_relation_required": true
+    },
+    "pairing_rule": [
+      "Group eligible semantic patterns by target relation.",
+      "Within each target group sort semantic IDs by SHA-256.",
+      "Pair adjacent IDs without reuse.",
+      "Sort all candidate pairs by SHA-256 of the concatenated ordered semantic IDs.",
+      "Select the first 20 pairs."
+    ],
+    "insufficient_pairs_action": "clutrr_v3_design_no_go_do_not_train_no_candidate_replacement"
+  },
+  "evaluation_allocation": {
+    "rows_per_pattern": 200,
+    "source_groups_per_pattern": 34,
+    "rule": "Sort complete source groups by source_group_id. Take all six permutations from groups 0 through 32 and the first two registered permutations from group 33.",
+    "unused_rows": "The remaining four permutations of evaluation group 33 are excluded from all manifests.",
+    "same_manifest_all_arms_and_seeds": true
+  },
+  "exposure_allocation": {
+    "rows_per_pattern": 64,
+    "source_groups_per_pattern": 11,
+    "rule": "After the 34 evaluation groups, take all six permutations from groups 34 through 43 and the first four registered permutations from group 44.",
+    "unused_rows": "The remaining two permutations of exposure group 44 are excluded from all manifests.",
+    "source_group_disjoint_from_evaluation": true
+  },
+  "training_arms": {
+    "model_seeds": [0, 1, 2, 3, 4, 5, 6, 7],
+    "arms": ["A", "B"],
+    "episodes_per_arm": 24000,
+    "common_base_episodes": 22720,
+    "target_patterns_exposed_per_arm": 20,
+    "exposure_rows_per_exposed_pattern": 64,
+    "target_exposure_episodes_per_arm": 1280,
+    "common_base_rule": "Use only non-target semantic IDs. Allocate expanded rows round-robin over target relation, semantic ID, source_group_id, then registered permutation order; take the first 22,720.",
+    "arm_assignment_seed": "int.from_bytes(SHA256(('external-behavior-v1:' + 'clutrr:arm:{model_seed}:{pair_index}').encode('ascii')).digest()[0:8], 'big') & ((1<<63)-1)",
+    "assignment": "Bit 0 exposes pair member 0 in A and member 1 in B; bit 1 reverses this. Pair members share the same target relation.",
+    "paired_slots": "Common-base row IDs are byte-identical across arms. Exposure permutation index slots align within each pair.",
+    "strictness": "Every target semantic ID has exactly 64 rows in one arm and zero in the complementary arm for each seed.",
+    "label_balance": "A/B label counts must be identical for every seed."
+  },
+  "model_and_optimization": {
+    "model_source_sha256": "fd7774d8c13bf7adccf282efe5e20411b2f231d13152eccc669591d2768c7d73",
+    "architecture": "Frozen external-behavior-v1 four-layer byte Transformer: d_model 128, four heads, FFN 512, learned positions, CLS pooling, dropout 0.1, maximum length 512.",
+    "device": "CPU",
+    "precision": "float32",
+    "batch_size": 128,
+    "epochs": 30,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "betas": [0.9, 0.999],
+    "epsilon": 1e-08,
+    "weight_decay": 0.01,
+    "gradient_clip_norm": 1.0,
+    "scheduler": "none",
+    "checkpoint": "fixed final epoch 30",
+    "run_count": 16
+  },
+  "behavioral_analysis": {
+    "primary_estimand": "100/(8*40) times the sum over model seeds and target patterns of exposed minus unexposed row-weighted target-pattern accuracy.",
+    "effect_unit": "percentage points",
+    "bootstrap": {
+      "type": "hierarchical_percentile",
+      "replicates": 20000,
+      "seed": 20261012,
+      "resample_model_seeds": true,
+      "resample_pattern_pairs": true,
+      "resample_source_groups_within_pattern": true,
+      "preserve_all_allocated_rows_within_resampled_source_group": true,
+      "preserve_pair_members_together": true,
+      "confidence": 0.95
+    },
+    "positive_behavioral_go": "tau >= +1.0 pp and the 95% interval lower endpoint is > 0.",
+    "negative_behavioral_go": "tau <= -1.0 pp and the 95% interval upper endpoint is < 0.",
+    "null_equivalence_go": "the complete 95% interval is contained in [-0.5,+0.5] pp.",
+    "precision_gate": "95% interval width at most 2.0 pp.",
+    "effect_direction_is_not_a_design_or_suite_gate": true
+  },
+  "design_gate": {
+    "required": [
+      "frozen source input hash and row count match",
+      "every source row has exactly three parseable sentences",
+      "all six registered permutations preserve the source semantic ID",
+      "expanded rows have no conflicting surface semantics",
+      "at least 20 same-label eligible pattern pairs exist",
+      "exactly 40 target patterns and 20 pairs are selected",
+      "every target has 34 evaluation and 11 exposure source groups",
+      "evaluation and exposure source groups are disjoint",
+      "exactly 8000 evaluation and 2560 exposure rows are frozen",
+      "common base has 22720 rows and zero target semantic IDs",
+      "all 16 arm manifests have 24000 rows and paired label counts",
+      "all allocated inputs fit 512 bytes without truncation",
+      "frozen model implementation matches the registered architecture",
+      "all materialization hashes validate"
+    ],
+    "failure_action": "design_no_go_do_not_train_preserve_all_partial_artifacts"
+  },
+  "amendment_policy": {
+    "no_in_place_change_after_freeze": true,
+    "new_version_required_for": [
+      "source input",
+      "sentence parser",
+      "permutation set",
+      "source-group definition",
+      "eligibility threshold",
+      "target pairing",
+      "evaluation or exposure allocation",
+      "common-base allocation",
+      "model or optimization",
+      "estimand or bootstrap",
+      "design gate"
+    ]
+  }
+}

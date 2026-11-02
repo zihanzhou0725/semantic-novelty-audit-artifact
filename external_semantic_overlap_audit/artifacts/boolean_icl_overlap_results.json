@@ -1,0 +1,360 @@
+{
+  "budget_scope_warning": "The 1.28M-function budget is explicitly documented only as a Conjunction example. Exact per-task main-table function draws are not recoverable because task-specific final steps, batch sizes, logs, and checkpoints were not released. Other budgets below are comparison scenarios.",
+  "budgets": {
+    "paper_conjunction_upper_scenario_40k_x_64": {
+      "evaluation_examples": 1280,
+      "overlap_definition": "Probability that an independently sampled test truth table was sampled at least once among N training functions: sum_f p(f)[1-(1-p(f))^N].",
+      "tasks": {
+        "conjunction_d28": {
+          "basis": "Released sampler; every {-1,0,+1} literal vector has a unique truth table.",
+          "expected_overlapping_eval_examples": 30.67480683714644,
+          "expected_test_function_overlap": 0.023964692841520658,
+          "status": "exact"
+        },
+        "disjunction_d28": {
+          "basis": "Same parameter distribution and injectivity as conjunction.",
+          "expected_overlapping_eval_examples": 30.67480683714644,
+          "expected_test_function_overlap": 0.023964692841520658,
+          "status": "exact"
+        },
+        "integer_halfspace_released_code_d20": {
+          "basis": "Merges only positive integer multiples w, 2w, and 3w. Other equivalent linear-threshold representations are omitted.",
+          "expected_test_function_overlap_lower_bound": 3.208331822054105e-11,
+          "status": "sound_lower_bound"
+        },
+        "majority_d28": {
+          "basis": "Released Bernoulli(0.3) subset sampler; subsets have unique truth tables.",
+          "expected_overlapping_eval_examples": 291.97066417475367,
+          "expected_test_function_overlap": 0.22810208138652632,
+          "status": "exact"
+        },
+        "parity_d10_k2": {
+          "expected_test_function_overlap": 1.0,
+          "function_count": 45,
+          "status": "exact"
+        },
+        "parity_d20_all": {
+          "expected_overlapping_eval_examples": 1168.5910190973154,
+          "expected_test_function_overlap": 0.9129617336697777,
+          "function_count": 1048576,
+          "status": "exact"
+        },
+        "parity_d20_k3": {
+          "expected_test_function_overlap": 1.0,
+          "function_count": 1140,
+          "status": "exact_for_paper_task_not_released_sampler"
+        },
+        "sparse_disjunction_paper_stated_count_d50_k3": {
+          "expected_test_function_overlap": 0.9920731149186633,
+          "paper_stated_function_count": 529200,
+          "status": "overlap_implied_by_paper_stated_count_under_uniform_sampling"
+        },
+        "sparse_disjunction_released_code_d50_k4_positive_only": {
+          "expected_test_function_overlap": 0.9999851269524109,
+          "function_count": 230300,
+          "status": "exact_for_released_code"
+        },
+        "sparse_disjunction_signed_at_most_k_d50_k3": {
+          "expected_test_function_overlap": 0.9999998655338818,
+          "function_count": 161801,
+          "status": "exact_for_the_paper_class_definition_under_uniform_sampling"
+        },
+        "three_dnf_and_three_cnf_d28": {
+          "basis": "An empty conjunction makes a 3-DNF constantly positive; an empty disjunction makes a 3-CNF constantly negative. Clause permutation, absorption, and other Boolean identities can only increase overlap.",
+          "constant_truth_table_probability": 0.005791626838581032,
+          "exact_ordered_parameter_overlap": 1.7762797552886416e-09,
+          "expected_test_function_overlap_lower_bound": 0.005791626838581032,
+          "status": "sound_lower_bound"
+        },
+        "threshold_released_code_d28": {
+          "basis": "Merges identical parameters, same-weight threshold aliases, and constant truth tables. Cross-weight threshold representations are omitted.",
+          "constant_negative_mass": 0.0007392640765897594,
+          "constant_positive_mass": 0.0007392640765897594,
+          "exact_parameter_overlap": 0.006715053933892543,
+          "overlap_lower_bound": 0.010989394054171613,
+          "status": "sound_lower_bound"
+        }
+      },
+      "training_function_draws": 2560000
+    },
+    "paper_explicit_conjunction_example_20k_x_64": {
+      "evaluation_examples": 1280,
+      "overlap_definition": "Probability that an independently sampled test truth table was sampled at least once among N training functions: sum_f p(f)[1-(1-p(f))^N].",
+      "tasks": {
+        "conjunction_d28": {
+          "basis": "Released sampler; every {-1,0,+1} literal vector has a unique truth table.",
+          "expected_overlapping_eval_examples": 19.27578289237977,
+          "expected_test_function_overlap": 0.015059205384671695,
+          "status": "exact"
+        },
+        "disjunction_d28": {
+          "basis": "Same parameter distribution and injectivity as conjunction.",
+          "expected_overlapping_eval_examples": 19.27578289237977,
+          "expected_test_function_overlap": 0.015059205384671695,
+          "status": "exact"
+        },
+        "integer_halfspace_released_code_d20": {
+          "basis": "Merges only positive integer multiples w, 2w, and 3w. Other equivalent linear-threshold representations are omitted.",
+          "expected_test_function_overlap_lower_bound": 1.604165911039919e-11,
+          "status": "sound_lower_bound"
+        },
+        "majority_d28": {
+          "basis": "Released Bernoulli(0.3) subset sampler; subsets have unique truth tables.",
+          "expected_overlapping_eval_examples": 193.62759825876458,
+          "expected_test_function_overlap": 0.15127156113965984,
+          "status": "exact"
+        },
+        "parity_d10_k2": {
+          "expected_test_function_overlap": 1.0,
+          "function_count": 45,
+          "status": "exact"
+        },
+        "parity_d20_all": {
+          "expected_overlapping_eval_examples": 902.3712199057967,
+          "expected_test_function_overlap": 0.7049775155514036,
+          "function_count": 1048576,
+          "status": "exact"
+        },
+        "parity_d20_k3": {
+          "expected_test_function_overlap": 1.0,
+          "function_count": 1140,
+          "status": "exact_for_paper_task_not_released_sampler"
+        },
+        "sparse_disjunction_paper_stated_count_d50_k3": {
+          "expected_test_function_overlap": 0.9109669438841017,
+          "paper_stated_function_count": 529200,
+          "status": "overlap_implied_by_paper_stated_count_under_uniform_sampling"
+        },
+        "sparse_disjunction_released_code_d50_k4_positive_only": {
+          "expected_test_function_overlap": 0.9961434409651814,
+          "function_count": 230300,
+          "status": "exact_for_released_code"
+        },
+        "sparse_disjunction_signed_at_most_k_d50_k3": {
+          "expected_test_function_overlap": 0.9996333037793579,
+          "function_count": 161801,
+          "status": "exact_for_the_paper_class_definition_under_uniform_sampling"
+        },
+        "three_dnf_and_three_cnf_d28": {
+          "basis": "An empty conjunction makes a 3-DNF constantly positive; an empty disjunction makes a 3-CNF constantly negative. Clause permutation, absorption, and other Boolean identities can only increase overlap.",
+          "constant_truth_table_probability": 0.005791626838581032,
+          "exact_ordered_parameter_overlap": 8.885677126162544e-10,
+          "expected_test_function_overlap_lower_bound": 0.005791626838581032,
+          "status": "sound_lower_bound"
+        },
+        "threshold_released_code_d28": {
+          "basis": "Merges identical parameters, same-weight threshold aliases, and constant truth tables. Cross-weight threshold representations are omitted.",
+          "constant_negative_mass": 0.0007392640765897594,
+          "constant_positive_mass": 0.0007392640765897594,
+          "exact_parameter_overlap": 0.0038609499024052306,
+          "overlap_lower_bound": 0.006903977626947305,
+          "status": "sound_lower_bound"
+        }
+      },
+      "training_function_draws": 1280000
+    },
+    "parity_500k_x_released_default_batch64_scenario": {
+      "evaluation_examples": 1280,
+      "overlap_definition": "Probability that an independently sampled test truth table was sampled at least once among N training functions: sum_f p(f)[1-(1-p(f))^N].",
+      "tasks": {
+        "conjunction_d28": {
+          "basis": "Released sampler; every {-1,0,+1} literal vector has a unique truth table.",
+          "expected_overlapping_eval_examples": 125.03891571586496,
+          "expected_test_function_overlap": 0.0976866529030195,
+          "status": "exact"
+        },
+        "disjunction_d28": {
+          "basis": "Same parameter distribution and injectivity as conjunction.",
+          "expected_overlapping_eval_examples": 125.03891571586496,
+          "expected_test_function_overlap": 0.0976866529030195,
+          "status": "exact"
+        },
+        "integer_halfspace_released_code_d20": {
+          "basis": "Merges only positive integer multiples w, 2w, and 3w. Other equivalent linear-threshold representations are omitted.",
+          "expected_test_function_overlap_lower_bound": 4.0104147768277926e-10,
+          "status": "sound_lower_bound"
+        },
+        "majority_d28": {
+          "basis": "Released Bernoulli(0.3) subset sampler; subsets have unique truth tables.",
+          "expected_overlapping_eval_examples": 795.7326780737394,
+          "expected_test_function_overlap": 0.6216661547451089,
+          "status": "exact"
+        },
+        "parity_d10_k2": {
+          "expected_test_function_overlap": 1.0,
+          "function_count": 45,
+          "status": "exact"
+        },
+        "parity_d20_all": {
+          "expected_overlapping_eval_examples": 1279.9999999999286,
+          "expected_test_function_overlap": 0.9999999999999443,
+          "function_count": 1048576,
+          "status": "exact"
+        },
+        "parity_d20_k3": {
+          "expected_test_function_overlap": 1.0,
+          "function_count": 1140,
+          "status": "exact_for_paper_task_not_released_sampler"
+        },
+        "sparse_disjunction_paper_stated_count_d50_k3": {
+          "expected_test_function_overlap": 1.0,
+          "paper_stated_function_count": 529200,
+          "status": "overlap_implied_by_paper_stated_count_under_uniform_sampling"
+        },
+        "sparse_disjunction_released_code_d50_k4_positive_only": {
+          "expected_test_function_overlap": 1.0,
+          "function_count": 230300,
+          "status": "exact_for_released_code"
+        },
+        "sparse_disjunction_signed_at_most_k_d50_k3": {
+          "expected_test_function_overlap": 1.0,
+          "function_count": 161801,
+          "status": "exact_for_the_paper_class_definition_under_uniform_sampling"
+        },
+        "three_dnf_and_three_cnf_d28": {
+          "basis": "An empty conjunction makes a 3-DNF constantly positive; an empty disjunction makes a 3-CNF constantly negative. Clause permutation, absorption, and other Boolean identities can only increase overlap.",
+          "constant_truth_table_probability": 0.005791626838581032,
+          "exact_ordered_parameter_overlap": 2.1970452980669447e-08,
+          "expected_test_function_overlap_lower_bound": 0.005791626838581032,
+          "status": "sound_lower_bound"
+        },
+        "threshold_released_code_d28": {
+          "basis": "Merges identical parameters, same-weight threshold aliases, and constant truth tables. Cross-weight threshold representations are omitted.",
+          "constant_negative_mass": 0.0007392640765897594,
+          "constant_positive_mass": 0.0007392640765897594,
+          "exact_parameter_overlap": 0.03775773796608983,
+          "overlap_lower_bound": 0.05249314126870587,
+          "status": "sound_lower_bound"
+        }
+      },
+      "training_function_draws": 32000000
+    },
+    "public_readme_conjunction_demo_15k_x_64": {
+      "evaluation_examples": 1280,
+      "overlap_definition": "Probability that an independently sampled test truth table was sampled at least once among N training functions: sum_f p(f)[1-(1-p(f))^N].",
+      "tasks": {
+        "conjunction_d28": {
+          "basis": "Released sampler; every {-1,0,+1} literal vector has a unique truth table.",
+          "expected_overlapping_eval_examples": 15.741259429511489,
+          "expected_test_function_overlap": 0.012297858929305851,
+          "status": "exact"
+        },
+        "disjunction_d28": {
+          "basis": "Same parameter distribution and injectivity as conjunction.",
+          "expected_overlapping_eval_examples": 15.741259429511489,
+          "expected_test_function_overlap": 0.012297858929305851,
+          "status": "exact"
+        },
+        "integer_halfspace_released_code_d20": {
+          "basis": "Merges only positive integer multiples w, 2w, and 3w. Other equivalent linear-threshold representations are omitted.",
+          "expected_test_function_overlap_lower_bound": 1.2031244332823519e-11,
+          "status": "sound_lower_bound"
+        },
+        "majority_d28": {
+          "basis": "Released Bernoulli(0.3) subset sampler; subsets have unique truth tables.",
+          "expected_overlapping_eval_examples": 160.451560801352,
+          "expected_test_function_overlap": 0.12535278187605625,
+          "status": "exact"
+        },
+        "parity_d10_k2": {
+          "expected_test_function_overlap": 1.0,
+          "function_count": 45,
+          "status": "exact"
+        },
+        "parity_d20_all": {
+          "expected_overlapping_eval_examples": 767.6092197437441,
+          "expected_test_function_overlap": 0.5996947029248001,
+          "function_count": 1048576,
+          "status": "exact"
+        },
+        "parity_d20_k3": {
+          "expected_test_function_overlap": 1.0,
+          "function_count": 1140,
+          "status": "exact_for_paper_task_not_released_sampler"
+        },
+        "sparse_disjunction_paper_stated_count_d50_k3": {
+          "expected_test_function_overlap": 0.8370090613592638,
+          "paper_stated_function_count": 529200,
+          "status": "overlap_implied_by_paper_stated_count_under_uniform_sampling"
+        },
+        "sparse_disjunction_released_code_d50_k4_positive_only": {
+          "expected_test_function_overlap": 0.984524311203456,
+          "function_count": 230300,
+          "status": "exact_for_released_code"
+        },
+        "sparse_disjunction_signed_at_most_k_d50_k3": {
+          "expected_test_function_overlap": 0.9973500979237021,
+          "function_count": 161801,
+          "status": "exact_for_the_paper_class_definition_under_uniform_sampling"
+        },
+        "three_dnf_and_three_cnf_d28": {
+          "basis": "An empty conjunction makes a 3-DNF constantly positive; an empty disjunction makes a 3-CNF constantly negative. Clause permutation, absorption, and other Boolean identities can only increase overlap.",
+          "constant_truth_table_probability": 0.005791626838581032,
+          "exact_ordered_parameter_overlap": 6.66506235684958e-10,
+          "expected_test_function_overlap_lower_bound": 0.005791626838581032,
+          "status": "sound_lower_bound"
+        },
+        "threshold_released_code_d28": {
+          "basis": "Merges identical parameters, same-weight threshold aliases, and constant truth tables. Cross-weight threshold representations are omitted.",
+          "constant_negative_mass": 0.0007392640765897594,
+          "constant_positive_mass": 0.0007392640765897594,
+          "exact_parameter_overlap": 0.00303985788865266,
+          "overlap_lower_bound": 0.00572680007035887,
+          "status": "sound_lower_bound"
+        }
+      },
+      "training_function_draws": 960000
+    }
+  },
+  "generator_version_finding": "The author-designated public generator is satwik77/incontext-bool@a25a2cb. Its core task implementations are functionally equivalent to the camera-ready supplementary archive. No released branch can reproduce several conflicting main-table task definitions, so the private generator/config actually used for those rows is not uniquely recoverable.",
+  "interpretation": "Function repetition is not the same as repeated prompts because input sequences are resampled. It does, however, invalidate a function-disjoint generalization interpretation for classes with material overlap.",
+  "protocol_finding": "There is no function-disjoint train/test split. Training and evaluation draw fresh functions independently from the same discrete distribution.",
+  "released_artifact_mismatches": [
+    {
+      "code": "SparseDisjunction hard-codes k=4 and only positive weights.",
+      "paper": "Sparse Disjunction uses at most k=3 signed literals, but states C(50,3)*3^3=529,200 functions and calls this at least one million. The unique truth-table count is sum_{j=0}^3 C(50,j)*2^j=161,801."
+    },
+    {
+      "code": "SparseParity hard-codes k=2; no k argument is consumed.",
+      "paper": "Parity-(20,3) is a main task."
+    },
+    {
+      "code": "SparseThreshold samples weights with probabilities [0.7,0.15,0.15] and six half-integer thresholds -2.5,...,2.5.",
+      "paper": "0-1 Threshold samples weights uniformly and b in {-3,...,3}."
+    },
+    {
+      "code": "The released task registry exposes sparse_thres and int_halfspace; bundled configs use halfspace/sparse_halfspace names not in the registry.",
+      "paper": "Main task names include 0-1 Threshold and Integer Halfspace."
+    }
+  ],
+  "small_dimension_truth_table_checks": {
+    "conjunction": {
+      "n_dims": 6,
+      "parameter_count": 729,
+      "parameter_to_truth_table_is_injective": true,
+      "unique_truth_tables": 729
+    },
+    "majority": {
+      "n_dims": 6,
+      "parameter_count": 64,
+      "parameter_to_truth_table_is_injective": true,
+      "unique_truth_tables": 64
+    },
+    "parity": {
+      "n_dims": 6,
+      "parameter_count": 64,
+      "parameter_to_truth_table_is_injective": true,
+      "unique_truth_tables": 64
+    }
+  },
+  "source": {
+    "arxiv_id": "2310.03016",
+    "arxiv_source_sha256": "0836940c35396696d3e9771c7fb5217b6085491268ec2ec9c11e0151c599a0c5",
+    "camera_ready_paper_sha256": "5af0615bf431cc637d93dae8f1f60337dbfd44b4b610a8c2832a18716c9b617f",
+    "official_repository": "https://github.com/satwik77/incontext-bool",
+    "official_repository_revision": "a25a2cb0c62ad541cd30b0672df136230d878d9c",
+    "openreview_id": "ekeyCgeRfC",
+    "public_bool_tasks_sha256": "5bda5cdb00bce9ad7710faa643d822c99eb09ba20a5de1a26d9da3788269ca60",
+    "supplementary_sha256": "fb3e9f4eca33acba5504cf23cbaaac1a1b8c735edf5871e17731d94604dacfe8"
+  }
+}

@@ -1,0 +1,330 @@
+\begin{thebibliography}{39}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Akhtar et~al.(2024)Akhtar, Benjelloun, Conforti, Foschini, Gijsbers,
+  Giner-Miguelez, Goswami, Jain, Karamousadakis, Krishna, Kuchnik, Lesage,
+  Lhoest, Marcenac, Maskey, Mattson, Oala, Oderinwale, Ruyssen, Santos, Shinde,
+  Simperl, Suresh, Thomas, Tykhonov, Vanschoren, Varma, van~der Velde, Vogler,
+  Wu, and Zhang]{akhtar2024croissant}
+Mubashara Akhtar, Omar Benjelloun, Costanza Conforti, Luca Foschini, Pieter
+  Gijsbers, Joan Giner-Miguelez, Sujata Goswami, Nitisha Jain, Michalis
+  Karamousadakis, Satyapriya Krishna, Michael Kuchnik, Sylvain Lesage, Quentin
+  Lhoest, Pierre Marcenac, Manil Maskey, Peter Mattson, Luis Oala, Hamidah
+  Oderinwale, Pierre Ruyssen, Tim Santos, Rajat Shinde, Elena Simperl, Arjun
+  Suresh, Goeffry Thomas, Slava Tykhonov, Joaquin Vanschoren, Susheel Varma,
+  Jos van~der Velde, Steffen Vogler, Carole-Jean Wu, and Luyao Zhang.
+\newblock Croissant: A metadata format for {ML}-ready datasets.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~37, 2024.
+\newblock \doi{10.52202/079017-2610}.
+\newblock URL
+  \url{https://proceedings.neurips.cc/paper_files/paper/2024/hash/9547b09b722f2948ff3ddb5d86002bc0-Abstract-Datasets_and_Benchmarks_Track.html}.
+
+\bibitem[Aky{\"u}rek et~al.(2023)Aky{\"u}rek, Schuurmans, Andreas, Ma, and
+  Zhou]{akyurek2023what}
+Ekin Aky{\"u}rek, Dale Schuurmans, Jacob Andreas, Tengyu Ma, and Denny Zhou.
+\newblock What learning algorithm is in-context learning? investigations with
+  linear models.
+\newblock In \emph{International Conference on Learning Representations}, 2023.
+
+\bibitem[Allamanis(2019)]{allamanis2019duplication}
+Miltiadis Allamanis.
+\newblock The adverse effects of code duplication in machine learning models of
+  code.
+\newblock In \emph{Onward! 2019}, pages 143--153, 2019.
+\newblock \doi{10.1145/3359591.3359735}.
+
+\bibitem[Balke and Pearl(1997)]{balke1997bounds}
+Alexander Balke and Judea Pearl.
+\newblock Bounds on treatment effects from studies with imperfect compliance.
+\newblock \emph{Journal of the American Statistical Association}, 92\penalty0
+  (439):\penalty0 1171--1176, 1997.
+\newblock \doi{10.1080/01621459.1997.10474074}.
+
+\bibitem[Bhattamishra et~al.(2024)Bhattamishra, Patel, Blunsom, and
+  Kanade]{bhattamishra2024understanding}
+Satwik Bhattamishra, Arkil Patel, Phil Blunsom, and Varun Kanade.
+\newblock Understanding in-context learning in transformers and {LLM}s by
+  learning to learn discrete functions.
+\newblock In \emph{International Conference on Learning Representations}, 2024.
+
+\bibitem[Chollet(2019)]{chollet2019measure}
+Fran{\c c}ois Chollet.
+\newblock On the measure of intelligence.
+\newblock \emph{arXiv preprint arXiv:1911.01547}, 2019.
+
+\bibitem[Deora et~al.(2025)Deora, Vasudeva, Behnia, and
+  Thrampoulidis]{deora2025occam}
+Puneesh Deora, Bhavya Vasudeva, Tina Behnia, and Christos Thrampoulidis.
+\newblock In-context occam's razor: How transformers prefer simpler hypotheses
+  on the fly.
+\newblock In \emph{Conference on Language Modeling}, 2025.
+
+\bibitem[Finn et~al.(2017)Finn, Abbeel, and Levine]{finn2017maml}
+Chelsea Finn, Pieter Abbeel, and Sergey Levine.
+\newblock Model-agnostic meta-learning for fast adaptation of deep networks.
+\newblock In \emph{Proceedings of the 34th International Conference on Machine
+  Learning}, volume~70 of \emph{Proceedings of Machine Learning Research},
+  pages 1126--1135. PMLR, 2017.
+
+\bibitem[Garg et~al.(2022)Garg, Tsipras, Liang, and Valiant]{garg2022what}
+Shivam Garg, Dimitris Tsipras, Percy Liang, and Gregory Valiant.
+\newblock What can transformers learn in-context? a case study of simple
+  function classes.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~35, pages 30583--30598, 2022.
+
+\bibitem[Gebru et~al.(2021)Gebru, Morgenstern, Vecchione, Vaughan, Wallach,
+  Daum{\'e}~III, and Crawford]{gebru2021datasheets}
+Timnit Gebru, Jamie Morgenstern, Briana Vecchione, Jennifer~Wortman Vaughan,
+  Hanna Wallach, Hal Daum{\'e}~III, and Kate Crawford.
+\newblock Datasheets for datasets.
+\newblock \emph{Communications of the ACM}, 64\penalty0 (12):\penalty0 86--92,
+  2021.
+\newblock \doi{10.1145/3458723}.
+
+\bibitem[Golchin and Surdeanu(2024)]{golchin2024time}
+Shahriar Golchin and Mihai Surdeanu.
+\newblock Time travel in {LLM}s: Tracing data contamination in large language
+  models.
+\newblock In \emph{International Conference on Learning Representations}, 2024.
+\newblock URL \url{https://openreview.net/forum?id=2Rwq6c3tvr}.
+
+\bibitem[Helff et~al.(2026)Helff, Omar, Friedrich, W{\"u}st, Shindo, Mitchell,
+  Woydt, Schramowski, Stammer, and Kersting]{helff2026slr}
+Lukas Helff, Ahmad Omar, Felix Friedrich, Antonia W{\"u}st, Hikaru Shindo,
+  Rupert Mitchell, Tim Woydt, Patrick Schramowski, Wolfgang Stammer, and
+  Kristian Kersting.
+\newblock {SLR}: Automated synthesis for scalable logical reasoning.
+\newblock In \emph{Proceedings of the 64th Annual Meeting of the Association
+  for Computational Linguistics}, pages 402--426. Association for Computational
+  Linguistics, 2026.
+\newblock \doi{10.18653/v1/2026.acl-long.16}.
+\newblock URL \url{https://aclanthology.org/2026.acl-long.16/}.
+
+\bibitem[Horowitz and Manski(1995)]{horowitz1995identification}
+Joel~L. Horowitz and Charles~F. Manski.
+\newblock Identification and robustness with contaminated and corrupted data.
+\newblock \emph{Econometrica}, 63\penalty0 (2):\penalty0 281--302, 1995.
+\newblock \doi{10.2307/2951627}.
+
+\bibitem[Hupkes et~al.(2020)Hupkes, Dankers, Mul, and
+  Bruni]{hupkes2020compositionality}
+Dieuwke Hupkes, Verna Dankers, Mathijs Mul, and Elia Bruni.
+\newblock Compositionality decomposed: How do neural networks generalise?
+\newblock \emph{Journal of Artificial Intelligence Research}, 67:\penalty0
+  757--795, 2020.
+\newblock \doi{10.1613/JAIR.1.11674}.
+
+\bibitem[Jaegle et~al.(2021)Jaegle, Gimeno, Brock, Vinyals, Zisserman, and
+  Carreira]{jaegle2021perceiver}
+Andrew Jaegle, Felix Gimeno, Andy Brock, Oriol Vinyals, Andrew Zisserman, and
+  Joao Carreira.
+\newblock Perceiver: General perception with iterative attention.
+\newblock In \emph{Proceedings of the 38th International Conference on Machine
+  Learning}, volume 139 of \emph{Proceedings of Machine Learning Research},
+  pages 4651--4664. PMLR, 2021.
+
+\bibitem[Kapoor and Narayanan(2023)]{kapoor2023leakage}
+Sayash Kapoor and Arvind Narayanan.
+\newblock Leakage and the reproducibility crisis in machine-learning-based
+  science.
+\newblock \emph{Patterns}, 4\penalty0 (9):\penalty0 100804, 2023.
+\newblock \doi{10.1016/j.patter.2023.100804}.
+
+\bibitem[Keysers et~al.(2020)Keysers, Sch{\"a}rli, Scales, Buisman, Furrer,
+  Kashubin, Momchev, Sinopalnikov, Stafiniak, Tihon, Tsarkov, Wang, van Zee,
+  and Bousquet]{keysers2020cfq}
+Daniel Keysers, Nathanael Sch{\"a}rli, Nathan Scales, Hylke Buisman, Daniel
+  Furrer, Sergii Kashubin, Nikola Momchev, Danila Sinopalnikov, Lukasz
+  Stafiniak, Tibor Tihon, Dmitry Tsarkov, Xiao Wang, Marc van Zee, and Olivier
+  Bousquet.
+\newblock Measuring compositional generalization: A comprehensive method on
+  realistic data.
+\newblock In \emph{International Conference on Learning Representations}, 2020.
+\newblock URL \url{https://openreview.net/forum?id=SygcCnNKwr}.
+
+\bibitem[Kim and Linzen(2020)]{kim2020cogs}
+Najoung Kim and Tal Linzen.
+\newblock {COGS}: A compositional generalization challenge based on semantic
+  interpretation.
+\newblock In \emph{Proceedings of the 2020 Conference on Empirical Methods in
+  Natural Language Processing ({EMNLP})}, pages 9087--9105. Association for
+  Computational Linguistics, 2020.
+\newblock \doi{10.18653/v1/2020.emnlp-main.731}.
+\newblock URL \url{https://aclanthology.org/2020.emnlp-main.731/}.
+
+\bibitem[Lake and Baroni(2018)]{lake2018generalization}
+Brenden~M. Lake and Marco Baroni.
+\newblock Generalization without systematicity: On the compositional skills of
+  sequence-to-sequence recurrent networks.
+\newblock In \emph{Proceedings of the 35th International Conference on Machine
+  Learning}, volume~80 of \emph{Proceedings of Machine Learning Research},
+  pages 2873--2882. PMLR, 2018.
+
+\bibitem[Lee(2009)]{lee2009training}
+David~S. Lee.
+\newblock Training, wages, and sample selection: Estimating sharp bounds on
+  treatment effects.
+\newblock \emph{The Review of Economic Studies}, 76\penalty0 (3):\penalty0
+  1071--1102, 2009.
+\newblock \doi{10.1111/j.1467-937X.2009.00536.x}.
+
+\bibitem[Lee et~al.(2019)Lee, Lee, Kim, Kosiorek, Choi, and Teh]{lee2019set}
+Juho Lee, Yoonho Lee, Jungtaek Kim, Adam Kosiorek, Seungjin Choi, and Yee~Whye
+  Teh.
+\newblock Set transformer: A framework for attention-based
+  permutation-invariant neural networks.
+\newblock In \emph{Proceedings of the 36th International Conference on Machine
+  Learning}, volume~97 of \emph{Proceedings of Machine Learning Research},
+  pages 3744--3753. PMLR, 2019.
+
+\bibitem[Lee et~al.(2022)Lee, Ippolito, Nystrom, Zhang, Eck, Callison-Burch,
+  and Carlini]{lee2022dedup}
+Katherine Lee, Daphne Ippolito, Andrew Nystrom, Chiyuan Zhang, Douglas Eck,
+  Chris Callison-Burch, and Nicholas Carlini.
+\newblock Deduplicating training data makes language models better.
+\newblock In \emph{Proceedings of the 60th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 8424--8445.
+  Association for Computational Linguistics, 2022.
+\newblock \doi{10.18653/v1/2022.acl-long.577}.
+\newblock URL \url{https://aclanthology.org/2022.acl-long.577/}.
+
+\bibitem[Magar and Schwartz(2022)]{magar2022data}
+Inbal Magar and Roy Schwartz.
+\newblock Data contamination: From memorization to exploitation.
+\newblock In \emph{Proceedings of the 60th Annual Meeting of the Association
+  for Computational Linguistics (Volume 2: Short Papers)}, pages 157--165.
+  Association for Computational Linguistics, 2022.
+\newblock \doi{10.18653/v1/2022.acl-short.18}.
+\newblock URL \url{https://aclanthology.org/2022.acl-short.18/}.
+
+\bibitem[Oren et~al.(2024)Oren, Meister, Chatterji, Ladhak, and
+  Hashimoto]{oren2024proving}
+Yonatan Oren, Nicole Meister, Niladri~S. Chatterji, Faisal Ladhak, and
+  Tatsunori Hashimoto.
+\newblock Proving test set contamination in black-box language models.
+\newblock In \emph{International Conference on Learning Representations}, 2024.
+\newblock URL \url{https://openreview.net/forum?id=KS8mIvetg2}.
+
+\bibitem[Ramsauer et~al.(2021)Ramsauer, Sch{\"a}fl, Lehner, Seidl, Widrich,
+  Gruber, Holzleitner, Adler, Kreil, Kopp, Klambauer, Brandstetter, and
+  Hochreiter]{ramsauer2021hopfield}
+Hubert Ramsauer, Bernhard Sch{\"a}fl, Johannes Lehner, Philipp Seidl, Michael
+  Widrich, Lukas Gruber, Markus Holzleitner, Thomas Adler, David Kreil,
+  Michael~K. Kopp, G{\"u}nter Klambauer, Johannes Brandstetter, and Sepp
+  Hochreiter.
+\newblock Hopfield networks is all you need.
+\newblock In \emph{International Conference on Learning Representations}, 2021.
+
+\bibitem[Reed and de~Freitas(2016)]{reed2016neural}
+Scott Reed and Nando de~Freitas.
+\newblock Neural programmer-interpreters.
+\newblock In \emph{International Conference on Learning Representations}, 2016.
+
+\bibitem[Sainz et~al.(2023)Sainz, Campos, Garc{\'i}a-Ferrero, Etxaniz,
+  de~Lacalle, and Agirre]{sainz2023nlp}
+Oscar Sainz, Jon Campos, Iker Garc{\'i}a-Ferrero, Julen Etxaniz, Oier~Lopez
+  de~Lacalle, and Eneko Agirre.
+\newblock {NLP} evaluation in trouble: On the need to measure {LLM} data
+  contamination for each benchmark.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  {EMNLP} 2023}, pages 10776--10787. Association for Computational Linguistics,
+  2023.
+\newblock \doi{10.18653/v1/2023.findings-emnlp.722}.
+\newblock URL \url{https://aclanthology.org/2023.findings-emnlp.722/}.
+
+\bibitem[Shah and Zadrozny(2026)]{shah2026tensorlogic}
+Swapn Shah and Wlodek Zadrozny.
+\newblock Implementing tensor logic: Unifying datalog and neural reasoning via
+  tensor contraction.
+\newblock \emph{arXiv preprint arXiv:2601.17188}, 2026.
+
+\bibitem[Sinha et~al.(2019)Sinha, Sodhani, Dong, Pineau, and
+  Hamilton]{sinha2019clutrr}
+Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, and William~L.
+  Hamilton.
+\newblock {CLUTRR}: A diagnostic benchmark for inductive reasoning from text.
+\newblock \emph{Proceedings of the 2019 Conference on Empirical Methods in
+  Natural Language Processing}, 2019.
+
+\bibitem[Spiesberger et~al.(2026)Spiesberger, Vazquez, Pochinkov, Gaven{\v
+  c}iak, Grietzer, Leech, and Schoots]{spiesberger2026soft}
+Ari Spiesberger, Juan~J. Vazquez, Nicky Pochinkov, Tom{\'a}{\v s} Gaven{\v
+  c}iak, Peli Grietzer, Gavin Leech, and Nandi Schoots.
+\newblock Soft contamination means benchmarks test shallow generalization.
+\newblock \emph{arXiv preprint arXiv:2602.12413}, 2026.
+\newblock \doi{10.48550/arXiv.2602.12413}.
+
+\bibitem[Stojanovski et~al.(2025)Stojanovski, Stanley, Sharratt, Jones,
+  Adefioye, Kaddour, and K{\"o}pf]{stojanovski2025reasoninggym}
+Zafir Stojanovski, Oliver Stanley, Joe Sharratt, Richard Jones, Abdulhakeem
+  Adefioye, Jean Kaddour, and Andreas K{\"o}pf.
+\newblock Reasoning gym: Reasoning environments for reinforcement learning with
+  verifiable rewards.
+\newblock \emph{arXiv preprint arXiv:2505.24760}, 2025.
+\newblock \doi{10.48550/arXiv.2505.24760}.
+
+\bibitem[Sung et~al.(2018)Sung, Yang, Zhang, Xiang, Torr, and
+  Hospedales]{sung2018relation}
+Flood Sung, Yongxin Yang, Li~Zhang, Tao Xiang, Philip H.~S. Torr, and
+  Timothy~M. Hospedales.
+\newblock Learning to compare: Relation network for few-shot learning.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 1199--1208, 2018.
+
+\bibitem[Tamer(2010)]{tamer2010partial}
+Elie Tamer.
+\newblock Partial identification in econometrics.
+\newblock \emph{Annual Review of Economics}, 2\penalty0 (1):\penalty0 167--195,
+  2010.
+\newblock \doi{10.1146/annurev.economics.050708.143401}.
+
+\bibitem[Vaswani et~al.(2017)Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez,
+  Kaiser, and Polosukhin]{vaswani2017attention}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~30, pages 5998--6008, 2017.
+
+\bibitem[Vinyals et~al.(2016)Vinyals, Blundell, Lillicrap, Kavukcuoglu, and
+  Wierstra]{vinyals2016matching}
+Oriol Vinyals, Charles Blundell, Timothy Lillicrap, Koray Kavukcuoglu, and Daan
+  Wierstra.
+\newblock Matching networks for one shot learning.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~29, 2016.
+
+\bibitem[Xu et~al.(2024)Xu, Guan, Greene, and Kechadi]{xu2024contamination}
+Cheng Xu, Shuhao Guan, Derek Greene, and M.~Tahar Kechadi.
+\newblock Benchmark data contamination of large language models: A survey.
+\newblock \emph{arXiv preprint arXiv:2406.04244}, 2024.
+\newblock \doi{10.48550/arXiv.2406.04244}.
+
+\bibitem[Zaheer et~al.(2017)Zaheer, Kottur, Ravanbakhsh, Poczos, Salakhutdinov,
+  and Smola]{zaheer2017deep}
+Manzil Zaheer, Satwik Kottur, Siamak Ravanbakhsh, Barnabas Poczos, Ruslan
+  Salakhutdinov, and Alexander~J. Smola.
+\newblock Deep sets.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~30, pages 3391--3401, 2017.
+
+\bibitem[Zaremba and Sutskever(2014)]{zaremba2014learning}
+Wojciech Zaremba and Ilya Sutskever.
+\newblock Learning to execute.
+\newblock \emph{arXiv preprint arXiv:1410.4615}, 2014.
+
+\bibitem[Zhu et~al.(2024)Zhu, Chen, Wang, Gong, Yang, and Xie]{zhu2024dyval}
+Kaijie Zhu, Jiaao Chen, Jindong Wang, Neil~Zhenqiang Gong, Diyi Yang, and Xing
+  Xie.
+\newblock {DyVal}: Dynamic evaluation of large language models for reasoning
+  tasks.
+\newblock In \emph{International Conference on Learning Representations}, 2024.
+\newblock URL \url{https://openreview.net/forum?id=gjfOL9z5Xr}.
+
+\end{thebibliography}

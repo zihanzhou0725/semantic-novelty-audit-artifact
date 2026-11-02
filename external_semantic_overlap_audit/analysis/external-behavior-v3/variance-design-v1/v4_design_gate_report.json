@@ -1,0 +1,49 @@
+{
+  "capacity": {
+    "all_original_pair_capacity": 159,
+    "remaining_disjoint_pair_capacity": 139,
+    "v3_used_pairs": 20
+  },
+  "design_id": "external-behavior-v3-variance-design-v1",
+  "gate": {
+    "capacity_gate_pass": false,
+    "decision": "strict_v3_precision_replication_no_go",
+    "projected_max_capacity_width_gate_pass": false,
+    "recommendation": "do_not_release_same_gate_v4_training",
+    "v3_decision_remains": "imprecise_no_go",
+    "v4_training_released": false
+  },
+  "projection": {
+    "anova_to_registered_width_calibration_factor": 1.006787987432002,
+    "base_anova_width_pp": 11.414900546831515,
+    "base_projected_mean_variance_pp2": 8.479848449248122,
+    "maximum_remaining_pair_capacity": 139,
+    "minimum_pairs_at_infinite_seeds": 634,
+    "projected_width_at_infinite_seeds_and_max_pairs_pp": 4.268965149278231,
+    "required_pairs_by_seed_count": [
+      {
+        "required_pair_count": 792,
+        "seed_count": 8
+      },
+      {
+        "required_pair_count": 706,
+        "seed_count": 16
+      },
+      {
+        "required_pair_count": 668,
+        "seed_count": 32
+      },
+      {
+        "required_pair_count": 651,
+        "seed_count": 64
+      },
+      {
+        "required_pair_count": 634,
+        "seed_count": "infinite"
+      }
+    ],
+    "target_interval_width_pp": 2.0
+  },
+  "schema_version": "external-behavior-v4-design-gate-report-v1",
+  "status": "strict_v3_precision_replication_no_go"
+}

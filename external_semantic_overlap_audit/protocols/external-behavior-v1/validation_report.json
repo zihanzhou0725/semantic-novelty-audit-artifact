@@ -1,0 +1,35 @@
+{
+  "schema_version": "external-behavior-protocol-validation-v1",
+  "protocol_id": "external-behavior-v1",
+  "stage": "freeze",
+  "validated_at_utc": "2026-10-12T09:30:01Z",
+  "status": "pass",
+  "check_count": 42,
+  "failed_count": 0,
+  "key_checks": {
+    "candidate_receipt_hashes_match": true,
+    "candidate_selection_result_independent": true,
+    "candidate_freeze_precedes_result_actions": true,
+    "prior_p3_decision_preserved": true,
+    "clutrr_source_revision_and_hashes_match": true,
+    "mathematics_source_revision_and_hashes_match": true,
+    "clutrr_design_arithmetic_valid": true,
+    "mathematics_design_arithmetic_valid": true,
+    "effect_direction_not_used_as_suite_gate": true,
+    "no_result_directories_at_protocol_freeze": true
+  },
+  "source_revisions": {
+    "clutrr": "d045fae289d3746503677ceed7631c999202501e",
+    "mathematics": "427f45075f84b8b9774950196ad63867ca20ffb3"
+  },
+  "document_sha256": {
+    "README.md": "be9ea090138cb7b805d5924ca52b858f61dfb52580fde8071f8956b4ca794f04",
+    "availability_screening.csv": "170ef9691adcf697b9fe121ba9c82aa5a038cf5b5a24850e2325983c618d4170",
+    "candidate_freeze_receipt.json": "93bcbe9aee755ec16e7416013cb25bfb3c79df4709b683134f5e2fa1ddf423d4",
+    "candidate_manifest.json": "fbe497b86c084102e9d439f7f84562592dc30572ad7d37a84f29cd7fa99aa847",
+    "checklist.md": "f8db16f88bcba0db22da4685c53a1a27010a2fcb5821b5b099b9d4fef499f5fc",
+    "preregistration.json": "3ff8bbde576f4176d9b2c98969925ae09f3f038f315711b4c71a1c17bf3dcf11",
+    "source_manifest.json": "fcb1d1700d80467735cbeaab7229e6f2a26f5473574ac241931642e2ab343612",
+    "validate.py": "878c7cc94a981d3e167ac8a50cfc6171def9ef0c0af2d82ae32ca4b4b991a969"
+  }
+}

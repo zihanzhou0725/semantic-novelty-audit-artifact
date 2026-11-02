@@ -1,0 +1,65 @@
+{
+  "aggregate_overlap_released": false,
+  "generator_assertion_drops": 1,
+  "join_or_collision_census_executed": false,
+  "retained_rows": 220000,
+  "status": "materialized_blind_pending_validation",
+  "streams": [
+    {
+      "anomaly_log": "mathematics_train_polynomials__expand.anomalies.jsonl",
+      "anomaly_log_sha256": "c254a1f85cea01a5e504ff9a938d096330899a5d6b715d06962ea7834b1c7cb3",
+      "generator_assertion_drops": 1,
+      "length_drops": 10627,
+      "manifest": "mathematics_train_polynomials__expand.jsonl",
+      "manifest_sha256": "c19ae5c74115352457618147121a756c843ff1218fe88d478e9848c524b9dd7d",
+      "module": "polynomials__expand",
+      "numpy_registered_seed": 7399762135562652313,
+      "numpy_seed_modulo_2_32": 3902343833,
+      "python_seed": 7399762135562652313,
+      "regime": "train",
+      "retained_rows": 100000
+    },
+    {
+      "anomaly_log": "mathematics_train_polynomials__collect.anomalies.jsonl",
+      "anomaly_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generator_assertion_drops": 0,
+      "length_drops": 10,
+      "manifest": "mathematics_train_polynomials__collect.jsonl",
+      "manifest_sha256": "9607ee4372974c6141da16f4548345eb67f783cb29d5b561e752038510bc556e",
+      "module": "polynomials__collect",
+      "numpy_registered_seed": 1619400012553057891,
+      "numpy_seed_modulo_2_32": 1098708579,
+      "python_seed": 1619400012553057891,
+      "regime": "train",
+      "retained_rows": 100000
+    },
+    {
+      "anomaly_log": "mathematics_interpolate_polynomials__expand.anomalies.jsonl",
+      "anomaly_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generator_assertion_drops": 0,
+      "length_drops": 1323,
+      "manifest": "mathematics_interpolate_polynomials__expand.jsonl",
+      "manifest_sha256": "3d86b69cefd2f1ea37e67463f9dd166c216cc7b76a3284e5d8b6dc99a1745a9c",
+      "module": "polynomials__expand",
+      "numpy_registered_seed": 4243722534942838980,
+      "numpy_seed_modulo_2_32": 1284935876,
+      "python_seed": 4243722534942838980,
+      "regime": "interpolate",
+      "retained_rows": 10000
+    },
+    {
+      "anomaly_log": "mathematics_interpolate_polynomials__collect.anomalies.jsonl",
+      "anomaly_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "generator_assertion_drops": 0,
+      "length_drops": 1,
+      "manifest": "mathematics_interpolate_polynomials__collect.jsonl",
+      "manifest_sha256": "55c8c06aa61cdfaa13c22a463fa818c74a44573090456ae3b82db9f70bedab05",
+      "module": "polynomials__collect",
+      "numpy_registered_seed": 8321134879439944955,
+      "numpy_seed_modulo_2_32": 3911286011,
+      "python_seed": 8321134879439944955,
+      "regime": "interpolate",
+      "retained_rows": 10000
+    }
+  ]
+}

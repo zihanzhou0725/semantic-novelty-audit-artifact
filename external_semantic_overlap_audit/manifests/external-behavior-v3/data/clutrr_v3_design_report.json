@@ -1,0 +1,38 @@
+{
+  "arm_manifest_count": 16,
+  "candidate_generation": {
+    "deduplicated_rows": 204870,
+    "expanded_rows": 204870,
+    "raw_manifest_sha256": "c8b2af30a7700b9988b1f73fa45f95199fbb1ec57940092630e3982e7b52424f",
+    "source_rows": 34145
+  },
+  "common_base_rows": 22720,
+  "design_ready_for_validation": true,
+  "eligible_pattern_count": 320,
+  "evaluation_rows": 8000,
+  "evaluation_source_groups": 1360,
+  "exposure_rows": 2560,
+  "exposure_source_groups": 440,
+  "input_manifest_sha256": "8a6fa7a876ed9e6fbfb98b45a3269e24c304d2205ab3810eb8bbceee879b7026",
+  "maximum_allocated_sequence_length": 185,
+  "model_architecture": {
+    "checks": {
+      "attention_heads": true,
+      "classifier_output_classes": true,
+      "dropout": true,
+      "feed_forward_dimension": true,
+      "layers": true,
+      "maximum_sequence_length": true,
+      "model_dimension": true,
+      "pooling": "CLS",
+      "position_embedding": "learned_absolute",
+      "precision": true,
+      "vocabulary_size": true
+    },
+    "num_classes": 23,
+    "parameter_count": 894743
+  },
+  "pair_count": 20,
+  "status": "materialized_pending_independent_validation",
+  "target_count": 40
+}

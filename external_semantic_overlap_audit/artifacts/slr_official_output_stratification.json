@@ -1,0 +1,952 @@
+{
+  "by_level": {
+    "1": {
+      "accuracy": 0.28,
+      "completion_tokens_mean": 39.72,
+      "n": 50,
+      "partial_score": 0.53,
+      "runtime_error_count": 11,
+      "syntax_extracted": 1.0
+    },
+    "10": {
+      "accuracy": 0.46,
+      "completion_tokens_mean": 49.3,
+      "n": 50,
+      "partial_score": 0.895,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "11": {
+      "accuracy": 0.4,
+      "completion_tokens_mean": 50.04,
+      "n": 50,
+      "partial_score": 0.88,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "12": {
+      "accuracy": 0.26,
+      "completion_tokens_mean": 68.14,
+      "n": 50,
+      "partial_score": 0.8075,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "13": {
+      "accuracy": 0.1,
+      "completion_tokens_mean": 78.68,
+      "n": 50,
+      "partial_score": 0.7344444444444441,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "14": {
+      "accuracy": 0.14,
+      "completion_tokens_mean": 77.48,
+      "n": 50,
+      "partial_score": 0.75,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "15": {
+      "accuracy": 0.12,
+      "completion_tokens_mean": 75.22,
+      "n": 50,
+      "partial_score": 0.750909090909091,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "16": {
+      "accuracy": 0.1,
+      "completion_tokens_mean": 77.28,
+      "n": 50,
+      "partial_score": 0.7183333333333334,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "17": {
+      "accuracy": 0.04,
+      "completion_tokens_mean": 82.24,
+      "n": 50,
+      "partial_score": 0.6446153846153844,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "18": {
+      "accuracy": 0.06,
+      "completion_tokens_mean": 79.54,
+      "n": 50,
+      "partial_score": 0.69,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "19": {
+      "accuracy": 0.02,
+      "completion_tokens_mean": 78.78,
+      "n": 50,
+      "partial_score": 0.6813333333333331,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "2": {
+      "accuracy": 0.4,
+      "completion_tokens_mean": 38.38,
+      "n": 50,
+      "partial_score": 0.66,
+      "runtime_error_count": 4,
+      "syntax_extracted": 0.98
+    },
+    "20": {
+      "accuracy": 0.04,
+      "completion_tokens_mean": 79.0,
+      "n": 50,
+      "partial_score": 0.69625,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "3": {
+      "accuracy": 0.6,
+      "completion_tokens_mean": 38.74,
+      "n": 50,
+      "partial_score": 0.74,
+      "runtime_error_count": 6,
+      "syntax_extracted": 1.0
+    },
+    "4": {
+      "accuracy": 0.64,
+      "completion_tokens_mean": 37.1,
+      "n": 50,
+      "partial_score": 0.79,
+      "runtime_error_count": 4,
+      "syntax_extracted": 1.0
+    },
+    "5": {
+      "accuracy": 0.66,
+      "completion_tokens_mean": 39.38,
+      "n": 50,
+      "partial_score": 0.8166666666666665,
+      "runtime_error_count": 5,
+      "syntax_extracted": 1.0
+    },
+    "6": {
+      "accuracy": 0.66,
+      "completion_tokens_mean": 37.42,
+      "n": 50,
+      "partial_score": 0.9266666666666665,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "7": {
+      "accuracy": 0.78,
+      "completion_tokens_mean": 40.64,
+      "n": 50,
+      "partial_score": 0.9333333333333336,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "8": {
+      "accuracy": 0.48,
+      "completion_tokens_mean": 38.16,
+      "n": 50,
+      "partial_score": 0.865,
+      "runtime_error_count": 2,
+      "syntax_extracted": 1.0
+    },
+    "9": {
+      "accuracy": 0.38,
+      "completion_tokens_mean": 46.06,
+      "n": 50,
+      "partial_score": 0.866,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    }
+  },
+  "by_overlap_and_level": {
+    "flat_semantic_duplicate": {
+      "1": {
+        "accuracy": 0.28,
+        "completion_tokens_mean": 39.72,
+        "n": 50,
+        "partial_score": 0.53,
+        "runtime_error_count": 11,
+        "syntax_extracted": 1.0
+      },
+      "10": {
+        "accuracy": 0.6666666666666666,
+        "completion_tokens_mean": 51.333333333333336,
+        "n": 18,
+        "partial_score": 0.9305555555555558,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "11": {
+        "accuracy": 0.4,
+        "completion_tokens_mean": 52.733333333333334,
+        "n": 15,
+        "partial_score": 0.8714285714285714,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "12": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 59.5,
+        "n": 2,
+        "partial_score": 0.9375,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "13": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 72.5,
+        "n": 4,
+        "partial_score": 0.7222222222222223,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "14": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 75.0,
+        "n": 1,
+        "partial_score": 0.95,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "18": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 90.0,
+        "n": 1,
+        "partial_score": 0.5357142857142857,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "2": {
+        "accuracy": 0.391304347826087,
+        "completion_tokens_mean": 37.69565217391305,
+        "n": 46,
+        "partial_score": 0.6521739130434783,
+        "runtime_error_count": 4,
+        "syntax_extracted": 0.9782608695652174
+      },
+      "3": {
+        "accuracy": 0.6,
+        "completion_tokens_mean": 38.74,
+        "n": 50,
+        "partial_score": 0.74,
+        "runtime_error_count": 6,
+        "syntax_extracted": 1.0
+      },
+      "4": {
+        "accuracy": 0.6458333333333334,
+        "completion_tokens_mean": 37.25,
+        "n": 48,
+        "partial_score": 0.8020833333333334,
+        "runtime_error_count": 4,
+        "syntax_extracted": 1.0
+      },
+      "5": {
+        "accuracy": 0.6444444444444445,
+        "completion_tokens_mean": 39.422222222222224,
+        "n": 45,
+        "partial_score": 0.8074074074074074,
+        "runtime_error_count": 5,
+        "syntax_extracted": 1.0
+      },
+      "6": {
+        "accuracy": 0.8275862068965517,
+        "completion_tokens_mean": 38.0,
+        "n": 29,
+        "partial_score": 0.9655172413793104,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "7": {
+        "accuracy": 0.896551724137931,
+        "completion_tokens_mean": 41.206896551724135,
+        "n": 29,
+        "partial_score": 0.9712643678160918,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "8": {
+        "accuracy": 0.5333333333333333,
+        "completion_tokens_mean": 36.1,
+        "n": 30,
+        "partial_score": 0.8875,
+        "runtime_error_count": 1,
+        "syntax_extracted": 1.0
+      },
+      "9": {
+        "accuracy": 0.42857142857142855,
+        "completion_tokens_mean": 46.214285714285715,
+        "n": 14,
+        "partial_score": 0.8785714285714287,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      }
+    },
+    "token_duplicate": {
+      "10": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 48.0,
+        "n": 1,
+        "partial_score": 0.9166666666666666,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "11": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 42.333333333333336,
+        "n": 3,
+        "partial_score": 0.7619047619047619,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "12": {
+        "accuracy": 0.07142857142857142,
+        "completion_tokens_mean": 77.07142857142857,
+        "n": 14,
+        "partial_score": 0.6651785714285714,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "13": {
+        "accuracy": 0.3333333333333333,
+        "completion_tokens_mean": 90.0,
+        "n": 6,
+        "partial_score": 0.6944444444444443,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "14": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 90.0,
+        "n": 11,
+        "partial_score": 0.5499999999999999,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "16": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 90.0,
+        "n": 1,
+        "partial_score": 0.75,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "17": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 90.0,
+        "n": 1,
+        "partial_score": 0.7307692307692307,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "19": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 90.0,
+        "n": 1,
+        "partial_score": 0.4,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "20": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 90.0,
+        "n": 1,
+        "partial_score": 0.4375,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "6": {
+        "accuracy": 0.4166666666666667,
+        "completion_tokens_mean": 38.75,
+        "n": 12,
+        "partial_score": 0.8888888888888888,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "7": {
+        "accuracy": 0.5714285714285714,
+        "completion_tokens_mean": 44.285714285714285,
+        "n": 7,
+        "partial_score": 0.8095238095238094,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "8": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 42.5,
+        "n": 2,
+        "partial_score": 0.875,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "9": {
+        "accuracy": 0.3,
+        "completion_tokens_mean": 44.9,
+        "n": 10,
+        "partial_score": 0.85,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      }
+    },
+    "unresolved_or_novel": {
+      "10": {
+        "accuracy": 0.3548387096774194,
+        "completion_tokens_mean": 48.16129032258065,
+        "n": 31,
+        "partial_score": 0.8736559139784946,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "11": {
+        "accuracy": 0.4375,
+        "completion_tokens_mean": 49.5,
+        "n": 32,
+        "partial_score": 0.8950892857142856,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "12": {
+        "accuracy": 0.35294117647058826,
+        "completion_tokens_mean": 64.97058823529412,
+        "n": 34,
+        "partial_score": 0.8584558823529411,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "13": {
+        "accuracy": 0.075,
+        "completion_tokens_mean": 77.6,
+        "n": 40,
+        "partial_score": 0.7416666666666665,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "14": {
+        "accuracy": 0.18421052631578946,
+        "completion_tokens_mean": 73.92105263157895,
+        "n": 38,
+        "partial_score": 0.8026315789473684,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "15": {
+        "accuracy": 0.12,
+        "completion_tokens_mean": 75.22,
+        "n": 50,
+        "partial_score": 0.750909090909091,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "16": {
+        "accuracy": 0.10204081632653061,
+        "completion_tokens_mean": 77.0204081632653,
+        "n": 49,
+        "partial_score": 0.7176870748299321,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "17": {
+        "accuracy": 0.04081632653061224,
+        "completion_tokens_mean": 82.08163265306122,
+        "n": 49,
+        "partial_score": 0.6428571428571427,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "18": {
+        "accuracy": 0.061224489795918366,
+        "completion_tokens_mean": 79.3265306122449,
+        "n": 49,
+        "partial_score": 0.6931486880466472,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "19": {
+        "accuracy": 0.02040816326530612,
+        "completion_tokens_mean": 78.55102040816327,
+        "n": 49,
+        "partial_score": 0.6870748299319726,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "2": {
+        "accuracy": 0.5,
+        "completion_tokens_mean": 46.25,
+        "n": 4,
+        "partial_score": 0.75,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "20": {
+        "accuracy": 0.04081632653061224,
+        "completion_tokens_mean": 78.77551020408163,
+        "n": 49,
+        "partial_score": 0.701530612244898,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "4": {
+        "accuracy": 0.5,
+        "completion_tokens_mean": 33.5,
+        "n": 2,
+        "partial_score": 0.5,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "5": {
+        "accuracy": 0.8,
+        "completion_tokens_mean": 39.0,
+        "n": 5,
+        "partial_score": 0.9,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "6": {
+        "accuracy": 0.4444444444444444,
+        "completion_tokens_mean": 33.77777777777778,
+        "n": 9,
+        "partial_score": 0.8518518518518517,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "7": {
+        "accuracy": 0.6428571428571429,
+        "completion_tokens_mean": 37.642857142857146,
+        "n": 14,
+        "partial_score": 0.9166666666666669,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "8": {
+        "accuracy": 0.4444444444444444,
+        "completion_tokens_mean": 41.111111111111114,
+        "n": 18,
+        "partial_score": 0.8263888888888888,
+        "runtime_error_count": 1,
+        "syntax_extracted": 1.0
+      },
+      "9": {
+        "accuracy": 0.38461538461538464,
+        "completion_tokens_mean": 46.42307692307692,
+        "n": 26,
+        "partial_score": 0.8653846153846154,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      }
+    }
+  },
+  "by_overlap_and_tier": {
+    "flat_semantic_duplicate": {
+      "basic": {
+        "accuracy": 0.5104602510460251,
+        "completion_tokens_mean": 38.57322175732217,
+        "n": 239,
+        "partial_score": 0.704323570432357,
+        "runtime_error_count": 30,
+        "syntax_extracted": 0.99581589958159
+      },
+      "easy": {
+        "accuracy": 0.7,
+        "completion_tokens_mean": 41.25833333333333,
+        "n": 120,
+        "partial_score": 0.9320138888888887,
+        "runtime_error_count": 1,
+        "syntax_extracted": 1.0
+      },
+      "hard": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 90.0,
+        "n": 1,
+        "partial_score": 0.5357142857142857,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "medium": {
+        "accuracy": 0.2727272727272727,
+        "completion_tokens_mean": 57.95454545454545,
+        "n": 22,
+        "partial_score": 0.8538780663780663,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      }
+    },
+    "token_duplicate": {
+      "easy": {
+        "accuracy": 0.375,
+        "completion_tokens_mean": 42.40625,
+        "n": 32,
+        "partial_score": 0.8593750000000001,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "hard": {
+        "accuracy": 0.0,
+        "completion_tokens_mean": 90.0,
+        "n": 4,
+        "partial_score": 0.5795673076923077,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "medium": {
+        "accuracy": 0.08823529411764706,
+        "completion_tokens_mean": 80.47058823529412,
+        "n": 34,
+        "partial_score": 0.6416141456582634,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      }
+    },
+    "unresolved_or_novel": {
+      "basic": {
+        "accuracy": 0.6363636363636364,
+        "completion_tokens_mean": 40.63636363636363,
+        "n": 11,
+        "partial_score": 0.7727272727272727,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "easy": {
+        "accuracy": 0.42857142857142855,
+        "completion_tokens_mean": 43.58163265306123,
+        "n": 98,
+        "partial_score": 0.8669217687074828,
+        "runtime_error_count": 1,
+        "syntax_extracted": 1.0
+      },
+      "hard": {
+        "accuracy": 0.053061224489795916,
+        "completion_tokens_mean": 79.15102040816326,
+        "n": 245,
+        "partial_score": 0.6884596695821186,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      },
+      "medium": {
+        "accuracy": 0.21649484536082475,
+        "completion_tokens_mean": 69.41752577319588,
+        "n": 194,
+        "partial_score": 0.8017653523452496,
+        "runtime_error_count": 0,
+        "syntax_extracted": 1.0
+      }
+    }
+  },
+  "by_overlap_class": {
+    "flat_semantic_duplicate": {
+      "accuracy": 0.5549738219895288,
+      "completion_tokens_mean": 40.667539267015705,
+      "n": 382,
+      "partial_score": 0.7840210255131721,
+      "runtime_error_count": 31,
+      "syntax_extracted": 0.9973821989528796
+    },
+    "token_duplicate": {
+      "accuracy": 0.21428571428571427,
+      "completion_tokens_mean": 63.614285714285714,
+      "n": 70,
+      "partial_score": 0.7376164311878597,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "unresolved_or_novel": {
+      "accuracy": 0.1897810218978102,
+      "completion_tokens_mean": 68.57116788321167,
+      "n": 548,
+      "partial_score": 0.7621777933137415,
+      "runtime_error_count": 1,
+      "syntax_extracted": 1.0
+    }
+  },
+  "by_tier": {
+    "basic": {
+      "accuracy": 0.516,
+      "completion_tokens_mean": 38.664,
+      "n": 250,
+      "partial_score": 0.7073333333333334,
+      "runtime_error_count": 30,
+      "syntax_extracted": 0.996
+    },
+    "easy": {
+      "accuracy": 0.552,
+      "completion_tokens_mean": 42.316,
+      "n": 250,
+      "partial_score": 0.8972000000000008,
+      "runtime_error_count": 2,
+      "syntax_extracted": 1.0
+    },
+    "hard": {
+      "accuracy": 0.052,
+      "completion_tokens_mean": 79.368,
+      "n": 250,
+      "partial_score": 0.6861064102564102,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    },
+    "medium": {
+      "accuracy": 0.204,
+      "completion_tokens_mean": 69.912,
+      "n": 250,
+      "partial_score": 0.7845707070707072,
+      "runtime_error_count": 0,
+      "syntax_extracted": 1.0
+    }
+  },
+  "error_types": {
+    "Error: syntax error, mismatched parens/brackets/braces, task_0041.pl:27\n   error(existence_error(procedure,check_count/1": 1,
+    "Error: syntax error, mismatched parens/brackets/braces, task_0045.pl:27\n   error(existence_error(procedure,check_count/1": 1,
+    "Error: syntax error, mismatched parens/brackets/braces, task_0105.pl:41\n   error(existence_error(procedure,check_count/1": 1,
+    "Error: syntax error, mismatched parens/brackets/braces, task_0113.pl:41\n   error(existence_error(procedure,check_count/1": 1,
+    "Error: syntax error, mismatched parens/brackets/braces, task_0117.pl:41\n   error(existence_error(procedure,check_count/1": 1,
+    "Error: syntax error, mismatched parens/brackets/braces, task_0190.pl:61\n   error(existence_error(procedure,check_count/1": 1,
+    "Error: syntax error, mismatched parens/brackets/braces, task_0237.pl:85\n   error(existence_error(procedure,check_count/1": 1,
+    "Error: syntax error, mismatched parens/brackets/braces, task_0247.pl:85\n   error(existence_error(procedure,check_count/1": 1,
+    "Error: syntax error, mismatched parens/brackets/braces, task_0250.pl:85\n   error(existence_error(procedure,check_count/1": 1,
+    "Error: syntax error, near 'car_num', operator expected, task_0065.pl:27": 1,
+    "Error: syntax error, parens needed around operator ';', task_0381.pl:155": 1,
+    "No target rule extracted": 1,
+    "error(existence_error(procedure,car_color/3),car_color/3).": 2,
+    "error(existence_error(procedure,car_len/3),car_len/3).": 2,
+    "error(existence_error(procedure,findall/6),findall/6).": 1,
+    "error(existence_error(procedure,green/0),green/0).": 1,
+    "error(existence_error(procedure,has_car/3),has_car/3).": 6,
+    "error(existence_error(procedure,has_car/4),has_car/4).": 1,
+    "error(existence_error(procedure,has_wall/3),has_wall/3).": 5,
+    "error(existence_error(procedure,yellow/0),yellow/0).": 1,
+    "error(instantiation_error,callable).": 1
+  },
+  "overall": {
+    "accuracy": 0.331,
+    "completion_tokens_mean": 57.565,
+    "n": 1000,
+    "partial_score": 0.7688026126651122,
+    "runtime_error_count": 32,
+    "syntax_extracted": 0.999
+  },
+  "paper_crosscheck": {
+    "behavioral_use_status": "exploratory_only_not_reported_main_table_behavior",
+    "comparisons": {
+      "acl_2026_final_table_2_llama3_1_8b_it_slr": {
+        "artifact_by_tier": {
+          "basic": 0.516,
+          "easy": 0.552,
+          "hard": 0.052,
+          "medium": 0.204
+        },
+        "artifact_minus_reported_pp": {
+          "basic": -44.39999999999999,
+          "easy": 1.200000000000001,
+          "hard": 0.19999999999999948,
+          "medium": 2.3999999999999995
+        },
+        "reported_by_tier": {
+          "basic": 0.96,
+          "easy": 0.54,
+          "hard": 0.05,
+          "medium": 0.18
+        },
+        "reported_macro_accuracy": 0.4325
+      },
+      "arxiv_v2_table_2_llama3_1_8b_it_fft": {
+        "artifact_by_tier": {
+          "basic": 0.516,
+          "easy": 0.552,
+          "hard": 0.052,
+          "medium": 0.204
+        },
+        "artifact_minus_reported_pp": {
+          "basic": -40.400000000000006,
+          "easy": -21.799999999999997,
+          "hard": 3.2,
+          "medium": 3.3999999999999977
+        },
+        "reported_by_tier": {
+          "basic": 0.92,
+          "easy": 0.77,
+          "hard": 0.02,
+          "medium": 0.17
+        },
+        "reported_macro_accuracy": 0.47
+      }
+    },
+    "conclusion": "The repository-hosted artifact aligns exactly with v1-All test IDs and ground-truth rules, but its tier accuracies do not reproduce either published Table 2. In particular, even treating every Basic-tier runtime error as correct gives an upper bound below the final paper's 96%. Do not use this artifact to estimate the reported model's seen/unseen effect.",
+    "runtime_error_upper_bounds": {
+      "basic_accuracy_if_every_runtime_error_were_correct": 0.636,
+      "overall_accuracy_if_every_runtime_error_were_correct": 0.363
+    }
+  },
+  "source": {
+    "judge_basis": "The extensional check program and rule extraction mirror the official AIML-TUDA VerifiableRewardsForScalableLogicalReasoning metric; execution uses Trealla rather than SWI-Prolog.",
+    "model_outputs_sha256": "ecd979d5c1f5ed54e11197830b2afb8e4924075a97babf80b188bea630b5a15b",
+    "model_repository": "AIML-TUDA/Llama-3.1-8B-SLR",
+    "output_rows": 1000,
+    "prolog_runtime": "Trealla Prolog WASI v3.12.6",
+    "prolog_runtime_sha256": "f1e4f72d5794d6330611d3d369e46e1a328485acd66ac680e0481d0c714b7710",
+    "test_alignment": "problem_id and ground-truth rule match 100%"
+  },
+  "within_level_overlap_comparison": {
+    "common_levels": [
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "comparison": "union(token_duplicate, flat_semantic_duplicate) - unresolved_or_novel",
+    "interpretation": "Descriptive only. Curriculum level is controlled by stratification, but overlap was not randomized and residual rule-complexity confounding remains.",
+    "min_group_size_weight_total": 156,
+    "min_group_size_weighted_accuracy_delta": 0.015327119416592469,
+    "per_level": {
+      "10": {
+        "accuracy_delta": 0.27674023769100164,
+        "duplicate_accuracy": 0.631578947368421,
+        "duplicate_n": 19,
+        "min_group_size_weight": 19,
+        "unresolved_accuracy": 0.3548387096774194,
+        "unresolved_n": 31
+      },
+      "11": {
+        "accuracy_delta": -0.10416666666666669,
+        "duplicate_accuracy": 0.3333333333333333,
+        "duplicate_n": 18,
+        "min_group_size_weight": 18,
+        "unresolved_accuracy": 0.4375,
+        "unresolved_n": 32
+      },
+      "12": {
+        "accuracy_delta": -0.29044117647058826,
+        "duplicate_accuracy": 0.0625,
+        "duplicate_n": 16,
+        "min_group_size_weight": 16,
+        "unresolved_accuracy": 0.35294117647058826,
+        "unresolved_n": 34
+      },
+      "13": {
+        "accuracy_delta": 0.125,
+        "duplicate_accuracy": 0.2,
+        "duplicate_n": 10,
+        "min_group_size_weight": 10,
+        "unresolved_accuracy": 0.075,
+        "unresolved_n": 40
+      },
+      "14": {
+        "accuracy_delta": -0.18421052631578946,
+        "duplicate_accuracy": 0.0,
+        "duplicate_n": 12,
+        "min_group_size_weight": 12,
+        "unresolved_accuracy": 0.18421052631578946,
+        "unresolved_n": 38
+      },
+      "16": {
+        "accuracy_delta": -0.10204081632653061,
+        "duplicate_accuracy": 0.0,
+        "duplicate_n": 1,
+        "min_group_size_weight": 1,
+        "unresolved_accuracy": 0.10204081632653061,
+        "unresolved_n": 49
+      },
+      "17": {
+        "accuracy_delta": -0.04081632653061224,
+        "duplicate_accuracy": 0.0,
+        "duplicate_n": 1,
+        "min_group_size_weight": 1,
+        "unresolved_accuracy": 0.04081632653061224,
+        "unresolved_n": 49
+      },
+      "18": {
+        "accuracy_delta": -0.061224489795918366,
+        "duplicate_accuracy": 0.0,
+        "duplicate_n": 1,
+        "min_group_size_weight": 1,
+        "unresolved_accuracy": 0.061224489795918366,
+        "unresolved_n": 49
+      },
+      "19": {
+        "accuracy_delta": -0.02040816326530612,
+        "duplicate_accuracy": 0.0,
+        "duplicate_n": 1,
+        "min_group_size_weight": 1,
+        "unresolved_accuracy": 0.02040816326530612,
+        "unresolved_n": 49
+      },
+      "2": {
+        "accuracy_delta": -0.10869565217391303,
+        "duplicate_accuracy": 0.391304347826087,
+        "duplicate_n": 46,
+        "min_group_size_weight": 4,
+        "unresolved_accuracy": 0.5,
+        "unresolved_n": 4
+      },
+      "20": {
+        "accuracy_delta": -0.04081632653061224,
+        "duplicate_accuracy": 0.0,
+        "duplicate_n": 1,
+        "min_group_size_weight": 1,
+        "unresolved_accuracy": 0.04081632653061224,
+        "unresolved_n": 49
+      },
+      "4": {
+        "accuracy_delta": 0.14583333333333337,
+        "duplicate_accuracy": 0.6458333333333334,
+        "duplicate_n": 48,
+        "min_group_size_weight": 2,
+        "unresolved_accuracy": 0.5,
+        "unresolved_n": 2
+      },
+      "5": {
+        "accuracy_delta": -0.15555555555555556,
+        "duplicate_accuracy": 0.6444444444444445,
+        "duplicate_n": 45,
+        "min_group_size_weight": 5,
+        "unresolved_accuracy": 0.8,
+        "unresolved_n": 5
+      },
+      "6": {
+        "accuracy_delta": 0.26287262872628725,
+        "duplicate_accuracy": 0.7073170731707317,
+        "duplicate_n": 41,
+        "min_group_size_weight": 9,
+        "unresolved_accuracy": 0.4444444444444444,
+        "unresolved_n": 9
+      },
+      "7": {
+        "accuracy_delta": 0.19047619047619047,
+        "duplicate_accuracy": 0.8333333333333334,
+        "duplicate_n": 36,
+        "min_group_size_weight": 14,
+        "unresolved_accuracy": 0.6428571428571429,
+        "unresolved_n": 14
+      },
+      "8": {
+        "accuracy_delta": 0.05555555555555558,
+        "duplicate_accuracy": 0.5,
+        "duplicate_n": 32,
+        "min_group_size_weight": 18,
+        "unresolved_accuracy": 0.4444444444444444,
+        "unresolved_n": 18
+      },
+      "9": {
+        "accuracy_delta": -0.009615384615384637,
+        "duplicate_accuracy": 0.375,
+        "duplicate_n": 24,
+        "min_group_size_weight": 24,
+        "unresolved_accuracy": 0.38461538461538464,
+        "unresolved_n": 26
+      }
+    },
+    "unweighted_mean_accuracy_delta": -0.0036184199096769907
+  }
+}

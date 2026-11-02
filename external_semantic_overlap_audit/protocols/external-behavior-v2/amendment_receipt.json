@@ -1,0 +1,34 @@
+{
+  "schema_version": "external-behavior-amendment-receipt-v2",
+  "protocol_id": "external-behavior-v2",
+  "frozen_at_utc": "2026-10-12T10:23:27Z",
+  "trigger": {
+    "type": "deterministic_pinned_upstream_runtime_failure",
+    "parent_protocol": "external-behavior-v1",
+    "exception": "AssertionError",
+    "terminal_source": "mathematics_dataset/sample/polynomials.py:107",
+    "next_retained_row_index": 67937
+  },
+  "evidence_available_at_freeze": {
+    "parent_failure_report_sha256": "e73b77aeef0f45cab81315f5fed971af69589c43767ebc403db9a1f284d0b957",
+    "parent_partial_data_sha256sum_sha256": "818d0dc124684e653c0282fb3c77b24e0e8dea2166f9e4677a0d9f72cd87533a",
+    "validated_mathematics_rows": 187937,
+    "mathematics_overlap_aggregate_available": false,
+    "v2_post_failure_rows_available": false
+  },
+  "scope_controls": {
+    "candidate_changed": false,
+    "source_revision_changed": false,
+    "semantic_identity_changed": false,
+    "sample_budget_changed": false,
+    "seed_changed": false,
+    "clutrr_reopened": false,
+    "only_generator_error_policy_changed": true
+  },
+  "frozen_before": {
+    "v2_implementation_freeze": true,
+    "v2_data_generation": true,
+    "v2_overlap_join": true,
+    "v2_overlap_aggregate_inspection": true
+  }
+}

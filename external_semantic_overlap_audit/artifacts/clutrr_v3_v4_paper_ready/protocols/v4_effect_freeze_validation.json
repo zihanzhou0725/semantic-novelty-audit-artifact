@@ -1,0 +1,64 @@
+{
+  "analysis_id": "external-behavior-v4-effect-analysis-v1",
+  "check_count": 9,
+  "checks": [
+    {
+      "detail": null,
+      "name": "execution_gate",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "execution_blinded",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "estimand",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "bootstrap",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "directional_gate",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "freeze_artifacts",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "input_hashes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "implementation_hashes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "outcomes_absent",
+      "pass": true
+    }
+  ],
+  "document_sha256": {
+    "README.md": "b536ffbcc22ac0c7d0dda2547d4c3bb96d57987125b05ba2449c4ffde7c7e4af",
+    "checklist.md": "aff49b37162c605e7267cec18ced6cd8412e5fce29121699ab8f0686ae48784c",
+    "freeze_receipt.json": "e5e1a4e73e3bddce01399cceeca98c0573771f357b0c26a7870ceab0d09ec443",
+    "input_manifest.json": "d7c487f75c7d3e737df5a6704e45f0860a423fc5bde6ae8a402153f994592d97",
+    "preregistration.json": "be83601a5a66d555513d777b1ef94e4f4845560893318c94d015cba03b5ed2d4",
+    "validate.py": "b72fc89ea927a84da43563430e46230a91c38f144784d62404c00aea1a74593d"
+  },
+  "failed_count": 0,
+  "schema_version": "external-behavior-v4-effect-protocol-validation-v1",
+  "stage": "pre_unblinding",
+  "status": "pass",
+  "validated_at_utc": "2026-10-15T07:02:27.779983+00:00"
+}

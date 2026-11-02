@@ -1,0 +1,1306 @@
+\raggedbottom
+
+\section{Audit Definitions and Evidence Grades}
+\label{app:definitions}
+
+\subsection{Objects and Splits}
+
+Let $\mathcal R$ be the representation space, $\mathcal F_{\mathcal O}$ the
+semantic-object space under observation contract $\mathcal O$, and
+$\mathcal G$ the representation-family space.  The maps
+$q_{\mathcal O}:\mathcal R\rightarrow\mathcal F_{\mathcal O}$ and
+$a:\mathcal R\rightarrow\mathcal G$ define three holdout units:
+\begin{align}
+\text{parameter-disjoint:}\quad&
+\mathcal R_{\rm tr}\cap\mathcal R_{\rm te}=\varnothing,\\
+\text{function-disjoint:}\quad&
+q_{\mathcal O}(\mathcal R_{\rm tr})\cap
+q_{\mathcal O}(\mathcal R_{\rm te})=\varnothing,\\
+\text{family-disjoint:}\quad&
+a(\mathcal R_{\rm tr})\cap a(\mathcal R_{\rm te})=\varnothing.
+\end{align}
+The induced family relation for a semantic object is
+\(\Gamma(f)=\{a(r):q_{\mathcal O}(r)=f\}\), which can contain multiple
+families.  Parameter-disjointness implies neither of the other conditions.
+Function- and family-disjointness are also non-nested: different functions
+can share a representation family, and cross-family representations can
+implement the same function.
+
+The observation contract records admissible inputs and contexts, outputs,
+termination and errors, effects, nondeterminism, and any claim-relevant
+resource observations.  Complete finite input--output equality is the special
+case used by the finite rule tasks; no unqualified claim is made for general
+program equivalence.
+
+\subsection{Evidence Grades}
+
+\begin{table}[H]
+\caption{Semantic-equivalence evidence grades.}
+\label{tab:evidence-grades}
+\centering
+\small
+\begin{tabular}{L{0.85in}p{1.85in}}
+\toprule
+Grade & Meaning \\
+\midrule
+Exact & Equality of complete finite maps or a task-specific injective semantic ID. \\
+Sound lower bound & Every detected pair is provably equivalent, but unresolved objects may add collisions. \\
+Estimate & Equality is inferred from incomplete execution or statistical signatures and requires an error analysis. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The internal benchmark and selected Boolean classes use exact signatures.
+SLR \cite{helff2026slr} uses token identity plus proof-producing normalization for a flat positive
+fragment, so 45.2\% is a sound lower bound.
+
+\subsection{Audit Procedure}
+
+For each benchmark we execute the following fixed procedure:
+\begin{enumerate}
+    \item declare the representation and family objects, observation
+    contract, and advertised generalization claim;
+    \item freeze source and dataset revisions and a must-match/must-differ
+    falsification set for the semantic unit;
+    \item construct and validate semantic signatures, rejecting units that
+    split must-match pairs or merge must-differ pairs;
+    \item measure train--test overlap or weighted training-time coverage;
+    \item preserve row-level witnesses or function manifests;
+    \item if behavior is claimed, compare paired per-item outputs or run a
+    matched intervention;
+    \item label every result exact, lower-bound, or estimated, record
+    implementation assurance separately, and restrict claims accordingly;
+    \item when multiple units survive the adequacy test, report the audit
+    under each and identify any conclusion that changes.
+\end{enumerate}
+
+For a discrete function distribution $p(f)$, the exact probability that an
+independent test function was sampled at least once in $N$ training draws is
+\begin{equation}
+P_{\rm seen}(N)=
+\sum_f p(f)\left[1-(1-p(f))^N\right].
+\label{eq:supp-coverage}
+\end{equation}
+
+\subsection{Feasibility of Semantic Normalization}
+\label{app:normalization-feasibility}
+
+Before constructing a split, benchmark designers should freeze the
+specifications in a feasibility record and report the residual unresolved
+count or mass when the stopping rule is reached.  The record contains:
+\begin{enumerate}
+    \item the observation contract and claim-relevant semantic unit;
+    \item whether equivalence is decidable, or the exact bounded domain on
+    which it will be analyzed;
+    \item the expected normalization cost per object and at dataset scale;
+    \item the witness-search budget in time, states, or candidate aliases;
+    \item a stopping rule fixed independently of observed overlap;
+    \item the argument that every emitted certificate is sound; and
+    \item the residual unresolved count or mass at the stopping rule.
+\end{enumerate}
+
+\clearpage
+\section{Internal Finite-Function Audit}
+
+\subsection{Task and Semantic Identity}
+
+The domain and codomain are
+$\mathcal X=\mathcal Y=\{0,\ldots,19\}$.  Each episode samples a rule,
+reveals $K=8$ distinct support sources with independent label corruption
+probability $\rho=0.1$, and queries a clean target at a source outside the
+support set.  Complete semantic identity is the 20-output vector
+\begin{equation}
+q(r)=[f_r(0),\ldots,f_r(19)].
+\end{equation}
+The three training families contain 560 parameter identities and 518 unique
+complete functions.
+
+The legacy split shuffles parameter identities, holds out 140, and samples
+identities uniformly.  In the five matched public-model seeds, the number of
+held-out identities whose function appears in training is
+$13,13,19,15,18$ (mean 15.6/140, or 11.14\%).  The corrected split groups
+identities by $q(r)$, stratifies canonical functions by family, and samples
+functions uniformly.  It contains 388 training and 130 test functions with
+zero complete-map overlap.
+
+\subsection{Complementary Exact-Exposure Intervention}
+
+The confirmatory intervention targets all 40 functions with identities in
+multiple registered families.  Every target has an affine evaluation identity
+and a parity training alias; 38 have signature
+\texttt{affine+parity}, while two also have a block identity.  For every
+intercept $b\in\{0,\ldots,19\}$, we pair affine functions $f_{1,b}$ and
+$f_{11,b}$.  A frozen SHA-256 bit assigns one pair member to Arm A and the
+other to Arm B for each model seed.  Hence every target is exposed in exactly
+one arm and unexposed in the complementary arm.
+
+Each arm contains 478 common base functions and 20 exposed target functions.
+The paired 20,000-episode streams share base slots, support/query draws,
+corruption, initialization, epoch permutations, optimizer schedule, and the
+10,000-episode evaluation manifest.  Six architectures, five seeds, and two
+arms give 60 runs.  Every run reaches the fixed epoch-60 checkpoint after
+4,740 optimizer updates; no validation selection is used.
+
+For seed $s$, let $\mathbf Z_s^A$ be the complete 40-target exposure
+assignment in Arm~A and let
+$\mathbf Z_s^B=\mathbf 1-\mathbf Z_s^A$.  For target $f$,
+$\mathbf Z_{s,f}^{(1)}$ denotes whichever arm assignment exposes $f$, and
+$\mathbf Z_{s,f}^{(0)}$ denotes its complement.  For architecture $m$, let
+$A(m,s,f;\mathbf z)$ be mean accuracy under complete assignment $\mathbf z$.
+The sole primary estimand is
+\begin{align}
+\tau_m
+&=\frac{100}{5\cdot40}
+\sum_s\sum_f
+\left[
+A(m,s,f;\mathbf Z_{s,f}^{(1)})
+-A(m,s,f;\mathbf Z_{s,f}^{(0)})
+\right],\\
+\tau_{\rm macro}
+&=\frac{1}{6}\sum_m\tau_m.
+\end{align}
+The contrast randomizes complete complementary curricula, not a focal
+target's exposure while holding all other targets fixed.
+The 95\% macro interval uses 20,000 hierarchical bootstrap replicates over
+model seeds, 20 matched function pairs, and evaluation episodes within
+function; architectures retain equal fixed weights.  Model intervals use
+99.1667\% Bonferroni simultaneous confidence.
+
+\begin{table}[H]
+\caption{Complete internal exact-exposure results.  Deep Sets alone satisfies the
+registered model-specific rule; the equal-architecture macro satisfies the
+preregistered positive behavioral criterion.}
+\label{tab:supp-p1}
+\centering
+\small
+\setlength{\tabcolsep}{4.4pt}
+\begin{tabular}{lrrrr}
+\toprule
+Architecture & Exposed & Unexposed & Effect (pp) &
+99.1667\% simultaneous CI \\
+\midrule
+Deep Sets & 59.604 & 53.494 & +6.110 & $[4.349,7.849]$ \\
+Relation Network & 88.336 & 87.340 & +0.996 & $[0.229,1.749]$ \\
+Set Transformer & 77.802 & 76.760 & +1.042 & $[-0.105,2.247]$ \\
+Modern Hopfield & 88.662 & 88.004 & +0.658 & $[-0.192,1.447]$ \\
+Perceiver & 74.408 & 73.124 & +1.284 & $[-0.042,2.525]$ \\
+Transformer & 82.942 & 82.040 & +0.902 & $[-0.137,1.870]$ \\
+\midrule
+Architecture macro & 78.626 & 76.794 & +1.832 &
+$[1.470,2.189]$ (95\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All six architecture point estimates are positive.  Cross entropy changes
+from 0.91052 to 0.83191 (exposed minus unexposed $=-0.07861$), and Brier score
+changes from 0.34501 to 0.31829 ($-0.02673$).  Training probabilities were not
+persisted, so registered training calibration is not estimable and is not
+replaced by loss.
+
+\subsection{Exploratory Function-Level Heterogeneity}
+\label{tmlrs:app:internal-heterogeneity}
+
+An exploratory (not preregistered) function-level decomposition finds
+positive effects for all \TThreePositive{}/\TThreeFunctions{} target
+functions, with range
+\TThreeMin{}--\TThreeMax{} pp and median \TThreeMedian{} pp.  As in CLUTRR,
+the effect is negatively associated with unexposed accuracy
+(Spearman $\rho=\TThreeSpearman{}$).  The median normalized gain is only
+\TThreeNGMedian{}: the model is close to ceiling and exposure moves only a
+small fraction of the remaining headroom.
+
+\begin{table}[H]
+\caption{Exploratory comparison of pattern- and function-level
+heterogeneity.}
+\label{tmlrs:tab:cross-setting}
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Setting & Units & Baseline & Effect (pp) & Spearman $\rho$ & Median gain \\
+\midrule
+CLUTRR & \TTwoPatterns{} & \TTwoBaseline{} & \TTwoMean{} &
+\TTwoSpearman{} & \TTwoNGMedian{} \\
+Internal finite functions & \TThreeFunctions{} & \TThreeBaseline{} &
+\TThreeMean{} & \TThreeSpearman{} & \TThreeNGMedian{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.52\textwidth]{figures/tmlrs_internal_heterogeneity.pdf}
+\caption{Exploratory internal function effects against unexposed accuracy.
+Color distinguishes the two affine multipliers.}
+\label{tmlrs:fig:internal-heterogeneity}
+\end{figure}
+
+The normalized-gain contrast is substantial: exposure removes much less of
+the remaining error in the internal setting than in CLUTRR.  This analysis
+does not evaluate displacement on non-target functions.
+
+\subsection{Historical Full-Protocol Contrast}
+
+The following earlier comparison motivated the confirmatory intervention but
+is not its substitute.  It jointly changes split unit, sampling prior, and
+stratification, so its difference cannot be attributed only to aliases.
+
+\begin{table}[H]
+\caption{Historical full-protocol comparison, retained as context.  Accuracy
+is percent, mean $\pm$ sample standard deviation over five matched seeds.
+Legacy semantic is diagnostic, not a retrained protocol; the contrast changes
+sampling prior and stratification as well as duplicate membership.}
+\label{tab:supp-internal-models}
+\centering
+\small
+\setlength{\tabcolsep}{2.2pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+Architecture & Parameters & Legacy nominal & Legacy semantic & Strict function
+& Nominal $-$ strict [95\% CI] \\
+\midrule
+Deep Sets \cite{zaheer2017deep} & 75,092 & $45.36{\pm}1.28$ & $41.27{\pm}1.25$ &
+$38.86{\pm}0.86$ & $+6.50\ [5.02,7.99]$ \\
+Relation Network \cite{sung2018relation} & 189,972 &
+$72.13{\pm}1.37$ & $70.18{\pm}1.70$ &
+$72.04{\pm}2.10$ & $+0.09\ [-3.06,3.25]$ \\
+Set Transformer \cite{lee2019set} & 105,940 &
+$64.36{\pm}1.45$ & $62.11{\pm}1.76$ &
+$61.67{\pm}2.01$ & $+2.69\ [1.48,3.90]$ \\
+Modern Hopfield-style \cite{ramsauer2021hopfield} & 72,340 &
+$74.14{\pm}1.29$ & $72.32{\pm}1.23$ &
+$72.93{\pm}1.63$ & $+1.21\ [-0.51,2.92]$ \\
+Perceiver-style \cite{jaegle2021perceiver} & 141,780 &
+$61.99{\pm}4.27$ & $59.93{\pm}5.05$ &
+$57.93{\pm}1.94$ & $+4.06\ [-2.53,10.66]$ \\
+Transformer \cite{vaswani2017attention} & 73,492 &
+$67.54{\pm}2.00$ & $65.48{\pm}2.32$ &
+$68.22{\pm}0.94$ & $-0.68\ [-2.40,1.05]$ \\
+\midrule
+Architecture macro & -- & 64.26 & 61.88 & 61.94 &
+$+2.31\ [0.84,3.79]$ \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+The architecture order is identical under legacy nominal and strict function
+metrics: modern Hopfield-style, Relation Network, Transformer, Set
+Transformer, Perceiver-style, then Deep Sets.  Spearman $\rho=1$ and maximum
+rank movement is zero.
+
+\subsection{Family Holdout}
+
+\emph{Diagnostic context only; this contrast is not part of the audit
+findings or of any behavioral claim in the main text.}
+
+\begin{table}[H]
+\caption{Known-family unseen-function and equal-family held-out performance.
+Accuracy is percent.}
+\label{tab:supp-family}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Model & Known & Held-out & Cross entropy \\
+\midrule
+Deep Sets & 38.86 & 8.14 & 6.366 \\
+Relation Network & 72.04 & 11.23 & 6.942 \\
+Set Transformer & 61.67 & 10.45 & 5.479 \\
+Modern Hopfield & 72.93 & 11.33 & 5.990 \\
+Perceiver & 57.93 & 10.85 & 6.609 \\
+Transformer & 68.22 & 11.53 & 5.639 \\
+Family Bayes & 98.60 & 99.17 & 0.018 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The family-agnostic Bayesian mixture reaches 98.93\% posterior-expected
+accuracy; changing to a uniform prior over unique maps changes this by only
+0.04 points.  The family-transfer failure is therefore not explained by
+insufficient information in eight noisy demonstrations.
+
+\section{SLR-Bench Semantic Audit}
+
+\subsection{Frozen Sources}
+
+\begin{table}[H]
+\caption{Frozen SLR audit inputs.  Individual Parquet SHA-256 values are stored
+in the artifact manifest.}
+\label{tab:slr-source}
+\centering
+\small
+\begin{tabular}{p{0.78in}p{2.0in}}
+\toprule
+Object & Frozen value \\
+\midrule
+Repository & \texttt{ScalableLogicalReasoning} \\
+Code revision & \texttt{3b46979ccdf9...} \\
+Dataset & \texttt{AIML-TUDA/SLR-Bench}, configuration \texttt{v1-All} \\
+Dataset revision & \texttt{cecc0aa26029...} \\
+Rows & 18,053 train; 1,000 test \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Token Identity}
+
+After comments are removed, the Prolog lexer preserves atoms, variables,
+punctuation, and operators while discarding whitespace.  Seventy large language
+model (LLM)-guided test rules have a token sequence equal to a training rule.
+The raw rule strings remain different, so verbatim overlap is zero.
+
+\begin{verbatim}
+% test
+eastbound(T) :-
+  has_car(T, C),
+  (has_wall(C, full);
+   car_color(C, yellow)).
+
+% train: same Prolog tokens
+eastbound(T) :-
+  has_car(T, C),
+  (has_wall(C, full);
+   car_color(C, yellow)).
+\end{verbatim}
+
+\subsection{Flat Positive Rule Semantics}
+
+A parsed flat positive rule has the form
+\begin{equation}
+\mathrm{eastbound}(t)\leftarrow
+\bigwedge_j A_j(t,\mathbf z).
+\end{equation}
+For each existential car variable, we collect its unary attribute profile,
+sort atoms within the profile, sort profiles, and alpha-rename variables.
+Three successively stronger canonicalizations are used:
+\begin{enumerate}
+    \item alpha-renaming and conjunction-order normalization;
+    \item idempotence of duplicate existential profiles;
+    \item removal of a profile entailed by a stronger profile.
+\end{enumerate}
+
+Idempotence is sound because variables need not denote distinct objects:
+\begin{equation}
+\exists x\,P(x)\land\exists y\,P(y)
+\equiv \exists x\,P(x).
+\end{equation}
+For profile sets $P\subseteq Q$,
+\begin{equation}
+\exists x\,Q(x)\land\exists y\,P(y)
+\equiv \exists x\,Q(x),
+\end{equation}
+because an object satisfying $Q$ also witnesses $P$.
+
+\begin{table}[H]
+\caption{Progressive SLR overlap counts out of 1,000 test rows.  The flat-rule
+parser covers 702 test and 13,568 training rows.}
+\label{tab:slr-stages}
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+Canonicalization & Overlapping test rows \\
+\midrule
+Alpha-renaming + atom order & 81 \\
++ existential idempotence & 369 \\
++ profile subsumption & 382 \\
+Token identity (disjoint set) & 70 \\
+\midrule
+Sound union lower bound & \textbf{452} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The union contains 382 random-generator rules and 70 LLM-guided rules, with
+zero intersection.  It covers every test row at curriculum levels 1 and 3,
+and remains nonzero through level 20.  Aggregate, negated, arithmetic, and
+non-token-identical disjunctive rules are unresolved, so 45.2\% cannot be
+interpreted as an exact total.
+
+\subsection{Released Per-Item Output Caveat}
+
+The repository \texttt{AIML-TUDA/Llama-3.1-8B-SLR} contains 1,000 per-item
+outputs whose problem IDs and ground-truth rules align exactly with
+\texttt{v1-All}.  A verifier mirroring the released extensional judge, run
+with Trealla Prolog, gives the tier accuracies in
+Table~\ref{tab:slr-output-mismatch}.
+
+\begin{table}[H]
+\caption{Tier accuracy mismatch.  Even treating all 30 Basic-tier runtime
+errors as correct yields only 63.6\%, so runtime differences cannot explain
+the final-paper gap.}
+\label{tab:slr-output-mismatch}
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Source & Basic & Easy & Medium & Hard \\
+\midrule
+Hosted per-item artifact & 51.6 & 55.2 & 20.4 & 5.2 \\
+Association for Computational Linguistics (ACL) 2026 Table 2 & 96 & 54 & 18 & 5 \\
+arXiv v2 Table 2 & 92 & 77 & 17 & 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We therefore mark this artifact \texttt{exploratory\_only} and do not use it
+to estimate the reported model's seen/unseen effect.
+
+\subsection{Registered Association: Not Identified}
+
+The confirmatory target was the final-paper
+\texttt{Llama-3.1-8B-IT-SLR} result.  Before loading outcomes, the protocol
+required a prediction source tied to a checkpoint and complete decoding
+configuration, plus at least 80\% retention in both witnessed and no-witness
+groups under exact curriculum-level common support.
+
+No eligible prediction source was found.  The repository-hosted rows align
+with all 1,000 test IDs and rules but do not reproduce the published main
+table.  The common-support precheck also retains only 352/452 witnessed rows
+(77.88\%), versus 498/548 no-witness rows (90.88\%).  The registered
+propensity model, outcome model, and 10,000-replicate bootstrap were therefore
+not run.  No adjusted association estimate, confidence interval, or direction
+is reported.
+
+\section{Boolean ICL Generator and Coverage Audit}
+
+\subsection{Released Version}
+
+The camera-ready paper \cite{bhattamishra2024understanding} points to
+\texttt{satwik77/incontext-bool}.  We freeze revision
+\texttt{a25a2cb0c62...}; its
+\texttt{bool\_tasks.py} SHA-256 is
+\texttt{5bda5cdb00bc...}.  Full hashes are frozen in the source manifest.
+The core task abstract syntax trees (ASTs) match the camera-ready supplementary
+archive.  No checkpoint or per-function evaluation output is released.
+
+\begin{table}[H]
+\caption{Paper/released-code differences.  The behavioral intervention uses
+only the frozen released definitions and is not presented as a reproduction
+of unreleased main-table configurations.}
+\label{tab:boolean-mismatch}
+\centering
+\small
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{p{1.0in}p{2.3in}p{2.3in}}
+\toprule
+Task & Camera-ready description & Released code \\
+\midrule
+Sparse Disjunction &
+$n=50$, at most three signed literals &
+Exactly four literals, positive only \\
+Sparse Parity &
+Main table includes $(10,2)$ and $(20,3)$ &
+Sampler hard-codes $k=2$ and ignores a $k$ argument \\
+0--1 Threshold &
+Uniform weights and seven integer thresholds &
+Weights use $(0.7,0.15,0.15)$ and six half-integer thresholds \\
+Registry &
+0--1 Threshold / Integer Halfspace task labels &
+Names are \texttt{sparse\_thres} / \texttt{int\_halfspace}; bundled
+alternative names are unregistered \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Exact Semantic IDs}
+
+For Conjunction-28, the semantic ID is the vector
+$w\in\{0,+1,-1\}^{28}$; exhaustive small-dimension truth tables verify
+injectivity, and differing signed literal sets can be separated by an input.
+For Majority-28, the ID is the active-variable bit mask.  For released Sparse
+Disjunction-50, the ID is the four-element positive-literal subset.  Any two
+different subsets are separated by assigning a differing literal true and
+the other subset's literals false.  Thus the IDs are exact for these released
+families without enumerating $2^{28}$ or $2^{50}$ inputs.
+
+At the frozen budget $N=20{,}000\times32=640{,}000$, the analytic exposure
+probabilities from Equation~\ref{eq:supp-coverage} are 0.914\%, 9.457\%, and
+93.790\%.  The actual frozen streams give the values in
+Table~\ref{tab:boolean-exposure}.
+
+\begin{table}[H]
+\caption{Percentage of the 1,280 frozen evaluation draws whose semantic ID
+appears in each Original training stream.  Every Strict value is zero.}
+\label{tab:boolean-exposure}
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Task & Seed 0 & Seed 1 & Seed 2 & Mean \\
+\midrule
+Conjunction & 0.94 & 0.70 & 0.78 & 0.81 \\
+Majority & 8.83 & 8.28 & 9.53 & 8.88 \\
+Sparse Disjunction & 93.05 & 92.81 & 94.45 & 93.44 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Boolean Behavioral Intervention}
+
+\subsection{Preregistration and Pairing}
+
+Before training, we froze:
+\begin{itemize}
+    \item 1,280 evaluation function draws and prompt seeds per task;
+    \item three 640,000-function Original streams;
+    \item Strict streams that replace only slots colliding with any evaluation
+    semantic ID;
+    \item model seeds, input random-number streams, optimizer, budget, primary
+    endpoint, bootstrap procedures, and success criteria.
+\end{itemize}
+
+The model is the released Transformer implementation configured with six
+layers, hidden size 256, eight heads, no dropout, and float32 precision.
+Training uses Adam with learning rate $10^{-4}$, batch size 32, 40 points per
+episode, and 20,000 fixed steps.  No validation selection is used.  The final
+checkpoint is evaluated on the same prompts under both protocols.
+
+The primary endpoint is mean sign accuracy over zero-indexed positions
+20--39.  The effect is
+\begin{equation}
+\Delta_{\rm pp}=100(A_{\rm Original}-A_{\rm Strict}).
+\end{equation}
+The core criterion requires one task with mean $\Delta_{\rm pp}\geq2$ and all three seed
+deltas positive.  The strong-pattern criterion additionally requires Sparse Disjunction
+$\geq5$ points, absolute Conjunction effect $\leq2$ points, and nondecreasing
+effects across the exposure gradient.  Confidence intervals are reported but
+do not determine the decision.
+
+\subsection{Complete Primary Results}
+
+\begin{table}[H]
+\caption{Per-seed primary results.  Each interval uses 10,000 paired
+semantic-ID cluster bootstrap replicates.}
+\label{tab:boolean-per-seed}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.4pt}
+\begin{tabular}{llrrrrr}
+\toprule
+Task & Seed & Exposure (\%) & Original (\%) & Strict (\%) &
+$\Delta$ (pp) & Cluster-bootstrap 95\% CI \\
+\midrule
+\multirow{3}{*}{Conjunction}
+& 0 & 0.94 & 92.871 & 92.875 & -0.004 & $[-0.094,0.090]$ \\
+& 1 & 0.70 & 93.059 & 93.117 & -0.059 & $[-0.203,0.086]$ \\
+& 2 & 0.78 & 92.902 & 92.879 & +0.023 & $[-0.004,0.051]$ \\
+\midrule
+\multirow{3}{*}{Majority}
+& 0 & 8.83 & 78.379 & 78.520 & -0.141 & $[-0.324,0.039]$ \\
+& 1 & 8.28 & 78.852 & 78.953 & -0.102 & $[-0.281,0.078]$ \\
+& 2 & 9.53 & 79.223 & 79.172 & +0.051 & $[-0.129,0.230]$ \\
+\midrule
+\multirow{3}{*}{Sparse Disjunction}
+& 0 & 93.05 & 81.387 & 81.418 & -0.031 & $[-0.180,0.125]$ \\
+& 1 & 92.81 & 83.613 & 83.367 & +0.246 & $[-0.023,0.516]$ \\
+& 2 & 94.45 & 81.949 & 81.887 & +0.063 & $[-0.078,0.203]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\caption{Three-seed primary summaries in percentage points.  Hierarchical
+intervals use 20,000 replicates, resampling model seeds and semantic-ID
+clusters.}
+\label{tab:boolean-summary}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular}{lrrr}
+\toprule
+Task & Mean & Hier. CI & $t_2$ CI \\
+\midrule
+Conjunction & -0.013 & $[-0.092,0.044]$ & $[-0.117,0.091]$ \\
+Majority & -0.064 & $[-0.199,0.078]$ & $[-0.315,0.187]$ \\
+Sparse Disj. & +0.092 & $[-0.060,0.282]$ & $[-0.258,0.443]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+No task reaches 2 points or has three positive deltas.  Neither the core
+nor the strong-pattern criterion is met.  The registered Transformer seed
+expansion and long short-term memory (LSTM) ranking experiment are not
+triggered.
+
+\subsection{Secondary Endpoints}
+
+\begin{table}[H]
+\caption{Three-seed secondary means, Original minus Strict.  Negative binary
+cross-entropy (BCE) favors Original because lower is better.  Secondary
+endpoints do not replace the registered primary criterion.}
+\label{tab:boolean-secondary}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Task & Final & Pos. 1--39 & Tail BCE \\
+\midrule
+Conjunction & +0.052 pp & +0.011 pp & +0.0007 \\
+Majority & -0.130 pp & -0.072 pp & -0.0001 \\
+Sparse Disj. & +0.156 pp & +0.073 pp & -0.0019 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Within Original runs, seen-versus-unseen accuracy is descriptive only:
+exposure is not randomized and the groups differ substantially in size.  We do not
+use this stratification as a substitute for the paired intervention.
+
+\subsection{Integrity Validation}
+
+All 18 runs completed 20,000 steps.  A separate validation code path checks:
+\begin{itemize}
+    \item frozen source, adapter, manifest, and stream hashes;
+    \item finite model and optimizer tensors;
+    \item 1,280 finite per-episode logits per run;
+    \item zero Strict semantic exposure;
+    \item identical paired evaluation semantic IDs, labels, and Original
+    exposure flags;
+    \item complete finite training logs and artifact SHA-256 values.
+\end{itemize}
+All checks pass.  The compact analysis contains 11,520 paired episode rows.
+The 1.9\,GB checkpoints are not required to reproduce the reported statistics
+and are excluded from the public artifact.
+
+\section{Registration Timeline}
+\label{app:registration-timeline}
+
+Rows are listed in evidential order and are not pooled as one sequential
+experiment.  Each row states what was frozen before the corresponding
+outcomes were observed and which earlier decision later work does not revise.
+
+\begin{table}[H]
+\caption{Registration timeline.  Each study was frozen before its outcomes
+were observed; later studies do not revise earlier decisions.}
+\label{tab:stage-timeline}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{L{0.85in}L{1.45in}L{1.8in}L{1.45in}}
+\toprule
+Study & Frozen before outcomes & Role and outcome & Not revised by later work \\
+\midrule
+Internal intervention &
+Paired streams, endpoints, and success criteria before training &
+Confirmatory exact-alias intervention; preregistered macro criterion met &
+Later public studies do not alter it \\
+SLR-Bench &
+Source artifacts and identification rules before outcome modeling &
+Structural 45.2\% lower bound; association analysis stopped at its
+preregistered identification check &
+No later outcome substitutes for the stopped analysis \\
+Original breadth scope (Tensor Logic, Occam) &
+Candidates before semantic extraction &
+Prospective structural audits; breadth criterion not met &
+CLUTRR uses a new scope and does not reopen it \\
+Toolkit and theory validation &
+Schema tests and certificate assumptions before validation runs &
+Validate reporting machinery &
+Do not change the breadth decision \\
+CLUTRR V3 &
+Targets, training, endpoint, bootstrap, and precision criterion &
+Preregistered pilot; positive but imprecise &
+The positive direction is not relabeled as success \\
+V3 diagnosis &
+Exploratory status declared after V3 was closed &
+Post-unblinding variance analysis &
+Designs V4 but cannot change V3 \\
+CLUTRR V4 &
+V3-disjoint targets and directional criterion before materialization and
+training &
+Prospective confirmation; directional criterion met &
+Not pooled with V3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Original Prospective Public-Benchmark Scope}
+
+Candidate discovery queried Semantic Scholar and arXiv using four frozen
+strings, deduplicated by DOI, arXiv ID, then normalized title, and screened in
+ascending title order.  The manifest was frozen before candidate code or data
+were semantically inspected.  Both selected candidates are reported; neither
+was removed after its result was known.
+
+\subsection{Tensor Logic FB15k-237}
+
+We pin the Tensor Logic code at revision
+\texttt{9b497c279928...} and FB15k-237 at
+\texttt{2e440e0f9c68...}.  Experiment 3B first selects 2,000 unique endpoint
+pairs with two-hop paths, splits them equally into validation and test, and
+then removes all corresponding direct triples from training.  The code does
+not revalidate whether removing one direct triple destroys an edge used by a
+different selected path.
+
+\begin{table}[H]
+\caption{Tensor Logic path audit, out of 1,000 rows per split.  Endpoint and
+relation-schema witnesses answer different semantic questions.}
+\label{tab:tensor-audit}
+\centering
+\small
+\begin{tabular}{lrr}
+\toprule
+Audit quantity & Validation & Test \\
+\midrule
+Direct edge absent after scrub & 1,000 & 1,000 \\
+Designated two-hop path retained & 336 & 379 \\
+Any exact endpoint witness retained & 441 & 484 \\
+Relation schema seen in scrubbed train & 994 & 999 \\
+No retained endpoint witness & 559 & 516 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Thus direct-edge withholding succeeds, but the claim that every evaluation
+query retains its generating two-hop path fails.  Under the certified
+interval below, the test split has endpoint exposure in
+$[484,1000]/1000$ and relation-schema exposure in
+$[999,1000]/1000$.  No public checkpoint, per-item ranks/predictions, or
+training logs were found, so this is a protocol-level audit without credible
+behavioral evidence.
+
+\subsection{In-Context Occam's Razor}
+
+We pin the public repository at revision
+\texttt{3b8fe0d69dd9...}.  Its Markov training generator assigns task seed
+\texttt{step+i}; the evaluator fixes ten seeds
+\(s_j=12574j+5\) for every tested order and draws 100 sequences per task.
+The paper's 800,000-sequence horizontal axis and batch size 32 imply 25,000
+nominal steps, hence training seed support \(0,\ldots,25030\).
+
+Seeds 5 and 12,579 occur six and 32 times, respectively.  Because the
+category assignment chooses between the two trained orders but uses unseeded
+NumPy state, the exact exposed order identities are unavailable.  For each
+supported seed, however, at least one and at most both evaluated orders occur
+in training.  An exhaustive census recomputes 75,093 transition signatures
+(25,031 seeds for orders 1, 2, and 3) and finds no cross-seed collision.
+Consequently both main experiments have exact latent-task exposure
+\([2,4]/20=[10\%,20\%]\), corresponding to 200--400 of 2,000 evaluation
+sequences.
+
+The same seed rule creates 800,000 training episodes from only 25,031 seed
+IDs.  Even if every seed realizes both orders whenever possible, there are at
+most 50,060 distinct \texttt{(order, transition tensor)} tasks, so at least
+749,940/800,000 (93.7425\%) episodes reuse a latent task.  The repository has
+no linear-regression generator, training, evaluation, or curriculum code,
+although regression is part of the frozen candidate scope.  That scope is
+therefore unresolved and the candidate is not a complete audit under the
+original breadth scope.
+
+\subsection{Frozen Breadth Decision}
+
+Tensor Logic counts as one complete public semantic audit; the Occam
+candidate does not because its required regression half is unavailable.
+Neither candidate has a controlled intervention or reproducible per-item
+behavioral source.  The frozen breadth scope therefore has one of two required
+complete audits and zero of one required behavioral benchmarks, so the
+breadth criterion is not met.  This historical decision does not discard
+either case and is not
+changed by the later, independently preregistered CLUTRR expansion.
+
+\input{sections/clutrr_appendix}
+
+\section{Exploratory Semantic Versus Surface Exposure}
+\label{tmlrs:app:semantic-surface}
+
+This exploratory (not preregistered) intervention uses the \TSixPatterns{}
+block-0 CLUTRR patterns and their shared 8,000-row evaluation set.  Every
+arm appends 48 relation-matched rows per pattern to the same 22,720-row
+common base, giving 24,640 training rows with identical label counts.
+Arm C0 uses semantically unrelated filler rows.  Arm C1 uses eight complete
+source-story groups with the target semantic identity.  Arm C2 uses distinct
+semantic identities with the same target relation and at least two matching
+edge types as a multiset.  All patterns met this strict two-edge criterion;
+no one-edge fallback or main-analysis exclusion was needed.
+
+The four seeds share initialization and epoch order across arms.  The model,
+optimizer, and 30-epoch budget match the V4 configuration; execution uses
+deterministic float32 Metal Performance Shaders.  The protocol was frozen
+before training at hash prefix \texttt{\TSixProtocolHash}; its one-epoch
+timing run took \TSixTimingSeconds{} seconds.  Pattern-cluster intervals use
+2,000 resamples with seed zero, and seed intervals are paired
+$t_3$ intervals.
+
+The mean arm accuracies are \TSixCZeroAcc{}\% for C0,
+\TSixCOneAcc{}\% for C1, and \TSixCTwoAcc{}\% for C2.
+
+\begin{table}[H]
+\caption{Exploratory semantic-versus-surface contrasts in percentage points.}
+\label{tmlrs:tab:semantic-surface}
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Contrast & Effect & Pattern 95\% CI & Seed 95\% $t$ CI \\
+\midrule
+C1 $-$ C0 & \TSixSemGain{} &
+$[\TSixSemLo{},\TSixSemHi{}]$ &
+$[\TSixSemSeedLo{},\TSixSemSeedHi{}]$ \\
+C2 $-$ C0 & \TSixDecoyGain{} &
+$[\TSixDecoyLo{},\TSixDecoyHi{}]$ &
+$[\TSixDecoySeedLo{},\TSixDecoySeedHi{}]$ \\
+C1 $-$ C2 & \TSixSemDecoyGain{} &
+$[\TSixSemDecoyLo{},\TSixSemDecoyHi{}]$ &
+$[\TSixSemDecoySeedLo{},\TSixSemDecoySeedHi{}]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.52\textwidth]{figures/tmlrs_semantic_vs_surface.pdf}
+\caption{Exploratory accuracy under no target exposure, same-semantic
+exposure, and surface-similar decoys.  Bars show mean accuracy;
+error bars are 95\% pattern-cluster intervals.}
+\label{tmlrs:fig:semantic-surface}
+\end{figure}
+
+The pattern interval for C2--C0 is positive, although its four-seed
+$t$ interval includes zero, so the decoys are not treated as having exactly
+no effect.  More importantly, C1 exceeds C2 by \TSixSemDecoyGain{} pp with
+pattern interval [\TSixSemDecoyLo{}, \TSixSemDecoyHi{}].  Under the
+decision rule frozen in the protocol before training (not publicly
+preregistered), this supports the interpretation that semantic identity,
+not surface similarity alone, is the primary source of the gain in this
+intervention.  The result remains bounded to these patterns, decoy criteria,
+architecture, and training budget.
+
+\section{Certified Exposure Intervals}
+\label{app:certified}
+
+\subsection{Assumptions and Proposition}
+
+Fix one semantic namespace and evaluation identities
+\(E=\{e_1,\ldots,e_N\}\).  Let \(z_i=1\) if evaluation identity \(e_i\)
+occurs semantically in training, and \(z_i=0\) otherwise.
+Assume: (A1) the finite denominator is frozen before inspection; (A2) every
+identity has a deterministic canonical semantic ID; (A3) each executable
+certificate supplies a sound constraint
+\(\ell_j\leq\sum_{i\in G_j}z_i\leq u_j\); (A4) certificate groups are
+pairwise disjoint; and (A5) uncovered identities receive no constraint beyond
+binary membership.
+Appendix~\ref{tmlrs:app:overlap} relaxes A4 computationally: mixed-integer
+linear programming gives exact bounds for tractable overlapping systems,
+while a linear-programming relaxation gives a dual-certified outer interval.
+
+\paragraph{Proposition~\ref{prop:certified} (restated).}
+Let \(R=E\setminus\cup_jG_j\).  Then
+\begin{equation}
+\sum_j\ell_j
+\leq
+C(E):=\sum_{i=1}^{N}z_i
+\leq
+|R|+\sum_j u_j.
+\label{eq:supp-certified}
+\end{equation}
+Both endpoints are attained by some exposure assignment consistent with the
+certificate system, so no tighter interval follows from the certificates
+alone.
+
+\paragraph{Proof.}
+Disjointness partitions the total:
+\[
+C(E)=
+\sum_j\sum_{i\in G_j}z_i+\sum_{i\in R}z_i.
+\]
+Applying each lower certificate and
+\(\sum_{i\in R}z_i\geq0\) gives the lower bound.  Applying each upper
+certificate and binary membership
+\(\sum_{i\in R}z_i\leq|R|\) gives the upper bound.  To attain the endpoints,
+choose
+exactly \(\ell_j\) exposed identities in each \(G_j\) and none in \(R\);
+this feasible assignment attains the lower endpoint.  Choosing exactly
+\(u_j\) in each group and every identity in \(R\) attains the upper endpoint.
+No tighter universal interval follows from these certificates alone.
+\(\square\)
+
+\subsection{Grouped-Seed Corollary}
+
+For a fixed seed \(s\), suppose
+\(G_s=\{\phi(1,s),\ldots,\phi(K,s)\}\) contains all evaluated categories,
+every training episode using \(s\) selects exactly one member of \(G_s\), and
+\(s\) appears \(m_s\) times.  If a complete signature census excludes
+cross-seed aliases, then \(m_s=0\) gives group constraint \([0,0]\), while
+\(m_s>0\) gives
+\begin{equation}
+1\leq\sum_{i\in G_s}z_i\leq\min(K,m_s).
+\end{equation}
+The lower bound follows because at least one category was selected; the upper
+bound follows because at most \(K\) categories and at most \(m_s\) distinct
+episode assignments can occur.  Persisting category assignments would
+collapse this interval to the exact number of observed categories.
+
+\subsection{Novelty-Conditioned Score Interval}
+\label{tmlrs:app:novelty-proof}
+
+Let $\mathcal R$ contain $M$ unresolved items with observed scores
+$y_i\in[0,1]$, and let the unknown truly novel subset be
+$\mathcal N\subseteq\mathcal R$.  Suppose external information only implies
+$|\mathcal R\setminus\mathcal N|\leq U<M$, and write the ordered scores as
+$y_{(1)}\leq\cdots\leq y_{(M)}$.
+
+\paragraph{Proof.}
+Fix $n=|\mathcal N|$.  Among all subsets of size $n$, replacing any selected
+score by a smaller unselected score cannot increase the mean.  Repeating this
+exchange shows that the minimum is the mean of the first $n$ order
+statistics.  The symmetric exchange gives the maximum as the mean of the
+last $n$ order statistics.
+
+The mean of the first $n$ scores is nondecreasing in $n$: the next score
+$y_{(n+1)}$ is no smaller than any of the first $n$ and hence no smaller than
+their mean.  Because the exposure constraint permits
+$n\in\{M-U,\ldots,M\}$, the global minimum is therefore attained at
+$n=M-U$.  The corresponding upper-tail mean is nonincreasing in $n$, so the
+global maximum is also attained at $n=M-U$.  Thus
+\[
+L(U)=\frac{1}{M-U}\sum_{k=1}^{M-U}y_{(k)},\qquad
+H(U)=\frac{1}{M-U}\sum_{k=U+1}^{M}y_{(k)}.
+\]
+Taking $\mathcal N$ to be the first or last $M-U$ ordered items attains the
+respective endpoint while excluding exactly $U$ items.  Increasing $U$
+removes an upper-tail item from the lower construction or a lower-tail item
+from the upper construction, so $L(U)$ is nonincreasing and $H(U)$ is
+nondecreasing.  At $U=0$, both equal the observed mean. \(\square\)
+
+For binary scores with $k$ correct items and $n=M-U$, this reduces to
+\[
+L(U)=\frac{\max(0,k-U)}{n},\qquad
+H(U)=\frac{\min(k,n)}{n}.
+\]
+The exposure upper endpoint from Proposition~\ref{prop:certified} can be
+used as $U$ when it applies to the unresolved set and is smaller than $M$.
+If the available upper bound permits all $M$ items to be exposed, a novel
+mean need not exist; conditional on a nonempty novel set, the interval is
+$[\min_i y_i,\max_i y_i]$.  The construction is a finite trimming
+argument related to \citet{lee2009training} and the contaminated-data bounds
+of \citet{horowitz1995identification}.
+
+\paragraph{Parameterized SLR sensitivity.}
+The structural audit leaves $M=\TTenM{}$ items unresolved.  We use only
+this denominator, not model predictions or partial scores.  Let $p=k/M$
+be an unspecified correct fraction.  For integer $U<M$,
+\[
+L(p,U)=\frac{\max(0,pM-U)}{M-U},\qquad
+H(p,U)=\frac{\min(pM,M-U)}{M-U}.
+\]
+For finite binary scores, $pM$ must be an integer; this condition preserves
+endpoint attainment.  The bounds express a hypothetical sensitivity
+calculation, not an observed accuracy or an estimated exposure rate.
+
+Writing $\rho=U/M$, the greatest possible width over admissible $p$ is
+\[
+W_{\max}(U)=\max_{k\in\{0,\ldots,M\}}
+\{H(k/M,U)-L(k/M,U)\}
+=\min\left(1,\frac{U}{M-U}\right)
+=\min\left(1,\frac{\rho}{1-\rho}\right).
+\]
+This equality holds for this even $M$: $k=M/2$ attains the maximum.
+Indeed, the interval width is at most both $1$ and $U/(M-U)$.
+At $k=M/2$, its numerator is $U$ when $U\leq M/2$ and $M-U$
+when $U\geq M/2$, attaining the respective bound.
+Figure~\ref{tmlrs:fig:slr-novelty} therefore shows how much identification
+can deteriorate as the assumed exposure upper bound increases, without
+choosing a model accuracy.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.52\textwidth]{figures/tmlrs_slr_novelty_bounds.pdf}
+\caption{Parameterized sensitivity for the $M=\TTenM{}$ structurally
+unresolved SLR-Bench items.  The curve shows the maximum interval width
+over hypothetical binary correct fractions as the assumed exposure upper
+share varies.  No model scores are used; width describes partial
+identification, not sampling uncertainty.}
+\label{tmlrs:fig:slr-novelty}
+\end{figure}
+
+\subsection{Overlapping Certificates}
+\label{tmlrs:app:overlap}
+
+For overlapping groups, let $A_{ji}=1$ when item $i$ belongs to certificate
+group $G_j$.  The compatible exposure assignments solve
+\[
+\min/\max\ w^\top z
+\quad\text{subject to}\quad
+\ell\leq Az\leq u,\qquad z\in\{0,1\}^N.
+\]
+The toolkit function
+\texttt{solve\_overlapping\_certificate\_bounds} solves this binary program
+by mixed-integer linear programming for systems with at most 200 items.
+Larger systems, or an explicit \texttt{lp} request, replace binary membership
+by $z\in[0,1]^N$.  The resulting interval is an outer interval and is labeled
+as such rather than being reported as attained by a binary assignment.
+
+Each relaxed endpoint includes an independently checkable weak-duality
+certificate.  For the lower endpoint, nonnegative
+$(\alpha,\beta,\gamma)$ satisfying
+\[
+A^\top(\beta-\alpha)-\gamma\leq w
+\]
+certifies
+\[
+\ell^\top\beta-u^\top\alpha-\mathbf 1^\top\gamma
+\leq \min w^\top z.
+\]
+The upper endpoint applies the same check to $-w$.  A separate verifier
+checks dimensions, signs, feasibility, and the claimed objective within
+$10^{-9}$.
+
+The relaxation can be strict.  With three items and exact-one constraints on
+$\{1,2\}$, $\{2,3\}$, and $\{1,3\}$, no binary assignment is feasible, while
+$z=(1/2,1/2,1/2)$ satisfies the relaxation and gives interval
+$[\TNineOddLower{},\TNineOddUpper{}]$.
+Focused deterministic properties compare \TNineMilpCases{} random small
+systems with exhaustive enumeration and independently verify
+\TNineDualCases{} generated dual certificates, in addition to this odd-cycle
+case and the existing disjoint-certificate regression tests.
+
+\subsection{Falsification and Design Consequences}
+
+The disjoint closed-form function still rejects overlapping certificate
+groups, preserving its existing contract; the new solver handles those
+systems explicitly.  Both interfaces reject incoherent bounds and
+out-of-range indices.  An assignment checker directly falsifies a certificate
+if observed identities violate its interval.
+
+The proposition changes reporting and design in four ways: report
+\([L,U]\), never code no-witness rows as novel; rerun witnesses after split
+mutation; persist semantic IDs and category assignments for online
+generators; and keep exposure bounds separate from behavioral estimands.
+
+\section{Portable Toolkit Validation}
+\label{app:assurance}
+
+The versioned \texttt{semantic-audit-v1} command exposes Tensor Logic and
+Occam adapters through one schema.  Required fields include source revisions
+and hashes, observation contracts and semantic-unit adequacy rules,
+train/evaluation identities, semantic IDs, witness types, completeness,
+overlap denominators, behavioral metadata, and claim wording.  The validator
+enforces that exact evidence has a Boolean decision, sound lower bounds
+establish only positive overlap, unresolved evidence asserts neither overlap
+nor novelty, and every current adapter declares its observable semantics.
+
+\begin{table}[H]
+\caption{Benchmark-level implementation assurance.  Residual risk is kept
+separate from identification bounds; no row implies a quantified
+implementation-error rate.}
+\label{tab:assurance}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{L{0.72in}L{1.12in}L{1.12in}L{1.38in}L{1.32in}L{1.20in}}
+\toprule
+Case & Semantic-ID implementation & Source traceability &
+Soundness and validation coverage & Known failure mode & Residual risk \\
+\midrule
+Internal finite rules &
+Complete 20-output vector &
+Frozen generator, split, stream, and checkpoint hashes &
+Exhaustive finite-map census; paired-manifest and metric recomputation &
+Applies only to the finite deterministic domain &
+Low conditional risk; implementation error is not rate-bounded \\
+Boolean tasks &
+Signed-literal vector, active mask, or literal subset &
+Pinned released generators and full stream manifests &
+Combinatorial injectivity plus separate-code-path collision and replacement checks &
+Exactness is limited to the three selected released task definitions &
+Low within those definitions; transfer to conflicting definitions is
+unsupported \\
+CLUTRR &
+Ordered target and three-edge relation tuple &
+Frozen CLUTRR extraction, source groups, manifests, and artifact hashes &
+Deterministic extraction; source-group disjointness; 11 post-training
+integrity classes and separate-code-path metric recomputation &
+Task~1, length three, and the frozen relation parser only &
+Unquantified parser risk; low within the validated materialization \\
+SLR-Bench &
+Token identity plus restricted-fragment canonicalizer &
+Pinned \texttt{v1-All} release and row-level train--test witnesses &
+Each reported semantic pair has a proof-producing witness; positive and
+negative normalizer tests &
+Aggregates, negation, arithmetic, and unresolved disjunction are not decided &
+Low false-positive risk for reported witnesses; unknown missed overlap \\
+Tensor Logic &
+Endpoint-path and ordered-relation-schema IDs &
+Pinned repository and graph artifacts &
+Exhaustive post-scrub path re-enumeration; adapter canaries and schema tests &
+No checkpoint, per-query predictions, or training logs &
+Exposure remains an interval; behavioral impact is unresolved \\
+Occam Markov &
+Exact transition-tensor ID with grouped-seed certificates &
+Pinned repository and enumerated seed range &
+75,093-signature census; bound checker and grouped-seed tests &
+Order assignments are unpersisted; regression code is absent &
+Interval retained for Markov tasks; regression scope remains unresolved \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\paragraph{Validator independence dimensions.}
+We use no unqualified independence claim.  A validator can differ from a
+producer by implementation, code path, execution environment, operator, or
+source specification.  ``Separate-code-path recomputation'' below means a
+different analysis or checking routine consumes frozen producer artifacts.
+``Isolated reproduction'' means a fresh process and dependency environment.
+All validators remain in the same project and use the same frozen protocol;
+we claim neither an independent human operator nor an independently authored
+specification.
+
+\begin{table}[H]
+\caption{Producer--validator relationships for the major validated claims.
+Shared dependencies limit the assurance each check supplies.}
+\label{tab:validator-map}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{L{1.05in}L{1.28in}L{1.50in}L{1.45in}L{1.38in}}
+\toprule
+Claim & Producer & Validator & Distinct dimension & Shared dependency \\
+\midrule
+Internal exact-alias effect &
+Training drivers and saved predictions &
+Effect reconstruction from paired manifests and predictions &
+Separate metric code path &
+Same repository, protocol, artifacts, and operator \\
+Boolean exposure and effect &
+Stream materialization, training, and predictions &
+Collision replacement checks and cluster-effect recomputation &
+Separate checking and analysis paths &
+Same released generators, protocol, repository, and operator \\
+CLUTRR V4 effect &
+32 training runs and prediction artifacts &
+\texttt{train\_integrity.py} plus assignment and metric reconstruction &
+Separate integrity and effect-analysis modules &
+Same tensor caches, manifests, preregistration, repository, and operator \\
+SLR 45.2\% lower bound &
+Restricted-fragment parser and canonicalizer &
+Row-level witness checks, positive canaries, and negative normalizer tests &
+Separate witness and test paths &
+Same normalization rules, source data, repository, and operator \\
+Tensor Logic and Occam outputs &
+Benchmark-specific adapters &
+Common schema validator and two isolated reproductions &
+Separate validator code; fresh process and environment &
+Same adapter specification, pinned sources, repository, and operator \\
+Certified interval &
+Bound implementation &
+Assignment checker and exhaustive finite cases &
+Separate test path &
+Same proposition, assumptions, repository, and operator \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+Eleven tests cover the three required canaries, schema rejection, and both
+public adapters.  Two isolated \texttt{python3 -I} reproductions use no
+third-party runtime package and produce byte-identical adapter outputs,
+manifest, and checksums.  All portability checks pass; they validate the
+toolkit and do not change the original breadth decision.
+
+\section{Reproducibility Map}
+\label{app:repro}
+
+\begin{table}[H]
+\caption{Claim-to-artifact map.  Paths are relative to the audit supplement
+root supplied with the manuscript.  The public artifact repository is
+\url{https://github.com/zihanzhou0725/semantic-novelty-audit-artifact}.}
+\label{tab:repro-map}
+\centering
+\small
+\begin{tabular}{L{1.3in}L{4.4in}}
+\toprule
+Claim or artifact & Reproduction source \\
+\midrule
+Internal exact audit (historical p1) &
+\url{analysis/quality-enhancement-v1/p1/results.json} and frozen paired manifests \\
+SLR lower bound &
+\url{artifacts/slr_overlap_results.json}, token witnesses, and semantic witnesses \\
+SLR identification decision (historical p2) &
+\url{analysis/quality-enhancement-v1/p2/identification_report.json} \\
+Boolean coverage &
+\url{protocols/boolean-behavioral-v1/split_manifest.json} \\
+Boolean behavior &
+\url{analysis/boolean-behavioral-v1/results.json} and paired episode CSV \\
+Prospective external audits (historical p3) &
+\url{analysis/quality-enhancement-v1/p3/} and candidate manifest \\
+CLUTRR V3 pilot and diagnosis &
+\url{results/v3/}, \url{design/v3_variance_results.json}, and frozen protocols \\
+CLUTRR V4 confirmation &
+\url{results/v4/}, \url{design/v4_design_manifest.json}, frozen protocols, and
+\url{analysis/external-behavior-v4/cluster-sensitivity-v1/} \\
+Portable toolkit (historical p4) &
+\url{analysis/quality-enhancement-v1/p4/} and \url{toolkit/semantic_audit/} \\
+Certified interval (historical p5) &
+\url{analysis/quality-enhancement-v1/p5/} and executable bounds tests \\
+Integrity &
+protocol/full-matrix validators and frozen checksums \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\caption{Strengthening analyses.  Paths are relative to the audit supplement
+root; the directory prefix \texttt{analysis/tmlr-strengthening-v1/} applies
+to the five result paths.}
+\label{tab:repro-strengthening}
+\centering
+\small
+\begin{tabular}{L{1.3in}L{4.4in}}
+\toprule
+Claim or artifact & Reproduction source \\
+\midrule
+CLUTRR heterogeneity (T2) &
+\url{t2_clutrr_heterogeneity/summary.json};
+inputs in \url{analysis/external-behavior-v4/effect-analysis-v1/} \\
+Internal heterogeneity (T3a) &
+\url{t3_internal_heterogeneity/summary_heterogeneity.json};
+\url{analysis/quality-enhancement-v1/p1/function_effects.csv} \\
+Semantic versus decoy (T6) &
+\url{t6_semantic_vs_surface/summary.json};
+\url{protocols/tmlr-strengthening-v1/t6_semantic_vs_surface/protocol.json};
+compact predictions in \url{artifacts/tmlr_t6_run_outputs/} \\
+Overlapping bounds (T9) &
+\url{t9_overlapping_certificates/property_tests_summary.json};
+\url{toolkit/semantic_audit/bounds.py} \\
+Parameterized sensitivity (T10) &
+\url{t10_novelty_bounds/summary.json};
+\url{artifacts/slr_overlap_results.json} (structural counts only) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+From the manuscript directory, \texttt{make reproduce-paper}
+regenerates T2, T3a, T6, T9, and T10 from retained evidence, copies their
+macros and figures, regenerates the overview, and runs \texttt{latexmk}.
+Set \texttt{PYTHON} to an environment with the supplement dependencies
+and \texttt{AUDIT\_ROOT} to the audit supplement directory if it is not
+in the default sibling layout.  No model training is required.
+
+\section{Additional Limitations}
+
+The SLR proof covers only a restricted positive fragment and does not decide
+semantic equivalence for the entire Prolog language.  The per-item SLR model
+artifact cannot establish the paper-model effect because its aggregate does
+not match either published table.  The internal protocol contrast changes
+more than duplicate membership.  The Boolean intervention covers one model
+configuration and released generators whose Sparse Disjunction, Sparse
+Parity, and Threshold definitions conflict with parts of the paper.  The
+three-seed directional criterion was preregistered, but between-seed uncertainty is
+coarse; the hierarchical and Student-$t$ intervals are therefore both shown.
+The original prospective breadth criterion remains unmet because only one frozen
+candidate is complete and neither supplies credible behavioral evidence.
+The later CLUTRR study supplies an independent public behavioral
+confirmation but covers one relation length, architecture, exposure dose, and
+training budget.  The certified interval is tight only relative to the
+supplied certificate system; adding sound constraints can narrow it.  None of
+these synthetic findings determines contamination prevalence in
+natural-language benchmarks.

@@ -1,0 +1,62 @@
+{
+  "check_count": 8,
+  "checks": [
+    {
+      "detail": null,
+      "name": "materialization_gate",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "run_arithmetic",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "update_arithmetic",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "four_way_pairing",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "freeze_artifacts",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "input_hashes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "implementation_hashes",
+      "pass": true
+    },
+    {
+      "detail": {
+        "execution_dir_exists": false,
+        "run_root_exists": false
+      },
+      "name": "execution_absent",
+      "pass": true
+    }
+  ],
+  "document_sha256": {
+    "README.md": "a0e6332dbf42feaa957e940409477b2ec9169bf09249a97d5891afebe526aa33",
+    "checklist.md": "9b8511b480d56f188386a7520de9525262cefec29e97eadc723544dcd4ff7a75",
+    "freeze_receipt.json": "55d1491931c307430bf4f833326a855099a203ed479408d1b86b3f749107a187",
+    "input_manifest.json": "560aad5a6f2e518555f85ed98106101277c12bd6063e78201bc2ff9845796260",
+    "preregistration.json": "14774cb49ec65b67bcc7a5e2eb077dd2ee3983f937169e0a746ffcf9cb4af96a",
+    "validate.py": "336f650a9a2f76e512e91fcfc9af6a15f6a689bda24f80dcec8f675c173e9eb6"
+  },
+  "execution_id": "external-behavior-v4-execution-v1",
+  "failed_count": 0,
+  "schema_version": "external-behavior-v4-execution-protocol-validation-v1",
+  "stage": "pre_execution_freeze",
+  "status": "pass",
+  "validated_at_utc": "2026-10-13T11:54:04.981120+00:00"
+}

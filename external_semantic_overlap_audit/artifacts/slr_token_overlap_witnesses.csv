@@ -1,0 +1,730 @@
+test_row,test_id,test_level,test_tier,test_sampling,train_row,train_id,test_rule,train_rule
+260,261,6,easy,llm guided,4312,4313,"eastbound(Train) :-  
+    has_car(Train, Car),  
+    (has_wall(Car, full) ; car_color(Car, yellow)).","eastbound(Train) :-
+    has_car(Train, Car),
+    (has_wall(Car, full) ; car_color(Car, yellow))."
+264,265,6,easy,llm guided,3148,3149,"eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_len(Car1, L1),
+    car_len(Car2, L2),
+    L1 \= L2.","eastbound(Train) :-
+    has_car(Train, Car1), 
+    has_car(Train, Car2), 
+    Car1 \= Car2, 
+    car_len(Car1, L1), 
+    car_len(Car2, L2), 
+    L1 \= L2."
+272,273,6,easy,llm guided,3381,3382,"eastbound(Train) :-  
+    has_car(Train, Car),  
+    (car_color(Car, blue) ; car_color(Car, white)).","eastbound(Train) :-
+    has_car(Train, Car),
+    (car_color(Car, blue) ; car_color(Car, white))."
+275,276,6,easy,llm guided,7452,7453,"eastbound(Train) :-  
+    forall(  
+        (has_car(Train, Car), car_num(Car, 1)),  
+        car_color(Car, blue)  
+    ).","eastbound(Train) :-
+    forall(
+        (has_car(Train, Car), car_num(Car, 1)),
+        car_color(Car, blue)
+    )."
+279,280,6,easy,llm guided,3098,3099,"eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    has_wall(Car1, W1), has_wall(Car2, W2),
+    W1 \= W2.","eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    has_wall(Car1, W1),
+    has_wall(Car2, W2),
+    W1 \= W2."
+280,281,6,easy,llm guided,3374,3375,"eastbound(Train) :-
+    forall(
+        (has_car(Train, Car), car_len(Car, short)),
+        car_color(Car, white)
+    ).","eastbound(Train) :-
+    forall((has_car(Train, Car), car_len(Car, short)), car_color(Car, white))."
+281,282,6,easy,llm guided,3602,3603,"eastbound(Train) :-
+    forall((has_car(Train, Car), car_color(Car, green)), car_len(Car, short)).","eastbound(Train) :-  
+    forall(  
+        (has_car(Train, Car), car_color(Car, green)),  
+        car_len(Car, short)  
+    )."
+282,283,6,easy,llm guided,3130,3131,"eastbound(Train) :-  
+    findall(Car, (has_car(Train, Car), car_color(Car, blue)), Blues),  
+    findall(Car, (has_car(Train, Car), car_color(Car, red)), Reds),  
+    length(Blues, B),  
+    length(Reds, R),  
+    B > R.","eastbound(Train) :-
+    findall(Car, (has_car(Train, Car), car_color(Car, blue)), Blues),
+    findall(Car, (has_car(Train, Car), car_color(Car, red)), Reds),
+    length(Blues, B),
+    length(Reds, R),
+    B > R."
+283,284,6,easy,llm guided,3520,3521,"eastbound(Train) :-
+    \+ (has_car(Train, Car), car_color(Car, blue)).","eastbound(Train) :-  
+    \+ (has_car(Train, Car), car_color(Car, blue))."
+285,286,6,easy,llm guided,5704,5705,"eastbound(Train) :-
+    findall(Car, (has_car(Train, Car), car_len(Car, short)), Shorts),
+    findall(Car, (has_car(Train, Car), car_len(Car, long)), Longs),
+    length(Shorts, S),
+    length(Longs, L),
+    S > L.","eastbound(Train) :-
+    findall(Car, (has_car(Train, Car), car_len(Car, short)), Shorts),
+    findall(Car, (has_car(Train, Car), car_len(Car, long)), Longs),
+    length(Shorts, S), length(Longs, L),
+    S > L."
+289,290,6,easy,llm guided,3268,3269,"eastbound(Train) :-
+    findall(Wall, (has_car(Train, Car), has_wall(Car, Wall)), Walls),
+    sort(Walls, UniqueWalls),
+    length(Walls, N), length(UniqueWalls, N).","eastbound(Train) :-
+    findall(Wall, (has_car(Train, Car), has_wall(Car, Wall)), Walls),
+    sort(Walls, UniqueWalls),
+    length(Walls, N),
+    length(UniqueWalls, N)."
+291,292,6,easy,llm guided,3864,3865,"eastbound(Train) :-
+    findall(Car, (has_car(Train, Car), car_color(Car, blue)), [BlueCar]),
+    forall((has_car(Train, Car), Car \= BlueCar),
+           (car_color(Car, C), C \= blue)).","eastbound(Train) :-
+    findall(Car, (has_car(Train, Car), car_color(Car, blue)), [BlueCar]),
+    forall(
+        (has_car(Train, Car), Car \= BlueCar),
+        (car_color(Car, C), C \= blue)
+    )."
+301,302,7,easy,llm guided,6320,6321,"eastbound(Train) :-
+    forall(
+        (has_car(Train, Car), has_roof(Car, braced_roof)),
+        car_color(Car, white)
+    ).","eastbound(Train) :-  
+    forall((has_car(Train, Car), has_roof(Car, braced_roof)), car_color(Car, white))."
+319,320,7,easy,llm guided,4754,4755,"eastbound(Train) :-
+    \+ (has_car(Train, Car), has_roof(Car, peaked_roof)).","eastbound(Train) :-  
+    \+ (has_car(Train, Car), has_roof(Car, peaked_roof))."
+320,321,7,easy,llm guided,6320,6321,"eastbound(Train) :-  
+    forall(  
+        (has_car(Train, Car), has_roof(Car, braced_roof)),  
+        car_color(Car, white)  
+    ).","eastbound(Train) :-  
+    forall((has_car(Train, Car), has_roof(Car, braced_roof)), car_color(Car, white))."
+322,323,7,easy,llm guided,3155,3156,"eastbound(Train) :-  
+    has_car(Train, Car),  
+    (car_color(Car, blue) ; car_color(Car, green)).","eastbound(Train) :-
+    has_car(Train, Car),
+    (car_color(Car, blue) ; car_color(Car, green))."
+333,334,7,easy,llm guided,4754,4755,"eastbound(Train) :-
+    \+ (has_car(Train, Car), has_roof(Car, peaked_roof)).","eastbound(Train) :-  
+    \+ (has_car(Train, Car), has_roof(Car, peaked_roof))."
+334,335,7,easy,llm guided,6320,6321,"eastbound(Train) :-
+    forall(
+        (has_car(Train, Car), has_roof(Car, braced_roof)),
+        car_color(Car, white)
+    ).","eastbound(Train) :-  
+    forall((has_car(Train, Car), has_roof(Car, braced_roof)), car_color(Car, white))."
+335,336,7,easy,llm guided,6879,6880,"eastbound(Train) :-
+    has_car(Train, Car),
+    (has_wall(Car, full) ; has_roof(Car, braced_roof)).","eastbound(Train) :-  
+    has_car(Train, Car),  
+    (has_wall(Car, full) ; has_roof(Car, braced_roof))."
+367,368,8,easy,llm guided,4754,4755,"eastbound(Train) :-
+    \+ (has_car(Train, Car), has_roof(Car, peaked_roof)).","eastbound(Train) :-  
+    \+ (has_car(Train, Car), has_roof(Car, peaked_roof))."
+394,395,8,easy,llm guided,3520,3521,"eastbound(Train) :-
+    \+ (has_car(Train, Car), car_color(Car, blue)).","eastbound(Train) :-  
+    \+ (has_car(Train, Car), car_color(Car, blue))."
+400,401,9,easy,llm guided,5704,5705,"eastbound(Train) :-
+    findall(Car, (has_car(Train, Car), car_len(Car, short)), Shorts),
+    findall(Car, (has_car(Train, Car), car_len(Car, long)), Longs),
+    length(Shorts, S),
+    length(Longs, L),
+    S > L.","eastbound(Train) :-
+    findall(Car, (has_car(Train, Car), car_len(Car, short)), Shorts),
+    findall(Car, (has_car(Train, Car), car_len(Car, long)), Longs),
+    length(Shorts, S), length(Longs, L),
+    S > L."
+416,417,9,easy,llm guided,3381,3382,"eastbound(Train) :-
+    has_car(Train, Car),
+    (car_color(Car, blue); car_color(Car, white)).","eastbound(Train) :-
+    has_car(Train, Car),
+    (car_color(Car, blue) ; car_color(Car, white))."
+417,418,9,easy,llm guided,6320,6321,"eastbound(Train) :-
+    forall(
+        (has_car(Train, Car), has_roof(Car, braced_roof)),
+        car_color(Car, white)
+    ).","eastbound(Train) :-  
+    forall((has_car(Train, Car), has_roof(Car, braced_roof)), car_color(Car, white))."
+421,422,9,easy,llm guided,3625,3626,"eastbound(Train) :-  
+    findall(Car, (has_car(Train, Car), car_color(Car, blue)), [BlueCar]),  
+    forall(  
+        (has_car(Train, Car), Car \= BlueCar),  
+        (car_color(Car, Color), Color \= blue)  
+    ).","eastbound(Train) :-
+    findall(Car, (has_car(Train, Car), car_color(Car, blue)), [BlueCar]),
+    forall(
+        (has_car(Train, Car), Car \= BlueCar),
+        (car_color(Car, Color), Color \= blue)
+    )."
+424,425,9,easy,llm guided,3675,3676,"eastbound(Train) :-  
+    forall(  
+        (has_car(Train, Car), has_wall(Car, full)),  
+        car_len(Car, long)  
+    ).","eastbound(Train) :-
+    forall(
+        (has_car(Train, Car), has_wall(Car, full)),
+        car_len(Car, long)
+    )."
+432,433,9,easy,llm guided,3642,3643,"eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    car_len(CarA, LenA), car_len(CarB, LenB),
+    LenA \= LenB.","eastbound(Train) :-
+    has_car(Train, CarA),
+    has_car(Train, CarB),
+    CarA \= CarB,
+    car_len(CarA, LenA),
+    car_len(CarB, LenB),
+    LenA \= LenB."
+434,435,9,easy,llm guided,4637,4638,"eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_color(Car1, ColorA),
+    car_color(Car2, ColorB),
+    ColorA \= ColorB.","eastbound(Train) :-  
+    has_car(Train, Car1),  
+    has_car(Train, Car2),  
+    Car1 \= Car2,  
+    car_color(Car1, ColorA),  
+    car_color(Car2, ColorB),  
+    ColorA \= ColorB."
+440,441,9,easy,llm guided,5704,5705,"eastbound(Train) :-
+    findall(Car, (has_car(Train, Car), car_len(Car, short)), Shorts),
+    findall(Car, (has_car(Train, Car), car_len(Car, long)), Longs),
+    length(Shorts, S),
+    length(Longs, L),
+    S > L.","eastbound(Train) :-
+    findall(Car, (has_car(Train, Car), car_len(Car, short)), Shorts),
+    findall(Car, (has_car(Train, Car), car_len(Car, long)), Longs),
+    length(Shorts, S), length(Longs, L),
+    S > L."
+442,443,9,easy,llm guided,8607,8608,"eastbound(Train) :-
+    forall(
+        (has_car(Train, Car), has_roof(Car, braced_roof)),
+        car_len(Car, short)
+    ).","eastbound(Train) :-
+    forall((has_car(Train, Car), has_roof(Car, braced_roof)),
+           car_len(Car, short))."
+444,445,9,easy,llm guided,4239,4240,"eastbound(Train) :-
+    has_car(Train, Car),
+    (has_roof(Car, peaked_roof); has_roof(Car, braced_roof)).","eastbound(Train) :-
+    has_car(Train, Car),
+    (has_roof(Car, peaked_roof) ; has_roof(Car, braced_roof))."
+486,487,10,easy,llm guided,3148,3149,"eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_len(Car1, L1),
+    car_len(Car2, L2),
+    L1 \= L2.","eastbound(Train) :-
+    has_car(Train, Car1), 
+    has_car(Train, Car2), 
+    Car1 \= Car2, 
+    car_len(Car1, L1), 
+    car_len(Car2, L2), 
+    L1 \= L2."
+527,528,11,medium,llm guided,3739,3740,"eastbound(Train) :-
+    forall(
+        (has_car(Train, Car), car_color(Car, white)),
+        has_wall(Car, full)
+    ).","eastbound(Train) :-
+    forall((has_car(Train, Car), car_color(Car, white)), has_wall(Car, full))."
+529,530,11,medium,llm guided,3194,3195,"eastbound(Train) :-
+    forall(
+      (has_car(Train, Car), has_wall(Car, full)),
+      car_color(Car, blue)
+    ).","eastbound(Train) :-
+    forall((has_car(Train, Car), has_wall(Car, full)), car_color(Car, blue))."
+549,550,11,medium,llm guided,9047,9048,"eastbound(Train) :-
+    findall(Car, (has_car(Train, Car), has_wheel(Car, 3)), List3),
+    findall(Car, (has_car(Train, Car), has_wheel(Car, 2)), List2),
+    length(List3, N3), length(List2, N2),
+    N3 > N2.","eastbound(Train) :-
+    findall(Car, (has_car(Train, Car), has_wheel(Car, 3)), List3),
+    findall(Car, (has_car(Train, Car), has_wheel(Car, 2)), List2),
+    length(List3, N3),
+    length(List2, N2),
+    N3 > N2."
+551,552,12,medium,llm guided,9984,9985,"eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1 + 1; N2 =:= N1 - 1),
+    has_roof(Car1, Roof), has_roof(Car2, Roof).","eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_roof(Car1, Roof),
+    has_roof(Car2, Roof)."
+552,553,12,medium,llm guided,9135,9136,"eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_payload(CarA, Payload), has_payload(CarB, Payload).","eastbound(Train) :-
+    has_car(Train, CarA),
+    has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1),
+    car_num(CarB, N2),
+    (N2 =:= N1+1 ; N2 =:= N1-1),
+    has_payload(CarA, Payload),
+    has_payload(CarB, Payload)."
+554,555,12,medium,llm guided,9072,9073,"eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2), Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_payload(Car1, P), has_payload(Car2, P).","eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_payload(Car1, P),
+    has_payload(Car2, P)."
+555,556,12,medium,llm guided,9757,9758,"eastbound(Train) :-
+    has_car(Train, C1), has_car(Train, C2),
+    C1 \= C2,
+    car_num(C1, N1), car_num(C2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(C1, W), has_wall(C2, W).","eastbound(Train) :-
+    has_car(Train, C1),
+    has_car(Train, C2),
+    C1 \= C2,
+    car_num(C1, N1),
+    car_num(C2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(C1, W),
+    has_wall(C2, W)."
+558,559,12,medium,llm guided,9757,9758,"eastbound(Train) :-
+    has_car(Train, C1), has_car(Train, C2),
+    C1 \= C2,
+    car_num(C1, N1), car_num(C2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(C1, W), has_wall(C2, W).","eastbound(Train) :-
+    has_car(Train, C1),
+    has_car(Train, C2),
+    C1 \= C2,
+    car_num(C1, N1),
+    car_num(C2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(C1, W),
+    has_wall(C2, W)."
+560,561,12,medium,llm guided,10301,10302,"eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    car_color(Car1, Col),
+    car_color(Car2, Col).","eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    car_color(Car1, Col), car_color(Car2, Col)."
+566,567,12,medium,llm guided,9627,9628,"eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1+1; N2 =:= N1-1),
+    car_len(Car1, L), car_len(Car2, L).","eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    car_len(Car1, L),
+    car_len(Car2, L)."
+570,571,12,medium,llm guided,9135,9136,"eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_payload(CarA, Payload), has_payload(CarB, Payload).","eastbound(Train) :-
+    has_car(Train, CarA),
+    has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1),
+    car_num(CarB, N2),
+    (N2 =:= N1+1 ; N2 =:= N1-1),
+    has_payload(CarA, Payload),
+    has_payload(CarB, Payload)."
+573,574,12,medium,llm guided,9066,9067,"eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1+1 ; N2 =:= N1-1),
+    car_len(Car1, Len),
+    car_len(Car2, Len).","eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    car_len(Car1, Len),
+    car_len(Car2, Len)."
+590,591,12,medium,llm guided,9229,9230,"eastbound(Train) :-
+    has_car(Train, CarA),
+    has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1),
+    car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    car_color(CarA, Color),
+    car_color(CarB, Color).","eastbound(Train) :-  
+    has_car(Train, CarA), has_car(Train, CarB), CarA \= CarB,  
+    car_num(CarA, N1), car_num(CarB, N2),  
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),  
+    car_color(CarA, Color), car_color(CarB, Color)."
+593,594,12,medium,llm guided,10718,10719,"eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    car_color(Car1, C),
+    car_color(Car2, C).","eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1+1 ; N2 =:= N1-1),
+    car_color(Car1, C), car_color(Car2, C)."
+594,595,12,medium,llm guided,9337,9338,"eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(CarA, Wall),
+    has_wall(CarB, Wall).","eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1+1 ; N2 =:= N1-1),
+    has_wall(CarA, Wall),
+    has_wall(CarB, Wall)."
+595,596,12,medium,llm guided,10030,10031,"eastbound(Train) :-
+    has_car(Train, CarA), car_num(CarA, N1), has_roof(CarA, Roof),
+    N2 is N1+1, has_car(Train, CarB), car_num(CarB, N2), has_roof(CarB, Roof).","eastbound(Train) :-
+    has_car(Train, CarA), car_num(CarA, N1), has_roof(CarA, Roof),
+    N2 is N1 + 1,
+    has_car(Train, CarB), car_num(CarB, N2), has_roof(CarB, Roof)."
+599,600,12,medium,llm guided,9112,9113,"eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1+1 ; N2 =:= N1-1),
+    has_wheel(CarA, W),
+    has_wheel(CarB, W).","eastbound(Train) :-
+    has_car(Train, CarA),
+    has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1),
+    car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wheel(CarA, W),
+    has_wheel(CarB, W)."
+616,617,13,medium,llm guided,10557,10558,"eastbound(Train) :-
+    has_car(Train, A), has_car(Train, B),
+    A \= B,
+    car_num(A, N1), car_num(B, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    car_len(A, L), car_len(B, L).","eastbound(Train) :-
+    has_car(Train, A), has_car(Train, B), A \= B,
+    car_num(A, N1), car_num(B, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    car_len(A, L), car_len(B, L)."
+622,623,13,medium,llm guided,9199,9200,"eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(CarA, W), has_wall(CarB, W).","eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB), CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1+1 ; N2 =:= N1-1),
+    has_wall(CarA, W), has_wall(CarB, W)."
+625,626,13,medium,llm guided,10785,10786,"eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    load_num(Car1, Q),
+    load_num(Car2, Q).","eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    load_num(Car1, Q),
+    load_num(Car2, Q)."
+627,628,13,medium,llm guided,9146,9147,"eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(Car1, Wall), has_wall(Car2, Wall).","eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(Car1, Wall),
+    has_wall(Car2, Wall)."
+631,632,13,medium,llm guided,9104,9105,"eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1+1 ; N2 =:= N1-1),
+    has_wheel(Car1, W),
+    has_wheel(Car2, W).","eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wheel(Car1, W),
+    has_wheel(Car2, W)."
+634,635,13,medium,llm guided,9072,9073,"eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_payload(Car1, P), has_payload(Car2, P).","eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_payload(Car1, P),
+    has_payload(Car2, P)."
+652,653,14,medium,llm guided,9984,9985,"eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_roof(Car1, Roof),
+    has_roof(Car2, Roof).","eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_roof(Car1, Roof),
+    has_roof(Car2, Roof)."
+659,660,14,medium,llm guided,9236,9237,"eastbound(Train) :-
+    has_car(Train, CarA),
+    has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_roof(CarA, Roof),
+    has_roof(CarB, Roof).","eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1+1 ; N2 =:= N1-1),
+    has_roof(CarA, Roof),
+    has_roof(CarB, Roof)."
+663,664,14,medium,llm guided,9357,9358,"eastbound(Train) :-  
+    has_car(Train, CarA),  
+    has_car(Train, CarB),  
+    CarA \= CarB,  
+    car_num(CarA, N1),  
+    car_num(CarB, N2),  
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),  
+    car_color(CarA, C),  
+    car_color(CarB, C).","eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    car_color(CarA, C), car_color(CarB, C)."
+669,670,14,medium,llm guided,9390,9391,"eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(Car1, WallType),
+    has_wall(Car2, WallType).","eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(Car1, WallType), has_wall(Car2, WallType)."
+671,672,14,medium,llm guided,10511,10512,"eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_roof(Car1, RT),
+    has_roof(Car2, RT).","eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_roof(Car1, RT), has_roof(Car2, RT)."
+672,673,14,medium,llm guided,9815,9816,"eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2), Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2), (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    car_color(Car1, Color), car_color(Car2, Color).","eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    car_color(Car1, Color),
+    car_color(Car2, Color)."
+686,687,14,medium,llm guided,9950,9951,"eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(CarA, WallType), has_wall(CarB, WallType).","eastbound(Train) :-
+    has_car(Train, CarA),
+    has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1),
+    car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(CarA, WallType),
+    has_wall(CarB, WallType)."
+687,688,14,medium,llm guided,9323,9324,"eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N1 =:= N2 + 1),
+    has_wheel(CarA, W), has_wheel(CarB, W).","eastbound(Train) :-
+    has_car(Train, CarA),
+    has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1),
+    car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N1 =:= N2 + 1),
+    has_wheel(CarA, W),
+    has_wheel(CarB, W)."
+688,689,14,medium,llm guided,9757,9758,"eastbound(Train) :-
+    has_car(Train, C1), has_car(Train, C2),
+    C1 \= C2,
+    car_num(C1, N1), car_num(C2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(C1, W), has_wall(C2, W).","eastbound(Train) :-
+    has_car(Train, C1),
+    has_car(Train, C2),
+    C1 \= C2,
+    car_num(C1, N1),
+    car_num(C2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_wall(C1, W),
+    has_wall(C2, W)."
+696,697,14,medium,llm guided,9066,9067,"eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1), car_num(Car2, N2),
+    (N2 =:= N1 +1 ; N2 =:= N1-1),
+    car_len(Car1, Len), car_len(Car2, Len).","eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    car_len(Car1, Len),
+    car_len(Car2, Len)."
+698,699,14,medium,llm guided,9984,9985,"eastbound(Train) :-  
+    has_car(Train, Car1),  
+    has_car(Train, Car2),  
+    Car1 \= Car2,  
+    car_num(Car1, N1),  
+    car_num(Car2, N2),  
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),  
+    has_roof(Car1, Roof),  
+    has_roof(Car2, Roof).","eastbound(Train) :-
+    has_car(Train, Car1),
+    has_car(Train, Car2),
+    Car1 \= Car2,
+    car_num(Car1, N1),
+    car_num(Car2, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_roof(Car1, Roof),
+    has_roof(Car2, Roof)."
+753,754,16,hard,llm guided,11036,11037,"eastbound(Train) :-
+    has_car(Train, CarA),
+    has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1),
+    car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_payload(CarA, Payload),
+    has_payload(CarB, Payload),
+    Payload \= none.","eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    car_num(CarA, N1), car_num(CarB, N2),
+    (N2 =:= N1 + 1 ; N2 =:= N1 - 1),
+    has_payload(CarA, Payload),
+    has_payload(CarB, Payload), Payload \= none."
+814,815,17,hard,llm guided,14341,14342,"eastbound(Train) :-
+    has_car(Train, CarA),
+    has_car(Train, CarB),
+    CarA \= CarB,
+    has_wheel(CarA, WheelsA),
+    has_wheel(CarB, WheelsB),
+    WheelsA \= WheelsB,
+    has_roof(CarA, RoofA),
+    has_roof(CarB, RoofB),
+    RoofA \= RoofB.","eastbound(Train) :-
+    has_car(Train, CarA), has_car(Train, CarB),
+    CarA \= CarB,
+    has_wheel(CarA, WheelsA),
+    has_wheel(CarB, WheelsB),
+    WheelsA \= WheelsB,
+    has_roof(CarA, RoofA),
+    has_roof(CarB, RoofB),
+    RoofA \= RoofB."
+936,937,19,hard,llm guided,16782,16783,"eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2), has_car(Train, Car3),
+    has_car(Train, Car4), has_car(Train, Car5),
+    (has_roof(Car1, roof_foundation) ; has_roof(Car2, peaked_roof) ; has_roof(Car3, roof_foundation) ; has_roof(Car4, peaked_roof) ; has_roof(Car5, roof_foundation)).","eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2), has_car(Train, Car3), has_car(Train, Car4), has_car(Train, Car5),
+    (has_roof(Car1, roof_foundation) ; has_roof(Car2, peaked_roof) ; has_roof(Car3, roof_foundation) ;
+     has_roof(Car4, peaked_roof) ; has_roof(Car5, roof_foundation))."
+967,968,20,hard,llm guided,17114,17115,"eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2), has_car(Train, Car3),
+    has_car(Train, Car4), has_car(Train, Car5),
+    (has_payload(Car1, blue_box) ; has_payload(Car2, diamond) ; has_payload(Car3, blue_box) ;
+     has_payload(Car4, diamond) ; has_payload(Car5, blue_box)).","eastbound(Train) :-
+    has_car(Train, Car1), has_car(Train, Car2), has_car(Train, Car3), has_car(Train, Car4), has_car(Train, Car5),
+    (has_payload(Car1, blue_box) ; has_payload(Car2, diamond) ; has_payload(Car3, blue_box) ; has_payload(Car4, diamond) ; has_payload(Car5, blue_box))."

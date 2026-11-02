@@ -1,0 +1,129 @@
+{
+  "check_count": 22,
+  "checks": [
+    {
+      "detail": null,
+      "name": "parent_preregistration_hash",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "parent_failure_report_hash",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "parent_decisions_preserved",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_overlap_result_available_at_amendment",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "candidate_source_and_scope_unchanged",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "sample_budget_is_220000",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "recovery_rule_is_narrow",
+      "pass": true
+    },
+    {
+      "detail": "    assert entropy == 0",
+      "name": "registered_assertion_exists_at_pinned_line",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "v1_prefix_hash_matches_receipt",
+      "pass": true
+    },
+    {
+      "detail": "427f45075f84b8b9774950196ad63867ca20ffb3",
+      "name": "upstream_revision",
+      "pass": true
+    },
+    {
+      "detail": "",
+      "name": "upstream_checkout_clean",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:LICENSE",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:README.md",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:mathematics_dataset/example.py",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:mathematics_dataset/generate.py",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:mathematics_dataset/generate_settings.py",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:mathematics_dataset/modules/modules.py",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:mathematics_dataset/modules/polynomials.py",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:mathematics_dataset/sample/polynomials.py",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:mathematics_dataset/util/composition.py",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "source_hash:setup.py",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "no_v2_result_directories",
+      "pass": true
+    }
+  ],
+  "document_sha256": {
+    "README.md": "6972a3d75758c8e87e2d973549ee7c959c38a39f86025ba3d693e1e54bfccb14",
+    "amendment_receipt.json": "11c0fe91f02a7998d39f7dd362e43a7fd715b85cac52e33306f43cee4e42cadc",
+    "checklist.md": "40aa4ffaed83b4ea531d2ed8f4371e0612f5ad9f66bb15da8c20ce010c155339",
+    "preregistration.json": "f79fa0f5927769f090faeaee9941a1ff1bbd28a958158c470f7014250c34ddcc",
+    "source_manifest.json": "f09346a2e20ea1d8e9bc07ab4840631a06b0ebe8a0df011d0e34ee3dab7e1c29",
+    "validate.py": "760cead9d69998b2fa7a535f746f576cf2c315ffa91a33b317fdf2906d062b18"
+  },
+  "failed_count": 0,
+  "protocol_id": "external-behavior-v2",
+  "schema_version": "external-behavior-v2-protocol-validation-v1",
+  "stage": "freeze",
+  "status": "pass",
+  "validated_at_utc": "2026-10-12T10:25:11.613689+00:00"
+}

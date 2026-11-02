@@ -1,0 +1,9 @@
+{
+  "analysis_type": "parameterized_sensitivity_not_model_performance",
+  "finite_binary_domain": "p*M must be an integer",
+  "lower_formula": "max(0,p*M-U)/(M-U)",
+  "maximum_width_formula": "min(1,U/(M-U))",
+  "score_artifacts_used": false,
+  "unresolved_item_count": 548,
+  "upper_formula": "min(p*M,M-U)/(M-U)"
+}

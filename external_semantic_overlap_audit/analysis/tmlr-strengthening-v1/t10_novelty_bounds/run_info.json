@@ -1,0 +1,16 @@
+{
+  "input_sha256": {
+    "slr_overlap_results.json": "aed8a990a91682042ff961f3854877e9880004fe7c2b43323f63e676ab86c0ee"
+  },
+  "packages": {
+    "matplotlib": "3.9.2",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "torch": "2.6.0+cu124"
+  },
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.9.19 (main, May  6 2024, 20:12:36) [MSC v.1916 64 bit (AMD64)]",
+  "script": "scripts/tmlr_strengthening/run_t10_novelty_bounds.py",
+  "seed": null,
+  "utc_time": "2026-11-02T12:55:48.717340+00:00"
+}

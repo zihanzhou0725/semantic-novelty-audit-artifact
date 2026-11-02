@@ -1,0 +1,402 @@
+{
+  "schema_version": "external-behavior-preregistration-v1",
+  "protocol_id": "external-behavior-v1",
+  "freeze_date": "2026-10-12",
+  "status": "frozen_before_manifest_materialization_overlap_census_or_behavioral_training",
+  "relationship_to_prior_protocol": {
+    "independent_confirmatory_expansion": true,
+    "prior_protocol": "quality-enhancement-v1",
+    "prior_p3_decision_remains": "no_go",
+    "retroactive_p3_reclassification_allowed": false,
+    "reporting_name": "prospective external behavioral validation expansion"
+  },
+  "execution_state_at_freeze": {
+    "candidate_set_frozen": true,
+    "candidate_repositories_cloned_after_candidate_freeze": true,
+    "candidate_source_implementation_read_for_protocol_design": true,
+    "candidate_dataset_generated_or_downloaded": false,
+    "semantic_signature_census_run": false,
+    "train_test_overlap_result_inspected": false,
+    "behavioral_manifest_materialized": false,
+    "behavioral_training_started": false,
+    "behavioral_outcome_inspected": false
+  },
+  "amendment_policy": {
+    "new_version_required_for": [
+      "candidate_set",
+      "candidate_order",
+      "source_revision",
+      "semantic_identity",
+      "target_pattern_selection",
+      "training_arm_construction",
+      "model_architecture",
+      "training_budget",
+      "primary_estimand",
+      "bootstrap",
+      "effect_threshold",
+      "precision_threshold",
+      "suite_gate"
+    ],
+    "substantive_change_deadline": "before the affected manifest or result is inspected",
+    "implementation_clarification_rule": "A code-only clarification is allowed only if the validator proves byte-identical materialized semantic IDs and arm assignments; otherwise a new protocol version is required.",
+    "typographical_change_rule": "Record old and new hashes and demonstrate no execution or interpretation change."
+  },
+  "global_rules": {
+    "report_every_frozen_candidate": true,
+    "candidate_failure_cannot_trigger_replacement": true,
+    "secondary_endpoint_cannot_replace_primary": true,
+    "no_witness_is_not_non_overlap": true,
+    "semantic_scopes_must_not_be_pooled": true,
+    "accuracy_unit": "percentage_points",
+    "primary_confidence": 0.95,
+    "equivalence_margin_pp": [
+      -0.5,
+      0.5
+    ],
+    "sesoi_pp": 1.0,
+    "primary_interval_max_width_pp_for_credible_behavior": 2.0,
+    "randomness_derivation": "int.from_bytes(SHA256(('external-behavior-v1:' + namespace).encode('ascii')).digest()[0:8], 'big') & ((1<<63)-1)",
+    "master_seed": 20261012
+  },
+  "suite_gate": {
+    "external_behavior_validation_go_requires": [
+      "clutrr_design_gate_pass",
+      "clutrr_all_16_runs_complete",
+      "clutrr_integrity_validator_pass",
+      "clutrr_primary_95pct_interval_reported",
+      "clutrr_primary_95pct_interval_width_at_most_2_pp",
+      "mathematics_complete_semantic_audit_pass",
+      "both_candidates_reported_without_result_dependent_exclusion"
+    ],
+    "external_behavior_validation_no_go": "Any required condition fails. Preserve all completed results and state the failed condition.",
+    "effect_direction_is_not_a_suite_gate": true,
+    "claim_if_go": "A complete, preregistered behavioral exposure intervention was executed on CLUTRR and an independent executable semantic audit was completed on selected DeepMind Mathematics modules.",
+    "forbidden_even_if_go": [
+      "The original CLUTRR paper model memorizes evaluation patterns.",
+      "Semantic overlap universally improves benchmark accuracy.",
+      "The external result retroactively changes the frozen quality-enhancement-v1 P3 decision.",
+      "The Mathematics audit supports a behavioral effect.",
+      "Pattern exposure identifies an internal memorization mechanism."
+    ]
+  },
+  "clutrr": {
+    "candidate_id": "468fd27f8a031213",
+    "source": {
+      "paper_revision": "arXiv:1908.06177v2",
+      "repository": "https://github.com/facebookresearch/clutrr",
+      "revision": "d045fae289d3746503677ceed7631c999202501e",
+      "license": "CC-BY-NC-4.0",
+      "required_source_files": [
+        "clutrr/generator.py",
+        "clutrr/relations/builder.py",
+        "clutrr/relations/puzzle.py",
+        "clutrr/store/rules_store.yaml",
+        "clutrr/store/relations_store.yaml",
+        "clutrr/store/question_store.yaml"
+      ]
+    },
+    "claim_scope": "Task-1 clean relational questions at relation length 3. The intervention concerns the benchmark's entity-invariant ordered relation pattern, not all CLUTRR tasks, lengths, noise settings, or language templates.",
+    "semantic_identity": {
+      "name": "ordered_kinship_relation_pattern",
+      "representation": "Ordered tuple from the generated row's edge_types for clean story edges, paired with the target relation label.",
+      "canonical_serialization": "UTF-8 JSON array [target_relation, relation_1, relation_2, relation_3] with no insignificant whitespace.",
+      "semantic_id": "sha256(canonical_serialization)",
+      "invariances": [
+        "entity_name_alpha_renaming",
+        "surface_template_choice",
+        "story_sentence_order"
+      ],
+      "not_invariant_to": [
+        "ordered_relation_sequence",
+        "query_direction",
+        "target_relation"
+      ],
+      "evidence_grade": "exact for the CLUTRR relation-pattern holdout object; not a complete logical-equivalence test across different relation paths",
+      "verifier": "Reconstruct the ordered clean proof path and target from stored graph fields; reject any row whose reconstructed tuple differs from the stored signature."
+    },
+    "materialization": {
+      "pythonhashseed": 0,
+      "python_random_seed_namespace": "clutrr:generator:python",
+      "numpy_seed_namespace": "clutrr:generator:numpy",
+      "task": 1,
+      "relation_length": 3,
+      "question_type": "relational",
+      "surface_templates": "pinned synthetic templates from relations_store.yaml",
+      "noise_facts": "none",
+      "combination_length": 1,
+      "candidate_row_cap": 120000,
+      "generator_split": 1.0,
+      "normalization": {
+        "entity_names": "replace by entity_0, entity_1, ... using first appearance in the stored clean graph before tokenization",
+        "input": "normalized clean_story + literal separator token + normalized text_query",
+        "case": "lower",
+        "unicode": "NFKC",
+        "whitespace": "collapse_to_single_ascii_space",
+        "uuid_fields": "excluded"
+      },
+      "row_order": "ascending sha256(normalized_input + canonical_semantic_serialization + target_relation)",
+      "duplicate_surface_rule": "Rows with identical normalized input and target are deduplicated before allocation."
+    },
+    "target_selection": {
+      "required_target_patterns": 40,
+      "required_pattern_pairs": 20,
+      "pairing_rule": [
+        "Group eligible semantic patterns by target relation.",
+        "Within each target group sort semantic IDs by SHA-256.",
+        "Pair adjacent IDs without reuse.",
+        "Sort all candidate pairs by SHA-256 of the ordered pair.",
+        "Select the first 20 pairs."
+      ],
+      "eligibility_per_pattern": {
+        "evaluation_rows_at_least": 200,
+        "training_exposure_rows_at_least": 64,
+        "single_deterministic_target_relation_required": true
+      },
+      "result_independence": "Selection uses only semantic ID, target label, and row availability; model outcomes and train-test overlap statistics are unavailable at selection time.",
+      "insufficient_pairs_action": "clutrr_design_no_go_do_not_train_no_candidate_replacement"
+    },
+    "evaluation": {
+      "target_patterns": 40,
+      "rows_per_pattern": 200,
+      "rows_total": 8000,
+      "surface_disjoint_from_training": true,
+      "same_manifest_all_arms_and_seeds": true,
+      "allocation": "For each target pattern, use the first 200 rows in deterministic row order; the next 64 rows form the pattern's possible exposure pool.",
+      "primary_metric": "mean target-relation classification accuracy",
+      "secondary_metrics": [
+        "cross_entropy",
+        "brier_score",
+        "expected_calibration_error_15_equal_width_bins",
+        "accuracy_by_target_relation",
+        "accuracy_by_target_pattern"
+      ]
+    },
+    "training_arms": {
+      "arms": [
+        "A",
+        "B"
+      ],
+      "episodes_per_arm": 24000,
+      "common_base_episodes": 22720,
+      "target_patterns_exposed_per_arm": 20,
+      "exposure_rows_per_exposed_pattern": 64,
+      "target_exposure_episodes_per_arm": 1280,
+      "common_base_pattern_rule": "Use only non-target semantic patterns, allocate rows round-robin over target relations and then semantic IDs, and take the first 22,720 eligible rows in deterministic order.",
+      "arm_assignment": {
+        "payload": "clutrr:arm:{model_seed}:{pair_index}",
+        "bit": "least significant bit of the registered SHA-256 seed derivation",
+        "bit_0": "pair member 0 exposed in A and member 1 exposed in B",
+        "bit_1": "pair member 1 exposed in A and member 0 exposed in B"
+      },
+      "paired_slots": "The 22,720 base rows are byte-identical across arms. For each target pair and exposure index, its A/B rows occupy the same paired slot. Slot permutations are identical across arms.",
+      "epoch_order_namespace": "clutrr:epoch:{model_seed}:{epoch_1_based}",
+      "strictness": "For every target pattern, one arm contains exactly 64 training rows and the complementary arm contains zero rows with that semantic ID.",
+      "label_balance": "Pair members must share the same target relation and receive equal dose, so every A/B pair has identical treatment-slot label counts."
+    },
+    "model": {
+      "role": "frozen lightweight reference model; not a reproduction of a released CLUTRR checkpoint",
+      "input_tokens": "ASCII byte IDs after registered normalization, plus PAD, CLS, and SEP",
+      "maximum_sequence_length": 512,
+      "architecture": "Transformer encoder classifier",
+      "layers": 4,
+      "model_dimension": 128,
+      "attention_heads": 4,
+      "feed_forward_dimension": 512,
+      "dropout": 0.1,
+      "position_embedding": "learned absolute",
+      "pooling": "CLS state",
+      "output_classes": "all target relations declared in the pinned relations store",
+      "precision": "float32",
+      "device": "CPU for confirmatory runs",
+      "implementation_rule": "The implementation, environment lock, and source hash manifest must be frozen and pass architecture inspection before the first training run. Any mismatch requires a new protocol version."
+    },
+    "optimization": {
+      "model_seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "run_count": 16,
+      "initialization_same_between_arms_within_seed": true,
+      "batch_size": 128,
+      "epochs": 30,
+      "optimizer": "AdamW",
+      "learning_rate": 0.0003,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "epsilon": 1e-08,
+      "weight_decay": 0.01,
+      "gradient_clip_norm": 1.0,
+      "scheduler": "none",
+      "loss": "multiclass_cross_entropy",
+      "checkpoint_selection": "fixed final epoch 30",
+      "validation_selection": false,
+      "early_stopping": false
+    },
+    "analysis": {
+      "primary_name": "clutrr_exact_pattern_exposure_effect",
+      "effect_direction": "exposed_minus_unexposed",
+      "unit_of_analysis": "target semantic pattern within model seed",
+      "estimand_formula": "tau = 100/(8*40) * sum_seed sum_target_pattern (accuracy_exposed - accuracy_unexposed)",
+      "weighting": [
+        "evaluation rows equal within pattern",
+        "target patterns equal within seed",
+        "model seeds equal"
+      ],
+      "bootstrap": {
+        "type": "hierarchical_percentile",
+        "replicates": 20000,
+        "seed": 20261012,
+        "resample_model_seeds": true,
+        "resample_pattern_pairs": true,
+        "resample_evaluation_rows_within_pattern": true,
+        "preserve_pair_members_together": true,
+        "confidence": 0.95
+      },
+      "effect_classification_order": [
+        "positive_behavioral_go",
+        "negative_behavioral_go",
+        "null_equivalence_go",
+        "inconclusive"
+      ],
+      "positive_behavioral_go": "tau >= +1.0 pp and the 95% interval lower endpoint is > 0.",
+      "negative_behavioral_go": "tau <= -1.0 pp and the 95% interval upper endpoint is < 0.",
+      "null_equivalence_go": "the complete 95% interval is contained in [-0.5,+0.5] pp.",
+      "inconclusive": "Every result not satisfying a positive, negative, or null-equivalence rule.",
+      "precision_gate": "The 95% interval width must be <= 2.0 pp to count as credible external behavioral validation."
+    },
+    "design_gate": {
+      "failure_action": "design_no_go_do_not_train",
+      "required_invariants": [
+        "source_revision_and_required_file_hashes_match",
+        "120000_candidate_rows_materialized_or_generator_exhaustion_is_explicitly_logged",
+        "all_rows_reconstruct_their_semantic_signature",
+        "at_least_20_same_label_pattern_pairs_are_eligible",
+        "exactly_40_target_patterns_selected_without_reuse",
+        "every_target_pattern_has_200_evaluation_and_64_disjoint_exposure_rows",
+        "evaluation_and_training_surface_rows_are_disjoint",
+        "common_base_contains_zero_target_semantic_ids",
+        "arms_have_24000_rows_and_identical_label_counts",
+        "every_target_is_exposed_in_exactly_one_arm_per_seed",
+        "all_inputs_fit_maximum_sequence_length_without_truncation",
+        "model_implementation_matches_registered_architecture",
+        "all_materialization_hashes_validate"
+      ]
+    },
+    "integrity_gate": {
+      "required": [
+        "16_of_16_runs_reach_epoch_30",
+        "finite_model_optimizer_and_prediction_tensors",
+        "identical_initialization_and_epoch_order_between_arms_within_seed",
+        "8000_predictions_per_run_in_identical_evaluation_order",
+        "prediction_labels_and_semantic_ids_match_the_frozen_evaluation_manifest",
+        "observed_arm_exposure_matches_the_registered complementary assignment",
+        "independent_analysis_recomputation_matches_reported_tau_and_interval",
+        "all_artifact_hashes_validate"
+      ]
+    }
+  },
+  "mathematics": {
+    "candidate_id": "e9cf5d3411b6915d",
+    "source": {
+      "paper_revision": "arXiv:1904.01557v1",
+      "repository": "https://github.com/google-deepmind/mathematics_dataset",
+      "revision": "427f45075f84b8b9774950196ad63867ca20ffb3",
+      "license": "Apache-2.0"
+    },
+    "claim_scope": "Regenerated full-entropy train and interpolation streams for exactly two pinned polynomial modules. Results do not claim exact equivalence to every row in the pre-generated Version 1.0 files or to other Mathematics modules.",
+    "modules": [
+      "polynomials__expand",
+      "polynomials__collect"
+    ],
+    "regimes": {
+      "train": {
+        "examples_per_module": 100000,
+        "entropy": "official full train range via modules.train(_make_entropy_fn(0,1))"
+      },
+      "interpolate": {
+        "examples_per_module": 10000,
+        "entropy": "official modules.test() interpolation range"
+      }
+    },
+    "generation": {
+      "seed_namespace": "mathematics:{regime}:{module}",
+      "seed_both_python_random_and_numpy": true,
+      "question_length_filter": 160,
+      "answer_length_filter": 30,
+      "dropped_samples": "log count and continue exactly as the official generate.sample_from_module behavior",
+      "row_order": "generation order",
+      "total_retained_examples": 220000
+    },
+    "semantic_identity": {
+      "operation_scope": "Module name is part of every semantic ID.",
+      "parser": {
+        "polynomials__expand": "Parse the expression between the literal prefix 'Expand ' and final period.",
+        "polynomials__collect": "Parse the expression between the literal prefix 'Collect the terms in ' and final period."
+      },
+      "alpha_normalization": "Map sorted free symbols to x0, x1, ... before canonicalization.",
+      "canonicalization": {
+        "polynomials__expand": "Ordered sympy.Poly(sympy.expand(expression), normalized_symbols).terms() including every exact rational coefficient",
+        "polynomials__collect": "Ordered sympy.Poly(sympy.expand(expression), normalized_symbols).terms() including every exact rational coefficient"
+      },
+      "canonical_serialization": "module_name + ASCII unit separator + sympy.srepr(canonical_object)",
+      "semantic_id": "sha256(canonical_serialization)",
+      "evidence_grade": "exact within the selected generator fragments, conditional on parser and independent symbolic-equivalence verification",
+      "independent_verifier": "For every reported collision, reparse both questions and prove zero symbolic difference after alpha normalization; reject the collision if the verifier does not return exact True."
+    },
+    "audit_outputs": [
+      "verbatim_question_overlap_count",
+      "canonical_semantic_overlap_count",
+      "semantic_overlap_prevalence_by_module",
+      "collision_multiplicity_distribution",
+      "train_and_test_witness_rows_for_every_collision",
+      "explicit_unresolved_denominator"
+    ],
+    "complete_audit_gate": {
+      "required": [
+        "all_220000_retained_examples_generated",
+        "source_and_environment_hashes_match",
+        "parser_coverage_is_100_percent",
+        "every_semantic_id_is_deterministically_regenerated",
+        "every_reported_collision_passes_independent_symbolic_verification",
+        "unresolved_count_is_zero",
+        "both_modules_are_reported",
+        "all_artifact_hashes_validate"
+      ],
+      "failure_action": "candidate_audit_no_go_report_partial_results_no_scope_substitution"
+    },
+    "behavioral_claim_allowed": false
+  },
+  "reporting": {
+    "mandatory_outputs": [
+      "candidate-level validation status",
+      "CLUTRR primary effect and 95% interval",
+      "CLUTRR effect classification",
+      "CLUTRR interval width and precision-gate status",
+      "Mathematics per-module exact overlap counts",
+      "all design and integrity failures",
+      "suite gate decision",
+      "allowed and forbidden claim wording"
+    ],
+    "outcome_blind_order": [
+      "validate sources",
+      "materialize and freeze CLUTRR manifests",
+      "run CLUTRR design gate",
+      "materialize and freeze Mathematics streams",
+      "run Mathematics parser and signature validators without inspecting aggregate overlap counts",
+      "freeze analysis input hashes",
+      "run all CLUTRR training",
+      "run independent integrity validation",
+      "compute CLUTRR primary analysis",
+      "release Mathematics overlap aggregates",
+      "evaluate suite gate"
+    ]
+  }
+}

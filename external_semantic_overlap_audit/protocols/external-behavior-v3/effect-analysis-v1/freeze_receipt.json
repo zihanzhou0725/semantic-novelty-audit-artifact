@@ -1,0 +1,14 @@
+{
+  "analysis_id": "external-behavior-v3-effect-analysis-v1",
+  "frozen_at_utc": "2026-10-13T09:45:22.064988+00:00",
+  "schema_version": "external-behavior-v3-effect-freeze-receipt-v1",
+  "state_at_freeze": {
+    "analysis_output_directory_absent": true,
+    "execution_gate_passed": true,
+    "outcome_contrast_computed": false,
+    "outcome_values_loaded_by_freeze_process": false,
+    "prediction_files_accessed_for_sha256_only": true,
+    "run_artifact_hashes_validated": true
+  },
+  "status": "frozen_before_unblinding"
+}

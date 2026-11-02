@@ -1,0 +1,110 @@
+{
+  "arm_summary": {
+    "C0": {
+      "accuracy": 0.6028125,
+      "pattern_cluster_ci": [
+        0.5117460937499999,
+        0.6861914062499999
+      ]
+    },
+    "C1": {
+      "accuracy": 0.8275625,
+      "pattern_cluster_ci": [
+        0.76595546875,
+        0.8793781249999999
+      ]
+    },
+    "C2": {
+      "accuracy": 0.63990625,
+      "pattern_cluster_ci": [
+        0.547,
+        0.7275359374999999
+      ]
+    }
+  },
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 0,
+  "contrasts": {
+    "C1-C0": {
+      "effect_pp": 22.475,
+      "pattern_cluster_ci_pp": [
+        16.82734375,
+        28.742812499999985
+      ],
+      "seed_effect_pp": 22.475,
+      "seed_effects_pp": [
+        24.7375,
+        20.55,
+        23.9,
+        20.7125
+      ],
+      "seed_t_ci_pp": [
+        19.042287161620408,
+        25.90771283837959
+      ]
+    },
+    "C1-C2": {
+      "effect_pp": 18.765625000000004,
+      "pattern_cluster_ci_pp": [
+        13.201640625,
+        25.253515624999995
+      ],
+      "seed_effect_pp": 18.765625000000004,
+      "seed_effects_pp": [
+        23.812500000000004,
+        15.300000000000002,
+        17.8875,
+        18.062500000000004
+      ],
+      "seed_t_ci_pp": [
+        13.047028429635645,
+        24.484221570364358
+      ]
+    },
+    "C2-C0": {
+      "effect_pp": 3.709374999999998,
+      "pattern_cluster_ci_pp": [
+        1.3211718749999983,
+        5.956484374999996
+      ],
+      "seed_effect_pp": 3.709374999999998,
+      "seed_effects_pp": [
+        0.924999999999998,
+        5.249999999999999,
+        6.012499999999998,
+        2.649999999999997
+      ],
+      "seed_t_ci_pp": [
+        -0.02835474783874567,
+        7.447104747838742
+      ]
+    }
+  },
+  "interpretation": "semantic identity, not surface similarity, drives the gain",
+  "protocol_sha256": "0fb766ba884fa82057b02613d8438f64f575f4ff5698765ceb250483585b6209",
+  "tier_results": {
+    "2": {
+      "effect_pp": 3.709374999999998,
+      "pattern_cluster_ci_pp": [
+        1.3211718749999983,
+        5.956484374999996
+      ],
+      "pattern_count": 40
+    }
+  },
+  "timing_run": {
+    "accuracy": 0.200625,
+    "arm": "C0",
+    "cross_entropy": 2.2485806941986084,
+    "device": "mps",
+    "epochs": 1,
+    "evaluation_rows": 8000,
+    "final_model_sha256": "d313f69c19934a46d8c5b9378b3bb8bf19ac0c131afdf908a89c2e173f7a68e9",
+    "initial_model_sha256": "21745a7aa4878dee340a4e5e846079e1ed43a4239e6e9e2cb31ddbfeb7209639",
+    "n_train": 24640,
+    "namespace": "tmlrs:t6",
+    "seconds": 32.74152291705832,
+    "seed": 0,
+    "updates": 193
+  }
+}

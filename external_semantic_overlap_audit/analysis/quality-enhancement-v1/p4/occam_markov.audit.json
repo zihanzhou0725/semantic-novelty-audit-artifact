@@ -1,0 +1,1195 @@
+{
+  "adapter": {
+    "id": "occam_markov_transition_v1",
+    "semantic_representation": "Markov order plus exact float64 transition tensor generated from a deterministic task seed",
+    "version": "1.0.0"
+  },
+  "behavioral_estimand_metadata_if_present": {
+    "artifact_status": "aggregate plots reported; no checkpoints, run configs, training logs, or per-task predictions",
+    "design": "online task generation with unseeded category assignments",
+    "estimand": "KL divergence between model output and n-gram baselines",
+    "reproducibility_gate": "failed"
+  },
+  "benchmark": {
+    "candidate_id": "7b9ebd45a3528701",
+    "name": "In-Context Occam's Razor: How Transformers Prefer Simpler Hypotheses on the Fly",
+    "public": true,
+    "scope": "Published Figure 2 and Figure 3 Markov-chain experiments; linear regression is explicitly outside this adapter"
+  },
+  "claim_gate_and_allowed_wording": {
+    "allowed_wording": [
+      "Under the nominal 800k-sequence budget, exact latent-task exposure is bounded between 2/20 and 4/20 per main Markov experiment.",
+      "The identities of exposed order-specific tasks remain unresolved because NumPy order assignments were unseeded."
+    ],
+    "decision": "markov_protocol_defect_detected",
+    "forbidden_wording": [
+      "All inference Markov chains were unseen during training.",
+      "The Markov adapter completes the missing regression audit.",
+      "Exact exposure caused the reported model behavior."
+    ]
+  },
+  "completeness_status": "sound_lower_bound",
+  "equivalence_witness_type": [
+    "deterministic_seed_range_exclusion",
+    "pigeonhole_seed_group_bound",
+    "unseeded_order_assignment_candidate"
+  ],
+  "observation_contract": {
+    "admissible_inputs_and_contexts": "Frozen order-specific Markov evaluation tasks and the nominal online training seed support for the two main experiments.",
+    "effects": "Transition-task generation is effect-free.",
+    "nondeterminism": "Unpersisted NumPy order assignments are treated as unresolved rather than reconstructed.",
+    "observable_outputs": "Exact float64 transition-tensor equality within each Markov order and grouped-seed exposure constraints.",
+    "resource_observations": "Runtime and memory are excluded from semantic identity.",
+    "semantic_unit_adequacy": {
+      "advertised_claim": "Novelty concerns an order-specific transition task, not a seed string or an aggregate Markov family.",
+      "must_differ_rule": "Different transition tensors or different orders remain distinct tasks.",
+      "must_match_rule": "Tasks with the same order and exact transition tensor must share a semantic ID.",
+      "sensitivity_policy": "Report exact task identities and grouped-seed bounds separately when order assignments are unavailable."
+    },
+    "termination_and_errors": "Finite seed and signature censuses must terminate; missing or hash-mismatched source artifacts fail the adapter."
+  },
+  "overlap_counts_and_denominators": [
+    {
+      "claim_scope": "exact_latent_transition_task_exposure:figure_2_order_1_3",
+      "denominator": 20,
+      "overlap_lower_bound": 2,
+      "overlap_upper_bound": 4,
+      "unit": "eval_latent_tasks",
+      "unresolved_count": 4,
+      "witnessed_overlap_count": 2
+    },
+    {
+      "claim_scope": "exact_latent_transition_task_exposure:figure_3_order_1_2",
+      "denominator": 20,
+      "overlap_lower_bound": 2,
+      "overlap_upper_bound": 4,
+      "unit": "eval_latent_tasks",
+      "unresolved_count": 4,
+      "witnessed_overlap_count": 2
+    }
+  ],
+  "schema_version": "semantic-audit-output-v1",
+  "semantic_ids": {
+    "canonicalization": "SHA256 of canonical JSON containing order, vocabulary size, max transitions, shape, and exact float.hex transition tensor",
+    "namespaces": [
+      "markov_transition_tensor"
+    ]
+  },
+  "source_revisions_and_hashes": {
+    "code_revision": "{\"repository\":\"https://github.com/puneesh00/ICL-Bayes-Occam\",\"revision\":\"3b8fe0d69dd9bb56c39d933525bf0234feefcc39\"}",
+    "dataset_revision": "Markov-chain, linear-regression, and grammar episodes generated online by code revision 3b8fe0d69dd9bb56c39d933525bf0234feefcc39",
+    "files": [
+      {
+        "path": "external_semantic_overlap_audit/analysis/quality-enhancement-v1/p3/occam_hierarchical_icl/audit_report.json",
+        "sha256": "6f661191aab75463e9a4b600f946516bfb2c852ca413a28ea6a20feb95cd3b58"
+      },
+      {
+        "path": "external_semantic_overlap_audit/analysis/quality-enhancement-v1/p3/occam_hierarchical_icl/markov_task_manifest.csv",
+        "sha256": "22f711512e5ffd59bb3eb7df0607d91c2f6b7b48bec7eb633f1b7312d64f6b39"
+      },
+      {
+        "path": "external_semantic_overlap_audit/protocols/quality-enhancement-v1/p3/candidate_manifest.json",
+        "sha256": "68608a23800c0a36575948df9ab568e2951e38c5169a4cd0a67dff40e2eae422"
+      },
+      {
+        "path": "external_semantic_overlap_audit/scripts/audit_occam_hierarchical_icl.py",
+        "sha256": "0331ce4bf500bf11a6d770652e24081b47bd2d81ed556e76291231dfe7cc4aad"
+      },
+      {
+        "path": "external_semantic_overlap_audit/upstream/p3_icl_bayes_occam/README.md",
+        "sha256": "c679032f07d530e50e7a3f2d3f7f5a5f006ebf3f628f4eeee739ec8a4b2424aa"
+      },
+      {
+        "path": "external_semantic_overlap_audit/upstream/p3_icl_bayes_occam/eval.py",
+        "sha256": "b26578026f2a6a4b4c83a287bd1c9ccd7c566f0ae82fe90a9959e1eb6613fc5b"
+      },
+      {
+        "path": "external_semantic_overlap_audit/upstream/p3_icl_bayes_occam/main.py",
+        "sha256": "29d50092257ad4d9ed2560851920602b56897d16e085e49b80cf3d0ee30b3ee3"
+      },
+      {
+        "path": "external_semantic_overlap_audit/upstream/p3_icl_bayes_occam/train_gpt.py",
+        "sha256": "34e8c5520a713d5939856326b15288cfc3ad011cde19f4135c1e43724a9b017c"
+      },
+      {
+        "path": "external_semantic_overlap_audit/upstream/p3_icl_bayes_occam/utils.py",
+        "sha256": "cac2aae60a2b405ff54b4b5dd22d3b6166627ca198d730211c302072e302a957"
+      },
+      {
+        "path": "external_semantic_overlap_audit/upstream/p3_icl_bayes_occam/utils_data.py",
+        "sha256": "c07d63029c4402e64624b26c5c39253f16884c63eabe282a34260127fb31f014"
+      },
+      {
+        "path": "external_semantic_overlap_audit/upstream/p3_occam_arxiv_2506.19351v1.pdf",
+        "sha256": "8c92e590ba749a947c22b13705a751b832495f21ae0d9ac03a6ec829872f945c"
+      }
+    ],
+    "paper_revision": "arXiv:2506.19351v1; COLM 2025"
+  },
+  "tool_version": "1.0.0",
+  "train_and_evaluation_identity_records": {
+    "evaluation": {
+      "completeness_status": "exact",
+      "definition": "All 40 order-specific latent tasks from two main Markov experiments, with exact transition-tensor hashes",
+      "record_count": 40,
+      "records": [
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "unresolved",
+              "details": {
+                "eval_seed_in_training_seed_support": true,
+                "pigeonhole_group": "figure_2_order_1_3:seed:5"
+              },
+              "equivalence_witness_type": "unseeded_order_assignment_candidate",
+              "overlap": null,
+              "witness_count": 6
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:1:task:0",
+          "semantic_ids": {
+            "markov_transition_tensor": "14657f3334969b7fb067c02a170c32f975ba8a1db8a86d2e5d1ede2c1fb13b21"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 5,
+            "eval_task_index": 0,
+            "figure": 2,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "unresolved",
+              "details": {
+                "eval_seed_in_training_seed_support": true,
+                "pigeonhole_group": "figure_2_order_1_3:seed:5"
+              },
+              "equivalence_witness_type": "unseeded_order_assignment_candidate",
+              "overlap": null,
+              "witness_count": 6
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:3:task:0",
+          "semantic_ids": {
+            "markov_transition_tensor": "a76ec320de96d1d9ebee9f01335b719e25f9c782f9e470cb66ef65d30b45d984"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 5,
+            "eval_task_index": 0,
+            "figure": 2,
+            "order": 3,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "unresolved",
+              "details": {
+                "eval_seed_in_training_seed_support": true,
+                "pigeonhole_group": "figure_2_order_1_3:seed:12579"
+              },
+              "equivalence_witness_type": "unseeded_order_assignment_candidate",
+              "overlap": null,
+              "witness_count": 32
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:1:task:1",
+          "semantic_ids": {
+            "markov_transition_tensor": "e8d8a18352f03945e120b00a5393ea6bb4ceba3e6e48f9eed715a61cabfd0709"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 12579,
+            "eval_task_index": 1,
+            "figure": 2,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "unresolved",
+              "details": {
+                "eval_seed_in_training_seed_support": true,
+                "pigeonhole_group": "figure_2_order_1_3:seed:12579"
+              },
+              "equivalence_witness_type": "unseeded_order_assignment_candidate",
+              "overlap": null,
+              "witness_count": 32
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:3:task:1",
+          "semantic_ids": {
+            "markov_transition_tensor": "459df25868e25ca3807e5b4735b1ab9c5dc7b4550d9046c5978c12ca1600d77d"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 12579,
+            "eval_task_index": 1,
+            "figure": 2,
+            "order": 3,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:1:task:2",
+          "semantic_ids": {
+            "markov_transition_tensor": "9851df051167505fe77cc60ff7f111d4f9f2e1db4390c3f265d0b54b2ac823aa"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 25153,
+            "eval_task_index": 2,
+            "figure": 2,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:3:task:2",
+          "semantic_ids": {
+            "markov_transition_tensor": "6836ec67f324a1b838494363e7e63f54266db98756d1a831077ebc6f5c452bf7"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 25153,
+            "eval_task_index": 2,
+            "figure": 2,
+            "order": 3,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:1:task:3",
+          "semantic_ids": {
+            "markov_transition_tensor": "80ce055b80ff511211e753536cfe83c78badb693ef43415b52fd92d96c2421b5"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 37727,
+            "eval_task_index": 3,
+            "figure": 2,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:3:task:3",
+          "semantic_ids": {
+            "markov_transition_tensor": "eb953f8c71127bc696d6c79a8f8c814a6ec483a019eb781a88527056630d78d3"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 37727,
+            "eval_task_index": 3,
+            "figure": 2,
+            "order": 3,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:1:task:4",
+          "semantic_ids": {
+            "markov_transition_tensor": "460254b600aec7fd9a7d8a39ff3f4bc9ec87a27d06eed3e98af2159f32853c3f"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 50301,
+            "eval_task_index": 4,
+            "figure": 2,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:3:task:4",
+          "semantic_ids": {
+            "markov_transition_tensor": "92e769fa4b32ab9c4c6198712a2ac88c855521f4085d7086e4cda1722e655761"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 50301,
+            "eval_task_index": 4,
+            "figure": 2,
+            "order": 3,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:1:task:5",
+          "semantic_ids": {
+            "markov_transition_tensor": "4564cd9fb7eec6be99b476f263a39d45800ac185e961537d5ba320acc70b5bf1"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 62875,
+            "eval_task_index": 5,
+            "figure": 2,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:3:task:5",
+          "semantic_ids": {
+            "markov_transition_tensor": "880c68e898a27a096ec8fc04a714bf110c6eff68ff35d80e6acb4ac800efacef"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 62875,
+            "eval_task_index": 5,
+            "figure": 2,
+            "order": 3,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:1:task:6",
+          "semantic_ids": {
+            "markov_transition_tensor": "c5395bfa68c2b6c4190142d6b0e8df9a9c627433d83ce6ab2d17c673bae7d2ab"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 75449,
+            "eval_task_index": 6,
+            "figure": 2,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:3:task:6",
+          "semantic_ids": {
+            "markov_transition_tensor": "53f05ef9df36deb6982fab9c77af68c467df08b36f6da8c119d5fa7ee20d3a4d"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 75449,
+            "eval_task_index": 6,
+            "figure": 2,
+            "order": 3,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:1:task:7",
+          "semantic_ids": {
+            "markov_transition_tensor": "c88bd17c154cafaebdaa8d2bbe9277810dd257b8dbcc59b7fb828e95b76edd69"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 88023,
+            "eval_task_index": 7,
+            "figure": 2,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:3:task:7",
+          "semantic_ids": {
+            "markov_transition_tensor": "ea3971d1e6f77bc131ddf68ad00e61c4d765aa5557eae909e8beca3be4041e3c"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 88023,
+            "eval_task_index": 7,
+            "figure": 2,
+            "order": 3,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:1:task:8",
+          "semantic_ids": {
+            "markov_transition_tensor": "4f43ec714258e788ea815a97d625b71309c86bf283064f59bdde8c90dd373267"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 100597,
+            "eval_task_index": 8,
+            "figure": 2,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:3:task:8",
+          "semantic_ids": {
+            "markov_transition_tensor": "7a73f24dd54d2c85a3606421fe94680aabd53b4c271e429e59f4d820435cbebe"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 100597,
+            "eval_task_index": 8,
+            "figure": 2,
+            "order": 3,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:1:task:9",
+          "semantic_ids": {
+            "markov_transition_tensor": "9d2760db9e3fdbac894629f444abe2b9d17d4d587a4f9c614aa831c172cb9cb9"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 113171,
+            "eval_task_index": 9,
+            "figure": 2,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_2_order_1_3:order:3:task:9",
+          "semantic_ids": {
+            "markov_transition_tensor": "044f630437b84c1cd12db4767210db7d832d99993c05c6486d9b3985b800c87f"
+          },
+          "split": "figure_2_order_1_3",
+          "surface_identity": {
+            "eval_seed": 113171,
+            "eval_task_index": 9,
+            "figure": 2,
+            "order": 3,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "unresolved",
+              "details": {
+                "eval_seed_in_training_seed_support": true,
+                "pigeonhole_group": "figure_3_order_1_2:seed:5"
+              },
+              "equivalence_witness_type": "unseeded_order_assignment_candidate",
+              "overlap": null,
+              "witness_count": 6
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:1:task:0",
+          "semantic_ids": {
+            "markov_transition_tensor": "14657f3334969b7fb067c02a170c32f975ba8a1db8a86d2e5d1ede2c1fb13b21"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 5,
+            "eval_task_index": 0,
+            "figure": 3,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "unresolved",
+              "details": {
+                "eval_seed_in_training_seed_support": true,
+                "pigeonhole_group": "figure_3_order_1_2:seed:5"
+              },
+              "equivalence_witness_type": "unseeded_order_assignment_candidate",
+              "overlap": null,
+              "witness_count": 6
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:2:task:0",
+          "semantic_ids": {
+            "markov_transition_tensor": "9ec2aed4f5ac94f03b8069fcbd1913512521260cfd057babc948a5c64fb15d3b"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 5,
+            "eval_task_index": 0,
+            "figure": 3,
+            "order": 2,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "unresolved",
+              "details": {
+                "eval_seed_in_training_seed_support": true,
+                "pigeonhole_group": "figure_3_order_1_2:seed:12579"
+              },
+              "equivalence_witness_type": "unseeded_order_assignment_candidate",
+              "overlap": null,
+              "witness_count": 32
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:1:task:1",
+          "semantic_ids": {
+            "markov_transition_tensor": "e8d8a18352f03945e120b00a5393ea6bb4ceba3e6e48f9eed715a61cabfd0709"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 12579,
+            "eval_task_index": 1,
+            "figure": 3,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "unresolved",
+              "details": {
+                "eval_seed_in_training_seed_support": true,
+                "pigeonhole_group": "figure_3_order_1_2:seed:12579"
+              },
+              "equivalence_witness_type": "unseeded_order_assignment_candidate",
+              "overlap": null,
+              "witness_count": 32
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:2:task:1",
+          "semantic_ids": {
+            "markov_transition_tensor": "2fd3efeaffe9973500a1b7d1e591b445bf283c91f14ac50648368fbfa9a6c3ed"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 12579,
+            "eval_task_index": 1,
+            "figure": 3,
+            "order": 2,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:1:task:2",
+          "semantic_ids": {
+            "markov_transition_tensor": "9851df051167505fe77cc60ff7f111d4f9f2e1db4390c3f265d0b54b2ac823aa"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 25153,
+            "eval_task_index": 2,
+            "figure": 3,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:2:task:2",
+          "semantic_ids": {
+            "markov_transition_tensor": "9bb2626f6ff09277417c97b9134fe7a7b265445e424ea1e1d05ed4e535b8dfda"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 25153,
+            "eval_task_index": 2,
+            "figure": 3,
+            "order": 2,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:1:task:3",
+          "semantic_ids": {
+            "markov_transition_tensor": "80ce055b80ff511211e753536cfe83c78badb693ef43415b52fd92d96c2421b5"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 37727,
+            "eval_task_index": 3,
+            "figure": 3,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:2:task:3",
+          "semantic_ids": {
+            "markov_transition_tensor": "d9fd39824840c0224ce66b71068fc97c788c8e48cbdbd1a55e9ed08b11258fa5"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 37727,
+            "eval_task_index": 3,
+            "figure": 3,
+            "order": 2,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:1:task:4",
+          "semantic_ids": {
+            "markov_transition_tensor": "460254b600aec7fd9a7d8a39ff3f4bc9ec87a27d06eed3e98af2159f32853c3f"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 50301,
+            "eval_task_index": 4,
+            "figure": 3,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:2:task:4",
+          "semantic_ids": {
+            "markov_transition_tensor": "c3a91175c27cc96f18901bbdd7e692e0ff1e031667d393bfd66ae70789994d5f"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 50301,
+            "eval_task_index": 4,
+            "figure": 3,
+            "order": 2,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:1:task:5",
+          "semantic_ids": {
+            "markov_transition_tensor": "4564cd9fb7eec6be99b476f263a39d45800ac185e961537d5ba320acc70b5bf1"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 62875,
+            "eval_task_index": 5,
+            "figure": 3,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:2:task:5",
+          "semantic_ids": {
+            "markov_transition_tensor": "8e82aed67c062403f169dd7aeb3fb56832e19aaa7b8d096d14c27eeb650d1567"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 62875,
+            "eval_task_index": 5,
+            "figure": 3,
+            "order": 2,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:1:task:6",
+          "semantic_ids": {
+            "markov_transition_tensor": "c5395bfa68c2b6c4190142d6b0e8df9a9c627433d83ce6ab2d17c673bae7d2ab"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 75449,
+            "eval_task_index": 6,
+            "figure": 3,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:2:task:6",
+          "semantic_ids": {
+            "markov_transition_tensor": "10ec237a328fdf252757f7bbdabcf2b21021bef9ea80119e480c06e039e52fd8"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 75449,
+            "eval_task_index": 6,
+            "figure": 3,
+            "order": 2,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:1:task:7",
+          "semantic_ids": {
+            "markov_transition_tensor": "c88bd17c154cafaebdaa8d2bbe9277810dd257b8dbcc59b7fb828e95b76edd69"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 88023,
+            "eval_task_index": 7,
+            "figure": 3,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:2:task:7",
+          "semantic_ids": {
+            "markov_transition_tensor": "8ff00688aa548f72294e42be4dcb81958be1644facaf7fe2079735d1a75ff4e1"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 88023,
+            "eval_task_index": 7,
+            "figure": 3,
+            "order": 2,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:1:task:8",
+          "semantic_ids": {
+            "markov_transition_tensor": "4f43ec714258e788ea815a97d625b71309c86bf283064f59bdde8c90dd373267"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 100597,
+            "eval_task_index": 8,
+            "figure": 3,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:2:task:8",
+          "semantic_ids": {
+            "markov_transition_tensor": "284847e8c72e76906545ff11af23377e650f5f34b11315fdb61856e1b2560782"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 100597,
+            "eval_task_index": 8,
+            "figure": 3,
+            "order": 2,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:1:task:9",
+          "semantic_ids": {
+            "markov_transition_tensor": "9d2760db9e3fdbac894629f444abe2b9d17d4d587a4f9c614aa831c172cb9cb9"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 113171,
+            "eval_task_index": 9,
+            "figure": 3,
+            "order": 1,
+            "sequence_count": 100
+          }
+        },
+        {
+          "assessments": [
+            {
+              "claim_scope": "exact_latent_transition_task_exposure",
+              "completeness_status": "exact",
+              "details": {
+                "eval_seed_in_training_seed_support": false
+              },
+              "equivalence_witness_type": "deterministic_seed_range_exclusion",
+              "overlap": false,
+              "witness_count": 0
+            }
+          ],
+          "record_id": "figure_3_order_1_2:order:2:task:9",
+          "semantic_ids": {
+            "markov_transition_tensor": "5bdde070a93b126e2b532be76c9cecae5d6a572a77c1769586b0f6f4a264bb65"
+          },
+          "split": "figure_3_order_1_2",
+          "surface_identity": {
+            "eval_seed": 113171,
+            "eval_task_index": 9,
+            "figure": 3,
+            "order": 2,
+            "sequence_count": 100
+          }
+        }
+      ],
+      "records_materialization": "full"
+    },
+    "train": {
+      "completeness_status": "unresolved",
+      "definition": "Two nominal 800,000-episode runs; seed=step+i is known, but unseeded order assignments were not persisted",
+      "record_count": 1600000,
+      "records": [],
+      "records_materialization": "summary_only"
+    }
+  }
+}

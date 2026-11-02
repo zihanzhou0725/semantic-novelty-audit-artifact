@@ -1,0 +1,48 @@
+{
+  "analysis_id": "external-behavior-v3-effect-analysis-v1",
+  "analyzed_at_utc": "2026-10-13T09:45:55.173033+00:00",
+  "decision": {
+    "classification": "imprecise_no_go",
+    "interval_width_pp": 11.49238474828096,
+    "precision_gate_pass": false
+  },
+  "integrity": {
+    "evaluation_rows_per_run": 8000,
+    "model_seeds": 8,
+    "pattern_pairs": 20,
+    "patterns": 40,
+    "prediction_files": 16,
+    "source_groups_per_pattern": 34
+  },
+  "primary": {
+    "bootstrap": {
+      "draw_sha256": {
+        "group_draws_sha256": "0cfd6a9d69cafcbb2ce2a6283d65673bab0d74db8f2c98527627018d4d3a5f62",
+        "pair_draws_sha256": "57601a6fd135574e9b2cbfc688b791e8d222c267ebeb761509f6076b2d27d9bb",
+        "seed_draws_sha256": "5f0018012484475ead471b577a3baa6eceade761c0427898a4d873df9e99d4c8"
+      },
+      "effects_sha256": "7e4edfdb29bef48e2f56bf651433e870112a81c47c482e6eebf1be7406a39f57",
+      "replicates": 20000,
+      "seed": 20261012
+    },
+    "confidence_interval_95": {
+      "lower_pp": 9.876873975196792,
+      "upper_pp": 21.369258723477753,
+      "width_pp": 11.49238474828096
+    },
+    "effect_pp": 15.3375,
+    "estimand": "equal-seed equal-pattern row-weighted exposed-minus-unexposed accuracy"
+  },
+  "protocol_input_manifest_sha256": "46783933d6f436979db2e166be5c9209b2053dd463a71266b1b83add6a339284",
+  "protocol_sha256s_sha256": "8eaeeef592652cbe67294d20365973ff0eafa500db11bcba43766e33dddd8033",
+  "schema_version": "external-behavior-v3-effect-analysis-results-v1",
+  "secondary": {
+    "mean_exposed_minus_unexposed_accuracy": 0.153375,
+    "mean_exposed_minus_unexposed_brier_score": -0.26073772472707996,
+    "mean_exposed_minus_unexposed_cross_entropy": -0.7072705044053049,
+    "mean_exposed_minus_unexposed_ece_15": -0.13214268222082015,
+    "mean_exposed_minus_unexposed_mean_confidence": 0.020558746023922478,
+    "mean_exposed_minus_unexposed_signed_calibration_gap": -0.13281625397607755
+  },
+  "status": "unblinded_analysis_complete"
+}

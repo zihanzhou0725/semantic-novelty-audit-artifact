@@ -1,0 +1,39 @@
+{
+  "confirmatory_target": {
+    "checkpoint_result": "ACL 2026 final paper Table 2",
+    "model": "Llama-3.1-8B-IT-SLR",
+    "substitution_allowed": false
+  },
+  "freeze_script_sha256": "5670506e7abe498f59f704c551ae160bdccc693d5bc80f402626f951be9064e9",
+  "frozen_at_utc": "2026-10-09T09:00:59.810897+00:00",
+  "new_prediction_overlap_or_correctness_join_performed": false,
+  "parent_preregistration_sha256": "1ca70e1a76f41c0c906ffe420cc1c7499420056519f05759332d2e3c1697775b",
+  "schema_version": "quality-enhancement-p2-sources-v1",
+  "selection_decision": {
+    "eligible_confirmatory_source_count": 0,
+    "status": "no_reproducible_confirmatory_prediction_source"
+  },
+  "sources": [
+    {
+      "artifact": "external_semantic_overlap_audit/upstream/llama31_8b_slr_model_outputs.json",
+      "artifact_sha256": "ecd979d5c1f5ed54e11197830b2afb8e4924075a97babf80b188bea630b5a15b",
+      "candidate_identity": "repository_hosted_AIML-TUDA_Llama-3.1-8B-SLR",
+      "confirmatory_target_eligible": false,
+      "failure_reasons": [
+        "checkpoint_revision_not_cryptographically_bound",
+        "complete_decoding_configuration_not_present",
+        "artifact_regeneration_not_demonstrated",
+        "acl_2026_final_table_2_tier_counts_not_reproduced"
+      ],
+      "known_at_parent_freeze": true,
+      "output_rows": 1000,
+      "supporting_artifacts": {
+        "external_semantic_overlap_audit/artifacts/slr_official_output_per_item.csv": "f8ca71ba20e932eccfbfd59fb17f8a2e8e3b3c619dcbc257698d6458d7e4aacc",
+        "external_semantic_overlap_audit/artifacts/slr_official_output_stratification.json": "9254bc23b8945e2c50c84c25d41d0110f1128d0f1db5b1dd0071d0525a454d54"
+      },
+      "test_id_and_rule_alignment": "100_percent",
+      "use": "exploratory_only"
+    }
+  ],
+  "status": "frozen_before_new_confirmatory_prediction_overlap_or_correctness_join"
+}

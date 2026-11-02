@@ -1,0 +1,27 @@
+{
+  "classes": [
+    "aunt",
+    "brother",
+    "brother-in-law",
+    "daughter",
+    "daughter-in-law",
+    "father",
+    "father-in-law",
+    "granddaughter",
+    "grandfather",
+    "grandmother",
+    "grandson",
+    "husband",
+    "mother",
+    "mother-in-law",
+    "neice",
+    "nephew",
+    "no-relation",
+    "sister",
+    "sister-in-law",
+    "son",
+    "son-in-law",
+    "uncle",
+    "wife"
+  ]
+}

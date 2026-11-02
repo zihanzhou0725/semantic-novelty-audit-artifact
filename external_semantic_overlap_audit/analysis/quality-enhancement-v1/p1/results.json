@@ -1,0 +1,663 @@
+{
+  "analysis_spec_sha256": "f1402e26053508bf5c5130d294cc0afb960c952b7bb648604a548a4250cdc844",
+  "architectures": [
+    {
+      "architecture": "symbolic_deepsets",
+      "ci_lower_pp": 4.349316666666666,
+      "ci_upper_pp": 7.8493416666666675,
+      "effect_pp": 6.110000000000005,
+      "exposed_accuracy": 0.59604,
+      "interval_confidence": 0.9916666666666667,
+      "interval_excludes_zero": true,
+      "model_specific_claim_eligible": true,
+      "unexposed_accuracy": 0.53494
+    },
+    {
+      "architecture": "symbolic_relation_network",
+      "ci_lower_pp": 0.22931666666666545,
+      "ci_upper_pp": 1.7493416666666675,
+      "effect_pp": 0.996000000000008,
+      "exposed_accuracy": 0.88336,
+      "interval_confidence": 0.9916666666666667,
+      "interval_excludes_zero": true,
+      "model_specific_claim_eligible": false,
+      "unexposed_accuracy": 0.8734
+    },
+    {
+      "architecture": "symbolic_set_transformer",
+      "ci_lower_pp": -0.10534166666666722,
+      "ci_upper_pp": 2.2473416666666672,
+      "effect_pp": 1.0420000000000096,
+      "exposed_accuracy": 0.77802,
+      "interval_confidence": 0.9916666666666667,
+      "interval_excludes_zero": false,
+      "model_specific_claim_eligible": false,
+      "unexposed_accuracy": 0.7676
+    },
+    {
+      "architecture": "symbolic_hopfield",
+      "ci_lower_pp": -0.192,
+      "ci_upper_pp": 1.4473416666666672,
+      "effect_pp": 0.6579999999999919,
+      "exposed_accuracy": 0.88662,
+      "interval_confidence": 0.9916666666666667,
+      "interval_excludes_zero": false,
+      "model_specific_claim_eligible": false,
+      "unexposed_accuracy": 0.88004
+    },
+    {
+      "architecture": "symbolic_perceiver",
+      "ci_lower_pp": -0.042000000000000016,
+      "ci_upper_pp": 2.525341666666667,
+      "effect_pp": 1.2839999999999963,
+      "exposed_accuracy": 0.74408,
+      "interval_confidence": 0.9916666666666667,
+      "interval_excludes_zero": false,
+      "model_specific_claim_eligible": false,
+      "unexposed_accuracy": 0.73124
+    },
+    {
+      "architecture": "symbolic_transformer",
+      "ci_lower_pp": -0.13734166666666717,
+      "ci_upper_pp": 1.8700250000000014,
+      "effect_pp": 0.9020000000000028,
+      "exposed_accuracy": 0.82942,
+      "interval_confidence": 0.9916666666666667,
+      "interval_excludes_zero": false,
+      "model_specific_claim_eligible": false,
+      "unexposed_accuracy": 0.8204
+    }
+  ],
+  "gate": {
+    "allowed_claim": "Exact cross-family semantic exposure improves macro accuracy for the six registered architectures at the registered training budget.",
+    "decision": "positive_behavioral_go",
+    "evaluation_order": [
+      "positive_behavioral_go",
+      "negative_behavioral_go",
+      "null_equivalence_go",
+      "inconclusive_no_go"
+    ],
+    "negative_architecture_count": 0,
+    "negative_behavioral_go": false,
+    "null_equivalence_go": false,
+    "positive_architecture_count": 6,
+    "positive_behavioral_go": true
+  },
+  "primary": {
+    "bootstrap_replicates": 20000,
+    "ci95_pp": [
+      1.470325,
+      2.1886833333333318
+    ],
+    "effect_pp": 1.8320000000000023,
+    "estimand": "architecture_macro_exact_exposure_effect",
+    "orientation": "exposed_minus_unexposed",
+    "unit": "percentage_points"
+  },
+  "protocol": "quality-enhancement-p1-v1",
+  "provenance": {
+    "full_validation_sha256": "642509262366f23256f21ba8ebca030e2d55e4a8ba48c2e15c68a18b19e64cd5",
+    "p1_checksum_manifest_sha256": "a9379941b424365c8009461cb0c17cad474495e63e20ea3095f3addd4987312d",
+    "preregistration_sha256": "1ca70e1a76f41c0c906ffe420cc1c7499420056519f05759332d2e3c1697775b"
+  },
+  "schema_version": "quality-enhancement-p1-analysis-v1",
+  "secondary": {
+    "brier_score": {
+      "architecture_delta": {
+        "symbolic_deepsets": -0.07861478941805966,
+        "symbolic_hopfield": -0.008483296124584316,
+        "symbolic_perceiver": -0.02348536669995588,
+        "symbolic_relation_network": -0.01764168455640716,
+        "symbolic_set_transformer": -0.01849670050117852,
+        "symbolic_transformer": -0.013634693144970761
+      },
+      "exposed_mean": 0.31828879104971763,
+      "exposed_minus_unexposed": -0.02672608840752605,
+      "unexposed_mean": 0.34501487945724363
+    },
+    "cross_entropy": {
+      "architecture_delta": {
+        "symbolic_deepsets": -0.2169418565517609,
+        "symbolic_hopfield": -0.02276852384465522,
+        "symbolic_perceiver": -0.0862856980640434,
+        "symbolic_relation_network": -0.06525061382727726,
+        "symbolic_set_transformer": -0.052014878664056186,
+        "symbolic_transformer": -0.02836966668392149
+      },
+      "exposed_mean": 0.8319103039149726,
+      "exposed_minus_unexposed": -0.07860520627261908,
+      "unexposed_mean": 0.9105155101875918
+    },
+    "effect_by_frozen_alias_signature": {
+      "affine+block+parity": {
+        "effect_pp": 1.0333333333333417,
+        "exposed_accuracy": 0.8716,
+        "function_count": 2,
+        "unexposed_accuracy": 0.8612666666666666
+      },
+      "affine+parity": {
+        "effect_pp": 1.8740350877193057,
+        "exposed_accuracy": 0.7817649122807018,
+        "function_count": 38,
+        "unexposed_accuracy": 0.7630245614035087
+      }
+    },
+    "evaluation_calibration": {
+      "bin_count": 15,
+      "by_architecture_seed": [
+        {
+          "architecture": "symbolic_deepsets",
+          "exposed": {
+            "accuracy": 0.6282,
+            "ece": 0.061934757389128216,
+            "mean_confidence": 0.6900734782025219,
+            "signed_gap_confidence_minus_accuracy": 0.06187347820252187
+          },
+          "model_seed": 0,
+          "unexposed": {
+            "accuracy": 0.5595,
+            "ece": 0.10004618423581121,
+            "mean_confidence": 0.6595461842358112,
+            "signed_gap_confidence_minus_accuracy": 0.10004618423581124
+          }
+        },
+        {
+          "architecture": "symbolic_deepsets",
+          "exposed": {
+            "accuracy": 0.5842,
+            "ece": 0.07884155495017765,
+            "mean_confidence": 0.6630415549501777,
+            "signed_gap_confidence_minus_accuracy": 0.07884155495017764
+          },
+          "model_seed": 1,
+          "unexposed": {
+            "accuracy": 0.5211,
+            "ece": 0.11755961049348114,
+            "mean_confidence": 0.6386596104934812,
+            "signed_gap_confidence_minus_accuracy": 0.11755961049348118
+          }
+        },
+        {
+          "architecture": "symbolic_deepsets",
+          "exposed": {
+            "accuracy": 0.6054,
+            "ece": 0.07389535930156707,
+            "mean_confidence": 0.6791743811756372,
+            "signed_gap_confidence_minus_accuracy": 0.07377438117563717
+          },
+          "model_seed": 2,
+          "unexposed": {
+            "accuracy": 0.5535,
+            "ece": 0.10804303965270522,
+            "mean_confidence": 0.6614514587700367,
+            "signed_gap_confidence_minus_accuracy": 0.10795145877003676
+          }
+        },
+        {
+          "architecture": "symbolic_deepsets",
+          "exposed": {
+            "accuracy": 0.5888,
+            "ece": 0.0826511260792613,
+            "mean_confidence": 0.6714511260792613,
+            "signed_gap_confidence_minus_accuracy": 0.08265112607926128
+          },
+          "model_seed": 3,
+          "unexposed": {
+            "accuracy": 0.5268,
+            "ece": 0.12336555857807398,
+            "mean_confidence": 0.6501493702426553,
+            "signed_gap_confidence_minus_accuracy": 0.12334937024265524
+          }
+        },
+        {
+          "architecture": "symbolic_deepsets",
+          "exposed": {
+            "accuracy": 0.5736,
+            "ece": 0.09459870114028454,
+            "mean_confidence": 0.6678847727805376,
+            "signed_gap_confidence_minus_accuracy": 0.0942847727805376
+          },
+          "model_seed": 4,
+          "unexposed": {
+            "accuracy": 0.5138,
+            "ece": 0.13720955612659455,
+            "mean_confidence": 0.6510095561265945,
+            "signed_gap_confidence_minus_accuracy": 0.13720955612659447
+          }
+        },
+        {
+          "architecture": "symbolic_relation_network",
+          "exposed": {
+            "accuracy": 0.8861,
+            "ece": 0.0695883990108967,
+            "mean_confidence": 0.9555275437414646,
+            "signed_gap_confidence_minus_accuracy": 0.06942754374146465
+          },
+          "model_seed": 0,
+          "unexposed": {
+            "accuracy": 0.8727,
+            "ece": 0.07904156056642528,
+            "mean_confidence": 0.9517415605664253,
+            "signed_gap_confidence_minus_accuracy": 0.0790415605664253
+          }
+        },
+        {
+          "architecture": "symbolic_relation_network",
+          "exposed": {
+            "accuracy": 0.8846,
+            "ece": 0.06998143217265605,
+            "mean_confidence": 0.954581432172656,
+            "signed_gap_confidence_minus_accuracy": 0.06998143217265596
+          },
+          "model_seed": 1,
+          "unexposed": {
+            "accuracy": 0.8753,
+            "ece": 0.07807578955292704,
+            "mean_confidence": 0.9532267658710479,
+            "signed_gap_confidence_minus_accuracy": 0.07792676587104796
+          }
+        },
+        {
+          "architecture": "symbolic_relation_network",
+          "exposed": {
+            "accuracy": 0.8824,
+            "ece": 0.07121170847415928,
+            "mean_confidence": 0.9536117084741592,
+            "signed_gap_confidence_minus_accuracy": 0.07121170847415925
+          },
+          "model_seed": 2,
+          "unexposed": {
+            "accuracy": 0.8712,
+            "ece": 0.08139541966915137,
+            "mean_confidence": 0.9525954196691513,
+            "signed_gap_confidence_minus_accuracy": 0.08139541966915131
+          }
+        },
+        {
+          "architecture": "symbolic_relation_network",
+          "exposed": {
+            "accuracy": 0.883,
+            "ece": 0.07022460604608058,
+            "mean_confidence": 0.9527731559723616,
+            "signed_gap_confidence_minus_accuracy": 0.06977315597236156
+          },
+          "model_seed": 3,
+          "unexposed": {
+            "accuracy": 0.8737,
+            "ece": 0.07672880231440063,
+            "mean_confidence": 0.9501775195449591,
+            "signed_gap_confidence_minus_accuracy": 0.07647751954495907
+          }
+        },
+        {
+          "architecture": "symbolic_relation_network",
+          "exposed": {
+            "accuracy": 0.8807,
+            "ece": 0.07178544022440911,
+            "mean_confidence": 0.9524854402244091,
+            "signed_gap_confidence_minus_accuracy": 0.07178544022440903
+          },
+          "model_seed": 4,
+          "unexposed": {
+            "accuracy": 0.8741,
+            "ece": 0.07535708936750884,
+            "mean_confidence": 0.9494570893675088,
+            "signed_gap_confidence_minus_accuracy": 0.07535708936750884
+          }
+        },
+        {
+          "architecture": "symbolic_set_transformer",
+          "exposed": {
+            "accuracy": 0.7757,
+            "ece": 0.11355497108101849,
+            "mean_confidence": 0.8892549710810185,
+            "signed_gap_confidence_minus_accuracy": 0.11355497108101853
+          },
+          "model_seed": 0,
+          "unexposed": {
+            "accuracy": 0.7577,
+            "ece": 0.12448585350215434,
+            "mean_confidence": 0.8821858535021544,
+            "signed_gap_confidence_minus_accuracy": 0.12448585350215435
+          }
+        },
+        {
+          "architecture": "symbolic_set_transformer",
+          "exposed": {
+            "accuracy": 0.7896,
+            "ece": 0.09818264904767277,
+            "mean_confidence": 0.8877826490476728,
+            "signed_gap_confidence_minus_accuracy": 0.09818264904767282
+          },
+          "model_seed": 1,
+          "unexposed": {
+            "accuracy": 0.7804,
+            "ece": 0.10674241676181556,
+            "mean_confidence": 0.8871424167618156,
+            "signed_gap_confidence_minus_accuracy": 0.10674241676181562
+          }
+        },
+        {
+          "architecture": "symbolic_set_transformer",
+          "exposed": {
+            "accuracy": 0.8098,
+            "ece": 0.08994787773042914,
+            "mean_confidence": 0.8995986728563905,
+            "signed_gap_confidence_minus_accuracy": 0.08979867285639054
+          },
+          "model_seed": 2,
+          "unexposed": {
+            "accuracy": 0.7978,
+            "ece": 0.10053805705010892,
+            "mean_confidence": 0.8983380570501089,
+            "signed_gap_confidence_minus_accuracy": 0.10053805705010899
+          }
+        },
+        {
+          "architecture": "symbolic_set_transformer",
+          "exposed": {
+            "accuracy": 0.7732,
+            "ece": 0.11528310822695498,
+            "mean_confidence": 0.8883016092523932,
+            "signed_gap_confidence_minus_accuracy": 0.11510160925239321
+          },
+          "model_seed": 3,
+          "unexposed": {
+            "accuracy": 0.772,
+            "ece": 0.11479677715450523,
+            "mean_confidence": 0.8867967771545052,
+            "signed_gap_confidence_minus_accuracy": 0.1147967771545052
+          }
+        },
+        {
+          "architecture": "symbolic_set_transformer",
+          "exposed": {
+            "accuracy": 0.7418,
+            "ece": 0.13349044112712144,
+            "mean_confidence": 0.8751927546069026,
+            "signed_gap_confidence_minus_accuracy": 0.13339275460690259
+          },
+          "model_seed": 4,
+          "unexposed": {
+            "accuracy": 0.7301,
+            "ece": 0.14154250087290998,
+            "mean_confidence": 0.8716425008729101,
+            "signed_gap_confidence_minus_accuracy": 0.1415425008729101
+          }
+        },
+        {
+          "architecture": "symbolic_hopfield",
+          "exposed": {
+            "accuracy": 0.8905,
+            "ece": 0.04767916616499418,
+            "mean_confidence": 0.9377624766916036,
+            "signed_gap_confidence_minus_accuracy": 0.04726247669160366
+          },
+          "model_seed": 0,
+          "unexposed": {
+            "accuracy": 0.8818,
+            "ece": 0.05464383640587325,
+            "mean_confidence": 0.9357779268175364,
+            "signed_gap_confidence_minus_accuracy": 0.053977926817536326
+          }
+        },
+        {
+          "architecture": "symbolic_hopfield",
+          "exposed": {
+            "accuracy": 0.8996,
+            "ece": 0.04317500979453329,
+            "mean_confidence": 0.9417483751609922,
+            "signed_gap_confidence_minus_accuracy": 0.042148375160992235
+          },
+          "model_seed": 1,
+          "unexposed": {
+            "accuracy": 0.8919,
+            "ece": 0.04779608210921285,
+            "mean_confidence": 0.9393619288027286,
+            "signed_gap_confidence_minus_accuracy": 0.04746192880272859
+          }
+        },
+        {
+          "architecture": "symbolic_hopfield",
+          "exposed": {
+            "accuracy": 0.8877,
+            "ece": 0.04385231636613604,
+            "mean_confidence": 0.9313040190532803,
+            "signed_gap_confidence_minus_accuracy": 0.04360401905328026
+          },
+          "model_seed": 2,
+          "unexposed": {
+            "accuracy": 0.875,
+            "ece": 0.05372755792737009,
+            "mean_confidence": 0.92872755792737,
+            "signed_gap_confidence_minus_accuracy": 0.05372755792737005
+          }
+        },
+        {
+          "architecture": "symbolic_hopfield",
+          "exposed": {
+            "accuracy": 0.8698,
+            "ece": 0.05621537611633542,
+            "mean_confidence": 0.9260100909456611,
+            "signed_gap_confidence_minus_accuracy": 0.056210090945661095
+          },
+          "model_seed": 3,
+          "unexposed": {
+            "accuracy": 0.8688,
+            "ece": 0.05518711861371997,
+            "mean_confidence": 0.9239454597949982,
+            "signed_gap_confidence_minus_accuracy": 0.055145459794998186
+          }
+        },
+        {
+          "architecture": "symbolic_hopfield",
+          "exposed": {
+            "accuracy": 0.8855,
+            "ece": 0.052901698899269094,
+            "mean_confidence": 0.938401698899269,
+            "signed_gap_confidence_minus_accuracy": 0.0529016988992691
+          },
+          "model_seed": 4,
+          "unexposed": {
+            "accuracy": 0.8827,
+            "ece": 0.051859309947490675,
+            "mean_confidence": 0.9345593099474907,
+            "signed_gap_confidence_minus_accuracy": 0.05185930994749066
+          }
+        },
+        {
+          "architecture": "symbolic_perceiver",
+          "exposed": {
+            "accuracy": 0.7463,
+            "ece": 0.16394815582334998,
+            "mean_confidence": 0.91024815582335,
+            "signed_gap_confidence_minus_accuracy": 0.16394815582334998
+          },
+          "model_seed": 0,
+          "unexposed": {
+            "accuracy": 0.731,
+            "ece": 0.17862790532559153,
+            "mean_confidence": 0.9096279053255916,
+            "signed_gap_confidence_minus_accuracy": 0.17862790532559158
+          }
+        },
+        {
+          "architecture": "symbolic_perceiver",
+          "exposed": {
+            "accuracy": 0.7358,
+            "ece": 0.17236726000308994,
+            "mean_confidence": 0.9081672600030899,
+            "signed_gap_confidence_minus_accuracy": 0.17236726000308988
+          },
+          "model_seed": 1,
+          "unexposed": {
+            "accuracy": 0.7246,
+            "ece": 0.18395528681427242,
+            "mean_confidence": 0.9085552868142724,
+            "signed_gap_confidence_minus_accuracy": 0.18395528681427242
+          }
+        },
+        {
+          "architecture": "symbolic_perceiver",
+          "exposed": {
+            "accuracy": 0.7382,
+            "ece": 0.1778051771610976,
+            "mean_confidence": 0.9160051771610975,
+            "signed_gap_confidence_minus_accuracy": 0.17780517716109756
+          },
+          "model_seed": 2,
+          "unexposed": {
+            "accuracy": 0.7305,
+            "ece": 0.18666997346729042,
+            "mean_confidence": 0.9169412105217576,
+            "signed_gap_confidence_minus_accuracy": 0.18644121052175755
+          }
+        },
+        {
+          "architecture": "symbolic_perceiver",
+          "exposed": {
+            "accuracy": 0.7567,
+            "ece": 0.1606403321325779,
+            "mean_confidence": 0.9173403321325779,
+            "signed_gap_confidence_minus_accuracy": 0.1606403321325779
+          },
+          "model_seed": 3,
+          "unexposed": {
+            "accuracy": 0.7399,
+            "ece": 0.173571557071805,
+            "mean_confidence": 0.913471557071805,
+            "signed_gap_confidence_minus_accuracy": 0.17357155707180505
+          }
+        },
+        {
+          "architecture": "symbolic_perceiver",
+          "exposed": {
+            "accuracy": 0.7434,
+            "ece": 0.1696610012158751,
+            "mean_confidence": 0.9129573861017823,
+            "signed_gap_confidence_minus_accuracy": 0.1695573861017824
+          },
+          "model_seed": 4,
+          "unexposed": {
+            "accuracy": 0.7302,
+            "ece": 0.17839539721608164,
+            "mean_confidence": 0.9084938807189464,
+            "signed_gap_confidence_minus_accuracy": 0.17829388071894647
+          }
+        },
+        {
+          "architecture": "symbolic_transformer",
+          "exposed": {
+            "accuracy": 0.8436,
+            "ece": 0.03752026384770874,
+            "mean_confidence": 0.8809050150305032,
+            "signed_gap_confidence_minus_accuracy": 0.03730501503050321
+          },
+          "model_seed": 0,
+          "unexposed": {
+            "accuracy": 0.8382,
+            "ece": 0.04046114436089991,
+            "mean_confidence": 0.8786611443608999,
+            "signed_gap_confidence_minus_accuracy": 0.04046114436089998
+          }
+        },
+        {
+          "architecture": "symbolic_transformer",
+          "exposed": {
+            "accuracy": 0.8508,
+            "ece": 0.025309591357409983,
+            "mean_confidence": 0.87610959135741,
+            "signed_gap_confidence_minus_accuracy": 0.025309591357409955
+          },
+          "model_seed": 1,
+          "unexposed": {
+            "accuracy": 0.842,
+            "ece": 0.027729656220972523,
+            "mean_confidence": 0.8696707519128919,
+            "signed_gap_confidence_minus_accuracy": 0.027670751912891922
+          }
+        },
+        {
+          "architecture": "symbolic_transformer",
+          "exposed": {
+            "accuracy": 0.8017,
+            "ece": 0.053757263800501824,
+            "mean_confidence": 0.8552019538789988,
+            "signed_gap_confidence_minus_accuracy": 0.05350195387899881
+          },
+          "model_seed": 2,
+          "unexposed": {
+            "accuracy": 0.7863,
+            "ece": 0.0640328118652105,
+            "mean_confidence": 0.8503328118652105,
+            "signed_gap_confidence_minus_accuracy": 0.06403281186521048
+          }
+        },
+        {
+          "architecture": "symbolic_transformer",
+          "exposed": {
+            "accuracy": 0.805,
+            "ece": 0.05215585445314644,
+            "mean_confidence": 0.8570660558179021,
+            "signed_gap_confidence_minus_accuracy": 0.052066055817902024
+          },
+          "model_seed": 3,
+          "unexposed": {
+            "accuracy": 0.7983,
+            "ece": 0.05814855526536703,
+            "mean_confidence": 0.8563850923582912,
+            "signed_gap_confidence_minus_accuracy": 0.05808509235829118
+          }
+        },
+        {
+          "architecture": "symbolic_transformer",
+          "exposed": {
+            "accuracy": 0.846,
+            "ece": 0.03498620729893444,
+            "mean_confidence": 0.8809862072989345,
+            "signed_gap_confidence_minus_accuracy": 0.034986207298934535
+          },
+          "model_seed": 4,
+          "unexposed": {
+            "accuracy": 0.8372,
+            "ece": 0.039888562728464624,
+            "mean_confidence": 0.8767286181077361,
+            "signed_gap_confidence_minus_accuracy": 0.039528618107736
+          }
+        }
+      ],
+      "macro_equal_architecture_seed": {
+        "accuracy": {
+          "exposed": 0.7862566666666667,
+          "exposed_minus_unexposed": 0.018320000000000003,
+          "unexposed": 0.7679366666666667
+        },
+        "ece": {
+          "exposed": 0.08623822688122591,
+          "exposed_minus_unexposed": -0.012415872160047275,
+          "unexposed": 0.09865409904127319
+        },
+        "mean_confidence": {
+          "exposed": 0.872364968199134,
+          "exposed_minus_unexposed": 0.005852948779910716,
+          "unexposed": 0.8665120194192233
+        },
+        "signed_gap_confidence_minus_accuracy": {
+          "exposed": 0.08610830153246721,
+          "exposed_minus_unexposed": -0.012467051220089162,
+          "unexposed": 0.09857535275255637
+        }
+      }
+    },
+    "training_calibration": {
+      "available_descriptive_final_epoch": {
+        "mean_train_accuracy": 0.8909533333333334,
+        "mean_train_objective": 0.31587153001042706,
+        "run_count": 60
+      },
+      "reason": "The frozen adapter did not persist training-set probabilities; loss and accuracy cannot identify calibration.",
+      "status": "not_estimable_from_frozen_artifacts"
+    }
+  },
+  "status": "complete"
+}

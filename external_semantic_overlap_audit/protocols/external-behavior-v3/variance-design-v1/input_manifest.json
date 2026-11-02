@@ -1,0 +1,32 @@
+{
+  "design_id": "external-behavior-v3-variance-design-v1",
+  "frozen_at_utc": "2026-10-13T11:30:04.329822+00:00",
+  "implementation_sha256": {
+    "protocols/external-behavior-v3/variance-design-v1/validate.py": "71a09688a2d5dcdc540b02f6829357815f4e5dd14763638ecd4ae0de14168693",
+    "scripts/analyze_external_behavior_v3_variance_design.py": "7a8a50cd63128ca06d25dd4ac0af72ceffb09938da41fb8cb8f5e5b78de1c1e3",
+    "scripts/freeze_external_behavior_v3_variance_design.py": "753b03e5c4f53ba2d08fb3f8feceb7d5eaa50581eab1e99dc6b019bc5669a8fe",
+    "scripts/validate_external_behavior_v3_variance_design.py": "b287172c7bc9b4fd75ea7a5c8d829bb803ba9375ddb03de0893f9c8ac5d0e815",
+    "tests/test_external_behavior_v3_variance_design.py": "944501f88c1a7d00d1018ac70f663841a15380d35122f78882c98465d47d572c",
+    "toolkit/external_behavior_v3/effect_analysis.py": "f96be6ccc5b21a54b041cdc6915034e186cdbf168d6abd71a4435afc5cf5f31f",
+    "toolkit/external_behavior_v3/variance_design.py": "b6adc4193eb0e44abf9c48500606ac5ba05072d18a062c697ec5d1c35002cae2"
+  },
+  "input_sha256": {
+    "analysis/external-behavior-v3/effect-analysis-v1/ANALYSIS_SHA256SUMS": "686feba37e3eaff3c240731b848adb101fcfc2803c7a40f74f59e71b0e0f5902",
+    "analysis/external-behavior-v3/effect-analysis-v1/analysis_validation_report.json": "7598f179f9ed58599693bfeecaf9af19857a137804b8403f8e8041df2360c6fd",
+    "analysis/external-behavior-v3/effect-analysis-v1/bootstrap.npz": "70eafc05e0102c97e2ac54821eb6c8a6c75ff801a908efb88f787ef57dbb4a14",
+    "analysis/external-behavior-v3/effect-analysis-v1/results.json": "5f5914dea2dcd95f3c0f44fddf995c5a43f2225c91e5874e8a2d26c898032dad",
+    "analysis/external-behavior-v3/effect-analysis-v1/seed_pattern_effects.csv": "14b814a1b4ffb190054d8baa2e0098f5fa8444efdd46609b206cdea48ea911b1",
+    "manifests/external-behavior-v3/data/clutrr_v3_eligible_patterns.jsonl": "a519e1c370abc649be1908bc75185e8aa5b8636f57572f8203e3becb61663ced",
+    "manifests/external-behavior-v3/data/clutrr_v3_evaluation.jsonl": "ccd1f632e7f528f0235ae421ce7782a43fcfb3b974d33bd9aee7f1a817265060",
+    "manifests/external-behavior-v3/data/clutrr_v3_pairs.jsonl": "a1f2d8404008e0dc0deb98b7ab97442ddb60e235f7fd676e291a73b5c6aaf8b7",
+    "manifests/external-behavior-v3/design_validation_report.json": "3e4e8dba972d02492f6591f9b9dc34ee9c5a12a6340d0110ba8d55020e440aa8",
+    "manifests/external-behavior-v3/execution-v1/evaluation_manifest.npz": "1b8ad61c6e667cb6d65602b272751bc58b565407ff0b2e51841b6870e26f446a",
+    "manifests/external-behavior-v3/execution-v1/run_artifact_manifest.json": "f354833a0bb0042a609e99d6d9b1efff6ad1bf61821665d3b158e53e4332654d",
+    "protocols/external-behavior-v3/effect-analysis-v1/SHA256SUMS": "8eaeeef592652cbe67294d20365973ff0eafa500db11bcba43766e33dddd8033",
+    "protocols/external-behavior-v3/effect-analysis-v1/input_manifest.json": "46783933d6f436979db2e166be5c9209b2053dd463a71266b1b83add6a339284",
+    "protocols/external-behavior-v3/effect-analysis-v1/preregistration.json": "2097a5015315ce70d213978033a7b939cd18b1fcce8b383687a1b70b178a08d5",
+    "protocols/external-behavior-v3/effect-analysis-v1/validation_report.json": "09b574904f7b7c32579b59d90d16c5ec55056fc01450c28b1c9317ea7086f90d"
+  },
+  "schema_version": "external-behavior-v3-variance-input-manifest-v1",
+  "status": "frozen_before_variance_decomposition"
+}

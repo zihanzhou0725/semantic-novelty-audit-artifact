@@ -1,0 +1,89 @@
+{
+  "analysis": {
+    "bootstrap_replicates": 20000,
+    "bootstrap_seed": 202610132,
+    "confidence": 0.95,
+    "decision_rule": "point_estimate_pp >= 1.0 and two_sided_95_percent_ci_lower_pp > 0",
+    "effect_unit": "model_seed_by_target_pattern",
+    "orientation": "exposed_minus_unexposed",
+    "pair_draws_per_replicate": 40,
+    "seed_draws_per_replicate": 8,
+    "source_group_draws_per_pattern": 34
+  },
+  "arms": [
+    "A",
+    "B"
+  ],
+  "block_design": {
+    "block_count": 2,
+    "evaluation_rows_per_block_run": 8000,
+    "exposure_rows_per_arm": 1280,
+    "pairs_per_block": 20,
+    "runs_per_block": 16,
+    "target_patterns_per_block": 40,
+    "total_runs": 32,
+    "training_rows_per_run": 24000
+  },
+  "common_base": {
+    "rows_per_run": 22720,
+    "same_rows_across_all_blocks_and_arms": true,
+    "semantic_exclusions": "all V3 target semantic IDs and all selected V4 target semantic IDs"
+  },
+  "design_gate": {
+    "candidate_block_counts": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "capacity_gate_pass": true,
+    "decision": "directional_v4_design_go",
+    "design_effect_pp": 7.66875,
+    "minimum_power": 0.9,
+    "minimum_wilson_lower": 0.9,
+    "selected_block_count": 2,
+    "selected_pair_count": 40,
+    "selected_run_count": 32,
+    "training_released": false
+  },
+  "design_id": "external-behavior-v4-directional-design-v1",
+  "evaluation_allocation": {
+    "rows_per_pattern": 200,
+    "source_group_rule": "same deterministic rule as V3",
+    "source_groups_per_pattern": 34
+  },
+  "exposure_allocation": {
+    "rows_per_pattern": 64,
+    "source_group_rule": "same deterministic rule as V3",
+    "source_groups_per_pattern": 11
+  },
+  "frozen_at_utc": "2026-10-13T11:38:57.186931+00:00",
+  "model_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "paired_randomness": {
+    "arm_assignment_namespace": "clutrr:v4:arm:{block_index}:{model_seed}:{block_pair_index}",
+    "epoch_order_namespace": "clutrr:epoch:{model_seed}:{epoch_1_based}",
+    "model_initialization_namespace": "clutrr:model:{model_seed}",
+    "shared_across_blocks": true
+  },
+  "power_results_sha256": "0e8c916b6868218e987341cd45d0b60deafdf781de7b5719d184e475c495d8e4",
+  "schema_version": "external-behavior-v4-directional-design-manifest-v1",
+  "selected_pair_count": 40,
+  "selected_pair_manifest_sha256": "2c2719db55993d38aeeb2723448a7b8ec375fbfb27ea8499e09c6b964d2f1335",
+  "selected_pattern_count": 80,
+  "status": "design_go_pending_materialization_gate",
+  "target_independence": {
+    "selected_v4_semantic_ids_sha256": "c028d0c7c73c9389bd8fc2569d5ca76a0b89b76017962064d0ae953a58bdd491",
+    "v3_semantic_overlap_count": 0,
+    "v3_target_semantic_ids_excluded": true
+  },
+  "training_released": false
+}

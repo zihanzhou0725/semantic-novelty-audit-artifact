@@ -1,0 +1,731 @@
+{
+  "amendment_policy": {
+    "new_version_required_for": [
+      "estimand",
+      "threshold",
+      "target_set",
+      "model_set",
+      "source_selection",
+      "common_support_rule",
+      "submission_gate"
+    ],
+    "substantive_change_deadline": "before the affected result is inspected",
+    "typographical_change_rule": "Record old and new hashes; do not change execution or interpretation."
+  },
+  "claim_boundary": {
+    "allowed_if_gate_passes": [
+      "Parameter or string disjointness can fail to ensure semantic novelty.",
+      "Exact exposure changes or does not materially change the registered P1 macro endpoint within the reported bounds.",
+      "Witnessed SLR overlap has a registered adjusted association for a named reproducible prediction source.",
+      "A protocol defect or behavioral result replicates only in the exact public benchmarks passing P3."
+    ],
+    "forbidden_without_additional_evidence": [
+      "Semantic overlap necessarily improves accuracy.",
+      "The historical internal 2.31 pp contrast is caused only by aliases.",
+      "The pinned SLR repository output represents the published main-table model.",
+      "All architectures, tasks, checkpoints, or budgets rely on memorization.",
+      "SLR rows without a registered witness are semantically novel.",
+      "A failed or inconclusive Gate proves exact equivalence.",
+      "The paper is workshop-ready or main-track-ready when the full registered Gate is not met."
+    ],
+    "mandatory_terms": {
+      "adjusted_association": "An observational correctness contrast after the frozen P2 adjustment.",
+      "behavioral_effect": "A randomized exposure intervention changes a registered endpoint.",
+      "memorization_mechanism": "An internal computational mechanism not identified by overlap or endpoint changes alone.",
+      "protocol_overlap": "An evaluation semantic object occurs in training."
+    }
+  },
+  "execution_state_at_freeze": {
+    "p1_complementary_training_started": false,
+    "p1_manifests_materialized": false,
+    "p2_registered_model_fit_run": false,
+    "p3_candidate_result_inspection_started": false
+  },
+  "freeze_date": "2026-10-09",
+  "global_rules": {
+    "accuracy_unit": "percentage_points",
+    "confirmatory_interval": {
+      "confidence": 0.95,
+      "sidedness": "two_sided"
+    },
+    "equivalence_margin_pp": [
+      -0.5,
+      0.5
+    ],
+    "inconclusive_gap_rule": "Effects not satisfying a positive, negative, or null Gate remain inconclusive.",
+    "primary_endpoints": [
+      "p1.architecture_macro_exact_exposure_effect",
+      "p2.adjusted_marginal_overlap_association"
+    ],
+    "report_all_registered_results": true,
+    "secondary_cannot_replace_primary": true,
+    "sesoi_pp": 1.0
+  },
+  "p1": {
+    "analysis": {
+      "architecture_macro_weighting": "equal_fixed_weights",
+      "bootstrap": {
+        "architecture_resampling": false,
+        "function_pair_clusters": 20,
+        "model_seed_clusters": 5,
+        "replicates": 20000,
+        "resample_evaluation_episodes_within_function": true,
+        "seed": 20261009,
+        "type": "hierarchical_percentile"
+      },
+      "estimand_formula": "tau_m = 100/(5*40) * sum_seed sum_function (accuracy_exposed - accuracy_unexposed); tau_macro = mean_over_6_architectures(tau_m)",
+      "model_specific_interval": {
+        "confidence": 0.9916666666666667,
+        "family_size": 6,
+        "method": "Bonferroni_simultaneous_percentile"
+      },
+      "primary_interval_confidence": 0.95,
+      "primary_name": "architecture_macro_exact_exposure_effect",
+      "unit_of_analysis": "target_function within model_seed and architecture"
+    },
+    "design_gate": {
+      "failure_action": "design_no_go_do_not_train",
+      "required_invariants": [
+        "identity_count_is_560",
+        "function_count_is_518",
+        "target_count_is_40",
+        "target_signature_counts_are_38_and_2",
+        "all_targets_have_affine_eval_and_parity_train_aliases",
+        "pair_count_is_20_by_common_intercept",
+        "base_pool_has_478_functions_and_zero_target_semantics",
+        "arms_have_equal_counts_family_composition_and_target_dose",
+        "base_slots_and_eval_tensors_are_paired",
+        "all_manifest_hashes_validate"
+      ]
+    },
+    "evaluation": {
+      "common_across_all_arms_models_seeds": true,
+      "episode_generation": {
+        "corrupted_label": "(clean_label + offset) mod 20",
+        "corruption_offset_if_used": "uniform_integer_1_through_19",
+        "episode_seed_namespace": "p1-eval:{function_id}:{episode_index}",
+        "full_tensors_materialized_and_hashed": true,
+        "query_draw": "uniform_from_12_out_of_support_digits",
+        "support_draw": "8_distinct_digits"
+      },
+      "episodes_per_function": 250,
+      "identity_family": "affine",
+      "n_points_total": 10000,
+      "query_out_of_support_probability": 1.0,
+      "same_tensors_between_arms": true,
+      "support_noise": 0.1,
+      "support_size": 8,
+      "target_functions": 40,
+      "weighting_order": [
+        "function_equal",
+        "model_seed_equal",
+        "architecture_equal"
+      ]
+    },
+    "function_census": {
+      "alias_signature_counts": {
+        "affine+block+parity": 2,
+        "affine+parity": 38
+      },
+      "all_targets_have_parity_alias": true,
+      "canonical_family": "affine",
+      "identity_count": 560,
+      "pair_rule": "pair affine maps f_(1,b) and f_(11,b) for each b in 0..19",
+      "target_affine_intercepts": {
+        "max": 19,
+        "min": 0
+      },
+      "target_affine_multipliers": [
+        1,
+        11
+      ],
+      "target_count": 40,
+      "unique_function_count": 518
+    },
+    "gates": {
+      "evaluation_order": [
+        "positive_behavioral_go",
+        "negative_behavioral_go",
+        "null_equivalence_go",
+        "inconclusive_no_go"
+      ],
+      "inconclusive_no_go": "Every result not passing the positive, negative, or null-equivalence rule.",
+      "model_specific_claim": {
+        "absolute_point_estimate_at_least_pp": 1.0,
+        "simultaneous_interval_excludes_zero_in_same_direction": true
+      },
+      "negative_behavioral_go": {
+        "architecture_point_estimates_negative_at_least": 4,
+        "macro_ci_upper_below_pp": 0.0,
+        "macro_point_estimate_at_most_pp": -1.0
+      },
+      "null_equivalence_go": {
+        "all_model_absolute_point_estimates_below_pp": 1.0,
+        "macro_ci_contained_in_pp": [
+          -0.5,
+          0.5
+        ],
+        "no_simultaneous_model_interval_excludes_zero": true
+      },
+      "positive_behavioral_go": {
+        "architecture_point_estimates_positive_at_least": 4,
+        "macro_ci_lower_above_pp": 0.0,
+        "macro_point_estimate_at_least_pp": 1.0
+      }
+    },
+    "models": {
+      "architectures": [
+        "symbolic_deepsets",
+        "symbolic_relation_network",
+        "symbolic_set_transformer",
+        "symbolic_hopfield",
+        "symbolic_perceiver",
+        "symbolic_transformer"
+      ],
+      "count": 6,
+      "model_seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "run_count": 60
+    },
+    "optimization": {
+      "batch_size": 256,
+      "checkpoint_selection": "fixed_final_epoch_60",
+      "dropout": 0.05,
+      "epochs": 60,
+      "ff_dim": 128,
+      "gradient_clip_norm": 1.0,
+      "heads": 4,
+      "layers": 2,
+      "learning_rate": 0.001,
+      "model_dim": 64,
+      "optimizer": "AdamW",
+      "optimizer_updates": 4740,
+      "validation_selection": false,
+      "weight_decay": 0.0001
+    },
+    "registered_secondary_endpoints": [
+      "cross_entropy",
+      "brier_score",
+      "per_function_effect",
+      "effect_by_frozen_alias_signature",
+      "calibration_summary"
+    ],
+    "scope": "Controlled exact semantic exposure intervention in the internal N=20 episodic rule-inference generator.",
+    "stream": {
+      "arm_assignment": {
+        "bit": "int.from_bytes(SHA256(payload_ascii).digest()[0:8],'big') & 1",
+        "bit_0": "arm_A=f_(1,b),arm_B=f_(11,b)",
+        "bit_1": "arm_A=f_(11,b),arm_B=f_(1,b)",
+        "payload": "quality-enhancement-v1:20261009:p1-arm:{model_seed}:{intercept}"
+      },
+      "arms": [
+        "A",
+        "B"
+      ],
+      "base_extra_episode_functions": 80,
+      "base_function_count": 478,
+      "base_repetitions_per_function": 40,
+      "common_base_slots_identical": true,
+      "epoch_order": {
+        "dataloader_shuffle": false,
+        "epochs": 60,
+        "namespace": "p1-epoch:{model_seed}:{epoch_1_based}",
+        "permutation_rng": "numpy.random.Generator(PCG64(derive(namespace)))",
+        "same_between_arms": true
+      },
+      "episode_generation": {
+        "corrupted_label": "(clean_label + offset) mod 20",
+        "corruption_offset_if_used": "uniform_integer_1_through_19",
+        "full_tensors_materialized_and_reconstructed_by_validator": true,
+        "namespace": "p1-episode:{model_seed}:{paired_slot_index}",
+        "query_draw": "uniform_from_12_out_of_support_digits",
+        "support_draw": "8_distinct_digits"
+      },
+      "episodes_per_arm": 20000,
+      "exposed_target_count_per_arm": 20,
+      "extra_base_selection": {
+        "count": 80,
+        "input_order": "ascending_numeric_function_id",
+        "namespace": "p1-extra:{model_seed}",
+        "rule": "first_80_after_numpy_PCG64_permutation"
+      },
+      "master_seed": 20261009,
+      "paired_episode_randomness": [
+        "support_digits",
+        "query_digit",
+        "corruption_indicator",
+        "corruption_offset",
+        "minibatch_order",
+        "initialization",
+        "optimizer_schedule"
+      ],
+      "seed_derivation": "int.from_bytes(SHA256(('quality-enhancement-v1:20261009:' + namespace).encode('ascii')).digest()[0:8], 'big') & ((1<<63)-1)",
+      "slot_order": {
+        "input_multiset": "base_functions_x40_plus_first80_extra_plus_20_pair_ids_x40",
+        "namespace": "p1-slots:{model_seed}",
+        "permutation_rng": "numpy.random.Generator(PCG64(derive(namespace)))"
+      },
+      "target_identity_family": "parity",
+      "target_repetitions_per_exposed_function": 40,
+      "training_function_count_per_arm": 498
+    },
+    "task": {
+      "families": [
+        "affine",
+        "block",
+        "parity"
+      ],
+      "num_symbols": 20,
+      "query_out_of_support_probability": 1.0,
+      "support_noise": 0.1,
+      "support_size": 8
+    }
+  },
+  "p2": {
+    "analysis": {
+      "bootstrap": {
+        "attempt_cap": 20000,
+        "cluster_for_no_witness": "test_item_id",
+        "cluster_for_witnessed_overlap": "canonical_semantic_id",
+        "failed_fit_rule": "log_every_failure; analysis_no_go_if_fewer_than_10000_successful_replicates_by_attempt_cap",
+        "refit_all_models_each_replicate": true,
+        "replicates": 10000,
+        "resampling_strata": [
+          "witnessed_overlap",
+          "curriculum_id"
+        ],
+        "seed": 20261009,
+        "type": "percentile_cluster"
+      },
+      "covariates": [
+        "curriculum_id",
+        "generator_or_sampling_source",
+        "rule_token_length",
+        "atom_count",
+        "logical_structure_class"
+      ],
+      "covariate_construction": {
+        "atom_count": "number of identifier tokens immediately followed by '(' in the body after ':-', including built-ins and nested calls",
+        "curriculum_id": "integer value from test Parquet column 'curriculum level'",
+        "failure_rule": "Any tokenization failure, missing body, or missing covariate is Identification No-Go; no imputation or category merging.",
+        "generator_or_sampling_source": "exact string from test Parquet column 'rule sampling'",
+        "logical_structure_class": {
+          "first_match_order": [
+            "aggregate_or_quantified",
+            "negated",
+            "disjunctive",
+            "arithmetic_or_comparison",
+            "flat_positive",
+            "other_complex"
+          ],
+          "rules": {
+            "aggregate_or_quantified": "contains callable token findall, bagof, setof, or forall",
+            "arithmetic_or_comparison": "contains token is, >, <, >=, =<, =:=, or =\\=",
+            "disjunctive": "contains token ';'",
+            "flat_positive": "pinned audit_slr.parse_flat_rule succeeds",
+            "negated": "contains token sequence '\\+' or callable token not",
+            "other_complex": "none of the earlier classes"
+          }
+        },
+        "rule_token_length": "len(pinned audit_slr.token_key(ground-truth rule)), including head and punctuation",
+        "source": "pinned SLR test Parquet and pinned audit_slr.py tokenizer"
+      },
+      "covariate_test_census": {
+        "atom_count_range": [
+          2,
+          18
+        ],
+        "logical_structure_counts": {
+          "aggregate_or_quantified": 152,
+          "arithmetic_or_comparison": 10,
+          "disjunctive": 77,
+          "flat_positive": 702,
+          "negated": 19,
+          "other_complex": 40
+        },
+        "rows": 1000,
+        "token_length_range": [
+          20,
+          146
+        ]
+      },
+      "outcome": "binary_exact_execution_correctness",
+      "outcome_model": {
+        "categorical_fixed_effects": [
+          "curriculum_id",
+          "generator_or_sampling_source",
+          "logical_structure_class"
+        ],
+        "continuous_terms": [
+          "restricted_cubic_spline(rule_token_length)",
+          "restricted_cubic_spline(atom_count)"
+        ],
+        "categorical_reference_order": "ascending_lexicographic",
+        "family": "statsmodels_GLM_Binomial_logit_unregularized_with_intercept",
+        "fit": {
+          "algorithm": "IRLS",
+          "fallback_fit_allowed": false,
+          "max_iterations": 100,
+          "tolerance": 1e-08
+        },
+        "nonconvergence_or_singular_or_separated_or_nonfinite_rule": "identification_no_go",
+        "spline_implementation": "patsy.cr(x,knots=(q25,q50,q75),lower_bound=min,upper_bound=max)",
+        "spline_quantile_knots": [
+          0.25,
+          0.5,
+          0.75
+        ]
+      },
+      "primary_estimand": "100 * mean_i[p_hat(Y=1|W=1,X_i)-p_hat(Y=1|W=0,X_i)] on the frozen common-support population",
+      "primary_name": "adjusted_marginal_overlap_association"
+    },
+    "common_support": {
+      "categorical_coefficients_must_be_estimable": true,
+      "exact_curriculum_precheck": {
+        "levels_with_both_groups": [
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "no_witness_retained": 498,
+        "no_witness_total": 548,
+        "unsupported_levels": {
+          "1": "witness_only",
+          "3": "witness_only",
+          "15": "no_witness_only"
+        },
+        "witnessed_retained": 352,
+        "witnessed_total": 452
+      },
+      "missing_covariates_allowed": false,
+      "minimum_group_rows_after_trim": 100,
+      "minimum_retained_fraction_per_group": 0.8,
+      "propensity_bounds_inclusive": [
+        0.05,
+        0.95
+      ],
+      "propensity_model_terms_equal_outcome_covariate_terms": true
+    },
+    "exposure": {
+      "additional_sound_flat_alias_rows": 382,
+      "cluster_semantic_id": {
+        "canonical_json": "json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=True).encode('ascii')",
+        "flat_alias": "SHA256 of final profile_key with duplicate collapse and subsumption enabled",
+        "no_witness": "test_item_id",
+        "token_identity": "SHA256 of complete token_key"
+      },
+      "comparator_label": "no_registered_witness",
+      "comparator_rows": 548,
+      "flat_and_token_witness_intersection_rows": 0,
+      "test_rows": 1000,
+      "token_identical_rows": 70,
+      "witnessed_overlap_rows": 452
+    },
+    "gates": {
+      "identification_no_go": "Any reproducibility or common-support precondition fails.",
+      "inconclusive_no_go": "The estimate passes identification but no positive, negative, or null-association rule.",
+      "negative_association_go": {
+        "ci_upper_below_pp": 0.0,
+        "point_estimate_at_most_pp": -1.0
+      },
+      "null_association_go": {
+        "ci_contained_in_pp": [
+          -0.5,
+          0.5
+        ]
+      },
+      "positive_association_go": {
+        "ci_lower_above_pp": 0.0,
+        "point_estimate_at_least_pp": 1.0
+      }
+    },
+    "known_status_at_freeze": {
+      "common_support_precheck_passes_80_percent_each_group": false,
+      "identification_decision": "no_go_before_outcome_fit",
+      "published_main_table_reproduced_by_pinned_output": false,
+      "registered_fit_run": false,
+      "structural_overlap_lower_bound_known": true
+    },
+    "reproducibility_precondition": {
+      "all_test_ids_exactly_once": true,
+      "artifact_regeneration_required": true,
+      "checkpoint_and_config_cryptographically_pinned": true,
+      "correctness_or_overlap_based_row_filtering_forbidden": true,
+      "current_pinned_repository_output_eligible_for_paper_model_claim": false,
+      "gold_and_rule_match_rate_required": 1.0,
+      "regenerated_correct_counts_rule": "exact_match_unless_nondeterministic_tolerance_was_frozen_before_rerun",
+      "test_row_count": 1000
+    },
+    "source_selection": {
+      "additional_sources": "exploratory_only; list every passing and failing source",
+      "confirmatory_model": "Llama-3.1-8B-IT-SLR",
+      "confirmatory_result": "ACL 2026 final paper Table 2",
+      "different_model_substitution_allowed": false,
+      "source_manifest_freeze_deadline": "before joining predictions to overlap labels or correctness"
+    },
+    "registered_secondary_endpoints": [
+      "token_identity_association",
+      "non_token_semantic_alias_association"
+    ],
+    "scope": "Registered observational analysis for a fully reproducible named SLR prediction source; not a causal intervention."
+  },
+  "p3": {
+    "candidate_count": {
+      "max": 5,
+      "min": 2
+    },
+    "candidate_manifest_must_precede_semantic_extraction": true,
+    "candidate_manifest_required_fields": [
+      "search_date",
+      "search_strings",
+      "paper_revision",
+      "dataset_revision",
+      "code_revision",
+      "checkpoint_revision_if_any",
+      "audited_claim",
+      "generator_and_split_definition",
+      "semantic_signature_or_witness",
+      "behavioral_artifact_availability",
+      "result_independent_inclusion_or_exclusion_reason"
+    ],
+    "discovery": {
+      "deduplication_keys_in_order": [
+        "doi",
+        "arxiv_id",
+        "normalized_title"
+      ],
+      "freeze_before": "candidate_dataset_download_or_semantic_inspection",
+      "include_rule": "screen ascending normalized title; include first five eligible, or all if fewer",
+      "queries": [
+        "\"rule inference\" benchmark unseen",
+        "\"in-context learning\" Boolean functions",
+        "\"symbolic reasoning\" benchmark held-out rules",
+        "\"compositional generalization\" unseen functions benchmark"
+      ],
+      "raw_result_order_and_metadata_frozen": true,
+      "results_per_query_per_source": 100,
+      "sources": [
+        "Semantic Scholar",
+        "arXiv"
+      ]
+    },
+    "eligibility": [
+      "paper_and_evaluation_data_are_public",
+      "claim_is_semantic_not_only_lexical",
+      "training_and_evaluation_generator_is_inspectable",
+      "sound_signature_or_executable_witness_is_available"
+    ],
+    "historical_cases_excluded": [
+      "AIML-TUDA/SLR-Bench",
+      "satwik77/incontext-bool",
+      "internal_N20_affine_block_parity_generator",
+      "variants_repackaging_the_same_generator_or_split"
+    ],
+    "gates": {
+      "breadth_go": {
+        "behavioral_evidence_benchmark_count_at_least": 1,
+        "complete_public_semantic_audits_at_least": 2,
+        "explicit_unresolved_denominator_required": true,
+        "result_dependent_candidate_exclusion_allowed": false,
+        "sound_numerator_required": true
+      },
+      "no_go": "Any Breadth Go condition fails; retain bounded case-study wording."
+    },
+    "result_dependent_selection_forbidden": true,
+    "scope": "Prospective external replication of protocol defects and, where identified, behavioral evidence."
+  },
+  "p4": {
+    "common_schema_required_fields": [
+      "source_revisions_and_hashes",
+      "train_and_evaluation_identity_records",
+      "semantic_ids",
+      "equivalence_witness_type",
+      "completeness_status",
+      "overlap_counts_and_denominators",
+      "behavioral_estimand_metadata_if_present",
+      "claim_gate_and_allowed_wording"
+    ],
+    "completeness_status_values": [
+      "exact",
+      "sound_lower_bound",
+      "unresolved"
+    ],
+    "gates": {
+      "tool_contribution_go": {
+        "clean_environment_reproduction": true,
+        "deterministic_manifest_hashes": true,
+        "distinct_public_benchmark_adapters_at_least": 2,
+        "schema_validation": true,
+        "unit_canaries": [
+          "exact_function",
+          "sound_alias",
+          "unresolved"
+        ]
+      },
+      "tool_contribution_no_go": "A CLI wrapper without the common validated schema and two materially distinct public adapters."
+    },
+    "scope": "Portable audit method and artifact, not a wrapper-only contribution."
+  },
+  "p5": {
+    "candidate_topics": [
+      "non_injective_representation_does_not_imply_function_disjointness",
+      "finite_support_exposure_probability",
+      "protocol_contamination_vs_behavioral_exploitation"
+    ],
+    "gates": {
+      "theory_contribution_go": {
+        "complete_proof": true,
+        "explicit_assumptions": true,
+        "falsifiable_rule_bound_or_estimator": true,
+        "instantiated_benchmarks_at_least": 2,
+        "must_change_empirical_design_or_interpretation": true
+      },
+      "theory_contribution_no_go": "Definitions or restatements without a new empirical consequence."
+    },
+    "optional_for_submission": true
+  },
+  "prior_known_evidence": {
+    "boolean_behavioral": {
+      "expansion_forbidden": true,
+      "status": "historical_no_go"
+    },
+    "internal_legacy_minus_strict": {
+      "confounded_dimensions": [
+        "split_unit",
+        "function_prior",
+        "stratification"
+      ],
+      "effect_pp": 2.314185698827108,
+      "may_count_as_new_confirmatory_p1_evidence": false
+    },
+    "slr": {
+      "current_repository_output_reproduces_published_main_table": false,
+      "semantic_overlap_lower_bound_rate": 0.452,
+      "semantic_overlap_lower_bound_rows": 452,
+      "test_rows": 1000
+    }
+  },
+  "registration_status": {
+    "p1": "prospective_before_manifests_and_training",
+    "p2": "registered_analysis_plan_with_structural_results_and_artifact_mismatch_known",
+    "p3": "prospective_before_candidate_result_inspection",
+    "p4": "prospective_contribution_gate",
+    "p5": "prospective_contribution_gate"
+  },
+  "schema_version": "quality-enhancement-v1",
+  "source_pins": [
+    {
+      "path": "semantic_novelty_audit_supplement/src/kfwa_experiments/kfwa/datasets.py",
+      "sha256": "284f35e9d536525b791ca429590974b90dfdb1833e1ef586649dc7bceafcfc77"
+    },
+    {
+      "path": "semantic_novelty_audit_supplement/src/kfwa_experiments/scripts/run_public_baseline_split_audit.py",
+      "sha256": "7ae5f43d806b943c6be44a718c5f5e0bb80b7549beb8c0d2690ac84c10b4cc78"
+    },
+    {
+      "path": "semantic_novelty_audit_supplement/results/public_baseline_audit/analysis/claim_gates.json",
+      "sha256": "9a9f81cd0c80b5376ee070588b0fafc168c5a0d2dd14f562ef65b02d3dcae98b"
+    },
+    {
+      "path": "external_semantic_overlap_audit/artifacts/slr_overlap_results.json",
+      "sha256": "aed8a990a91682042ff961f3854877e9880004fe7c2b43323f63e676ab86c0ee"
+    },
+    {
+      "path": "external_semantic_overlap_audit/scripts/audit_slr.py",
+      "sha256": "76996ba37ab6804cf70a52028d4a9477ce03155aa64a2e6e94bf9e24e421e678"
+    },
+    {
+      "path": "external_semantic_overlap_audit/upstream/slr_dataset/v1-All/test-00000-of-00001.parquet",
+      "sha256": "8f19a68e9d84edb9ca3015804e342aa4a0f43c85d13f9b88694adbe2d79f9548"
+    },
+    {
+      "path": "external_semantic_overlap_audit/artifacts/slr_semantic_overlap_witnesses.csv",
+      "sha256": "1beea083e16ab8c95c89c07bf6129ed176c7bb20a2cf69648f2d3fcdffd77023"
+    },
+    {
+      "path": "external_semantic_overlap_audit/artifacts/slr_token_overlap_witnesses.csv",
+      "sha256": "3788be44cc656d871d2641f59b119ea2acb2ac466d4c386923990273f0f31ff7"
+    },
+    {
+      "path": "external_semantic_overlap_audit/artifacts/slr_official_output_per_item.csv",
+      "sha256": "f8ca71ba20e932eccfbfd59fb17f8a2e8e3b3c619dcbc257698d6458d7e4aacc"
+    },
+    {
+      "path": "external_semantic_overlap_audit/artifacts/slr_official_output_stratification.json",
+      "sha256": "9254bc23b8945e2c50c84c25d41d0110f1128d0f1db5b1dd0071d0525a454d54"
+    },
+    {
+      "path": "external_semantic_overlap_audit/protocols/boolean-behavioral-v1/preregistration.json",
+      "sha256": "f868f920c7e73b8bc281b07004e91b5cebe6c19d7b67f11b5fb55bec3d966f56"
+    },
+    {
+      "path": "external_semantic_overlap_audit/analysis/boolean-behavioral-v1/results.json",
+      "sha256": "27af9105224371a3c51bb4755b453d8f153092cdb5ff72d49024406ae0b6b802"
+    },
+    {
+      "path": "semantic_novelty_audit_paper/claim_evidence_matrix.md",
+      "sha256": "20ce7ac14bd75b523c915c7cdfb092fd006813a4b63307b12ab8d69d85ab3059"
+    },
+    {
+      "path": "semantic_novelty_audit_paper/technical_review.md",
+      "sha256": "2de35110c0e8d22a7f27f0edbed37a7655b05b66143c0ef55acb9ba05a1ab4b4"
+    }
+  ],
+  "status": "frozen_before_new_confirmatory_execution",
+  "stopping_and_order": {
+    "efficacy_stopping_allowed": false,
+    "execution_order": [
+      "validate_p0",
+      "implement_p1_materializer_and_nontraining_canaries",
+      "freeze_p1_manifests",
+      "validate_p1_design_gate",
+      "run_all_60_p1_training_runs",
+      "evaluate_p2_reproducibility_before_registered_fit",
+      "freeze_p3_candidate_manifest_before_semantic_extraction",
+      "evaluate_p4_and_p5_gates"
+    ],
+    "infrastructure_retry_rule": "Retry only from the same initialization and manifest; log every retry.",
+    "missing_run_replacement_seeds_allowed": false
+  },
+  "submission_gates": {
+    "ccf_a_main_track_go": {
+      "credible_behavioral_result_required": true,
+      "p3_breadth_go_required": true,
+      "p4_tool_contribution_go_required": true,
+      "public_benchmarks_at_least": 2,
+      "requires_workshop_ready_go": true,
+      "theory_claim_requires_p5_go": true
+    },
+    "workshop_ready_go": {
+      "all_attempted_results_reported": true,
+      "claim_vocabulary_compliance": true,
+      "evidence_condition": "p1_decisive_go OR (p2_identification_go AND p3_breadth_go)",
+      "p0_validation_required": true,
+      "p1_decisive_values": [
+        "positive_behavioral_go",
+        "negative_behavioral_go",
+        "null_equivalence_go"
+      ],
+      "p4_current_claim_reproduction_required": true
+    }
+  }
+}

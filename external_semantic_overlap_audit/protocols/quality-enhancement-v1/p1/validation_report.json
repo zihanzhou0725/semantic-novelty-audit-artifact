@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "complementary_target_exposure": "passed",
+    "epoch_order_reconstruction": "passed",
+    "equal_arm_dose_and_family": "passed",
+    "eval_affine_identity": "passed",
+    "eval_stream_reconstruction": "passed",
+    "frozen_checksums": "passed",
+    "identity_function_target_census": "passed",
+    "paired_base_identity": "passed",
+    "parent_p0_validation": "passed",
+    "pre_freeze_canaries": "passed",
+    "run_matrix_60": "passed",
+    "source_checksums": "passed",
+    "target_base_partition": "passed",
+    "target_pairing": "passed",
+    "train_stream_reconstruction": "passed"
+  },
+  "design_gate": "passed",
+  "files_checked": 16,
+  "p1_checksum_manifest_sha256": "a9379941b424365c8009461cb0c17cad474495e63e20ea3095f3addd4987312d",
+  "schema_version": "quality-enhancement-p1-v1",
+  "status": "passed",
+  "training_may_start": true
+}

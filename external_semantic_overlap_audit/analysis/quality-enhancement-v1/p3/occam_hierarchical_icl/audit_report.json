@@ -1,0 +1,254 @@
+{
+  "audit_date": "2026-10-09",
+  "behavioral_reproducibility": {
+    "artifact_census": {
+      "checkpoint": false,
+      "environment_or_requirements": false,
+      "machine_readable_results": false,
+      "per_item_predictions": false,
+      "run_configuration": false,
+      "training_log": false
+    },
+    "checkpoint_revision": null,
+    "decision": "no_go_missing_checkpoints_predictions_logs_run_configs_and_executable_evaluation",
+    "evaluation_entrypoint_structural_failures": {
+      "markov_classes_imported_from_wrong_module": true,
+      "missing_linear_probe_module": true,
+      "missing_train_gpt_exports": true,
+      "missing_train_module": true
+    },
+    "paper_results_status": "aggregate_plots_reported_not_recomputed_or_per_item_verified"
+  },
+  "candidate_id": "7b9ebd45a3528701",
+  "claim_gate": {
+    "audit_completeness": "incomplete_frozen_scope_linear_regression_generator_absent",
+    "candidate_contribution_to_p3": {
+      "complete_public_semantic_audit": false,
+      "credible_behavioral_evidence": false
+    },
+    "decision": "protocol_defect_detected_candidate_ineligible_for_p3_breadth",
+    "eligibility_at_audit": false,
+    "eligibility_failure": "training_and_evaluation_generator_is_inspectable failed for the required linear-regression scope",
+    "markov_unseen_task_claim": "failed_with_sound_10_to_20_percent_exact_collision_bound_per_main_experiment"
+  },
+  "claim_under_audit": "Transformers identify and infer held-out tasks across hierarchical process-complexity classes rather than relying only on surface sequence identity.",
+  "code_revision": "3b8fe0d69dd9bb56c39d933525bf0234feefcc39",
+  "input_sha256": {
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/p3/candidate_manifest.json": "68608a23800c0a36575948df9ab568e2951e38c5169a4cd0a67dff40e2eae422",
+    "external_semantic_overlap_audit/scripts/audit_occam_hierarchical_icl.py": "0331ce4bf500bf11a6d770652e24081b47bd2d81ed556e76291231dfe7cc4aad",
+    "external_semantic_overlap_audit/upstream/p3_icl_bayes_occam/README.md": "c679032f07d530e50e7a3f2d3f7f5a5f006ebf3f628f4eeee739ec8a4b2424aa",
+    "external_semantic_overlap_audit/upstream/p3_icl_bayes_occam/eval.py": "b26578026f2a6a4b4c83a287bd1c9ccd7c566f0ae82fe90a9959e1eb6613fc5b",
+    "external_semantic_overlap_audit/upstream/p3_icl_bayes_occam/main.py": "29d50092257ad4d9ed2560851920602b56897d16e085e49b80cf3d0ee30b3ee3",
+    "external_semantic_overlap_audit/upstream/p3_icl_bayes_occam/train_gpt.py": "34e8c5520a713d5939856326b15288cfc3ad011cde19f4135c1e43724a9b017c",
+    "external_semantic_overlap_audit/upstream/p3_icl_bayes_occam/utils.py": "cac2aae60a2b405ff54b4b5dd22d3b6166627ca198d730211c302072e302a957",
+    "external_semantic_overlap_audit/upstream/p3_icl_bayes_occam/utils_data.py": "c07d63029c4402e64624b26c5c39253f16884c63eabe282a34260127fb31f014",
+    "external_semantic_overlap_audit/upstream/p3_occam_arxiv_2506.19351v1.pdf": "8c92e590ba749a947c22b13705a751b832495f21ae0d9ac03a6ec829872f945c"
+  },
+  "linear_regression_audit": {
+    "paper_scope": {
+      "bootstrap_trials": 100,
+      "dimensions": [
+        10,
+        20
+      ],
+      "embedding_dimension": 256,
+      "evaluation_contexts_per_reported_aggregate": 2000,
+      "heads": 8,
+      "layers": 12,
+      "sequence_length": 39,
+      "simple_task": "w=[w_(d/2),0]"
+    },
+    "published_code_status": "unavailable_no_generator_training_evaluation_or_curriculum_code",
+    "semantic_numerator": 0,
+    "semantic_numerator_interpretation": "zero verified collisions is not evidence of novelty",
+    "unresolved_denominator": "all published linear-regression evaluation contexts",
+    "unresolved_reason": "the pinned repository has no linear-regression implementation, task seeds, coefficient vectors, manifests, checkpoints, or per-context predictions"
+  },
+  "markov_audit": {
+    "eval_protocol": {
+      "eval_task_seed_formula": "12574*j+5 for j=0..9",
+      "eval_task_seeds": [
+        5,
+        12579,
+        25153,
+        37727,
+        50301,
+        62875,
+        75449,
+        88023,
+        100597,
+        113171
+      ],
+      "sequence_rng": "global np.random state; no active np.random.seed call",
+      "sequences_per_eval_task": 100,
+      "transition_parameter_rng": "NumPy PCG64 initialized from each task seed"
+    },
+    "experiments": [
+      {
+        "batch_size": 32,
+        "embedding_dimension": 192,
+        "experiment": "figure_2_order_1_3",
+        "figure": 2,
+        "heads": 6,
+        "layers": 6,
+        "nominal_sequences_seen": 800000,
+        "nominal_steps": 25000,
+        "orders": [
+          1,
+          3
+        ],
+        "relative_position_encoding": true,
+        "sequence_length": 300,
+        "source": "paper Figure x-axis and Appendix C; total steps are not published as a command or machine-readable run config"
+      },
+      {
+        "batch_size": 32,
+        "embedding_dimension": 320,
+        "experiment": "figure_3_order_1_2",
+        "figure": 3,
+        "heads": 20,
+        "layers": 2,
+        "nominal_sequences_seen": 800000,
+        "nominal_steps": 25000,
+        "orders": [
+          1,
+          2
+        ],
+        "relative_position_encoding": true,
+        "sequence_length": 200,
+        "source": "paper Figure x-axis and Appendix C; total steps are not published as a command or machine-readable run config"
+      }
+    ],
+    "fresh_task_claim_audit": {
+      "decision": "failed",
+      "reason": "training seed is step+i, so adjacent batches reuse the same transition matrix whenever the same order is selected",
+      "training_task_census_per_main_experiment": {
+        "batch_size": 32,
+        "distinct_seed_ids": 25031,
+        "episode_count": 800000,
+        "expected_distinct_order_seed_tasks_under_iid_uniform_orders": 50057.999988374766,
+        "maximum_distinct_order_seed_tasks": 50060,
+        "minimum_distinct_order_seed_tasks": 25031,
+        "minimum_duplicate_episode_count": 749940,
+        "minimum_duplicate_episode_rate": 0.937425,
+        "occurrence_count_distribution": {
+          "1": 2,
+          "10": 2,
+          "11": 2,
+          "12": 2,
+          "13": 2,
+          "14": 2,
+          "15": 2,
+          "16": 2,
+          "17": 2,
+          "18": 2,
+          "19": 2,
+          "2": 2,
+          "20": 2,
+          "21": 2,
+          "22": 2,
+          "23": 2,
+          "24": 2,
+          "25": 2,
+          "26": 2,
+          "27": 2,
+          "28": 2,
+          "29": 2,
+          "3": 2,
+          "30": 2,
+          "31": 2,
+          "32": 24969,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2
+        },
+        "steps": 25000
+      }
+    },
+    "semantic_signature": "SHA256 of canonical JSON containing order, vocabulary size, max transitions, shape, and exact float.hex transition tensor",
+    "summary": {
+      "all_rows": 40,
+      "by_experiment": {
+        "figure_2_order_1_3": {
+          "eval_latent_task_count": 20,
+          "eval_sequence_count": 2000,
+          "eval_sequences_from_exposed_task_parameters_lower_bound": 200,
+          "eval_sequences_from_exposed_task_parameters_upper_bound": 400,
+          "exact_train_eval_collision_count_lower_bound": 2,
+          "exact_train_eval_collision_count_upper_bound": 4,
+          "exact_train_eval_collision_rate_lower_bound": 0.1,
+          "exact_train_eval_collision_rate_upper_bound": 0.2,
+          "supported_eval_seeds": [
+            5,
+            12579
+          ],
+          "unresolved_identity_reason": "np.random controls order assignment but is never seeded or persisted; for every supported seed, pigeonhole guarantees at least one of the two evaluated orders occurred in training"
+        },
+        "figure_3_order_1_2": {
+          "eval_latent_task_count": 20,
+          "eval_sequence_count": 2000,
+          "eval_sequences_from_exposed_task_parameters_lower_bound": 200,
+          "eval_sequences_from_exposed_task_parameters_upper_bound": 400,
+          "exact_train_eval_collision_count_lower_bound": 2,
+          "exact_train_eval_collision_count_upper_bound": 4,
+          "exact_train_eval_collision_rate_lower_bound": 0.1,
+          "exact_train_eval_collision_rate_upper_bound": 0.2,
+          "supported_eval_seeds": [
+            5,
+            12579
+          ],
+          "unresolved_identity_reason": "np.random controls order assignment but is never seeded or persisted; for every supported seed, pigeonhole guarantees at least one of the two evaluated orders occurred in training"
+        }
+      },
+      "cross_experiment_duplicate_rows": 10,
+      "unique_eval_latent_task_signatures": 30
+    },
+    "unresolved_denominator": {
+      "actual_same_order_collision_identity": "all four supported order-specific rows per experiment",
+      "reason": "order assignment uses unseeded NumPy global RNG and no training task manifest or log was published",
+      "sound_bound": "2 to 4 of 20 eval latent tasks per main experiment were exactly exposed during training"
+    }
+  },
+  "paper_revision": "arXiv:2506.19351v1; COLM 2025",
+  "repository_inventory": {
+    "active_numpy_seed_calls": [],
+    "linear_implementation_files": [],
+    "missing_local_modules": {
+      "linear_probe.py": true,
+      "train.py": true
+    },
+    "structural_eval_failures": {
+      "markov_classes_imported_from_wrong_module": true,
+      "missing_linear_probe_module": true,
+      "missing_train_gpt_exports": true,
+      "missing_train_module": true
+    },
+    "tracked_files": [
+      "README.md",
+      "eval.py",
+      "gpt.py",
+      "kl_div_plot.py",
+      "kl_div_plot_new.py",
+      "main.py",
+      "minigpt_utils.py",
+      "model.py",
+      "model_utils.py",
+      "train_gpt.py",
+      "utils.py",
+      "utils_data.py"
+    ]
+  },
+  "reproducibility_risks": [
+    "main.py defaults to 100 steps, batch 16, two layers, two heads, and dimension 16 rather than either paper main setting",
+    "the repository publishes no command, run configuration, dependency lock, checkpoint, training log, or predictions",
+    "global NumPy RNG controls task-category assignments and all sequence draws but is never seeded by the entrypoint",
+    "eval.py imports missing local modules and symbols, so the published evaluation entrypoint is structurally non-executable",
+    "the candidate manifest states that linear-regression episodes are generated by the pinned revision, but that implementation is absent"
+  ],
+  "schema_version": "semantic-novelty-audit-occam-hierarchical-icl-v1",
+  "status": "complete_with_frozen_scope_failure",
+  "title": "In-Context Occam's Razor: How Transformers Prefer Simpler Hypotheses on the Fly"
+}

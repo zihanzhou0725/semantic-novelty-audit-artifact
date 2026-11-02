@@ -1,0 +1,117 @@
+{
+  "audit_date": "2026-10-09",
+  "behavioral_reproducibility": {
+    "artifact_census": {
+      "composition_checkpoint": false,
+      "machine_readable_result_manifest": false,
+      "per_item_ranks_or_predictions": false,
+      "training_log": false
+    },
+    "checkpoint_revision": null,
+    "code_training_seed": 13579,
+    "code_training_seed_count": 1,
+    "decision": "no_go_missing_checkpoint_predictions_and_logs",
+    "published_aggregate_metrics": {
+      "hits_at_1": 0.24,
+      "hits_at_10": 0.522,
+      "hits_at_3": 0.369,
+      "mrr": 0.3346,
+      "source": "Report.pdf Table 4",
+      "status": "reported_not_recomputed"
+    }
+  },
+  "candidate_id": "7b1fa5fbdb1da4ee",
+  "claim_gate": {
+    "audit_completeness": "exact_for_all_1000_generated_test_paths",
+    "candidate_contribution_to_p3": {
+      "complete_public_semantic_audit": true,
+      "credible_behavioral_evidence": false
+    },
+    "decision": "protocol_defect_detected_behavioral_no_go",
+    "direct_edge_withholding": "passed",
+    "every_test_case_has_retained_two_hop_path": "failed",
+    "relation_schema_novelty": "failed_999_of_1000_seen"
+  },
+  "claim_under_audit": "The FB15k-237 direct-edge-removal evaluation measures compositional inference on relation paths not directly observed as edges during training.",
+  "dataset": {
+    "entities": 14541,
+    "relations": 237,
+    "scrubbed_train_triples": 270115,
+    "test_triples": 20466,
+    "train_triples": 272115,
+    "validation_triples": 17535
+  },
+  "generator": {
+    "direct_links_removed": 2000,
+    "num_test_paths": 1000,
+    "num_validation_paths": 1000,
+    "path_seed": 42,
+    "selection": "first 2000 unique endpoint pairs reached after shuffling training heads, followed by a second path shuffle"
+  },
+  "input_sha256": {
+    "external_semantic_overlap_audit/protocols/quality-enhancement-v1/p3/candidate_manifest.json": "68608a23800c0a36575948df9ab568e2951e38c5169a4cd0a67dff40e2eae422",
+    "external_semantic_overlap_audit/upstream/p3_knowledge_graph_embedding/data/FB15k-237/test.txt": "5711cf41623ceb4eacc50eb6108a3ca6565c7492e3caaf82a3e355cc660d1574",
+    "external_semantic_overlap_audit/upstream/p3_knowledge_graph_embedding/data/FB15k-237/train.txt": "6e4c2782169af21e9743f3b1d200886f5d595bf6bc504ec1351720949c5cdfae",
+    "external_semantic_overlap_audit/upstream/p3_knowledge_graph_embedding/data/FB15k-237/valid.txt": "cf6309010852f6a8d47a45df830a426415d1ee6f7a3970a8376ff1fb81db4a5c",
+    "external_semantic_overlap_audit/upstream/p3_tensor_logic/Report.pdf": "44420c3118d244c1ccaf3e548ad2d03ade649c4ebf0fc4de0d1b4e8d59a911c8",
+    "external_semantic_overlap_audit/upstream/p3_tensor_logic/tensor_kgraph.py": "8c0c5ed26ae7c3de5c1e0e2b4cebf2e1013fc985eb4094f823ab6d02cb1d12a1"
+  },
+  "reproducibility_risks": [
+    "tensor_kgraph.py downloads FB15k-237 from the mutable master branch without a commit or file hash",
+    "the repository does not persist generated path manifests, checkpoints, ranks, predictions, or training logs",
+    "composition filtering uses original train plus canonical validation/test truth maps rather than only scrubbed training facts",
+    "the public script executes one training seed although the paper states that compositional generalization emerged across random seeds"
+  ],
+  "schema_version": "semantic-novelty-audit-tensor-logic-fb15k237-v1",
+  "semantic_definitions": {
+    "endpoint_path_signature": "SHA256 canonical JSON of head, ordered [r1,r2], and tail",
+    "full_query_signature": "endpoint path signature fields plus target direct relation",
+    "relation_schema_signature": "SHA256 canonical JSON of ordered [r1,r2] and target relation",
+    "unresolved_rule": "absence of a retained exact two-hop witness does not establish semantic novelty"
+  },
+  "split_audit": {
+    "relation_schema_training_witness_instances": 1868055,
+    "relation_schema_training_witness_types": 8359,
+    "test": {
+      "direct_edges_in_original_train": 1000,
+      "direct_edges_in_scrubbed_train": 0,
+      "endpoint_path_witness_retained": 484,
+      "filter_only_extra_tail_total": 24499,
+      "no_retained_exact_two_hop_witness": 516,
+      "relation_schema_seen_in_other_eval_split": 818,
+      "relation_schema_seen_in_scrubbed_train": 999,
+      "rows": 1000,
+      "rows_with_filter_only_extra_tails": 753,
+      "same_relation_reverse_edge_retained": 147,
+      "selected_path_retained": 379,
+      "selected_path_retained_edge_count": {
+        "0": 3,
+        "1": 618,
+        "2": 379
+      }
+    },
+    "test_unique_relation_schemas": 347,
+    "validation": {
+      "direct_edges_in_original_train": 1000,
+      "direct_edges_in_scrubbed_train": 0,
+      "endpoint_path_witness_retained": 441,
+      "filter_only_extra_tail_total": 25409,
+      "no_retained_exact_two_hop_witness": 559,
+      "relation_schema_seen_in_other_eval_split": 792,
+      "relation_schema_seen_in_scrubbed_train": 994,
+      "rows": 1000,
+      "rows_with_filter_only_extra_tails": 721,
+      "same_relation_reverse_edge_retained": 122,
+      "selected_path_retained": 336,
+      "selected_path_retained_edge_count": {
+        "0": 7,
+        "1": 657,
+        "2": 336
+      }
+    },
+    "validation_test_relation_schema_intersection": 192,
+    "validation_unique_relation_schemas": 364
+  },
+  "status": "complete",
+  "title": "Implementing Tensor Logic: Unifying Datalog and Neural Reasoning via Tensor Contraction"
+}

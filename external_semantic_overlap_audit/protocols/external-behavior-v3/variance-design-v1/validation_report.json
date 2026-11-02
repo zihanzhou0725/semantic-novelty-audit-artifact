@@ -1,0 +1,64 @@
+{
+  "check_count": 9,
+  "checks": [
+    {
+      "detail": null,
+      "name": "effect_analysis_integrity",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "post_unblinding_status",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "decomposition",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "projection",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "no_retroactive_change",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "freeze_artifacts",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "input_hashes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "implementation_hashes",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "name": "outputs_absent",
+      "pass": true
+    }
+  ],
+  "design_id": "external-behavior-v3-variance-design-v1",
+  "document_sha256": {
+    "README.md": "a4fce1b6262c6786c10ad813a50a5881cbfb3f7c9f9e1c597fabd962798ca7d1",
+    "checklist.md": "7a33cdbe8fde55b88fb17441fb8cca72d1fa796fb27e1a30bbcd8be131a5cb02",
+    "freeze_receipt.json": "7c3d6c78e071bb4e0c9f33ce6fa4db78f819f45bb2a69df02e2d22f15dee2fd1",
+    "input_manifest.json": "c1e170b127169ac275ead72b868eaddd5041ed89df390247bbf74ff0b4f32511",
+    "preregistration.json": "cf36337a23644aed76f2a0c5266e4d98bc166cc8613e0820b2e1dce3c6d9b2a7",
+    "validate.py": "71a09688a2d5dcdc540b02f6829357815f4e5dd14763638ecd4ae0de14168693"
+  },
+  "failed_count": 0,
+  "schema_version": "external-behavior-v3-variance-protocol-validation-v1",
+  "stage": "pre_decomposition",
+  "status": "pass",
+  "validated_at_utc": "2026-10-13T11:30:04.348402+00:00"
+}

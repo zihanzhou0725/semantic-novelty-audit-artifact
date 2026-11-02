@@ -1,0 +1,103 @@
+{
+  "environment_sha256": "e488a2edefa36c32bb2f2dd3d9dcad8eb2f55fedac25b2a6a8f266ef608d4f23",
+  "frozen_at_utc": "2026-10-12T10:29:11.427292+00:00",
+  "frozen_before_v2_generation": true,
+  "implementation_sha256": {
+    "scripts/freeze_external_behavior_v2.py": "ade03da07e4a7e65f49278b9872dbb5ad8d39864dfc7e51319ce219786669c7b",
+    "scripts/materialize_external_behavior_v2.py": "f2156a03206058788f384ef8460c967824772e9002dfd7a00f721323e74ed4e1",
+    "scripts/validate_external_behavior_v2.py": "43eec0ba43f4819a10fbce14cb3abe3e8456fe2e892703a728fdb67014cde760",
+    "tests/test_external_behavior_v2.py": "82bf87da43e5610d8436a6faac9936d996f9a81fb3a90b9e48a3e5d524f0b381",
+    "toolkit/external_behavior/common.py": "eb725d4dec66c3c247f21303265da740e4213af54c93abb764acd18b444bae71",
+    "toolkit/external_behavior/mathematics.py": "7d13f01a30cc6e1857eaac3098a69b322f58513a10c017f96761289095fd4390",
+    "toolkit/external_behavior_v2/__init__.py": "3236568e30ccbbdc54fb5ffa8ee7ad2586e07a6937d95db4aa0ce6f0492dd3f5",
+    "toolkit/external_behavior_v2/common.py": "9a372c3555922dff339267cbb192eaaa7e28effac98b6feb889bdc9ea2ff9f14",
+    "toolkit/external_behavior_v2/freeze.py": "27d63dc643225e2032ec29fcfa6441e5bec1484af259f5c1988c698240e991b2",
+    "toolkit/external_behavior_v2/materialize.py": "2c045cde037c8249a79cc6415753041d502dd70336a4ac5e3ae481bb5d86af90",
+    "toolkit/external_behavior_v2/mathematics.py": "f2732c5eee3746db7c1eefe331daec85c664f1887e2157311d9d07ebb6eba281",
+    "toolkit/external_behavior_v2/validate.py": "9c83828e7a1b475a403396dae1180093e87f4a629779a2bbcc828f6cd5244c96"
+  },
+  "parent_failure_report_sha256": "e73b77aeef0f45cab81315f5fed971af69589c43767ebc403db9a1f284d0b957",
+  "parent_preregistration_sha256": "3ff8bbde576f4176d9b2c98969925ae09f3f038f315711b4c71a1c17bf3dcf11",
+  "preregistration_sha256": "f79fa0f5927769f090faeaee9941a1ff1bbd28a958158c470f7014250c34ddcc",
+  "protocol_id": "external-behavior-v2",
+  "requirements_lock_sha256": "64627f5045ae4383740a4ddaedfbf24cf1df121e2bde235f75fa0246e68b15fd",
+  "schema_version": "external-behavior-v2-implementation-freeze-v1",
+  "source_validation": {
+    "checks": [
+      {
+        "check": "revision",
+        "expected": "427f45075f84b8b9774950196ad63867ca20ffb3",
+        "observed": "427f45075f84b8b9774950196ad63867ca20ffb3",
+        "pass": true
+      },
+      {
+        "check": "checkout_clean",
+        "observed": "",
+        "pass": true
+      },
+      {
+        "check": "source:LICENSE",
+        "expected": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "observed": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "pass": true
+      },
+      {
+        "check": "source:README.md",
+        "expected": "d716d71a4855d26ecdb63ee8f45f8a36c625d98b2ef8da34b256b3c8e156273b",
+        "observed": "d716d71a4855d26ecdb63ee8f45f8a36c625d98b2ef8da34b256b3c8e156273b",
+        "pass": true
+      },
+      {
+        "check": "source:mathematics_dataset/example.py",
+        "expected": "e53b283739fcec8235e0440498e8574236a68d304fb924aac2c80c8802c6612d",
+        "observed": "e53b283739fcec8235e0440498e8574236a68d304fb924aac2c80c8802c6612d",
+        "pass": true
+      },
+      {
+        "check": "source:mathematics_dataset/generate.py",
+        "expected": "bbf6feb51a00b1f640e7ee0e651300efee8c24fe966935ef220fbcc09f9988d3",
+        "observed": "bbf6feb51a00b1f640e7ee0e651300efee8c24fe966935ef220fbcc09f9988d3",
+        "pass": true
+      },
+      {
+        "check": "source:mathematics_dataset/generate_settings.py",
+        "expected": "30c1928be1b321c74732972c5e0cc95351ab79d4331ce4d87573651afdb39170",
+        "observed": "30c1928be1b321c74732972c5e0cc95351ab79d4331ce4d87573651afdb39170",
+        "pass": true
+      },
+      {
+        "check": "source:mathematics_dataset/modules/modules.py",
+        "expected": "8d1800183289f3e7798bd5684e0f7ef9eff2c2e6e496b372ef69c29b1e28b4a0",
+        "observed": "8d1800183289f3e7798bd5684e0f7ef9eff2c2e6e496b372ef69c29b1e28b4a0",
+        "pass": true
+      },
+      {
+        "check": "source:mathematics_dataset/modules/polynomials.py",
+        "expected": "0b58734c10ebcb5a68ffe56544ca81f0a744292abdb8c8801bcc66a0d1d80b7e",
+        "observed": "0b58734c10ebcb5a68ffe56544ca81f0a744292abdb8c8801bcc66a0d1d80b7e",
+        "pass": true
+      },
+      {
+        "check": "source:mathematics_dataset/sample/polynomials.py",
+        "expected": "7275484ff8d6f8d1c9c71a234158a067fa3723aecf18833d4a3d75e42005da65",
+        "observed": "7275484ff8d6f8d1c9c71a234158a067fa3723aecf18833d4a3d75e42005da65",
+        "pass": true
+      },
+      {
+        "check": "source:mathematics_dataset/util/composition.py",
+        "expected": "7a0e0d55f29049c85428cf3f4fe72560605c4fc82fbcb0973db070eaac876fe7",
+        "observed": "7a0e0d55f29049c85428cf3f4fe72560605c4fc82fbcb0973db070eaac876fe7",
+        "pass": true
+      },
+      {
+        "check": "source:setup.py",
+        "expected": "cb2e8a0d3284f1637adae9ab897c2fda3066af56544697d61eef9e0e3bd0e58d",
+        "observed": "cb2e8a0d3284f1637adae9ab897c2fda3066af56544697d61eef9e0e3bd0e58d",
+        "pass": true
+      }
+    ],
+    "source_manifest_sha256": "f09346a2e20ea1d8e9bc07ab4840631a06b0ebe8a0df011d0e34ee3dab7e1c29",
+    "status": "pass"
+  },
+  "status": "frozen"
+}

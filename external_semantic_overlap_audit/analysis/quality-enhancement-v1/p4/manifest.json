@@ -1,0 +1,82 @@
+{
+  "adapters": [
+    {
+      "adapter_id": "occam_markov_transition_v1",
+      "completeness_status": "sound_lower_bound",
+      "output_file": "occam_markov.audit.json",
+      "output_sha256": "88a2126daddd7c613d08498f77288dc83109a720465e0e148c0171741428a9fd",
+      "overlap_counts_and_denominators": [
+        {
+          "claim_scope": "exact_latent_transition_task_exposure:figure_2_order_1_3",
+          "denominator": 20,
+          "overlap_lower_bound": 2,
+          "overlap_upper_bound": 4,
+          "unit": "eval_latent_tasks",
+          "unresolved_count": 4,
+          "witnessed_overlap_count": 2
+        },
+        {
+          "claim_scope": "exact_latent_transition_task_exposure:figure_3_order_1_2",
+          "denominator": 20,
+          "overlap_lower_bound": 2,
+          "overlap_upper_bound": 4,
+          "unit": "eval_latent_tasks",
+          "unresolved_count": 4,
+          "witnessed_overlap_count": 2
+        }
+      ]
+    },
+    {
+      "adapter_id": "tensor_logic_fb15k237_v1",
+      "completeness_status": "sound_lower_bound",
+      "output_file": "tensor_logic.audit.json",
+      "output_sha256": "ff104621f8e6b389a85a5a4a870289788458fc0551ff3db578b307981c3bdc35",
+      "overlap_counts_and_denominators": [
+        {
+          "claim_scope": "direct_triple_identity",
+          "denominator": 1000,
+          "overlap_lower_bound": 0,
+          "overlap_upper_bound": 0,
+          "unit": "test_paths",
+          "unresolved_count": 0,
+          "witnessed_overlap_count": 0
+        },
+        {
+          "claim_scope": "endpoint_conditioned_two_hop_semantics",
+          "denominator": 1000,
+          "overlap_lower_bound": 484,
+          "overlap_upper_bound": 1000,
+          "unit": "test_paths",
+          "unresolved_count": 516,
+          "witnessed_overlap_count": 484
+        },
+        {
+          "claim_scope": "ordered_relation_composition_schema",
+          "denominator": 1000,
+          "overlap_lower_bound": 999,
+          "overlap_upper_bound": 1000,
+          "unit": "test_paths",
+          "unresolved_count": 1,
+          "witnessed_overlap_count": 999
+        }
+      ]
+    }
+  ],
+  "implementation_sha256": {
+    "scripts/semantic_audit_v1.py": "a7e500b51785e75db472f044cbaa3af9b693fe2b9d3d9afa5584cb437620374c",
+    "scripts/validate_quality_p4_toolkit.py": "2344f31c88f13dfc0eea56e93e62d56939c13c5143b2cb706b03945eeb41b0d3",
+    "tests/test_p4_toolkit.py": "28c2b20294d662c9893dc0fe70754893d5f1dde213ccca73af673e9b4a43edc4",
+    "toolkit/README.md": "392bfc807f1a23aa4916a816cb7233ebdccc31a18342efc0a975b7851739bd73",
+    "toolkit/schemas/audit-output-v1.schema.json": "7af8539bac8a94a49f53a5c259c22b0e9794f1b313892cb723cdf7e162b517d5",
+    "toolkit/semantic_audit/__init__.py": "1ab35f8ce4095f9f09ab100cd3eb8ee2fb77508ef796453470f463dfa0328f4e",
+    "toolkit/semantic_audit/adapters.py": "d99d1e47d1ac2c0720c886dcbdcab49d97a3a18d34961e7c9989e489599d9dfa",
+    "toolkit/semantic_audit/bounds.py": "cf57138cf91837d7d74823d21d8dbb4947383037f13eb90d2398852d9d84534e",
+    "toolkit/semantic_audit/cli.py": "ad7a3f3bcbeb746f936ed2ecee51ddb0c5f65182a44483f5fc2de0462966a8f1",
+    "toolkit/semantic_audit/core.py": "cca71a718d1f1463a80ba1992ef275068098885f8f3cc78816a60372fc80346a",
+    "toolkit/semantic_audit/schema.py": "7a42d04627f7e6f473edc74da6ea74ff9023453e88b1bf98dddefb6b1af52a84"
+  },
+  "schema_file": "toolkit/schemas/audit-output-v1.schema.json",
+  "schema_sha256": "7af8539bac8a94a49f53a5c259c22b0e9794f1b313892cb723cdf7e162b517d5",
+  "schema_version": "semantic-audit-reproduction-manifest-v1",
+  "tool_version": "1.0.0"
+}

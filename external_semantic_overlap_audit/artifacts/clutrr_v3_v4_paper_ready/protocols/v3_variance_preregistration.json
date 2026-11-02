@@ -1,0 +1,84 @@
+{
+  "constraints": {
+    "confirmatory_claims_allowed": false,
+    "retroactive_v3_gate_change_allowed": false,
+    "v3_decision_remains": "imprecise_no_go",
+    "v4_training_released": false
+  },
+  "design_id": "external-behavior-v3-variance-design-v1",
+  "epistemic_status": "post_unblinding_exploratory_design_planning",
+  "freeze_date": "2026-10-13",
+  "observed_before_freeze": {
+    "all_20_pair_point_estimates_positive": true,
+    "all_8_seed_point_estimates_positive": true,
+    "effect_analysis_integrity_gate": "pass",
+    "v3_effect_pp": 15.3375,
+    "v3_interval_95_pp": [
+      9.876873975196792,
+      21.369258723477753
+    ],
+    "v3_interval_width_pp": 11.49238474828096,
+    "v3_registered_decision": "imprecise_no_go"
+  },
+  "prospective_projection": {
+    "calibration": "Multiply all ANOVA-normal projected widths by registered_v3_percentile_width / ANOVA-normal_width_at_S8_Q20 so the projection exactly recovers the observed V3 width at its base design.",
+    "candidate_pair_counts": [
+      20,
+      40,
+      80,
+      120,
+      "all_remaining"
+    ],
+    "candidate_seed_counts": [
+      8,
+      16,
+      32,
+      64,
+      "infinite"
+    ],
+    "mean_variance_formula": "sigma_seed_squared/S + sigma_pair_squared/Q + sigma_seed_pair_squared/(S*Q)",
+    "pair_unit": "same-label semantic-pattern pair",
+    "required_pair_formula": "Smallest integer Q whose calibrated projected interval width is <= 2.0 pp; report impossible when the seed variance floor already exceeds the target.",
+    "status": "pilot_based_exploratory_projection_not_a_power_guarantee",
+    "target_interval_width_pp": 2.0,
+    "z_value": 1.959963984540054
+  },
+  "schema_version": "external-behavior-v3-variance-design-preregistration-v1",
+  "two_way_random_effects": {
+    "interaction_variance": "MS_seed_by_pair",
+    "negative_component_handling": "truncate seed and pair method-of-moments components at zero",
+    "observation": "mean exposure effect over the two members for each model-seed by pattern-pair cell",
+    "pair_variance": "max((MS_pair - MS_seed_by_pair)/8, 0)",
+    "seed_variance": "max((MS_seed - MS_seed_by_pair)/20, 0)"
+  },
+  "v4_capacity": {
+    "algorithm": [
+      "Group all 320 frozen eligible semantic IDs by target relation.",
+      "Sort semantic IDs within relation and pair adjacent IDs without reuse.",
+      "Sort all pairs by SHA-256(member_0 + member_1).",
+      "Remove the exact 20 pair hashes used by V3.",
+      "Count the remaining disjoint pairs globally and by relation."
+    ],
+    "strict_design_gate": "Pass only if remaining disjoint pair capacity is at least the projected pair requirement at infinite seeds and the calibrated projected width using all remaining pairs at infinite seeds is <= 2.0 pp.",
+    "training_release_on_no_go": false
+  },
+  "variance_decomposition": {
+    "factors": [
+      "model_seed",
+      "pattern_pair",
+      "source_group"
+    ],
+    "full_subset_count": 8,
+    "group_draw_sharing": "Within a replicate, source-group draws are shared over selected model seeds and exposed/unexposed arms; pair members receive independent draws.",
+    "pair_members_preserved": true,
+    "replicates": 20000,
+    "rng": "numpy.random.Generator(numpy.random.PCG64(202610130 + subset_bitmask))",
+    "shapley": "Average each factor's marginal increase in bootstrap variance over all 3! factor-entry permutations.",
+    "source_groups_per_pattern": 34,
+    "subset_bitmask": {
+      "model_seed": 1,
+      "pattern_pair": 2,
+      "source_group": 4
+    }
+  }
+}

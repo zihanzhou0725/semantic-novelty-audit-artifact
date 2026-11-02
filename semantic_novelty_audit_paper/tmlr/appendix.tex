@@ -3,35 +3,6 @@
 \section{Audit Definitions and Evidence Grades}
 \label{app:definitions}
 
-\subsection{Objects and Splits}
-
-Let $\mathcal R$ be the representation space, $\mathcal F_{\mathcal O}$ the
-semantic-object space under observation contract $\mathcal O$, and
-$\mathcal G$ the representation-family space.  The maps
-$q_{\mathcal O}:\mathcal R\rightarrow\mathcal F_{\mathcal O}$ and
-$a:\mathcal R\rightarrow\mathcal G$ define three holdout units:
-\begin{align}
-\text{parameter-disjoint:}\quad&
-\mathcal R_{\rm tr}\cap\mathcal R_{\rm te}=\varnothing,\\
-\text{function-disjoint:}\quad&
-q_{\mathcal O}(\mathcal R_{\rm tr})\cap
-q_{\mathcal O}(\mathcal R_{\rm te})=\varnothing,\\
-\text{family-disjoint:}\quad&
-a(\mathcal R_{\rm tr})\cap a(\mathcal R_{\rm te})=\varnothing.
-\end{align}
-The induced family relation for a semantic object is
-\(\Gamma(f)=\{a(r):q_{\mathcal O}(r)=f\}\), which can contain multiple
-families.  Parameter-disjointness implies neither of the other conditions.
-Function- and family-disjointness are also non-nested: different functions
-can share a representation family, and cross-family representations can
-implement the same function.
-
-The observation contract records admissible inputs and contexts, outputs,
-termination and errors, effects, nondeterminism, and any claim-relevant
-resource observations.  Complete finite input--output equality is the special
-case used by the finite rule tasks; no unqualified claim is made for general
-program equivalence.
-
 \subsection{Evidence Grades}
 
 \begin{table}[H]
@@ -56,23 +27,16 @@ fragment, so 45.2\% is a sound lower bound.
 
 \subsection{Audit Procedure}
 
-For each benchmark we execute the following fixed procedure:
-\begin{enumerate}
-    \item declare the representation and family objects, observation
-    contract, and advertised generalization claim;
-    \item freeze source and dataset revisions and a must-match/must-differ
-    falsification set for the semantic unit;
-    \item construct and validate semantic signatures, rejecting units that
-    split must-match pairs or merge must-differ pairs;
-    \item measure train--test overlap or weighted training-time coverage;
-    \item preserve row-level witnesses or function manifests;
-    \item if behavior is claimed, compare paired per-item outputs or run a
-    matched intervention;
-    \item label every result exact, lower-bound, or estimated, record
-    implementation assurance separately, and restrict claims accordingly;
-    \item when multiple units survive the adequacy test, report the audit
-    under each and identify any conclusion that changes.
-\end{enumerate}
+For each benchmark we follow a fixed procedure: declare the representation and
+family objects, observation contract, and advertised claim; freeze source and
+dataset revisions plus a must-match/must-differ falsification set; construct
+and validate semantic signatures, rejecting units that split must-match pairs
+or merge must-differ pairs; measure train--test overlap or weighted
+training-time coverage; preserve row-level witnesses or function manifests;
+if behavior is claimed, compare paired per-item outputs or run a matched
+intervention; label every result exact, lower-bound, or estimated and record
+implementation assurance separately; and, when several units survive, report
+the audit under each and flag any conclusion that changes.
 
 For a discrete function distribution $p(f)$, the exact probability that an
 independent test function was sampled at least once in $N$ training draws is
@@ -166,37 +130,13 @@ model seeds, 20 matched function pairs, and evaluation episodes within
 function; architectures retain equal fixed weights.  Model intervals use
 99.1667\% Bonferroni simultaneous confidence.
 
-\begin{table}[H]
-\caption{Complete internal exact-exposure results.  Deep Sets alone satisfies the
-registered model-specific rule; the equal-architecture macro satisfies the
-preregistered positive behavioral criterion.}
-\label{tab:supp-p1}
-\centering
-\small
-\setlength{\tabcolsep}{4.4pt}
-\begin{tabular}{lrrrr}
-\toprule
-Architecture & Exposed & Unexposed & Effect (pp) &
-99.1667\% simultaneous CI \\
-\midrule
-Deep Sets & 59.604 & 53.494 & +6.110 & $[4.349,7.849]$ \\
-Relation Network & 88.336 & 87.340 & +0.996 & $[0.229,1.749]$ \\
-Set Transformer & 77.802 & 76.760 & +1.042 & $[-0.105,2.247]$ \\
-Modern Hopfield & 88.662 & 88.004 & +0.658 & $[-0.192,1.447]$ \\
-Perceiver & 74.408 & 73.124 & +1.284 & $[-0.042,2.525]$ \\
-Transformer & 82.942 & 82.040 & +0.902 & $[-0.137,1.870]$ \\
-\midrule
-Architecture macro & 78.626 & 76.794 & +1.832 &
-$[1.470,2.189]$ (95\%) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-All six architecture point estimates are positive.  Cross entropy changes
-from 0.91052 to 0.83191 (exposed minus unexposed $=-0.07861$), and Brier score
-changes from 0.34501 to 0.31829 ($-0.02673$).  Training probabilities were not
-persisted, so registered training calibration is not estimable and is not
-replaced by loss.
+All six architecture point estimates are positive; only Deep Sets and
+Relation Network have simultaneous 99.17\% intervals that exclude zero, and
+the per-architecture 95\% intervals appear in Table~\ref{tab:internal-models}.
+Cross entropy changes from 0.91052 to 0.83191 (exposed minus unexposed
+$=-0.07861$), and Brier score changes from 0.34501 to 0.31829 ($-0.02673$).
+Training probabilities were not persisted, so registered training
+calibration is not estimable and is not replaced by loss.
 
 \subsection{Exploratory Function-Level Heterogeneity}
 \label{tmlrs:app:internal-heterogeneity}
@@ -210,24 +150,6 @@ the effect is negatively associated with unexposed accuracy
 \TThreeNGMedian{}: the model is close to ceiling and exposure moves only a
 small fraction of the remaining headroom.
 
-\begin{table}[H]
-\caption{Exploratory comparison of pattern- and function-level
-heterogeneity.}
-\label{tmlrs:tab:cross-setting}
-\centering
-\small
-\begin{tabular}{lrrrrr}
-\toprule
-Setting & Units & Baseline & Effect (pp) & Spearman $\rho$ & Median gain \\
-\midrule
-CLUTRR & \TTwoPatterns{} & \TTwoBaseline{} & \TTwoMean{} &
-\TTwoSpearman{} & \TTwoNGMedian{} \\
-Internal finite functions & \TThreeFunctions{} & \TThreeBaseline{} &
-\TThreeMean{} & \TThreeSpearman{} & \TThreeNGMedian{} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.52\textwidth]{figures/tmlrs_internal_heterogeneity.pdf}
@@ -237,91 +159,10 @@ Color distinguishes the two affine multipliers.}
 \end{figure}
 
 The normalized-gain contrast is substantial: exposure removes much less of
-the remaining error in the internal setting than in CLUTRR.  This analysis
-does not evaluate displacement on non-target functions.
-
-\subsection{Historical Full-Protocol Contrast}
-
-The following earlier comparison motivated the confirmatory intervention but
-is not its substitute.  It jointly changes split unit, sampling prior, and
-stratification, so its difference cannot be attributed only to aliases.
-
-\begin{table}[H]
-\caption{Historical full-protocol comparison, retained as context.  Accuracy
-is percent, mean $\pm$ sample standard deviation over five matched seeds.
-Legacy semantic is diagnostic, not a retrained protocol; the contrast changes
-sampling prior and stratification as well as duplicate membership.}
-\label{tab:supp-internal-models}
-\centering
-\small
-\setlength{\tabcolsep}{2.2pt}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{lrrrrr}
-\toprule
-Architecture & Parameters & Legacy nominal & Legacy semantic & Strict function
-& Nominal $-$ strict [95\% CI] \\
-\midrule
-Deep Sets \cite{zaheer2017deep} & 75,092 & $45.36{\pm}1.28$ & $41.27{\pm}1.25$ &
-$38.86{\pm}0.86$ & $+6.50\ [5.02,7.99]$ \\
-Relation Network \cite{sung2018relation} & 189,972 &
-$72.13{\pm}1.37$ & $70.18{\pm}1.70$ &
-$72.04{\pm}2.10$ & $+0.09\ [-3.06,3.25]$ \\
-Set Transformer \cite{lee2019set} & 105,940 &
-$64.36{\pm}1.45$ & $62.11{\pm}1.76$ &
-$61.67{\pm}2.01$ & $+2.69\ [1.48,3.90]$ \\
-Modern Hopfield-style \cite{ramsauer2021hopfield} & 72,340 &
-$74.14{\pm}1.29$ & $72.32{\pm}1.23$ &
-$72.93{\pm}1.63$ & $+1.21\ [-0.51,2.92]$ \\
-Perceiver-style \cite{jaegle2021perceiver} & 141,780 &
-$61.99{\pm}4.27$ & $59.93{\pm}5.05$ &
-$57.93{\pm}1.94$ & $+4.06\ [-2.53,10.66]$ \\
-Transformer \cite{vaswani2017attention} & 73,492 &
-$67.54{\pm}2.00$ & $65.48{\pm}2.32$ &
-$68.22{\pm}0.94$ & $-0.68\ [-2.40,1.05]$ \\
-\midrule
-Architecture macro & -- & 64.26 & 61.88 & 61.94 &
-$+2.31\ [0.84,3.79]$ \\
-\bottomrule
-\end{tabular}
-}
-\end{table}
-
-The architecture order is identical under legacy nominal and strict function
-metrics: modern Hopfield-style, Relation Network, Transformer, Set
-Transformer, Perceiver-style, then Deep Sets.  Spearman $\rho=1$ and maximum
-rank movement is zero.
-
-\subsection{Family Holdout}
-
-\emph{Diagnostic context only; this contrast is not part of the audit
-findings or of any behavioral claim in the main text.}
-
-\begin{table}[H]
-\caption{Known-family unseen-function and equal-family held-out performance.
-Accuracy is percent.}
-\label{tab:supp-family}
-\centering
-\scriptsize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{lrrr}
-\toprule
-Model & Known & Held-out & Cross entropy \\
-\midrule
-Deep Sets & 38.86 & 8.14 & 6.366 \\
-Relation Network & 72.04 & 11.23 & 6.942 \\
-Set Transformer & 61.67 & 10.45 & 5.479 \\
-Modern Hopfield & 72.93 & 11.33 & 5.990 \\
-Perceiver & 57.93 & 10.85 & 6.609 \\
-Transformer & 68.22 & 11.53 & 5.639 \\
-Family Bayes & 98.60 & 99.17 & 0.018 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The family-agnostic Bayesian mixture reaches 98.93\% posterior-expected
-accuracy; changing to a uniform prior over unique maps changes this by only
-0.04 points.  The family-transfer failure is therefore not explained by
-insufficient information in eight noisy demonstrations.
+the remaining error in the internal setting than in CLUTRR (Spearman
+$\rho=\TThreeSpearman{}$ versus $\TTwoSpearman{}$; median normalized gain
+\TThreeNGMedian{} versus \TTwoNGMedian{}).  This analysis does not evaluate
+displacement on non-target functions.
 
 \section{SLR-Bench Semantic Audit}
 
@@ -426,26 +267,11 @@ interpreted as an exact total.
 The repository \texttt{AIML-TUDA/Llama-3.1-8B-SLR} contains 1,000 per-item
 outputs whose problem IDs and ground-truth rules align exactly with
 \texttt{v1-All}.  A verifier mirroring the released extensional judge, run
-with Trealla Prolog, gives the tier accuracies in
-Table~\ref{tab:slr-output-mismatch}.
-
-\begin{table}[H]
-\caption{Tier accuracy mismatch.  Even treating all 30 Basic-tier runtime
-errors as correct yields only 63.6\%, so runtime differences cannot explain
-the final-paper gap.}
-\label{tab:slr-output-mismatch}
-\centering
-\small
-\begin{tabular}{lrrrr}
-\toprule
-Source & Basic & Easy & Medium & Hard \\
-\midrule
-Hosted per-item artifact & 51.6 & 55.2 & 20.4 & 5.2 \\
-Association for Computational Linguistics (ACL) 2026 Table 2 & 96 & 54 & 18 & 5 \\
-arXiv v2 Table 2 & 92 & 77 & 17 & 2 \\
-\bottomrule
-\end{tabular}
-\end{table}
+with Trealla Prolog, gives tier accuracies of 51.6/55.2/20.4/5.2
+(Basic/Easy/Medium/Hard) for the hosted artifact, against 96/54/18/5 in the
+ACL 2026 Table~2 and 92/77/17/2 in arXiv v2.  Even treating all 30
+Basic-tier runtime errors as correct yields only 63.6\%, so runtime
+differences cannot explain the final-paper gap.
 
 We therefore mark this artifact \texttt{exploratory\_only} and do not use it
 to estimate the reported model's seen/unseen effect.
@@ -520,39 +346,19 @@ families without enumerating $2^{28}$ or $2^{50}$ inputs.
 
 At the frozen budget $N=20{,}000\times32=640{,}000$, the analytic exposure
 probabilities from Equation~\ref{eq:supp-coverage} are 0.914\%, 9.457\%, and
-93.790\%.  The actual frozen streams give the values in
-Table~\ref{tab:boolean-exposure}.
-
-\begin{table}[H]
-\caption{Percentage of the 1,280 frozen evaluation draws whose semantic ID
-appears in each Original training stream.  Every Strict value is zero.}
-\label{tab:boolean-exposure}
-\centering
-\small
-\begin{tabular}{lrrrr}
-\toprule
-Task & Seed 0 & Seed 1 & Seed 2 & Mean \\
-\midrule
-Conjunction & 0.94 & 0.70 & 0.78 & 0.81 \\
-Majority & 8.83 & 8.28 & 9.53 & 8.88 \\
-Sparse Disjunction & 93.05 & 92.81 & 94.45 & 93.44 \\
-\bottomrule
-\end{tabular}
-\end{table}
+93.790\%.  The actual frozen streams match these closely: 0.81\%, 8.88\%, and
+93.44\% of the 1,280 frozen evaluation draws (per-seed variation at most
+0.4 points), and every Strict value is zero.
 
 \section{Boolean Behavioral Intervention}
 
 \subsection{Preregistration and Pairing}
 
-Before training, we froze:
-\begin{itemize}
-    \item 1,280 evaluation function draws and prompt seeds per task;
-    \item three 640,000-function Original streams;
-    \item Strict streams that replace only slots colliding with any evaluation
-    semantic ID;
-    \item model seeds, input random-number streams, optimizer, budget, primary
-    endpoint, bootstrap procedures, and success criteria.
-\end{itemize}
+Before training we froze 1,280 evaluation function draws and prompt seeds per
+task, three 640,000-function Original streams, Strict streams that replace
+only slots colliding with any evaluation semantic ID, and all model seeds,
+input random-number streams, optimizer, budget, primary endpoint, bootstrap
+procedures, and success criteria.
 
 The model is the released Transformer implementation configured with six
 layers, hidden size 256, eight heads, no dropout, and float32 precision.
@@ -603,50 +409,19 @@ $\Delta$ (pp) & Cluster-bootstrap 95\% CI \\
 \end{tabular}
 \end{table}
 
-\begin{table}[H]
-\caption{Three-seed primary summaries in percentage points.  Hierarchical
-intervals use 20,000 replicates, resampling model seeds and semantic-ID
-clusters.}
-\label{tab:boolean-summary}
-\centering
-\scriptsize
-\setlength{\tabcolsep}{2.6pt}
-\begin{tabular}{lrrr}
-\toprule
-Task & Mean & Hier. CI & $t_2$ CI \\
-\midrule
-Conjunction & -0.013 & $[-0.092,0.044]$ & $[-0.117,0.091]$ \\
-Majority & -0.064 & $[-0.199,0.078]$ & $[-0.315,0.187]$ \\
-Sparse Disj. & +0.092 & $[-0.060,0.282]$ & $[-0.258,0.443]$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
 No task reaches 2 points or has three positive deltas.  Neither the core
-nor the strong-pattern criterion is met.  The registered Transformer seed
-expansion and long short-term memory (LSTM) ranking experiment are not
-triggered.
+nor the strong-pattern criterion is met.  A $t_2$ interval is wider than the
+hierarchical one but also includes zero for every task.  The registered
+Transformer seed expansion and long short-term memory (LSTM) ranking
+experiment are not triggered.
 
 \subsection{Secondary Endpoints}
 
-\begin{table}[H]
-\caption{Three-seed secondary means, Original minus Strict.  Negative binary
-cross-entropy (BCE) favors Original because lower is better.  Secondary
-endpoints do not replace the registered primary criterion.}
-\label{tab:boolean-secondary}
-\centering
-\scriptsize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{lrrr}
-\toprule
-Task & Final & Pos. 1--39 & Tail BCE \\
-\midrule
-Conjunction & +0.052 pp & +0.011 pp & +0.0007 \\
-Majority & -0.130 pp & -0.072 pp & -0.0001 \\
-Sparse Disj. & +0.156 pp & +0.073 pp & -0.0019 \\
-\bottomrule
-\end{tabular}
-\end{table}
+Secondary means (Original minus Strict) are uniformly small: final-position
+accuracy $+0.05$, $-0.13$, and $+0.16$ pp; positions 1--39 $+0.01$, $-0.07$,
+and $+0.07$ pp; and tail cross-entropy $+0.0007$, $-0.0001$, and $-0.0019$
+for Conjunction, Majority, and Sparse Disjunction.  These endpoints do not
+replace the registered primary criterion.
 
 Within Original runs, seen-versus-unseen accuracy is descriptive only:
 exposure is not randomized and the groups differ substantially in size.  We do not
@@ -829,28 +604,6 @@ $t_3$ intervals.
 
 The mean arm accuracies are \TSixCZeroAcc{}\% for C0,
 \TSixCOneAcc{}\% for C1, and \TSixCTwoAcc{}\% for C2.
-
-\begin{table}[H]
-\caption{Exploratory semantic-versus-surface contrasts in percentage points.}
-\label{tmlrs:tab:semantic-surface}
-\centering
-\small
-\begin{tabular}{lrrr}
-\toprule
-Contrast & Effect & Pattern 95\% CI & Seed 95\% $t$ CI \\
-\midrule
-C1 $-$ C0 & \TSixSemGain{} &
-$[\TSixSemLo{},\TSixSemHi{}]$ &
-$[\TSixSemSeedLo{},\TSixSemSeedHi{}]$ \\
-C2 $-$ C0 & \TSixDecoyGain{} &
-$[\TSixDecoyLo{},\TSixDecoyHi{}]$ &
-$[\TSixDecoySeedLo{},\TSixDecoySeedHi{}]$ \\
-C1 $-$ C2 & \TSixSemDecoyGain{} &
-$[\TSixSemDecoyLo{},\TSixSemDecoyHi{}]$ &
-$[\TSixSemDecoySeedLo{},\TSixSemDecoySeedHi{}]$ \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \begin{figure}[H]
 \centering
@@ -1247,60 +1000,15 @@ protocol/full-matrix validators and frozen checksums \\
 \end{tabular}
 \end{table}
 
-\begin{table}[H]
-\caption{Strengthening analyses.  Paths are relative to the audit supplement
-root; the directory prefix \texttt{analysis/tmlr-strengthening-v1/} applies
-to the five result paths.}
-\label{tab:repro-strengthening}
-\centering
-\small
-\begin{tabular}{L{1.3in}L{4.4in}}
-\toprule
-Claim or artifact & Reproduction source \\
-\midrule
-CLUTRR heterogeneity (T2) &
-\url{t2_clutrr_heterogeneity/summary.json};
-inputs in \url{analysis/external-behavior-v4/effect-analysis-v1/} \\
-Internal heterogeneity (T3a) &
-\url{t3_internal_heterogeneity/summary_heterogeneity.json};
-\url{analysis/quality-enhancement-v1/p1/function_effects.csv} \\
-Semantic versus decoy (T6) &
-\url{t6_semantic_vs_surface/summary.json};
-\url{protocols/tmlr-strengthening-v1/t6_semantic_vs_surface/protocol.json};
-compact predictions in \url{artifacts/tmlr_t6_run_outputs/} \\
-Overlapping bounds (T9) &
-\url{t9_overlapping_certificates/property_tests_summary.json};
-\url{toolkit/semantic_audit/bounds.py} \\
-Parameterized sensitivity (T10) &
-\url{t10_novelty_bounds/summary.json};
-\url{artifacts/slr_overlap_results.json} (structural counts only) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
 From the manuscript directory, \texttt{make reproduce-paper}
-regenerates T2, T3a, T6, T9, and T10 from retained evidence, copies their
-macros and figures, regenerates the overview, and runs \texttt{latexmk}.
-Set \texttt{PYTHON} to an environment with the supplement dependencies
-and \texttt{AUDIT\_ROOT} to the audit supplement directory if it is not
-in the default sibling layout.  No model training is required.
-
-\section{Additional Limitations}
-
-The SLR proof covers only a restricted positive fragment and does not decide
-semantic equivalence for the entire Prolog language.  The per-item SLR model
-artifact cannot establish the paper-model effect because its aggregate does
-not match either published table.  The internal protocol contrast changes
-more than duplicate membership.  The Boolean intervention covers one model
-configuration and released generators whose Sparse Disjunction, Sparse
-Parity, and Threshold definitions conflict with parts of the paper.  The
-three-seed directional criterion was preregistered, but between-seed uncertainty is
-coarse; the hierarchical and Student-$t$ intervals are therefore both shown.
-The original prospective breadth criterion remains unmet because only one frozen
-candidate is complete and neither supplies credible behavioral evidence.
-The later CLUTRR study supplies an independent public behavioral
-confirmation but covers one relation length, architecture, exposure dose, and
-training budget.  The certified interval is tight only relative to the
-supplied certificate system; adding sound constraints can narrow it.  None of
-these synthetic findings determines contamination prevalence in
-natural-language benchmarks.
+regenerates the five strengthening analyses from retained evidence, copies
+their macros and figures, regenerates the overview, and runs \texttt{latexmk}.
+Each analysis writes a \texttt{summary.json} and a \texttt{run\_info.json}
+recording its inputs under \texttt{analysis/tmlr-strengthening-v1/}: T2
+(CLUTRR heterogeneity), T3a (internal heterogeneity), T6 (semantic versus
+decoy, with compact predictions in \texttt{artifacts/tmlr\_t6\_run\_outputs/}),
+T9 (overlapping bounds, alongside \texttt{toolkit/semantic\_audit/bounds.py}),
+and T10 (parameterized sensitivity).  Set \texttt{PYTHON} to an environment
+with the supplement dependencies and \texttt{AUDIT\_ROOT} to the audit
+supplement directory if it is not in the default sibling layout.  No model
+training is required.

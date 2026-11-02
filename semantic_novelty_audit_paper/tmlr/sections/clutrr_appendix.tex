@@ -156,30 +156,14 @@ it to $R^2=\TTwoRelationRSquared{}$.  The median normalized gain is
 \TTwoNGMedian{}, so the raw spread is not only a scale artifact, although
 available headroom explains much of it.
 
-\begin{table}[H]
-\caption{Exploratory structural covariates for CLUTRR pattern effects.}
-\label{tmlrs:tab:clutrr-cov}
-\centering
-\small
-\begin{tabular}{lrrr}
-\toprule
-Covariate group & Patterns & Mean effect (pp) & Spearman $\rho$ \\
-\midrule
-Target absent from edges & \TTwoInAbsentN{} & \TTwoInAbsentMean{} &
-\multirow{2}{*}{$\TTwoInSpearman{}$} \\
-Target present in edges & \TTwoInPresentN{} & \TTwoInPresentMean{} & \\
-One distinct edge type & \TTwoDistinctOneN{} & \TTwoDistinctOneMean{} &
-\multirow{3}{*}{$\TTwoDistinctSpearman{}$} \\
-Two distinct edge types & \TTwoDistinctTwoN{} & \TTwoDistinctTwoMean{} & \\
-Three distinct edge types & \TTwoDistinctThreeN{} &
-\TTwoDistinctThreeMean{} & \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Neither whether the target relation appears among the three edges nor the
-number of distinct edge types predicts the effect at conventional levels
-(two-sided Spearman $p=\TTwoInP{}$ and $p=\TTwoDistinctP{}$, respectively).
+Mean effects are \TTwoInAbsentMean~pp when the target relation is absent
+from the three edges (\TTwoInAbsentN{} patterns) and \TTwoInPresentMean~pp
+when it is present (\TTwoInPresentN), and \TTwoDistinctOneMean,
+\TTwoDistinctTwoMean, and \TTwoDistinctThreeMean~pp for one, two, and three
+distinct edge types (\TTwoDistinctOneN, \TTwoDistinctTwoN, and
+\TTwoDistinctThreeN{} patterns).  Neither covariate predicts the effect at
+conventional levels (two-sided Spearman $p=\TTwoInP{}$ and
+$p=\TTwoDistinctP{}$, respectively).
 Target relation as a categorical grouping explains \TTwoEta{} of the effect
 variance, but
 leave-one-relation mean effects remain within

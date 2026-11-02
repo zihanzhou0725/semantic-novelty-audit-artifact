@@ -150,23 +150,20 @@ cannot alter the accuracy-based primary conclusion.
 
 The three studies span a near-zero Boolean result, a $+1.8$-point internal
 gain, and a $+23.3$-point CLUTRR gain.  We treat this range as the main
-behavioral finding, not as noise to average away.  A plausible reading,
-which we flag as post hoc: exposure buys little when the model already
-executes a short reusable rule (the Boolean tasks, where the released
-Transformer scores about 93\% on Conjunction and 78--83\% on Majority and
-Sparse Disjunction even without exposure); it buys more where withheld
-compositions must be inferred from a limited set of neighbors (CLUTRR
-trains a small byte-level model from scratch at one relation length and a
-modest budget, a regime in which large seen-versus-unseen gaps are
-expected).  A large CLUTRR gap is therefore not surprising in itself.  What
-the framework adds is that the gap is attributed to a certified semantic
-exposure difference under a preregistered, target-disjoint design, rather
-than to a surface-form split that may or may not change semantic exposure.
-The practical implication is direct: whether semantic exposure matters is
-an empirical property of a model, budget, and task family, so a benchmark
-that claims semantic novelty should measure the exposure contrast rather
-than assume either a large or a negligible effect.  Figure~\ref{fig:forest}
-places the three effects on one axis.
+behavioral finding, not as noise to average away.  A plausible reading, which
+we flag as post hoc: exposure buys little when the model already executes a
+short reusable rule (the Boolean tasks, where the released Transformer scores
+about 93\% on Conjunction and 78--83\% on Majority and Sparse Disjunction
+without exposure), and more where withheld compositions must be inferred from
+limited neighbors (CLUTRR trains a small byte-level model from scratch at one
+relation length and a modest budget, a regime with large seen-versus-unseen
+gaps).  What the framework adds is that the CLUTRR gap is attributed to a
+certified semantic exposure difference under a preregistered, target-disjoint
+design rather than to a surface-form split.  The implication is direct:
+whether semantic exposure matters is an empirical property of model, budget,
+and task family, so a benchmark claiming semantic novelty should measure the
+contrast rather than assume either a large or a negligible effect.
+Figure~\ref{fig:forest} places the three effects on one axis.
 
 \begin{figure}[t]
 \centering
@@ -281,22 +278,16 @@ Normalized gain (b) remains high for most patterns.}
 \subsection{What the CLUTRR Result Does and Does Not Say}
 
 The experiment identifies an endpoint effect of randomized complementary
-curricula in the frozen CLUTRR setting: the curriculum that exposes a focal
-relation composition yields higher focal-pattern accuracy than its paired
-alternative, on different source groups and sentence permutations.  This is
-a behavioral consequence beyond exact-string reuse, and it supplies the
-public-benchmark behavior that the structural audits lack.  It does not
-isolate the direct effect of one pattern's exposure from transfer among the
-other patterns whose assignments also reverse.
-
-The claim remains deliberately bounded: one CLUTRR task, one relation
-length, one architecture, one exposure dose, one optimization budget.  The
-result does not show that every form of semantic overlap improves accuracy,
-that the model stores a literal lookup table, or that the same effect holds
-for unseen relation lengths, family-disjoint reasoning, other
-architectures, or natural text.  The near-zero Boolean result stands as a
-counterexample to the universal shortcut ``overlap implies memorization.''
-The combined evidence supports the weaker and more useful conclusion:
-curricula that differ in semantic exposure can have a large behavioral
-effect, so benchmark novelty and behavioral exploitation must be measured
-separately.
+curricula: the curriculum that exposes a focal relation composition yields
+higher focal-pattern accuracy on different source groups and sentence
+permutations, a behavioral consequence beyond exact-string reuse that the
+structural audits lack.  It does not isolate one pattern's direct effect from
+transfer among the other patterns whose assignments also reverse, and the
+claim stays bounded to one task, relation length, architecture, exposure
+dose, and budget.  It does not show that the model stores a literal lookup
+table, or that the effect holds for unseen lengths, family-disjoint
+reasoning, other architectures, or natural text.  The near-zero Boolean
+result remains a counterexample to ``overlap implies memorization,'' so the
+combined evidence supports the weaker conclusion: curricula that differ in
+semantic exposure can have a large behavioral effect, and benchmark novelty
+and behavioral exploitation must be measured separately.

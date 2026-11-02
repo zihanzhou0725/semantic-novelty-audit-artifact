@@ -264,45 +264,36 @@ a(\mathcal R_{\mathrm{test}})
 Neither of the last two implies the other: two different tasks can share a
 family, and two different families can implement the same task.
 
-The \emph{semantic unit}---what counts as one task---must fit the claim, and
-it must be chosen before overlap is measured.  We ask for a simple
-prospective test.  The claim states what should stay fixed and what should
-vary, then supplies \emph{must-match} pairs (items that should count as the
-same task) and \emph{must-differ} pairs (items that should not).  A
-candidate unit fails if it splits a must-match pair (too fine) or merges a
-must-differ pair (too coarse).  If several defensible units pass and lead to
-different exposure conclusions, we report all of them as a sensitivity
-analysis; the claim may not be stated as if the unit choice did not matter.
-
-Concrete units differ by benchmark.  A finite rule can be identified by its
-complete output vector.  A logic program can be identified by the relation
-it defines over all structures the contract admits.  For CLUTRR, our unit is
-the ordered relation composition plus the target relation, not the story
-string.  For graph reasoning, endpoint-conditioned paths and relation
-schemas answer different questions.  Table~\ref{tab:summary} shows why the
-choice matters: Tensor Logic has endpoint exposure $[484,1000]/1000$ but
-schema exposure $[999,1000]/1000$, while SLR string identity gives zero
-overlap and the registered semantic unit gives a 45.2\% sound lower bound.
-A single pooled ``contamination rate'' would erase these distinctions.
+The \emph{semantic unit}---what counts as one task---must fit the claim and be
+fixed before overlap is measured.  We ask for a prospective test: the claim
+names what should stay fixed and what should vary, then supplies
+\emph{must-match} pairs (items that should count as the same task) and
+\emph{must-differ} pairs (items that should not).  A unit fails if it splits
+a must-match pair or merges a must-differ pair; when several defensible units
+pass and disagree, we report all of them rather than assert invariance.
+Units differ by benchmark: a finite rule can be identified by its complete
+output vector, a logic program by the relation it defines, CLUTRR by the
+ordered relation composition plus the target relation rather than the story
+string, and graph reasoning by endpoint-conditioned paths or relation
+schemas.  Table~\ref{tab:summary} shows why this matters: Tensor Logic has
+endpoint exposure $[484,1000]/1000$ but schema exposure $[999,1000]/1000$,
+while SLR string identity gives zero overlap and the registered unit gives a
+45.2\% sound lower bound; a single pooled ``contamination rate'' would erase
+these distinctions.
 
 \subsection{Evidence Grades}
 
 Not every overlap finding is equally strong, and we keep the strength
-attached to the finding.  A complete truth table, or a provably injective
-identifier, gives an \emph{exact} identity test.  A normalization procedure
-that emits a proof for every match gives a \emph{sound lower bound}: every
-collision it reports is real, but items it cannot resolve may hide more.
-Approximate execution signatures give an \emph{estimate} and need an error
-analysis.  And an unresolved item is not evidence of novelty.  These grades
-flow through our schema, tables, and claim policy unchanged.
-
-The grades describe what the evidence machinery can identify; they say
-nothing about bugs in the machinery itself---parsers, canonicalizers,
-semantic-ID implementations, validators.  We therefore record assurance
-separately for each audit: the observation contract, source revisions and
-hashes, the semantic-ID implementation, the soundness argument, validation
-coverage, known failure modes, and a qualitative residual-risk note when no
-defensible error rate exists (Appendix~\ref{app:assurance}).
+attached to the finding.  A complete truth table or a provably injective
+identifier gives an \emph{exact} test; a normalization that emits a proof for
+every match gives a \emph{sound lower bound} (every collision it reports is
+real, but items it cannot resolve may hide more); approximate execution
+signatures give an \emph{estimate} and need an error analysis.  An unresolved
+item is never evidence of novelty.  The grades describe identification
+conditional on our machinery, not bugs inside it, so assurance is recorded
+separately per audit: contract, source revisions and hashes, semantic-ID
+implementation, soundness argument, validation coverage, known failure modes,
+and qualitative residual risk (Appendix~\ref{app:assurance}).
 
 \subsection{Training-Budget Exposure}
 
@@ -363,23 +354,21 @@ every exposure count consistent with the certificates, and both endpoints are
 attained.
 \end{proposition}
 
-The proof is elementary, and we mean that as a feature: the result is an
-accounting device, not new mathematics.  The lower endpoint puts exactly
-$\ell_j$ exposed items in each group and none in $R$; the upper endpoint
-puts $u_j$ in each group and all of $R$.  No tighter interval follows from
-those certificates alone.  The full proof, a grouped-seed corollary, and
-falsification tests are in Appendix~\ref{app:certified}.  The point is
-operational: an audit must report $[L,U]$, and rows without witnesses stay
-out of the ``novel'' column.
+The proof is elementary, and we mean that as a feature: this is an accounting
+device, not new mathematics.  The lower endpoint puts exactly $\ell_j$
+exposed items in each group and none in $R$; the upper puts $u_j$ in each
+group and all of $R$.  No tighter interval follows from those certificates
+alone (proof, a grouped-seed corollary, and falsification tests are in
+Appendix~\ref{app:certified}).  Operationally, an audit must report $[L,U]$,
+and rows without witnesses stay out of the ``novel'' column.
 
-When certificate groups overlap, the closed form no longer applies.  The
-toolkit then either solves the resulting binary program exactly by
-mixed-integer linear programming or returns a linear-programming outer
-interval with independently checkable dual certificates
-(Appendix~\ref{tmlrs:app:overlap}).
+When certificate groups overlap the closed form no longer applies; the
+toolkit either solves the binary program exactly by mixed-integer linear
+programming or returns a linear-programming outer interval with independently
+checkable dual certificates (Appendix~\ref{tmlrs:app:overlap}).
 
-Sometimes the follow-up question is downstream: among unresolved items with
-observed scores, how well could the truly novel subset be doing?
+A downstream question asks how well the truly novel subset could be doing
+among unresolved items with observed scores;
 Proposition~\ref{tmlrs:prop:novelty} gives the sharp answer.
 
 \begin{proposition}[Novelty-conditioned score interval]
@@ -400,14 +389,12 @@ widens monotonically in $U$.
 
 This is a trimming bound in the sense of \citet{lee2009training} and
 \citet{horowitz1995identification}: without a nontrivial upper bound on
-exposure, any nonempty subset could be the novel one, and the interval is
-$[\min_i y_i,\max_i y_i]$.  We report sensitivity to $U$ (proof in
-Appendix~\ref{tmlrs:app:novelty-proof}).
-
-One caution: the interval isolates witness incompleteness only.  It assumes
-correct sources, semantic IDs, and certificate implementations, and it does
-not absorb machinery failures into $[L,U]$.  Read it together with the
-benchmark-level assurance record, not instead of it.
+exposure, any nonempty subset could be the novel one and the interval is
+$[\min_i y_i,\max_i y_i]$ (sensitivity to $U$ and proof in
+Appendix~\ref{tmlrs:app:novelty-proof}).  The bound isolates witness
+incompleteness only: it assumes correct sources, semantic IDs, and
+certificate implementations, and does not absorb machinery failures, so it is
+read together with the assurance record.
 
 For compactness, the summary table abbreviates confidence interval (CI) and
 in-context learning (ICL).
@@ -693,56 +680,41 @@ The three failure modes are cheap to prevent once they are named.  We
 distill the audits into a short reporting standard for any benchmark that
 claims novelty, and into a toolkit that checks the standard mechanically.
 
-\paragraph{Name the held-out object.}  Every novelty claim should state
-whether it concerns records, parameters, programs, complete functions,
-relation compositions, or rule families, together with the observation
-contract, and it should pass the must-match/must-differ adequacy test
-before overlap is measured.  ``Unseen'' without a named object and its
-observable equivalence is not an evaluation specification.
-
-\paragraph{Report sensitivity to the unit.}  When more than one semantic
-unit passes the adequacy test, run the audit under each and report whether
-the conclusion changes.  Endpoint paths and relation schemas are both valid
-units for Tensor Logic---with very different answers---and neither should
-silently stand in for the other.
-
-\paragraph{Split after semantic grouping.}  When exact semantics are
-finite, canonicalize or hash complete mappings before splitting.  For
-executable programs, use proof-producing normalization under the declared
-contract where possible, and label incomplete detection with
-Equation~\ref{eq:certified-interval}, not as zero overlap.
-
-\paragraph{Record feasibility before splitting.}  Benchmark designers
-should specify the semantic domain, the basis for deciding equivalence,
-normalization and witness-search costs, and a stopping rule fixed
-independently of observed overlap;
-Appendix~\ref{app:normalization-feasibility} lists the seven fields.
-Exhaustive, injective procedures support exact grouping; sound but
-incomplete procedures support a lower bound; approximate procedures need an
-error model; and a procedure without a sound relation to the contract
-cannot support a semantic-novelty claim.
-
-\paragraph{Count the training budget.}  For discrete generators, report
-weighted coverage using Equation~\ref{eq:coverage}, not only the nominal
-hypothesis-space size.  Online generation does not guarantee semantic
-novelty.
-
-\paragraph{Re-check witnesses after mutation.}  Removing one edge, rule, or
-source object can invalidate another selected witness---the Tensor Logic
-failure mode.  A split-construction pipeline should rerun its semantic
+\begin{enumerate}
+\item \emph{Name the held-out object.}  State whether the claim concerns
+records, parameters, programs, complete functions, relation compositions, or
+rule families, together with the observation contract, and pass the
+must-match/must-differ adequacy test before measuring overlap.  ``Unseen''
+without a named object and its observable equivalence is not a specification.
+\item \emph{Report sensitivity to the unit.}  Run the audit under every unit
+that passes the adequacy test and report whether conclusions change; endpoint
+paths and relation schemas are both valid units for Tensor Logic, with very
+different answers.
+\item \emph{Split after semantic grouping.}  When exact semantics are finite,
+canonicalize or hash complete mappings before splitting; for executable
+programs, use proof-producing normalization under the contract, and label
+incomplete detection with Equation~\ref{eq:certified-interval} rather than
+zero overlap.
+\item \emph{Record feasibility before splitting.}  Specify the semantic
+domain, the basis for equivalence, normalization and witness-search costs, and
+a stopping rule fixed independently of observed overlap
+(Appendix~\ref{app:normalization-feasibility}); exhaustive procedures support
+exact grouping, sound but incomplete ones support a lower bound, and
+approximate ones need an error model.
+\item \emph{Count the training budget.}  Report weighted coverage using
+Equation~\ref{eq:coverage}, not the nominal hypothesis-space size; online
+generation does not guarantee semantic novelty.
+\item \emph{Re-check witnesses after mutation.}  Removing one edge, rule, or
+source object can invalidate another selected witness, so rerun semantic
 validity checks on the final materialized data.
-
-\paragraph{Measure behavior separately.}  Overlap prevalence and model
-impact are different quantities.  Per-item predictions permit descriptive
-stratification; stronger claims require a matched intervention or an
-adequately supported identification design.
-
-\paragraph{Keep provenance.}  Manifests should record observation
-contracts, semantic IDs, source versions and hashes, random seeds, category
-assignments, stream hashes, witness grades, validator coverage, known
-failure modes, and residual assurance risk.  Tables should be generated
-from structured results, and preregistered negative outcomes should not be
-rewritten after a later study succeeds.
+\item \emph{Measure behavior separately.}  Prevalence and impact are different
+quantities: per-item predictions permit descriptive stratification, while
+stronger claims require a matched intervention.
+\item \emph{Keep provenance.}  Manifests should record contracts, semantic
+IDs, source hashes, seeds, category assignments, witness grades, validator
+coverage, and residual risk; tables should be generated from structured
+results, and negative outcomes should not be rewritten after a later success.
+\end{enumerate}
 
 \paragraph{The toolkit.}  The versioned \texttt{semantic-audit-v1} command
 maps a benchmark into a claim-specific schema recording the fields above:
@@ -895,22 +867,20 @@ certified intervals are conditional on the audited sources and the
 semantic-signature machinery; the qualitative assurance risks in
 Appendix~\ref{app:assurance} are not converted into a numerical error rate.
 
-Each intervention covers a bounded population.  The internal study covers
-six architectures, 40 cross-family targets, and one budget, and only Deep
-Sets passes the per-architecture simultaneous criterion.  The Boolean null
-covers one released Transformer configuration and three task definitions.
-CLUTRR V4 covers Task~1, relation length three, one byte Transformer, one
-exposure dose, and one budget; its large effect does not automatically
-extend to other relation lengths, architectures, or natural text.  Both
-positive studies randomize complete complementary curricula, so the
-contrast includes cross-target transfer and does not isolate the direct
-effect of toggling a single target.
-
-The CLUTRR V3 pilot did not meet its preregistered precision criterion
-despite its positive interval, and V4 is not pooled with it.  The certified
-interval is tight only relative to the supplied certificate system; more
-sound constraints can narrow it.  Finally, none of the studies identifies a
-literal lookup table or any other internal memorization mechanism.
+Each intervention covers a bounded population.  The internal study spans six
+architectures, 40 cross-family targets, and one budget, and only Deep Sets
+passes the per-architecture simultaneous criterion; the Boolean null covers
+one released Transformer configuration and three task definitions, and with
+three seeds between-seed uncertainty is coarse, so hierarchical and
+Student-$t$ intervals are both reported; CLUTRR V4
+covers one task, relation length, architecture, exposure dose, and budget, so
+its large effect need not extend to other lengths, architectures, or natural
+text.  Both positive studies randomize complete curricula, so the contrast
+includes cross-target transfer rather than isolating a single target.  The
+CLUTRR V3 pilot did not meet its preregistered precision criterion despite a
+positive interval, so it is not pooled with V4; the certified interval is
+tight only relative to the supplied certificate system, and no study
+identifies a literal lookup table or other internal mechanism.
 
 \section{Conclusion}
 \label{sec:conclusion}

@@ -230,10 +230,11 @@ places the three effects on one axis.
   \node[anchor=west] at (9.25,3) {$+1.8\ [1.5,2.2]$};
   \node[anchor=west] at (9.25,4) {$+15.3\ [9.9,21.4]$};
   \node[anchor=west] at (9.25,5) {$+23.3\ [17.7,29.2]$};
-  % legend, below the axis title
-  \node at (1.30,-3.0) {\textcolor{fdark}{$\bullet$}~Boolean ICL};
-  \node at (4.05,-3.0) {\textcolor{fblue}{$\bullet$}~Internal study};
-  \node at (6.95,-3.0) {\textcolor{forange}{$\bullet$}~CLUTRR};
+  % legend, centered under the axis title (same centre x as the title)
+  \node at (4.6,-3.5)
+    {\textcolor{fdark}{$\bullet$}~Boolean ICL\quad
+     \textcolor{fblue}{$\bullet$}~Internal study\quad
+     \textcolor{forange}{$\bullet$}~CLUTRR};
 \end{tikzpicture}
 \caption{Exposure effects across the three controlled studies: exposed
 minus unexposed accuracy, in percentage points, with 95\% confidence
